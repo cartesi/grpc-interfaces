@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+import "cartesi-base.proto";
+
+package CartesiManager;
+
+service MachineManager {
+    rpc NewSession (NewSessionRequest) returns (MachineHash) {}
+    rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
+    rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
+    rpc CommunicateReference (ReferenceRequest) returns (CartesiCore.Void) {}
+}
+
+message NewSessionRequest {
+    CartesiCore.MachineRequest machine = 1;
+    string session_id = 2;
+}
+
+message MachineHash {
+    bytes hash = 1;
+}
+
+
+message SessionRunRequest {
+    string session_id = 1;
+    repeated uint64 times = 2;
+}
+
+message ExecutionSummary {
+    CartesiCore.RunResponse summary = 1;
+    MachineHash machine_hash = 2;
+}
+
+message SessionRunResponse {
+    repeated ExecutionSummary executions = 1;
+}
+
+message SessionStepRequest {
+    string session_id = 1;
+    uint64 time = 2;
+}
+
+message SessionStepResponse {
+    CartesiCore.AccessLog log = 1;
+}
+
+message UnixSocket {
+    string path = 1;
+}
+
+message TCPSocket {
+    string host = 1;
+    uint32 port = 2;
+}
+
+message ReferenceRequest {
+    oneof socket_type_oneof {
+        UnixSocket unix = 1;
+        TCPSocket tcp = 2;
+    }
+}
