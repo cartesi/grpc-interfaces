@@ -5,7 +5,7 @@ import "cartesi-base.proto";
 package CartesiManager;
 
 service MachineManager {
-    rpc NewSession (NewSessionRequest) returns (MachineHash) {}
+    rpc NewSession (NewSessionRequest) returns (Hash) {}
     rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
     rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
     rpc CommunicateReference (ReferenceRequest) returns (CartesiCore.Void) {}
@@ -16,11 +16,6 @@ message NewSessionRequest {
     string session_id = 2;
 }
 
-message MachineHash {
-    bytes hash = 1;
-}
-
-
 message SessionRunRequest {
     string session_id = 1;
     repeated uint64 times = 2;
@@ -28,7 +23,7 @@ message SessionRunRequest {
 
 message ExecutionSummary {
     CartesiCore.RunResponse summary = 1;
-    MachineHash machine_hash = 2;
+    Hash machine_hash = 2;
 }
 
 message SessionRunResponse {

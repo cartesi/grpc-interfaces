@@ -4,6 +4,10 @@ package CartesiCore;
 
 message Void { }
 
+message Hash {
+    bytes content = 1;
+}
+
 message ProcessorState {
     oneof x1_oneof{
         uint64 x1           = 1;
@@ -258,9 +262,9 @@ message RunResponse {
 message ProofType {
     uint64 address = 1;
     int32 log2_size = 2;
-    bytes target_hash = 3;
-    repeated bytes sibling_hashes = 4;
-    bytes root_hash = 5; 
+    Hash target_hash = 3;
+    repeated Hash sibling_hashes = 4;
+    Hash root_hash = 5;
 }
 
 message WordAccess {
