@@ -187,16 +187,16 @@ message ProcessorState {
 
 message Processor {
     oneof processor_oneof{
-		ProcessorState state = 1;
+        ProcessorState state = 1;
         string backing       = 2;
     }
 }
 
 message ROM {
-	oneof rom_oneof {
-    	string cmdline = 1;
-    	string backing = 2;
-	}
+    oneof rom_oneof {
+        string cmdline = 1;
+        string backing = 2;
+    }
 }
 
 message RAM {
@@ -208,7 +208,7 @@ message Drive {
     uint64 istart = 1;
     uint64 ilength = 2;
     string backing = 3;
-    bool shared = 4;    
+    bool shared = 4;
     string label = 5;
 }
 
@@ -218,10 +218,10 @@ message CLINTState {
 }
 
 message CLINT {
-	oneof clint_oneof {
-		CLINTState state = 1;
-		string backing = 2;
-	}
+    oneof clint_oneof {
+        CLINTState state = 1;
+        string backing = 2;
+    }
 }
 
 message HTIFState {
@@ -230,10 +230,10 @@ message HTIFState {
 }
 
 message HTIF {
-	oneof htif_oneof {
-		HTIFState state = 1;
-		string backing = 2;
-	}
+    oneof htif_oneof {
+        HTIFState state = 1;
+        string backing = 2;
+    }
 }
 
 message MachineRequest {
@@ -295,5 +295,3 @@ message AccessLog {
     repeated WordAccess accesses = 1;
     repeated AccessNote notes = 2;
 }
-
-
