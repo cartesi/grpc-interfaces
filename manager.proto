@@ -6,9 +6,9 @@ package CartesiManager;
 
 service MachineManager {
     rpc NewSession (NewSessionRequest) returns (CartesiCore.Hash) {}
-    rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
-    rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
-    rpc CommunicateReference (ReferenceRequest) returns (CartesiCore.Void) {}
+    rpc SessionRun (SessionRunRequest) returns (SessionRunResult) {}
+    rpc SessionStep (SessionStepRequest) returns (SessionStepResult) {}
+    // rpc CommunicateReference (ReferenceRequest) returns (CartesiCore.Void) {}
 }
 
 message NewSessionRequest {
@@ -21,13 +21,14 @@ message SessionRunRequest {
     repeated uint64 times = 2;
 }
 
-message ExecutionSummary {
-    CartesiCore.RunResponse summary = 1;
-    CartesiCore.Hash machine_hash = 2;
-}
+//message ExecutionSummary {
+//    CartesiCore.RunResponse summary = 1;
+//    CartesiCore.Hash machine_hash = 2;
+//}
 
-message SessionRunResponse {
-    repeated ExecutionSummary executions = 1;
+message SessionRunResult {
+    repeated CartesiCore.RunResponse summaries = 1;
+    repeated CartesiCore.Hash hashes = 2;
 }
 
 message SessionStepRequest {
@@ -35,7 +36,7 @@ message SessionStepRequest {
     uint64 time = 2;
 }
 
-message SessionStepResponse {
+message SessionStepResult {
     CartesiCore.AccessLog log = 1;
 }
 

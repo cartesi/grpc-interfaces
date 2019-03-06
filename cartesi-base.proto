@@ -259,24 +259,25 @@ message RunResponse {
     }
 }
 
-message ProofType {
+message Proof {
     uint64 address = 1;
-    int32 log2_size = 2;
+    uint32 log2_size = 2;
     Hash target_hash = 3;
     repeated Hash sibling_hashes = 4;
     Hash root_hash = 5;
 }
 
-message WordAccess {
-    enum AccessType {
-        READ = 0;
-        WRITE = 1;
-    }
-    AccessType type = 1;
-    uint64 read = 2;
-    uint64 written = 3;
-    string text = 4;
-    ProofType proof = 5;
+enum AccessOperation {
+    READ = 0;
+    WRITE = 1;
+}
+
+message Access {
+    AccessOperation operation = 1;
+    uint64 address = 2;
+    uint64 read = 3;
+    uint64 written = 4;
+    Proof proof = 5;
 }
 
 message AccessNote {
@@ -292,6 +293,6 @@ message AccessNote {
 }
 
 message AccessLog {
-    repeated WordAccess accesses = 1;
+    repeated Access accesses = 1;
     repeated AccessNote notes = 2;
 }
