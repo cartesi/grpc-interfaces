@@ -39,7 +39,7 @@ namespace protobuf_manager_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[10];
+  static const ::google::protobuf::internal::ParseTable schema[8];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -71,12 +71,6 @@ extern SessionStepRequestDefaultTypeInternal _SessionStepRequest_default_instanc
 class SessionStepResponse;
 class SessionStepResponseDefaultTypeInternal;
 extern SessionStepResponseDefaultTypeInternal _SessionStepResponse_default_instance_;
-class TCPSocket;
-class TCPSocketDefaultTypeInternal;
-extern TCPSocketDefaultTypeInternal _TCPSocket_default_instance_;
-class UnixSocket;
-class UnixSocketDefaultTypeInternal;
-extern UnixSocketDefaultTypeInternal _UnixSocket_default_instance_;
 }  // namespace CartesiManager
 namespace google {
 namespace protobuf {
@@ -88,8 +82,6 @@ template<> ::CartesiManager::SessionRunRequest* Arena::CreateMaybeMessage<::Cart
 template<> ::CartesiManager::SessionRunResponse* Arena::CreateMaybeMessage<::CartesiManager::SessionRunResponse>(Arena*);
 template<> ::CartesiManager::SessionStepRequest* Arena::CreateMaybeMessage<::CartesiManager::SessionStepRequest>(Arena*);
 template<> ::CartesiManager::SessionStepResponse* Arena::CreateMaybeMessage<::CartesiManager::SessionStepResponse>(Arena*);
-template<> ::CartesiManager::TCPSocket* Arena::CreateMaybeMessage<::CartesiManager::TCPSocket>(Arena*);
-template<> ::CartesiManager::UnixSocket* Arena::CreateMaybeMessage<::CartesiManager::UnixSocket>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace CartesiManager {
@@ -914,235 +906,6 @@ class SessionStepResponse : public ::google::protobuf::Message /* @@protoc_inser
 };
 // -------------------------------------------------------------------
 
-class UnixSocket : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiManager.UnixSocket) */ {
- public:
-  UnixSocket();
-  virtual ~UnixSocket();
-
-  UnixSocket(const UnixSocket& from);
-
-  inline UnixSocket& operator=(const UnixSocket& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  UnixSocket(UnixSocket&& from) noexcept
-    : UnixSocket() {
-    *this = ::std::move(from);
-  }
-
-  inline UnixSocket& operator=(UnixSocket&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const UnixSocket& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const UnixSocket* internal_default_instance() {
-    return reinterpret_cast<const UnixSocket*>(
-               &_UnixSocket_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    7;
-
-  void Swap(UnixSocket* other);
-  friend void swap(UnixSocket& a, UnixSocket& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline UnixSocket* New() const final {
-    return CreateMaybeMessage<UnixSocket>(NULL);
-  }
-
-  UnixSocket* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<UnixSocket>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const UnixSocket& from);
-  void MergeFrom(const UnixSocket& from);
-  void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(UnixSocket* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string path = 1;
-  void clear_path();
-  static const int kPathFieldNumber = 1;
-  const ::std::string& path() const;
-  void set_path(const ::std::string& value);
-  #if LANG_CXX11
-  void set_path(::std::string&& value);
-  #endif
-  void set_path(const char* value);
-  void set_path(const char* value, size_t size);
-  ::std::string* mutable_path();
-  ::std::string* release_path();
-  void set_allocated_path(::std::string* path);
-
-  // @@protoc_insertion_point(class_scope:CartesiManager.UnixSocket)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr path_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::protobuf_manager_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
-class TCPSocket : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiManager.TCPSocket) */ {
- public:
-  TCPSocket();
-  virtual ~TCPSocket();
-
-  TCPSocket(const TCPSocket& from);
-
-  inline TCPSocket& operator=(const TCPSocket& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  TCPSocket(TCPSocket&& from) noexcept
-    : TCPSocket() {
-    *this = ::std::move(from);
-  }
-
-  inline TCPSocket& operator=(TCPSocket&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TCPSocket& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const TCPSocket* internal_default_instance() {
-    return reinterpret_cast<const TCPSocket*>(
-               &_TCPSocket_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    8;
-
-  void Swap(TCPSocket* other);
-  friend void swap(TCPSocket& a, TCPSocket& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TCPSocket* New() const final {
-    return CreateMaybeMessage<TCPSocket>(NULL);
-  }
-
-  TCPSocket* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<TCPSocket>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const TCPSocket& from);
-  void MergeFrom(const TCPSocket& from);
-  void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(TCPSocket* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string host = 1;
-  void clear_host();
-  static const int kHostFieldNumber = 1;
-  const ::std::string& host() const;
-  void set_host(const ::std::string& value);
-  #if LANG_CXX11
-  void set_host(::std::string&& value);
-  #endif
-  void set_host(const char* value);
-  void set_host(const char* value, size_t size);
-  ::std::string* mutable_host();
-  ::std::string* release_host();
-  void set_allocated_host(::std::string* host);
-
-  // uint32 port = 2;
-  void clear_port();
-  static const int kPortFieldNumber = 2;
-  ::google::protobuf::uint32 port() const;
-  void set_port(::google::protobuf::uint32 value);
-
-  // @@protoc_insertion_point(class_scope:CartesiManager.TCPSocket)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr host_;
-  ::google::protobuf::uint32 port_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::protobuf_manager_2eproto::TableStruct;
-};
-// -------------------------------------------------------------------
-
 class ReferenceRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiManager.ReferenceRequest) */ {
  public:
   ReferenceRequest();
@@ -1172,19 +935,13 @@ class ReferenceRequest : public ::google::protobuf::Message /* @@protoc_insertio
   static const ::google::protobuf::Descriptor* descriptor();
   static const ReferenceRequest& default_instance();
 
-  enum SocketTypeOneofCase {
-    kUnix = 1,
-    kTcp = 2,
-    SOCKET_TYPE_ONEOF_NOT_SET = 0,
-  };
-
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const ReferenceRequest* internal_default_instance() {
     return reinterpret_cast<const ReferenceRequest*>(
                &_ReferenceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    7;
 
   void Swap(ReferenceRequest* other);
   friend void swap(ReferenceRequest& a, ReferenceRequest& b) {
@@ -1236,49 +993,41 @@ class ReferenceRequest : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // .CartesiManager.UnixSocket unix = 1;
-  bool has_unix() const;
-  void clear_unix();
-  static const int kUnixFieldNumber = 1;
-  private:
-  const ::CartesiManager::UnixSocket& _internal_unix() const;
-  public:
-  const ::CartesiManager::UnixSocket& unix() const;
-  ::CartesiManager::UnixSocket* release_unix();
-  ::CartesiManager::UnixSocket* mutable_unix();
-  void set_allocated_unix(::CartesiManager::UnixSocket* unix);
+  // string session_id = 1;
+  void clear_session_id();
+  static const int kSessionIdFieldNumber = 1;
+  const ::std::string& session_id() const;
+  void set_session_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_session_id(::std::string&& value);
+  #endif
+  void set_session_id(const char* value);
+  void set_session_id(const char* value, size_t size);
+  ::std::string* mutable_session_id();
+  ::std::string* release_session_id();
+  void set_allocated_session_id(::std::string* session_id);
 
-  // .CartesiManager.TCPSocket tcp = 2;
-  bool has_tcp() const;
-  void clear_tcp();
-  static const int kTcpFieldNumber = 2;
-  private:
-  const ::CartesiManager::TCPSocket& _internal_tcp() const;
-  public:
-  const ::CartesiManager::TCPSocket& tcp() const;
-  ::CartesiManager::TCPSocket* release_tcp();
-  ::CartesiManager::TCPSocket* mutable_tcp();
-  void set_allocated_tcp(::CartesiManager::TCPSocket* tcp);
+  // string address = 2;
+  void clear_address();
+  static const int kAddressFieldNumber = 2;
+  const ::std::string& address() const;
+  void set_address(const ::std::string& value);
+  #if LANG_CXX11
+  void set_address(::std::string&& value);
+  #endif
+  void set_address(const char* value);
+  void set_address(const char* value, size_t size);
+  ::std::string* mutable_address();
+  ::std::string* release_address();
+  void set_allocated_address(::std::string* address);
 
-  void clear_socket_type_oneof();
-  SocketTypeOneofCase socket_type_oneof_case() const;
   // @@protoc_insertion_point(class_scope:CartesiManager.ReferenceRequest)
  private:
-  void set_has_unix();
-  void set_has_tcp();
-
-  inline bool has_socket_type_oneof() const;
-  inline void clear_has_socket_type_oneof();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  union SocketTypeOneofUnion {
-    SocketTypeOneofUnion() {}
-    ::CartesiManager::UnixSocket* unix_;
-    ::CartesiManager::TCPSocket* tcp_;
-  } socket_type_oneof_;
+  ::google::protobuf::internal::ArenaStringPtr session_id_;
+  ::google::protobuf::internal::ArenaStringPtr address_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::uint32 _oneof_case_[1];
-
   friend struct ::protobuf_manager_2eproto::TableStruct;
 };
 // ===================================================================
@@ -1802,240 +1551,117 @@ inline void SessionStepResponse::set_allocated_log(::CartesiCore::AccessLog* log
 
 // -------------------------------------------------------------------
 
-// UnixSocket
-
-// string path = 1;
-inline void UnixSocket::clear_path() {
-  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& UnixSocket::path() const {
-  // @@protoc_insertion_point(field_get:CartesiManager.UnixSocket.path)
-  return path_.GetNoArena();
-}
-inline void UnixSocket::set_path(const ::std::string& value) {
-  
-  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiManager.UnixSocket.path)
-}
-#if LANG_CXX11
-inline void UnixSocket::set_path(::std::string&& value) {
-  
-  path_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiManager.UnixSocket.path)
-}
-#endif
-inline void UnixSocket::set_path(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiManager.UnixSocket.path)
-}
-inline void UnixSocket::set_path(const char* value, size_t size) {
-  
-  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiManager.UnixSocket.path)
-}
-inline ::std::string* UnixSocket::mutable_path() {
-  
-  // @@protoc_insertion_point(field_mutable:CartesiManager.UnixSocket.path)
-  return path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* UnixSocket::release_path() {
-  // @@protoc_insertion_point(field_release:CartesiManager.UnixSocket.path)
-  
-  return path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void UnixSocket::set_allocated_path(::std::string* path) {
-  if (path != NULL) {
-    
-  } else {
-    
-  }
-  path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), path);
-  // @@protoc_insertion_point(field_set_allocated:CartesiManager.UnixSocket.path)
-}
-
-// -------------------------------------------------------------------
-
-// TCPSocket
-
-// string host = 1;
-inline void TCPSocket::clear_host() {
-  host_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& TCPSocket::host() const {
-  // @@protoc_insertion_point(field_get:CartesiManager.TCPSocket.host)
-  return host_.GetNoArena();
-}
-inline void TCPSocket::set_host(const ::std::string& value) {
-  
-  host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiManager.TCPSocket.host)
-}
-#if LANG_CXX11
-inline void TCPSocket::set_host(::std::string&& value) {
-  
-  host_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiManager.TCPSocket.host)
-}
-#endif
-inline void TCPSocket::set_host(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiManager.TCPSocket.host)
-}
-inline void TCPSocket::set_host(const char* value, size_t size) {
-  
-  host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiManager.TCPSocket.host)
-}
-inline ::std::string* TCPSocket::mutable_host() {
-  
-  // @@protoc_insertion_point(field_mutable:CartesiManager.TCPSocket.host)
-  return host_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* TCPSocket::release_host() {
-  // @@protoc_insertion_point(field_release:CartesiManager.TCPSocket.host)
-  
-  return host_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void TCPSocket::set_allocated_host(::std::string* host) {
-  if (host != NULL) {
-    
-  } else {
-    
-  }
-  host_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), host);
-  // @@protoc_insertion_point(field_set_allocated:CartesiManager.TCPSocket.host)
-}
-
-// uint32 port = 2;
-inline void TCPSocket::clear_port() {
-  port_ = 0u;
-}
-inline ::google::protobuf::uint32 TCPSocket::port() const {
-  // @@protoc_insertion_point(field_get:CartesiManager.TCPSocket.port)
-  return port_;
-}
-inline void TCPSocket::set_port(::google::protobuf::uint32 value) {
-  
-  port_ = value;
-  // @@protoc_insertion_point(field_set:CartesiManager.TCPSocket.port)
-}
-
-// -------------------------------------------------------------------
-
 // ReferenceRequest
 
-// .CartesiManager.UnixSocket unix = 1;
-inline bool ReferenceRequest::has_unix() const {
-  return socket_type_oneof_case() == kUnix;
+// string session_id = 1;
+inline void ReferenceRequest::clear_session_id() {
+  session_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ReferenceRequest::set_has_unix() {
-  _oneof_case_[0] = kUnix;
+inline const ::std::string& ReferenceRequest::session_id() const {
+  // @@protoc_insertion_point(field_get:CartesiManager.ReferenceRequest.session_id)
+  return session_id_.GetNoArena();
 }
-inline void ReferenceRequest::clear_unix() {
-  if (has_unix()) {
-    delete socket_type_oneof_.unix_;
-    clear_has_socket_type_oneof();
-  }
+inline void ReferenceRequest::set_session_id(const ::std::string& value) {
+  
+  session_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CartesiManager.ReferenceRequest.session_id)
 }
-inline const ::CartesiManager::UnixSocket& ReferenceRequest::_internal_unix() const {
-  return *socket_type_oneof_.unix_;
+#if LANG_CXX11
+inline void ReferenceRequest::set_session_id(::std::string&& value) {
+  
+  session_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CartesiManager.ReferenceRequest.session_id)
 }
-inline ::CartesiManager::UnixSocket* ReferenceRequest::release_unix() {
-  // @@protoc_insertion_point(field_release:CartesiManager.ReferenceRequest.unix)
-  if (has_unix()) {
-    clear_has_socket_type_oneof();
-      ::CartesiManager::UnixSocket* temp = socket_type_oneof_.unix_;
-    socket_type_oneof_.unix_ = NULL;
-    return temp;
+#endif
+inline void ReferenceRequest::set_session_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  session_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CartesiManager.ReferenceRequest.session_id)
+}
+inline void ReferenceRequest::set_session_id(const char* value, size_t size) {
+  
+  session_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CartesiManager.ReferenceRequest.session_id)
+}
+inline ::std::string* ReferenceRequest::mutable_session_id() {
+  
+  // @@protoc_insertion_point(field_mutable:CartesiManager.ReferenceRequest.session_id)
+  return session_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ReferenceRequest::release_session_id() {
+  // @@protoc_insertion_point(field_release:CartesiManager.ReferenceRequest.session_id)
+  
+  return session_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReferenceRequest::set_allocated_session_id(::std::string* session_id) {
+  if (session_id != NULL) {
+    
   } else {
-    return NULL;
+    
   }
-}
-inline const ::CartesiManager::UnixSocket& ReferenceRequest::unix() const {
-  // @@protoc_insertion_point(field_get:CartesiManager.ReferenceRequest.unix)
-  return has_unix()
-      ? *socket_type_oneof_.unix_
-      : *reinterpret_cast< ::CartesiManager::UnixSocket*>(&::CartesiManager::_UnixSocket_default_instance_);
-}
-inline ::CartesiManager::UnixSocket* ReferenceRequest::mutable_unix() {
-  if (!has_unix()) {
-    clear_socket_type_oneof();
-    set_has_unix();
-    socket_type_oneof_.unix_ = CreateMaybeMessage< ::CartesiManager::UnixSocket >(
-        GetArenaNoVirtual());
-  }
-  // @@protoc_insertion_point(field_mutable:CartesiManager.ReferenceRequest.unix)
-  return socket_type_oneof_.unix_;
+  session_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), session_id);
+  // @@protoc_insertion_point(field_set_allocated:CartesiManager.ReferenceRequest.session_id)
 }
 
-// .CartesiManager.TCPSocket tcp = 2;
-inline bool ReferenceRequest::has_tcp() const {
-  return socket_type_oneof_case() == kTcp;
+// string address = 2;
+inline void ReferenceRequest::clear_address() {
+  address_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ReferenceRequest::set_has_tcp() {
-  _oneof_case_[0] = kTcp;
+inline const ::std::string& ReferenceRequest::address() const {
+  // @@protoc_insertion_point(field_get:CartesiManager.ReferenceRequest.address)
+  return address_.GetNoArena();
 }
-inline void ReferenceRequest::clear_tcp() {
-  if (has_tcp()) {
-    delete socket_type_oneof_.tcp_;
-    clear_has_socket_type_oneof();
-  }
+inline void ReferenceRequest::set_address(const ::std::string& value) {
+  
+  address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CartesiManager.ReferenceRequest.address)
 }
-inline const ::CartesiManager::TCPSocket& ReferenceRequest::_internal_tcp() const {
-  return *socket_type_oneof_.tcp_;
+#if LANG_CXX11
+inline void ReferenceRequest::set_address(::std::string&& value) {
+  
+  address_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CartesiManager.ReferenceRequest.address)
 }
-inline ::CartesiManager::TCPSocket* ReferenceRequest::release_tcp() {
-  // @@protoc_insertion_point(field_release:CartesiManager.ReferenceRequest.tcp)
-  if (has_tcp()) {
-    clear_has_socket_type_oneof();
-      ::CartesiManager::TCPSocket* temp = socket_type_oneof_.tcp_;
-    socket_type_oneof_.tcp_ = NULL;
-    return temp;
+#endif
+inline void ReferenceRequest::set_address(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CartesiManager.ReferenceRequest.address)
+}
+inline void ReferenceRequest::set_address(const char* value, size_t size) {
+  
+  address_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CartesiManager.ReferenceRequest.address)
+}
+inline ::std::string* ReferenceRequest::mutable_address() {
+  
+  // @@protoc_insertion_point(field_mutable:CartesiManager.ReferenceRequest.address)
+  return address_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ReferenceRequest::release_address() {
+  // @@protoc_insertion_point(field_release:CartesiManager.ReferenceRequest.address)
+  
+  return address_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ReferenceRequest::set_allocated_address(::std::string* address) {
+  if (address != NULL) {
+    
   } else {
-    return NULL;
+    
   }
-}
-inline const ::CartesiManager::TCPSocket& ReferenceRequest::tcp() const {
-  // @@protoc_insertion_point(field_get:CartesiManager.ReferenceRequest.tcp)
-  return has_tcp()
-      ? *socket_type_oneof_.tcp_
-      : *reinterpret_cast< ::CartesiManager::TCPSocket*>(&::CartesiManager::_TCPSocket_default_instance_);
-}
-inline ::CartesiManager::TCPSocket* ReferenceRequest::mutable_tcp() {
-  if (!has_tcp()) {
-    clear_socket_type_oneof();
-    set_has_tcp();
-    socket_type_oneof_.tcp_ = CreateMaybeMessage< ::CartesiManager::TCPSocket >(
-        GetArenaNoVirtual());
-  }
-  // @@protoc_insertion_point(field_mutable:CartesiManager.ReferenceRequest.tcp)
-  return socket_type_oneof_.tcp_;
+  address_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), address);
+  // @@protoc_insertion_point(field_set_allocated:CartesiManager.ReferenceRequest.address)
 }
 
-inline bool ReferenceRequest::has_socket_type_oneof() const {
-  return socket_type_oneof_case() != SOCKET_TYPE_ONEOF_NOT_SET;
-}
-inline void ReferenceRequest::clear_has_socket_type_oneof() {
-  _oneof_case_[0] = SOCKET_TYPE_ONEOF_NOT_SET;
-}
-inline ReferenceRequest::SocketTypeOneofCase ReferenceRequest::socket_type_oneof_case() const {
-  return ReferenceRequest::SocketTypeOneofCase(_oneof_case_[0]);
-}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

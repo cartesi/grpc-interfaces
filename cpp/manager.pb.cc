@@ -26,8 +26,6 @@ extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protob
 }  // namespace protobuf_cartesi_2dbase_2eproto
 namespace protobuf_manager_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_manager_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_MachineHash;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_manager_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TCPSocket;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_manager_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_UnixSocket;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_manager_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_ExecutionSummary;
 }  // namespace protobuf_manager_2eproto
 namespace CartesiManager {
@@ -66,22 +64,10 @@ class SessionStepResponseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<SessionStepResponse>
       _instance;
 } _SessionStepResponse_default_instance_;
-class UnixSocketDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<UnixSocket>
-      _instance;
-} _UnixSocket_default_instance_;
-class TCPSocketDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TCPSocket>
-      _instance;
-} _TCPSocket_default_instance_;
 class ReferenceRequestDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<ReferenceRequest>
       _instance;
-  const ::CartesiManager::UnixSocket* unix_;
-  const ::CartesiManager::TCPSocket* tcp_;
 } _ReferenceRequest_default_instance_;
 }  // namespace CartesiManager
 namespace protobuf_manager_2eproto {
@@ -188,34 +174,6 @@ static void InitDefaultsSessionStepResponse() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSessionStepResponse}, {
       &protobuf_cartesi_2dbase_2eproto::scc_info_AccessLog.base,}};
 
-static void InitDefaultsUnixSocket() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::CartesiManager::_UnixSocket_default_instance_;
-    new (ptr) ::CartesiManager::UnixSocket();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CartesiManager::UnixSocket::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_UnixSocket =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUnixSocket}, {}};
-
-static void InitDefaultsTCPSocket() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::CartesiManager::_TCPSocket_default_instance_;
-    new (ptr) ::CartesiManager::TCPSocket();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CartesiManager::TCPSocket::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TCPSocket =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTCPSocket}, {}};
-
 static void InitDefaultsReferenceRequest() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -227,10 +185,8 @@ static void InitDefaultsReferenceRequest() {
   ::CartesiManager::ReferenceRequest::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_ReferenceRequest =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsReferenceRequest}, {
-      &protobuf_manager_2eproto::scc_info_UnixSocket.base,
-      &protobuf_manager_2eproto::scc_info_TCPSocket.base,}};
+::google::protobuf::internal::SCCInfo<0> scc_info_ReferenceRequest =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsReferenceRequest}, {}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_NewSessionRequest.base);
@@ -240,12 +196,10 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_SessionRunResponse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SessionStepRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SessionStepResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_UnixSocket.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TCPSocket.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ReferenceRequest.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[10];
+::google::protobuf::Metadata file_level_metadata[8];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -295,26 +249,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::SessionStepResponse, log_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::UnixSocket, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::UnixSocket, path_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::TCPSocket, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::TCPSocket, host_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::TCPSocket, port_),
-  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::ReferenceRequest, _internal_metadata_),
   ~0u,  // no _extensions_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::ReferenceRequest, _oneof_case_[0]),
+  ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  offsetof(::CartesiManager::ReferenceRequestDefaultTypeInternal, unix_),
-  offsetof(::CartesiManager::ReferenceRequestDefaultTypeInternal, tcp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::ReferenceRequest, socket_type_oneof_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::ReferenceRequest, session_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiManager::ReferenceRequest, address_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CartesiManager::NewSessionRequest)},
@@ -324,9 +264,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 27, -1, sizeof(::CartesiManager::SessionRunResponse)},
   { 33, -1, sizeof(::CartesiManager::SessionStepRequest)},
   { 40, -1, sizeof(::CartesiManager::SessionStepResponse)},
-  { 46, -1, sizeof(::CartesiManager::UnixSocket)},
-  { 52, -1, sizeof(::CartesiManager::TCPSocket)},
-  { 59, -1, sizeof(::CartesiManager::ReferenceRequest)},
+  { 46, -1, sizeof(::CartesiManager::ReferenceRequest)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -337,8 +275,6 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_SessionRunResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_SessionStepRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_SessionStepResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_UnixSocket_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_TCPSocket_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiManager::_ReferenceRequest_default_instance_),
 };
 
@@ -357,7 +293,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 10);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 8);
 }
 
 void AddDescriptorsImpl() {
@@ -376,24 +312,20 @@ void AddDescriptorsImpl() {
       "cutionSummary\"6\n\022SessionStepRequest\022\022\n\ns"
       "ession_id\030\001 \001(\t\022\014\n\004time\030\002 \001(\004\":\n\023Session"
       "StepResponse\022#\n\003log\030\001 \001(\0132\026.CartesiCore."
-      "AccessLog\"\032\n\nUnixSocket\022\014\n\004path\030\001 \001(\t\"\'\n"
-      "\tTCPSocket\022\014\n\004host\030\001 \001(\t\022\014\n\004port\030\002 \001(\r\"}"
-      "\n\020ReferenceRequest\022*\n\004unix\030\001 \001(\0132\032.Carte"
-      "siManager.UnixSocketH\000\022(\n\003tcp\030\002 \001(\0132\031.Ca"
-      "rtesiManager.TCPSocketH\000B\023\n\021socket_type_"
-      "oneof2\340\002\n\016MachineManager\022N\n\nNewSession\022!"
-      ".CartesiManager.NewSessionRequest\032\033.Cart"
-      "esiManager.MachineHash\"\000\022U\n\nSessionRun\022!"
-      ".CartesiManager.SessionRunRequest\032\".Cart"
-      "esiManager.SessionRunResponse\"\000\022X\n\013Sessi"
-      "onStep\022\".CartesiManager.SessionStepReque"
-      "st\032#.CartesiManager.SessionStepResponse\""
-      "\000\022M\n\024CommunicateReference\022 .CartesiManag"
-      "er.ReferenceRequest\032\021.CartesiCore.Void\"\000"
-      "b\006proto3"
+      "AccessLog\"7\n\020ReferenceRequest\022\022\n\nsession"
+      "_id\030\001 \001(\t\022\017\n\007address\030\002 \001(\t2\340\002\n\016MachineMa"
+      "nager\022N\n\nNewSession\022!.CartesiManager.New"
+      "SessionRequest\032\033.CartesiManager.MachineH"
+      "ash\"\000\022U\n\nSessionRun\022!.CartesiManager.Ses"
+      "sionRunRequest\032\".CartesiManager.SessionR"
+      "unResponse\"\000\022X\n\013SessionStep\022\".CartesiMan"
+      "ager.SessionStepRequest\032#.CartesiManager"
+      ".SessionStepResponse\"\000\022M\n\024CommunicateRef"
+      "erence\022 .CartesiManager.ReferenceRequest"
+      "\032\021.CartesiCore.Void\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1088);
+      descriptor, 949);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "manager.proto", &protobuf_RegisterTypes);
   ::protobuf_cartesi_2dbase_2eproto::AddDescriptors();
@@ -2289,566 +2221,11 @@ void SessionStepResponse::InternalSwap(SessionStepResponse* other) {
 
 // ===================================================================
 
-void UnixSocket::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int UnixSocket::kPathFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-UnixSocket::UnixSocket()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_manager_2eproto::scc_info_UnixSocket.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:CartesiManager.UnixSocket)
-}
-UnixSocket::UnixSocket(const UnixSocket& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.path().size() > 0) {
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
-  }
-  // @@protoc_insertion_point(copy_constructor:CartesiManager.UnixSocket)
-}
-
-void UnixSocket::SharedCtor() {
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-UnixSocket::~UnixSocket() {
-  // @@protoc_insertion_point(destructor:CartesiManager.UnixSocket)
-  SharedDtor();
-}
-
-void UnixSocket::SharedDtor() {
-  path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void UnixSocket::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* UnixSocket::descriptor() {
-  ::protobuf_manager_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_manager_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const UnixSocket& UnixSocket::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_manager_2eproto::scc_info_UnixSocket.base);
-  return *internal_default_instance();
-}
-
-
-void UnixSocket::Clear() {
-// @@protoc_insertion_point(message_clear_start:CartesiManager.UnixSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
-}
-
-bool UnixSocket::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CartesiManager.UnixSocket)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string path = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_path()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->path().data(), static_cast<int>(this->path().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CartesiManager.UnixSocket.path"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:CartesiManager.UnixSocket)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:CartesiManager.UnixSocket)
-  return false;
-#undef DO_
-}
-
-void UnixSocket::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CartesiManager.UnixSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string path = 1;
-  if (this->path().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiManager.UnixSocket.path");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->path(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:CartesiManager.UnixSocket)
-}
-
-::google::protobuf::uint8* UnixSocket::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CartesiManager.UnixSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string path = 1;
-  if (this->path().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiManager.UnixSocket.path");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->path(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:CartesiManager.UnixSocket)
-  return target;
-}
-
-size_t UnixSocket::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CartesiManager.UnixSocket)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string path = 1;
-  if (this->path().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->path());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void UnixSocket::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CartesiManager.UnixSocket)
-  GOOGLE_DCHECK_NE(&from, this);
-  const UnixSocket* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const UnixSocket>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiManager.UnixSocket)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiManager.UnixSocket)
-    MergeFrom(*source);
-  }
-}
-
-void UnixSocket::MergeFrom(const UnixSocket& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CartesiManager.UnixSocket)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.path().size() > 0) {
-
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
-  }
-}
-
-void UnixSocket::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CartesiManager.UnixSocket)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void UnixSocket::CopyFrom(const UnixSocket& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CartesiManager.UnixSocket)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool UnixSocket::IsInitialized() const {
-  return true;
-}
-
-void UnixSocket::Swap(UnixSocket* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void UnixSocket::InternalSwap(UnixSocket* other) {
-  using std::swap;
-  path_.Swap(&other->path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata UnixSocket::GetMetadata() const {
-  protobuf_manager_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_manager_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void TCPSocket::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TCPSocket::kHostFieldNumber;
-const int TCPSocket::kPortFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TCPSocket::TCPSocket()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_manager_2eproto::scc_info_TCPSocket.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:CartesiManager.TCPSocket)
-}
-TCPSocket::TCPSocket(const TCPSocket& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  host_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.host().size() > 0) {
-    host_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.host_);
-  }
-  port_ = from.port_;
-  // @@protoc_insertion_point(copy_constructor:CartesiManager.TCPSocket)
-}
-
-void TCPSocket::SharedCtor() {
-  host_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  port_ = 0u;
-}
-
-TCPSocket::~TCPSocket() {
-  // @@protoc_insertion_point(destructor:CartesiManager.TCPSocket)
-  SharedDtor();
-}
-
-void TCPSocket::SharedDtor() {
-  host_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void TCPSocket::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TCPSocket::descriptor() {
-  ::protobuf_manager_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_manager_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TCPSocket& TCPSocket::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_manager_2eproto::scc_info_TCPSocket.base);
-  return *internal_default_instance();
-}
-
-
-void TCPSocket::Clear() {
-// @@protoc_insertion_point(message_clear_start:CartesiManager.TCPSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  host_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  port_ = 0u;
-  _internal_metadata_.Clear();
-}
-
-bool TCPSocket::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CartesiManager.TCPSocket)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string host = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_host()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->host().data(), static_cast<int>(this->host().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CartesiManager.TCPSocket.host"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint32 port = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &port_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:CartesiManager.TCPSocket)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:CartesiManager.TCPSocket)
-  return false;
-#undef DO_
-}
-
-void TCPSocket::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CartesiManager.TCPSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string host = 1;
-  if (this->host().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->host().data(), static_cast<int>(this->host().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiManager.TCPSocket.host");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->host(), output);
-  }
-
-  // uint32 port = 2;
-  if (this->port() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->port(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:CartesiManager.TCPSocket)
-}
-
-::google::protobuf::uint8* TCPSocket::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CartesiManager.TCPSocket)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string host = 1;
-  if (this->host().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->host().data(), static_cast<int>(this->host().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiManager.TCPSocket.host");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->host(), target);
-  }
-
-  // uint32 port = 2;
-  if (this->port() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->port(), target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:CartesiManager.TCPSocket)
-  return target;
-}
-
-size_t TCPSocket::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CartesiManager.TCPSocket)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // string host = 1;
-  if (this->host().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->host());
-  }
-
-  // uint32 port = 2;
-  if (this->port() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->port());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void TCPSocket::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CartesiManager.TCPSocket)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TCPSocket* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TCPSocket>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiManager.TCPSocket)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiManager.TCPSocket)
-    MergeFrom(*source);
-  }
-}
-
-void TCPSocket::MergeFrom(const TCPSocket& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CartesiManager.TCPSocket)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.host().size() > 0) {
-
-    host_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.host_);
-  }
-  if (from.port() != 0) {
-    set_port(from.port());
-  }
-}
-
-void TCPSocket::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CartesiManager.TCPSocket)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TCPSocket::CopyFrom(const TCPSocket& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CartesiManager.TCPSocket)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TCPSocket::IsInitialized() const {
-  return true;
-}
-
-void TCPSocket::Swap(TCPSocket* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TCPSocket::InternalSwap(TCPSocket* other) {
-  using std::swap;
-  host_.Swap(&other->host_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(port_, other->port_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata TCPSocket::GetMetadata() const {
-  protobuf_manager_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_manager_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
 void ReferenceRequest::InitAsDefaultInstance() {
-  ::CartesiManager::_ReferenceRequest_default_instance_.unix_ = const_cast< ::CartesiManager::UnixSocket*>(
-      ::CartesiManager::UnixSocket::internal_default_instance());
-  ::CartesiManager::_ReferenceRequest_default_instance_.tcp_ = const_cast< ::CartesiManager::TCPSocket*>(
-      ::CartesiManager::TCPSocket::internal_default_instance());
-}
-void ReferenceRequest::set_allocated_unix(::CartesiManager::UnixSocket* unix) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  clear_socket_type_oneof();
-  if (unix) {
-    ::google::protobuf::Arena* submessage_arena = NULL;
-    if (message_arena != submessage_arena) {
-      unix = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, unix, submessage_arena);
-    }
-    set_has_unix();
-    socket_type_oneof_.unix_ = unix;
-  }
-  // @@protoc_insertion_point(field_set_allocated:CartesiManager.ReferenceRequest.unix)
-}
-void ReferenceRequest::set_allocated_tcp(::CartesiManager::TCPSocket* tcp) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  clear_socket_type_oneof();
-  if (tcp) {
-    ::google::protobuf::Arena* submessage_arena = NULL;
-    if (message_arena != submessage_arena) {
-      tcp = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, tcp, submessage_arena);
-    }
-    set_has_tcp();
-    socket_type_oneof_.tcp_ = tcp;
-  }
-  // @@protoc_insertion_point(field_set_allocated:CartesiManager.ReferenceRequest.tcp)
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ReferenceRequest::kUnixFieldNumber;
-const int ReferenceRequest::kTcpFieldNumber;
+const int ReferenceRequest::kSessionIdFieldNumber;
+const int ReferenceRequest::kAddressFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ReferenceRequest::ReferenceRequest()
@@ -2862,25 +2239,20 @@ ReferenceRequest::ReferenceRequest(const ReferenceRequest& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  clear_has_socket_type_oneof();
-  switch (from.socket_type_oneof_case()) {
-    case kUnix: {
-      mutable_unix()->::CartesiManager::UnixSocket::MergeFrom(from.unix());
-      break;
-    }
-    case kTcp: {
-      mutable_tcp()->::CartesiManager::TCPSocket::MergeFrom(from.tcp());
-      break;
-    }
-    case SOCKET_TYPE_ONEOF_NOT_SET: {
-      break;
-    }
+  session_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.session_id().size() > 0) {
+    session_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.session_id_);
+  }
+  address_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.address().size() > 0) {
+    address_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.address_);
   }
   // @@protoc_insertion_point(copy_constructor:CartesiManager.ReferenceRequest)
 }
 
 void ReferenceRequest::SharedCtor() {
-  clear_has_socket_type_oneof();
+  session_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  address_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 ReferenceRequest::~ReferenceRequest() {
@@ -2889,9 +2261,8 @@ ReferenceRequest::~ReferenceRequest() {
 }
 
 void ReferenceRequest::SharedDtor() {
-  if (has_socket_type_oneof()) {
-    clear_socket_type_oneof();
-  }
+  session_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  address_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void ReferenceRequest::SetCachedSize(int size) const {
@@ -2908,32 +2279,14 @@ const ReferenceRequest& ReferenceRequest::default_instance() {
 }
 
 
-void ReferenceRequest::clear_socket_type_oneof() {
-// @@protoc_insertion_point(one_of_clear_start:CartesiManager.ReferenceRequest)
-  switch (socket_type_oneof_case()) {
-    case kUnix: {
-      delete socket_type_oneof_.unix_;
-      break;
-    }
-    case kTcp: {
-      delete socket_type_oneof_.tcp_;
-      break;
-    }
-    case SOCKET_TYPE_ONEOF_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = SOCKET_TYPE_ONEOF_NOT_SET;
-}
-
-
 void ReferenceRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:CartesiManager.ReferenceRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  clear_socket_type_oneof();
+  session_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  address_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -2947,24 +2300,32 @@ bool ReferenceRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .CartesiManager.UnixSocket unix = 1;
+      // string session_id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_unix()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_session_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->session_id().data(), static_cast<int>(this->session_id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CartesiManager.ReferenceRequest.session_id"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .CartesiManager.TCPSocket tcp = 2;
+      // string address = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_tcp()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_address()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->address().data(), static_cast<int>(this->address().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CartesiManager.ReferenceRequest.address"));
         } else {
           goto handle_unusual;
         }
@@ -2997,16 +2358,24 @@ void ReferenceRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiManager.UnixSocket unix = 1;
-  if (has_unix()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_unix(), output);
+  // string session_id = 1;
+  if (this->session_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->session_id().data(), static_cast<int>(this->session_id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiManager.ReferenceRequest.session_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->session_id(), output);
   }
 
-  // .CartesiManager.TCPSocket tcp = 2;
-  if (has_tcp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_tcp(), output);
+  // string address = 2;
+  if (this->address().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->address().data(), static_cast<int>(this->address().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiManager.ReferenceRequest.address");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->address(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3023,18 +2392,26 @@ void ReferenceRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiManager.UnixSocket unix = 1;
-  if (has_unix()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_unix(), deterministic, target);
+  // string session_id = 1;
+  if (this->session_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->session_id().data(), static_cast<int>(this->session_id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiManager.ReferenceRequest.session_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->session_id(), target);
   }
 
-  // .CartesiManager.TCPSocket tcp = 2;
-  if (has_tcp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_tcp(), deterministic, target);
+  // string address = 2;
+  if (this->address().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->address().data(), static_cast<int>(this->address().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiManager.ReferenceRequest.address");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->address(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -3054,25 +2431,20 @@ size_t ReferenceRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  switch (socket_type_oneof_case()) {
-    // .CartesiManager.UnixSocket unix = 1;
-    case kUnix: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *socket_type_oneof_.unix_);
-      break;
-    }
-    // .CartesiManager.TCPSocket tcp = 2;
-    case kTcp: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *socket_type_oneof_.tcp_);
-      break;
-    }
-    case SOCKET_TYPE_ONEOF_NOT_SET: {
-      break;
-    }
+  // string session_id = 1;
+  if (this->session_id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->session_id());
   }
+
+  // string address = 2;
+  if (this->address().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->address());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -3100,18 +2472,13 @@ void ReferenceRequest::MergeFrom(const ReferenceRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  switch (from.socket_type_oneof_case()) {
-    case kUnix: {
-      mutable_unix()->::CartesiManager::UnixSocket::MergeFrom(from.unix());
-      break;
-    }
-    case kTcp: {
-      mutable_tcp()->::CartesiManager::TCPSocket::MergeFrom(from.tcp());
-      break;
-    }
-    case SOCKET_TYPE_ONEOF_NOT_SET: {
-      break;
-    }
+  if (from.session_id().size() > 0) {
+
+    session_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.session_id_);
+  }
+  if (from.address().size() > 0) {
+
+    address_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.address_);
   }
 }
 
@@ -3139,8 +2506,10 @@ void ReferenceRequest::Swap(ReferenceRequest* other) {
 }
 void ReferenceRequest::InternalSwap(ReferenceRequest* other) {
   using std::swap;
-  swap(socket_type_oneof_, other->socket_type_oneof_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
+  session_id_.Swap(&other->session_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  address_.Swap(&other->address_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -3174,12 +2543,6 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiManager::SessionStepReque
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiManager::SessionStepResponse* Arena::CreateMaybeMessage< ::CartesiManager::SessionStepResponse >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiManager::SessionStepResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiManager::UnixSocket* Arena::CreateMaybeMessage< ::CartesiManager::UnixSocket >(Arena* arena) {
-  return Arena::CreateInternal< ::CartesiManager::UnixSocket >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiManager::TCPSocket* Arena::CreateMaybeMessage< ::CartesiManager::TCPSocket >(Arena* arena) {
-  return Arena::CreateInternal< ::CartesiManager::TCPSocket >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiManager::ReferenceRequest* Arena::CreateMaybeMessage< ::CartesiManager::ReferenceRequest >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiManager::ReferenceRequest >(arena);

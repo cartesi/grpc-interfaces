@@ -44,18 +44,7 @@ message SessionStepResponse {
     CartesiCore.AccessLog log = 1;
 }
 
-message UnixSocket {
-    string path = 1;
-}
-
-message TCPSocket {
-    string host = 1;
-    uint32 port = 2;
-}
-
 message ReferenceRequest {
-    oneof socket_type_oneof {
-        UnixSocket unix = 1;
-        TCPSocket tcp = 2;
-    }
+    string session_id = 1;
+    string address = 2;
 }
