@@ -24,14 +24,15 @@ extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protob
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CLINTState;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Drive;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_HTIFState;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Hash;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ProcessorState;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ProofType;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RAM;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ROM;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Access;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_CLINT;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_HTIF;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Processor;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_WordAccess;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Proof;
 }  // namespace protobuf_cartesi_2dbase_2eproto
 namespace CartesiCore {
 class VoidDefaultTypeInternal {
@@ -39,6 +40,11 @@ class VoidDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<Void>
       _instance;
 } _Void_default_instance_;
+class HashDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<Hash>
+      _instance;
+} _Hash_default_instance_;
 class ProcessorStateDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<ProcessorState>
@@ -165,16 +171,16 @@ class RunResponseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<RunResponse>
       _instance;
 } _RunResponse_default_instance_;
-class ProofTypeDefaultTypeInternal {
+class ProofDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ProofType>
+  ::google::protobuf::internal::ExplicitlyConstructed<Proof>
       _instance;
-} _ProofType_default_instance_;
-class WordAccessDefaultTypeInternal {
+} _Proof_default_instance_;
+class AccessDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<WordAccess>
+  ::google::protobuf::internal::ExplicitlyConstructed<Access>
       _instance;
-} _WordAccess_default_instance_;
+} _Access_default_instance_;
 class AccessNoteDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<AccessNote>
@@ -200,6 +206,20 @@ static void InitDefaultsVoid() {
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Void =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVoid}, {}};
+
+static void InitDefaultsHash() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CartesiCore::_Hash_default_instance_;
+    new (ptr) ::CartesiCore::Hash();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CartesiCore::Hash::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_Hash =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHash}, {}};
 
 static void InitDefaultsProcessorState() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -378,34 +398,35 @@ static void InitDefaultsRunResponse() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_RunResponse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRunResponse}, {}};
 
-static void InitDefaultsProofType() {
+static void InitDefaultsProof() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::CartesiCore::_ProofType_default_instance_;
-    new (ptr) ::CartesiCore::ProofType();
+    void* ptr = &::CartesiCore::_Proof_default_instance_;
+    new (ptr) ::CartesiCore::Proof();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::CartesiCore::ProofType::InitAsDefaultInstance();
+  ::CartesiCore::Proof::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ProofType =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsProofType}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_Proof =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsProof}, {
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Hash.base,}};
 
-static void InitDefaultsWordAccess() {
+static void InitDefaultsAccess() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::CartesiCore::_WordAccess_default_instance_;
-    new (ptr) ::CartesiCore::WordAccess();
+    void* ptr = &::CartesiCore::_Access_default_instance_;
+    new (ptr) ::CartesiCore::Access();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::CartesiCore::WordAccess::InitAsDefaultInstance();
+  ::CartesiCore::Access::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_WordAccess =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsWordAccess}, {
-      &protobuf_cartesi_2dbase_2eproto::scc_info_ProofType.base,}};
+::google::protobuf::internal::SCCInfo<1> scc_info_Access =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAccess}, {
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Proof.base,}};
 
 static void InitDefaultsAccessNote() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -434,11 +455,12 @@ static void InitDefaultsAccessLog() {
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_AccessLog =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsAccessLog}, {
-      &protobuf_cartesi_2dbase_2eproto::scc_info_WordAccess.base,
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Access.base,
       &protobuf_cartesi_2dbase_2eproto::scc_info_AccessNote.base,}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_Void.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Hash.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ProcessorState.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Processor.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ROM.base);
@@ -451,14 +473,14 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_MachineRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_RunRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_RunResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ProofType.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_WordAccess.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Proof.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_Access.base);
   ::google::protobuf::internal::InitSCC(&scc_info_AccessNote.base);
   ::google::protobuf::internal::InitSCC(&scc_info_AccessLog.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[17];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
+::google::protobuf::Metadata file_level_metadata[18];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -466,6 +488,12 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Hash, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Hash, content_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProcessorState, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -675,25 +703,24 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::RunResponse, mcycle_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::RunResponse, tohost_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, address_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, log2_size_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, target_hash_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, sibling_hashes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ProofType, root_hash_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, address_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, log2_size_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, target_hash_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, sibling_hashes_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Proof, root_hash_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, read_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, written_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, text_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::WordAccess, proof_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, operation_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, read_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, written_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, proof_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessNote, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -712,26 +739,28 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CartesiCore::Void)},
-  { 5, -1, sizeof(::CartesiCore::ProcessorState)},
-  { 126, -1, sizeof(::CartesiCore::Processor)},
-  { 134, -1, sizeof(::CartesiCore::ROM)},
-  { 142, -1, sizeof(::CartesiCore::RAM)},
-  { 149, -1, sizeof(::CartesiCore::Drive)},
-  { 159, -1, sizeof(::CartesiCore::CLINTState)},
-  { 166, -1, sizeof(::CartesiCore::CLINT)},
-  { 174, -1, sizeof(::CartesiCore::HTIFState)},
-  { 181, -1, sizeof(::CartesiCore::HTIF)},
-  { 189, -1, sizeof(::CartesiCore::MachineRequest)},
-  { 200, -1, sizeof(::CartesiCore::RunRequest)},
-  { 206, -1, sizeof(::CartesiCore::RunResponse)},
-  { 213, -1, sizeof(::CartesiCore::ProofType)},
-  { 223, -1, sizeof(::CartesiCore::WordAccess)},
-  { 233, -1, sizeof(::CartesiCore::AccessNote)},
-  { 241, -1, sizeof(::CartesiCore::AccessLog)},
+  { 5, -1, sizeof(::CartesiCore::Hash)},
+  { 11, -1, sizeof(::CartesiCore::ProcessorState)},
+  { 132, -1, sizeof(::CartesiCore::Processor)},
+  { 140, -1, sizeof(::CartesiCore::ROM)},
+  { 148, -1, sizeof(::CartesiCore::RAM)},
+  { 155, -1, sizeof(::CartesiCore::Drive)},
+  { 165, -1, sizeof(::CartesiCore::CLINTState)},
+  { 172, -1, sizeof(::CartesiCore::CLINT)},
+  { 180, -1, sizeof(::CartesiCore::HTIFState)},
+  { 187, -1, sizeof(::CartesiCore::HTIF)},
+  { 195, -1, sizeof(::CartesiCore::MachineRequest)},
+  { 206, -1, sizeof(::CartesiCore::RunRequest)},
+  { 212, -1, sizeof(::CartesiCore::RunResponse)},
+  { 219, -1, sizeof(::CartesiCore::Proof)},
+  { 229, -1, sizeof(::CartesiCore::Access)},
+  { 238, -1, sizeof(::CartesiCore::AccessNote)},
+  { 246, -1, sizeof(::CartesiCore::AccessLog)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Void_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Hash_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_ProcessorState_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Processor_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_ROM_default_instance_),
@@ -744,8 +773,8 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_MachineRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_RunRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_RunResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_ProofType_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_WordAccess_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Proof_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Access_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_AccessNote_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_AccessLog_default_instance_),
 };
@@ -765,97 +794,97 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 17);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 18);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\022cartesi-base.proto\022\013CartesiCore\"\006\n\004Voi"
-      "d\"\364\r\n\016ProcessorState\022\014\n\002x1\030\001 \001(\004H\000\022\014\n\002x2"
-      "\030\002 \001(\004H\001\022\014\n\002x3\030\003 \001(\004H\002\022\014\n\002x4\030\004 \001(\004H\003\022\014\n\002"
-      "x5\030\005 \001(\004H\004\022\014\n\002x6\030\006 \001(\004H\005\022\014\n\002x7\030\007 \001(\004H\006\022\014"
-      "\n\002x8\030\010 \001(\004H\007\022\014\n\002x9\030\t \001(\004H\010\022\r\n\003x10\030\n \001(\004H"
-      "\t\022\r\n\003x11\030\013 \001(\004H\n\022\r\n\003x12\030\014 \001(\004H\013\022\r\n\003x13\030\r"
-      " \001(\004H\014\022\r\n\003x14\030\016 \001(\004H\r\022\r\n\003x15\030\017 \001(\004H\016\022\r\n\003"
-      "x16\030\020 \001(\004H\017\022\r\n\003x17\030\021 \001(\004H\020\022\r\n\003x18\030\022 \001(\004H"
-      "\021\022\r\n\003x19\030\023 \001(\004H\022\022\r\n\003x20\030\024 \001(\004H\023\022\r\n\003x21\030\025"
-      " \001(\004H\024\022\r\n\003x22\030\026 \001(\004H\025\022\r\n\003x23\030\027 \001(\004H\026\022\r\n\003"
-      "x24\030\030 \001(\004H\027\022\r\n\003x25\030\031 \001(\004H\030\022\r\n\003x26\030\032 \001(\004H"
-      "\031\022\r\n\003x27\030\033 \001(\004H\032\022\r\n\003x28\030\034 \001(\004H\033\022\r\n\003x29\030\035"
-      " \001(\004H\034\022\r\n\003x30\030\036 \001(\004H\035\022\r\n\003x31\030\037 \001(\004H\036\022\014\n\002"
-      "pc\030  \001(\004H\037\022\023\n\tmvendorid\030! \001(\004H \022\021\n\007march"
-      "id\030\" \001(\004H!\022\020\n\006mimpid\030# \001(\004H\"\022\020\n\006mcycle\030$"
-      " \001(\004H#\022\022\n\010minstret\030% \001(\004H$\022\021\n\007mstatus\030& "
-      "\001(\004H%\022\017\n\005mtvec\030\' \001(\004H&\022\022\n\010mscratch\030( \001(\004"
-      "H\'\022\016\n\004mepc\030) \001(\004H(\022\020\n\006mcause\030* \001(\004H)\022\017\n\005"
-      "mtval\030+ \001(\004H*\022\016\n\004misa\030, \001(\004H+\022\r\n\003mie\030- \001"
-      "(\004H,\022\r\n\003mip\030. \001(\004H-\022\021\n\007medeleg\030/ \001(\004H.\022\021"
-      "\n\007mideleg\0300 \001(\004H/\022\024\n\nmcounteren\0301 \001(\004H0\022"
-      "\017\n\005stvec\0302 \001(\004H1\022\022\n\010sscratch\0303 \001(\004H2\022\016\n\004"
-      "sepc\0304 \001(\004H3\022\020\n\006scause\0305 \001(\004H4\022\017\n\005stval\030"
-      "6 \001(\004H5\022\016\n\004satp\0307 \001(\004H6\022\024\n\nscounteren\0308 "
-      "\001(\004H7\022\017\n\005ilrsc\0309 \001(\004H8\022\020\n\006iflags\030: \001(\004H9"
-      "B\n\n\010x1_oneofB\n\n\010x2_oneofB\n\n\010x3_oneofB\n\n\010"
-      "x4_oneofB\n\n\010x5_oneofB\n\n\010x6_oneofB\n\n\010x7_o"
-      "neofB\n\n\010x8_oneofB\n\n\010x9_oneofB\013\n\tx10_oneo"
-      "fB\013\n\tx11_oneofB\013\n\tx12_oneofB\013\n\tx13_oneof"
-      "B\013\n\tx14_oneofB\013\n\tx15_oneofB\013\n\tx16_oneofB"
-      "\013\n\tx17_oneofB\013\n\tx18_oneofB\013\n\tx19_oneofB\013"
-      "\n\tx20_oneofB\013\n\tx21_oneofB\013\n\tx22_oneofB\013\n"
-      "\tx23_oneofB\013\n\tx24_oneofB\013\n\tx25_oneofB\013\n\t"
-      "x26_oneofB\013\n\tx27_oneofB\013\n\tx28_oneofB\013\n\tx"
-      "29_oneofB\013\n\tx30_oneofB\013\n\tx31_oneofB\n\n\010pc"
-      "_oneofB\021\n\017mvendorid_oneofB\017\n\rmarchid_one"
-      "ofB\016\n\014mimpid_oneofB\016\n\014mcycle_oneofB\020\n\016mi"
-      "nstret_oneofB\017\n\rmstatus_oneofB\r\n\013mtvec_o"
-      "neofB\020\n\016mscratch_oneofB\014\n\nmepc_oneofB\016\n\014"
-      "mcause_oneofB\r\n\013mtval_oneofB\014\n\nmisa_oneo"
-      "fB\013\n\tmie_oneofB\013\n\tmip_oneofB\017\n\rmedeleg_o"
-      "neofB\017\n\rmideleg_oneofB\022\n\020mcounteren_oneo"
-      "fB\r\n\013stvec_oneofB\020\n\016sscratch_oneofB\014\n\nse"
-      "pc_oneofB\016\n\014scause_oneofB\r\n\013stval_oneofB"
-      "\014\n\nsatp_oneofB\022\n\020scounteren_oneofB\r\n\013ilr"
-      "sc_oneofB\016\n\014iflags_oneof\"_\n\tProcessor\022,\n"
-      "\005state\030\001 \001(\0132\033.CartesiCore.ProcessorStat"
-      "eH\000\022\021\n\007backing\030\002 \001(\tH\000B\021\n\017processor_oneo"
-      "f\"8\n\003ROM\022\021\n\007cmdline\030\001 \001(\tH\000\022\021\n\007backing\030\002"
-      " \001(\tH\000B\013\n\trom_oneof\"\'\n\003RAM\022\017\n\007ilength\030\001 "
-      "\001(\004\022\017\n\007backing\030\002 \001(\t\"X\n\005Drive\022\016\n\006istart\030"
-      "\001 \001(\004\022\017\n\007ilength\030\002 \001(\004\022\017\n\007backing\030\003 \001(\t\022"
-      "\016\n\006shared\030\004 \001(\010\022\r\n\005label\030\005 \001(\t\"-\n\nCLINTS"
-      "tate\022\r\n\005mtime\030\001 \001(\004\022\020\n\010mtimecmp\030\002 \001(\004\"S\n"
-      "\005CLINT\022(\n\005state\030\001 \001(\0132\027.CartesiCore.CLIN"
-      "TStateH\000\022\021\n\007backing\030\002 \001(\tH\000B\r\n\013clint_one"
-      "of\"-\n\tHTIFState\022\020\n\010fromhost\030\001 \001(\004\022\016\n\006toh"
-      "ost\030\002 \001(\004\"P\n\004HTIF\022\'\n\005state\030\001 \001(\0132\026.Carte"
-      "siCore.HTIFStateH\000\022\021\n\007backing\030\002 \001(\tH\000B\014\n"
-      "\nhtif_oneof\"\340\001\n\016MachineRequest\022)\n\tproces"
-      "sor\030\001 \001(\0132\026.CartesiCore.Processor\022\035\n\003rom"
-      "\030\002 \001(\0132\020.CartesiCore.ROM\022\035\n\003ram\030\003 \001(\0132\020."
-      "CartesiCore.RAM\022!\n\005flash\030\004 \003(\0132\022.Cartesi"
-      "Core.Drive\022!\n\005clint\030\005 \001(\0132\022.CartesiCore."
-      "CLINT\022\037\n\004htif\030\006 \001(\0132\021.CartesiCore.HTIF\"\033"
-      "\n\nRunRequest\022\r\n\005limit\030\001 \001(\004\"_\n\013RunRespon"
-      "se\022\016\n\006mcycle\030\001 \001(\004\022\016\n\006tohost\030\002 \001(\004\"0\n\006St"
-      "atus\022\013\n\007LIMITED\020\000\022\n\n\006HALTED\020\001\022\r\n\tSUSPEND"
-      "ED\020\002\"o\n\tProofType\022\017\n\007address\030\001 \001(\004\022\021\n\tlo"
-      "g2_size\030\002 \001(\005\022\023\n\013target_hash\030\003 \001(\014\022\026\n\016si"
-      "bling_hashes\030\004 \003(\014\022\021\n\troot_hash\030\005 \001(\014\"\265\001"
-      "\n\nWordAccess\0220\n\004type\030\001 \001(\0162\".CartesiCore"
-      ".WordAccess.AccessType\022\014\n\004read\030\002 \001(\004\022\017\n\007"
-      "written\030\003 \001(\004\022\014\n\004text\030\004 \001(\t\022%\n\005proof\030\005 \001"
-      "(\0132\026.CartesiCore.ProofType\"!\n\nAccessType"
-      "\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001\"\217\001\n\nAccessNote\022.\n\004"
-      "type\030\001 \001(\0162 .CartesiCore.AccessNote.Note"
-      "Type\022\r\n\005where\030\002 \001(\004\022\014\n\004text\030\003 \001(\t\"4\n\010Not"
-      "eType\022\t\n\005DUMMY\020\000\022\t\n\005BEGIN\020\001\022\007\n\003END\020\002\022\t\n\005"
-      "POINT\020\003\"^\n\tAccessLog\022)\n\010accesses\030\001 \003(\0132\027"
-      ".CartesiCore.WordAccess\022&\n\005notes\030\002 \003(\0132\027"
-      ".CartesiCore.AccessNoteb\006proto3"
+      "d\"\027\n\004Hash\022\017\n\007content\030\001 \001(\014\"\364\r\n\016Processor"
+      "State\022\014\n\002x1\030\001 \001(\004H\000\022\014\n\002x2\030\002 \001(\004H\001\022\014\n\002x3\030"
+      "\003 \001(\004H\002\022\014\n\002x4\030\004 \001(\004H\003\022\014\n\002x5\030\005 \001(\004H\004\022\014\n\002x"
+      "6\030\006 \001(\004H\005\022\014\n\002x7\030\007 \001(\004H\006\022\014\n\002x8\030\010 \001(\004H\007\022\014\n"
+      "\002x9\030\t \001(\004H\010\022\r\n\003x10\030\n \001(\004H\t\022\r\n\003x11\030\013 \001(\004H"
+      "\n\022\r\n\003x12\030\014 \001(\004H\013\022\r\n\003x13\030\r \001(\004H\014\022\r\n\003x14\030\016"
+      " \001(\004H\r\022\r\n\003x15\030\017 \001(\004H\016\022\r\n\003x16\030\020 \001(\004H\017\022\r\n\003"
+      "x17\030\021 \001(\004H\020\022\r\n\003x18\030\022 \001(\004H\021\022\r\n\003x19\030\023 \001(\004H"
+      "\022\022\r\n\003x20\030\024 \001(\004H\023\022\r\n\003x21\030\025 \001(\004H\024\022\r\n\003x22\030\026"
+      " \001(\004H\025\022\r\n\003x23\030\027 \001(\004H\026\022\r\n\003x24\030\030 \001(\004H\027\022\r\n\003"
+      "x25\030\031 \001(\004H\030\022\r\n\003x26\030\032 \001(\004H\031\022\r\n\003x27\030\033 \001(\004H"
+      "\032\022\r\n\003x28\030\034 \001(\004H\033\022\r\n\003x29\030\035 \001(\004H\034\022\r\n\003x30\030\036"
+      " \001(\004H\035\022\r\n\003x31\030\037 \001(\004H\036\022\014\n\002pc\030  \001(\004H\037\022\023\n\tm"
+      "vendorid\030! \001(\004H \022\021\n\007marchid\030\" \001(\004H!\022\020\n\006m"
+      "impid\030# \001(\004H\"\022\020\n\006mcycle\030$ \001(\004H#\022\022\n\010minst"
+      "ret\030% \001(\004H$\022\021\n\007mstatus\030& \001(\004H%\022\017\n\005mtvec\030"
+      "\' \001(\004H&\022\022\n\010mscratch\030( \001(\004H\'\022\016\n\004mepc\030) \001("
+      "\004H(\022\020\n\006mcause\030* \001(\004H)\022\017\n\005mtval\030+ \001(\004H*\022\016"
+      "\n\004misa\030, \001(\004H+\022\r\n\003mie\030- \001(\004H,\022\r\n\003mip\030. \001"
+      "(\004H-\022\021\n\007medeleg\030/ \001(\004H.\022\021\n\007mideleg\0300 \001(\004"
+      "H/\022\024\n\nmcounteren\0301 \001(\004H0\022\017\n\005stvec\0302 \001(\004H"
+      "1\022\022\n\010sscratch\0303 \001(\004H2\022\016\n\004sepc\0304 \001(\004H3\022\020\n"
+      "\006scause\0305 \001(\004H4\022\017\n\005stval\0306 \001(\004H5\022\016\n\004satp"
+      "\0307 \001(\004H6\022\024\n\nscounteren\0308 \001(\004H7\022\017\n\005ilrsc\030"
+      "9 \001(\004H8\022\020\n\006iflags\030: \001(\004H9B\n\n\010x1_oneofB\n\n"
+      "\010x2_oneofB\n\n\010x3_oneofB\n\n\010x4_oneofB\n\n\010x5_"
+      "oneofB\n\n\010x6_oneofB\n\n\010x7_oneofB\n\n\010x8_oneo"
+      "fB\n\n\010x9_oneofB\013\n\tx10_oneofB\013\n\tx11_oneofB"
+      "\013\n\tx12_oneofB\013\n\tx13_oneofB\013\n\tx14_oneofB\013"
+      "\n\tx15_oneofB\013\n\tx16_oneofB\013\n\tx17_oneofB\013\n"
+      "\tx18_oneofB\013\n\tx19_oneofB\013\n\tx20_oneofB\013\n\t"
+      "x21_oneofB\013\n\tx22_oneofB\013\n\tx23_oneofB\013\n\tx"
+      "24_oneofB\013\n\tx25_oneofB\013\n\tx26_oneofB\013\n\tx2"
+      "7_oneofB\013\n\tx28_oneofB\013\n\tx29_oneofB\013\n\tx30"
+      "_oneofB\013\n\tx31_oneofB\n\n\010pc_oneofB\021\n\017mvend"
+      "orid_oneofB\017\n\rmarchid_oneofB\016\n\014mimpid_on"
+      "eofB\016\n\014mcycle_oneofB\020\n\016minstret_oneofB\017\n"
+      "\rmstatus_oneofB\r\n\013mtvec_oneofB\020\n\016mscratc"
+      "h_oneofB\014\n\nmepc_oneofB\016\n\014mcause_oneofB\r\n"
+      "\013mtval_oneofB\014\n\nmisa_oneofB\013\n\tmie_oneofB"
+      "\013\n\tmip_oneofB\017\n\rmedeleg_oneofB\017\n\rmideleg"
+      "_oneofB\022\n\020mcounteren_oneofB\r\n\013stvec_oneo"
+      "fB\020\n\016sscratch_oneofB\014\n\nsepc_oneofB\016\n\014sca"
+      "use_oneofB\r\n\013stval_oneofB\014\n\nsatp_oneofB\022"
+      "\n\020scounteren_oneofB\r\n\013ilrsc_oneofB\016\n\014ifl"
+      "ags_oneof\"_\n\tProcessor\022,\n\005state\030\001 \001(\0132\033."
+      "CartesiCore.ProcessorStateH\000\022\021\n\007backing\030"
+      "\002 \001(\tH\000B\021\n\017processor_oneof\"8\n\003ROM\022\021\n\007cmd"
+      "line\030\001 \001(\tH\000\022\021\n\007backing\030\002 \001(\tH\000B\013\n\trom_o"
+      "neof\"\'\n\003RAM\022\017\n\007ilength\030\001 \001(\004\022\017\n\007backing\030"
+      "\002 \001(\t\"X\n\005Drive\022\016\n\006istart\030\001 \001(\004\022\017\n\007ilengt"
+      "h\030\002 \001(\004\022\017\n\007backing\030\003 \001(\t\022\016\n\006shared\030\004 \001(\010"
+      "\022\r\n\005label\030\005 \001(\t\"-\n\nCLINTState\022\r\n\005mtime\030\001"
+      " \001(\004\022\020\n\010mtimecmp\030\002 \001(\004\"S\n\005CLINT\022(\n\005state"
+      "\030\001 \001(\0132\027.CartesiCore.CLINTStateH\000\022\021\n\007bac"
+      "king\030\002 \001(\tH\000B\r\n\013clint_oneof\"-\n\tHTIFState"
+      "\022\020\n\010fromhost\030\001 \001(\004\022\016\n\006tohost\030\002 \001(\004\"P\n\004HT"
+      "IF\022\'\n\005state\030\001 \001(\0132\026.CartesiCore.HTIFStat"
+      "eH\000\022\021\n\007backing\030\002 \001(\tH\000B\014\n\nhtif_oneof\"\340\001\n"
+      "\016MachineRequest\022)\n\tprocessor\030\001 \001(\0132\026.Car"
+      "tesiCore.Processor\022\035\n\003rom\030\002 \001(\0132\020.Cartes"
+      "iCore.ROM\022\035\n\003ram\030\003 \001(\0132\020.CartesiCore.RAM"
+      "\022!\n\005flash\030\004 \003(\0132\022.CartesiCore.Drive\022!\n\005c"
+      "lint\030\005 \001(\0132\022.CartesiCore.CLINT\022\037\n\004htif\030\006"
+      " \001(\0132\021.CartesiCore.HTIF\"\033\n\nRunRequest\022\r\n"
+      "\005limit\030\001 \001(\004\"-\n\013RunResponse\022\016\n\006mcycle\030\001 "
+      "\001(\004\022\016\n\006tohost\030\002 \001(\004\"\244\001\n\005Proof\022\017\n\007address"
+      "\030\001 \001(\004\022\021\n\tlog2_size\030\002 \001(\r\022&\n\013target_hash"
+      "\030\003 \001(\0132\021.CartesiCore.Hash\022)\n\016sibling_has"
+      "hes\030\004 \003(\0132\021.CartesiCore.Hash\022$\n\troot_has"
+      "h\030\005 \001(\0132\021.CartesiCore.Hash\"{\n\006Access\022/\n\t"
+      "operation\030\001 \001(\0162\034.CartesiCore.AccessOper"
+      "ation\022\014\n\004read\030\002 \001(\004\022\017\n\007written\030\003 \001(\004\022!\n\005"
+      "proof\030\004 \001(\0132\022.CartesiCore.Proof\"\217\001\n\nAcce"
+      "ssNote\022.\n\004type\030\001 \001(\0162 .CartesiCore.Acces"
+      "sNote.NoteType\022\r\n\005where\030\002 \001(\004\022\014\n\004text\030\003 "
+      "\001(\t\"4\n\010NoteType\022\t\n\005DUMMY\020\000\022\t\n\005BEGIN\020\001\022\007\n"
+      "\003END\020\002\022\t\n\005POINT\020\003\"Z\n\tAccessLog\022%\n\010access"
+      "es\030\001 \003(\0132\023.CartesiCore.Access\022&\n\005notes\030\002"
+      " \003(\0132\027.CartesiCore.AccessNote*&\n\017AccessO"
+      "peration\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3271);
+      descriptor, 3277);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "cartesi-base.proto", &protobuf_RegisterTypes);
 }
@@ -872,53 +901,9 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 }  // namespace protobuf_cartesi_2dbase_2eproto
 namespace CartesiCore {
-const ::google::protobuf::EnumDescriptor* RunResponse_Status_descriptor() {
-  protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[0];
-}
-bool RunResponse_Status_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const RunResponse_Status RunResponse::LIMITED;
-const RunResponse_Status RunResponse::HALTED;
-const RunResponse_Status RunResponse::SUSPENDED;
-const RunResponse_Status RunResponse::Status_MIN;
-const RunResponse_Status RunResponse::Status_MAX;
-const int RunResponse::Status_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-const ::google::protobuf::EnumDescriptor* WordAccess_AccessType_descriptor() {
-  protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[1];
-}
-bool WordAccess_AccessType_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const WordAccess_AccessType WordAccess::READ;
-const WordAccess_AccessType WordAccess::WRITE;
-const WordAccess_AccessType WordAccess::AccessType_MIN;
-const WordAccess_AccessType WordAccess::AccessType_MAX;
-const int WordAccess::AccessType_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 const ::google::protobuf::EnumDescriptor* AccessNote_NoteType_descriptor() {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[2];
+  return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[0];
 }
 bool AccessNote_NoteType_IsValid(int value) {
   switch (value) {
@@ -941,6 +926,20 @@ const AccessNote_NoteType AccessNote::NoteType_MIN;
 const AccessNote_NoteType AccessNote::NoteType_MAX;
 const int AccessNote::NoteType_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+const ::google::protobuf::EnumDescriptor* AccessOperation_descriptor() {
+  protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[1];
+}
+bool AccessOperation_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -1116,6 +1115,236 @@ void Void::InternalSwap(Void* other) {
 }
 
 ::google::protobuf::Metadata Void::GetMetadata() const {
+  protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void Hash::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Hash::kContentFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Hash::Hash()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Hash.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CartesiCore.Hash)
+}
+Hash::Hash(const Hash& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.content().size() > 0) {
+    content_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_);
+  }
+  // @@protoc_insertion_point(copy_constructor:CartesiCore.Hash)
+}
+
+void Hash::SharedCtor() {
+  content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+Hash::~Hash() {
+  // @@protoc_insertion_point(destructor:CartesiCore.Hash)
+  SharedDtor();
+}
+
+void Hash::SharedDtor() {
+  content_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void Hash::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* Hash::descriptor() {
+  ::protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const Hash& Hash::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_Hash.base);
+  return *internal_default_instance();
+}
+
+
+void Hash::Clear() {
+// @@protoc_insertion_point(message_clear_start:CartesiCore.Hash)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool Hash::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CartesiCore.Hash)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bytes content = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_content()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CartesiCore.Hash)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CartesiCore.Hash)
+  return false;
+#undef DO_
+}
+
+void Hash::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CartesiCore.Hash)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes content = 1;
+  if (this->content().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->content(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CartesiCore.Hash)
+}
+
+::google::protobuf::uint8* Hash::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.Hash)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes content = 1;
+  if (this->content().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->content(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.Hash)
+  return target;
+}
+
+size_t Hash::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CartesiCore.Hash)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // bytes content = 1;
+  if (this->content().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->content());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Hash::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.Hash)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Hash* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Hash>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.Hash)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.Hash)
+    MergeFrom(*source);
+  }
+}
+
+void Hash::MergeFrom(const Hash& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.Hash)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.content().size() > 0) {
+
+    content_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_);
+  }
+}
+
+void Hash::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.Hash)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Hash::CopyFrom(const Hash& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.Hash)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Hash::IsInitialized() const {
+  return true;
+}
+
+void Hash::Swap(Hash* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Hash::InternalSwap(Hash* other) {
+  using std::swap;
+  content_.Swap(&other->content_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata Hash::GetMetadata() const {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -9431,94 +9660,104 @@ void RunResponse::InternalSwap(RunResponse* other) {
 
 // ===================================================================
 
-void ProofType::InitAsDefaultInstance() {
+void Proof::InitAsDefaultInstance() {
+  ::CartesiCore::_Proof_default_instance_._instance.get_mutable()->target_hash_ = const_cast< ::CartesiCore::Hash*>(
+      ::CartesiCore::Hash::internal_default_instance());
+  ::CartesiCore::_Proof_default_instance_._instance.get_mutable()->root_hash_ = const_cast< ::CartesiCore::Hash*>(
+      ::CartesiCore::Hash::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ProofType::kAddressFieldNumber;
-const int ProofType::kLog2SizeFieldNumber;
-const int ProofType::kTargetHashFieldNumber;
-const int ProofType::kSiblingHashesFieldNumber;
-const int ProofType::kRootHashFieldNumber;
+const int Proof::kAddressFieldNumber;
+const int Proof::kLog2SizeFieldNumber;
+const int Proof::kTargetHashFieldNumber;
+const int Proof::kSiblingHashesFieldNumber;
+const int Proof::kRootHashFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-ProofType::ProofType()
+Proof::Proof()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_cartesi_2dbase_2eproto::scc_info_ProofType.base);
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Proof.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:CartesiCore.ProofType)
+  // @@protoc_insertion_point(constructor:CartesiCore.Proof)
 }
-ProofType::ProofType(const ProofType& from)
+Proof::Proof(const Proof& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       sibling_hashes_(from.sibling_hashes_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  target_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.target_hash().size() > 0) {
-    target_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_hash_);
+  if (from.has_target_hash()) {
+    target_hash_ = new ::CartesiCore::Hash(*from.target_hash_);
+  } else {
+    target_hash_ = NULL;
   }
-  root_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.root_hash().size() > 0) {
-    root_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.root_hash_);
+  if (from.has_root_hash()) {
+    root_hash_ = new ::CartesiCore::Hash(*from.root_hash_);
+  } else {
+    root_hash_ = NULL;
   }
   ::memcpy(&address_, &from.address_,
     static_cast<size_t>(reinterpret_cast<char*>(&log2_size_) -
     reinterpret_cast<char*>(&address_)) + sizeof(log2_size_));
-  // @@protoc_insertion_point(copy_constructor:CartesiCore.ProofType)
+  // @@protoc_insertion_point(copy_constructor:CartesiCore.Proof)
 }
 
-void ProofType::SharedCtor() {
-  target_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  root_hash_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&address_, 0, static_cast<size_t>(
+void Proof::SharedCtor() {
+  ::memset(&target_hash_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&log2_size_) -
-      reinterpret_cast<char*>(&address_)) + sizeof(log2_size_));
+      reinterpret_cast<char*>(&target_hash_)) + sizeof(log2_size_));
 }
 
-ProofType::~ProofType() {
-  // @@protoc_insertion_point(destructor:CartesiCore.ProofType)
+Proof::~Proof() {
+  // @@protoc_insertion_point(destructor:CartesiCore.Proof)
   SharedDtor();
 }
 
-void ProofType::SharedDtor() {
-  target_hash_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  root_hash_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void Proof::SharedDtor() {
+  if (this != internal_default_instance()) delete target_hash_;
+  if (this != internal_default_instance()) delete root_hash_;
 }
 
-void ProofType::SetCachedSize(int size) const {
+void Proof::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* ProofType::descriptor() {
+const ::google::protobuf::Descriptor* Proof::descriptor() {
   ::protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const ProofType& ProofType::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_ProofType.base);
+const Proof& Proof::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_Proof.base);
   return *internal_default_instance();
 }
 
 
-void ProofType::Clear() {
-// @@protoc_insertion_point(message_clear_start:CartesiCore.ProofType)
+void Proof::Clear() {
+// @@protoc_insertion_point(message_clear_start:CartesiCore.Proof)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   sibling_hashes_.Clear();
-  target_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  root_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && target_hash_ != NULL) {
+    delete target_hash_;
+  }
+  target_hash_ = NULL;
+  if (GetArenaNoVirtual() == NULL && root_hash_ != NULL) {
+    delete root_hash_;
+  }
+  root_hash_ = NULL;
   ::memset(&address_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&log2_size_) -
       reinterpret_cast<char*>(&address_)) + sizeof(log2_size_));
   _internal_metadata_.Clear();
 }
 
-bool ProofType::MergePartialFromCodedStream(
+bool Proof::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CartesiCore.ProofType)
+  // @@protoc_insertion_point(parse_start:CartesiCore.Proof)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -9538,13 +9777,13 @@ bool ProofType::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 log2_size = 2;
+      // uint32 log2_size = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &log2_size_)));
         } else {
           goto handle_unusual;
@@ -9552,36 +9791,36 @@ bool ProofType::MergePartialFromCodedStream(
         break;
       }
 
-      // bytes target_hash = 3;
+      // .CartesiCore.Hash target_hash = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_target_hash()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_target_hash()));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // repeated bytes sibling_hashes = 4;
+      // repeated .CartesiCore.Hash sibling_hashes = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->add_sibling_hashes()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_sibling_hashes()));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bytes root_hash = 5;
+      // .CartesiCore.Hash root_hash = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_root_hash()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_root_hash()));
         } else {
           goto handle_unusual;
         }
@@ -9600,17 +9839,17 @@ bool ProofType::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:CartesiCore.ProofType)
+  // @@protoc_insertion_point(parse_success:CartesiCore.Proof)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:CartesiCore.ProofType)
+  // @@protoc_insertion_point(parse_failure:CartesiCore.Proof)
   return false;
 #undef DO_
 }
 
-void ProofType::SerializeWithCachedSizes(
+void Proof::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CartesiCore.ProofType)
+  // @@protoc_insertion_point(serialize_start:CartesiCore.Proof)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9619,40 +9858,43 @@ void ProofType::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->address(), output);
   }
 
-  // int32 log2_size = 2;
+  // uint32 log2_size = 2;
   if (this->log2_size() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->log2_size(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->log2_size(), output);
   }
 
-  // bytes target_hash = 3;
-  if (this->target_hash().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      3, this->target_hash(), output);
+  // .CartesiCore.Hash target_hash = 3;
+  if (this->has_target_hash()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->_internal_target_hash(), output);
   }
 
-  // repeated bytes sibling_hashes = 4;
-  for (int i = 0, n = this->sibling_hashes_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      4, this->sibling_hashes(i), output);
+  // repeated .CartesiCore.Hash sibling_hashes = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->sibling_hashes_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4,
+      this->sibling_hashes(static_cast<int>(i)),
+      output);
   }
 
-  // bytes root_hash = 5;
-  if (this->root_hash().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      5, this->root_hash(), output);
+  // .CartesiCore.Hash root_hash = 5;
+  if (this->has_root_hash()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->_internal_root_hash(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:CartesiCore.ProofType)
+  // @@protoc_insertion_point(serialize_end:CartesiCore.Proof)
 }
 
-::google::protobuf::uint8* ProofType::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Proof::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.ProofType)
+  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.Proof)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9661,41 +9903,43 @@ void ProofType::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->address(), target);
   }
 
-  // int32 log2_size = 2;
+  // uint32 log2_size = 2;
   if (this->log2_size() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->log2_size(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->log2_size(), target);
   }
 
-  // bytes target_hash = 3;
-  if (this->target_hash().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->target_hash(), target);
-  }
-
-  // repeated bytes sibling_hashes = 4;
-  for (int i = 0, n = this->sibling_hashes_size(); i < n; i++) {
+  // .CartesiCore.Hash target_hash = 3;
+  if (this->has_target_hash()) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteBytesToArray(4, this->sibling_hashes(i), target);
+      InternalWriteMessageToArray(
+        3, this->_internal_target_hash(), deterministic, target);
   }
 
-  // bytes root_hash = 5;
-  if (this->root_hash().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        5, this->root_hash(), target);
+  // repeated .CartesiCore.Hash sibling_hashes = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->sibling_hashes_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, this->sibling_hashes(static_cast<int>(i)), deterministic, target);
+  }
+
+  // .CartesiCore.Hash root_hash = 5;
+  if (this->has_root_hash()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        5, this->_internal_root_hash(), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.ProofType)
+  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.Proof)
   return target;
 }
 
-size_t ProofType::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CartesiCore.ProofType)
+size_t Proof::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CartesiCore.Proof)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -9703,26 +9947,29 @@ size_t ProofType::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated bytes sibling_hashes = 4;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->sibling_hashes_size());
-  for (int i = 0, n = this->sibling_hashes_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
-      this->sibling_hashes(i));
+  // repeated .CartesiCore.Hash sibling_hashes = 4;
+  {
+    unsigned int count = static_cast<unsigned int>(this->sibling_hashes_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->sibling_hashes(static_cast<int>(i)));
+    }
   }
 
-  // bytes target_hash = 3;
-  if (this->target_hash().size() > 0) {
+  // .CartesiCore.Hash target_hash = 3;
+  if (this->has_target_hash()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->target_hash());
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *target_hash_);
   }
 
-  // bytes root_hash = 5;
-  if (this->root_hash().size() > 0) {
+  // .CartesiCore.Hash root_hash = 5;
+  if (this->has_root_hash()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->root_hash());
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *root_hash_);
   }
 
   // uint64 address = 1;
@@ -9732,10 +9979,10 @@ size_t ProofType::ByteSizeLong() const {
         this->address());
   }
 
-  // int32 log2_size = 2;
+  // uint32 log2_size = 2;
   if (this->log2_size() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->log2_size());
   }
 
@@ -9744,36 +9991,34 @@ size_t ProofType::ByteSizeLong() const {
   return total_size;
 }
 
-void ProofType::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.ProofType)
+void Proof::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.Proof)
   GOOGLE_DCHECK_NE(&from, this);
-  const ProofType* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ProofType>(
+  const Proof* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Proof>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.ProofType)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.Proof)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.ProofType)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.Proof)
     MergeFrom(*source);
   }
 }
 
-void ProofType::MergeFrom(const ProofType& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.ProofType)
+void Proof::MergeFrom(const Proof& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.Proof)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   sibling_hashes_.MergeFrom(from.sibling_hashes_);
-  if (from.target_hash().size() > 0) {
-
-    target_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_hash_);
+  if (from.has_target_hash()) {
+    mutable_target_hash()->::CartesiCore::Hash::MergeFrom(from.target_hash());
   }
-  if (from.root_hash().size() > 0) {
-
-    root_hash_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.root_hash_);
+  if (from.has_root_hash()) {
+    mutable_root_hash()->::CartesiCore::Hash::MergeFrom(from.root_hash());
   }
   if (from.address() != 0) {
     set_address(from.address());
@@ -9783,41 +10028,39 @@ void ProofType::MergeFrom(const ProofType& from) {
   }
 }
 
-void ProofType::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.ProofType)
+void Proof::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.Proof)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void ProofType::CopyFrom(const ProofType& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.ProofType)
+void Proof::CopyFrom(const Proof& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.Proof)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ProofType::IsInitialized() const {
+bool Proof::IsInitialized() const {
   return true;
 }
 
-void ProofType::Swap(ProofType* other) {
+void Proof::Swap(Proof* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void ProofType::InternalSwap(ProofType* other) {
+void Proof::InternalSwap(Proof* other) {
   using std::swap;
-  sibling_hashes_.InternalSwap(CastToBase(&other->sibling_hashes_));
-  target_hash_.Swap(&other->target_hash_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  root_hash_.Swap(&other->root_hash_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  CastToBase(&sibling_hashes_)->InternalSwap(CastToBase(&other->sibling_hashes_));
+  swap(target_hash_, other->target_hash_);
+  swap(root_hash_, other->root_hash_);
   swap(address_, other->address_);
   swap(log2_size_, other->log2_size_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata ProofType::GetMetadata() const {
+::google::protobuf::Metadata Proof::GetMetadata() const {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -9825,103 +10068,95 @@ void ProofType::InternalSwap(ProofType* other) {
 
 // ===================================================================
 
-void WordAccess::InitAsDefaultInstance() {
-  ::CartesiCore::_WordAccess_default_instance_._instance.get_mutable()->proof_ = const_cast< ::CartesiCore::ProofType*>(
-      ::CartesiCore::ProofType::internal_default_instance());
+void Access::InitAsDefaultInstance() {
+  ::CartesiCore::_Access_default_instance_._instance.get_mutable()->proof_ = const_cast< ::CartesiCore::Proof*>(
+      ::CartesiCore::Proof::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int WordAccess::kTypeFieldNumber;
-const int WordAccess::kReadFieldNumber;
-const int WordAccess::kWrittenFieldNumber;
-const int WordAccess::kTextFieldNumber;
-const int WordAccess::kProofFieldNumber;
+const int Access::kOperationFieldNumber;
+const int Access::kReadFieldNumber;
+const int Access::kWrittenFieldNumber;
+const int Access::kProofFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-WordAccess::WordAccess()
+Access::Access()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_cartesi_2dbase_2eproto::scc_info_WordAccess.base);
+      &protobuf_cartesi_2dbase_2eproto::scc_info_Access.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(constructor:CartesiCore.Access)
 }
-WordAccess::WordAccess(const WordAccess& from)
+Access::Access(const Access& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.text().size() > 0) {
-    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
-  }
   if (from.has_proof()) {
-    proof_ = new ::CartesiCore::ProofType(*from.proof_);
+    proof_ = new ::CartesiCore::Proof(*from.proof_);
   } else {
     proof_ = NULL;
   }
   ::memcpy(&read_, &from.read_,
-    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&read_)) + sizeof(type_));
-  // @@protoc_insertion_point(copy_constructor:CartesiCore.WordAccess)
+    static_cast<size_t>(reinterpret_cast<char*>(&operation_) -
+    reinterpret_cast<char*>(&read_)) + sizeof(operation_));
+  // @@protoc_insertion_point(copy_constructor:CartesiCore.Access)
 }
 
-void WordAccess::SharedCtor() {
-  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void Access::SharedCtor() {
   ::memset(&proof_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&proof_)) + sizeof(type_));
+      reinterpret_cast<char*>(&operation_) -
+      reinterpret_cast<char*>(&proof_)) + sizeof(operation_));
 }
 
-WordAccess::~WordAccess() {
-  // @@protoc_insertion_point(destructor:CartesiCore.WordAccess)
+Access::~Access() {
+  // @@protoc_insertion_point(destructor:CartesiCore.Access)
   SharedDtor();
 }
 
-void WordAccess::SharedDtor() {
-  text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+void Access::SharedDtor() {
   if (this != internal_default_instance()) delete proof_;
 }
 
-void WordAccess::SetCachedSize(int size) const {
+void Access::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* WordAccess::descriptor() {
+const ::google::protobuf::Descriptor* Access::descriptor() {
   ::protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const WordAccess& WordAccess::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_WordAccess.base);
+const Access& Access::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_Access.base);
   return *internal_default_instance();
 }
 
 
-void WordAccess::Clear() {
-// @@protoc_insertion_point(message_clear_start:CartesiCore.WordAccess)
+void Access::Clear() {
+// @@protoc_insertion_point(message_clear_start:CartesiCore.Access)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && proof_ != NULL) {
     delete proof_;
   }
   proof_ = NULL;
   ::memset(&read_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&read_)) + sizeof(type_));
+      reinterpret_cast<char*>(&operation_) -
+      reinterpret_cast<char*>(&read_)) + sizeof(operation_));
   _internal_metadata_.Clear();
 }
 
-bool WordAccess::MergePartialFromCodedStream(
+bool Access::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(parse_start:CartesiCore.Access)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .CartesiCore.WordAccess.AccessType type = 1;
+      // .CartesiCore.AccessOperation operation = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -9929,7 +10164,7 @@ bool WordAccess::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_type(static_cast< ::CartesiCore::WordAccess_AccessType >(value));
+          set_operation(static_cast< ::CartesiCore::AccessOperation >(value));
         } else {
           goto handle_unusual;
         }
@@ -9964,26 +10199,10 @@ bool WordAccess::MergePartialFromCodedStream(
         break;
       }
 
-      // string text = 4;
+      // .CartesiCore.Proof proof = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_text()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->text().data(), static_cast<int>(this->text().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CartesiCore.WordAccess.text"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .CartesiCore.ProofType proof = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_proof()));
         } else {
@@ -10004,24 +10223,24 @@ bool WordAccess::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(parse_success:CartesiCore.Access)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(parse_failure:CartesiCore.Access)
   return false;
 #undef DO_
 }
 
-void WordAccess::SerializeWithCachedSizes(
+void Access::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(serialize_start:CartesiCore.Access)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiCore.WordAccess.AccessType type = 1;
-  if (this->type() != 0) {
+  // .CartesiCore.AccessOperation operation = 1;
+  if (this->operation() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
+      1, this->operation(), output);
   }
 
   // uint64 read = 2;
@@ -10034,40 +10253,30 @@ void WordAccess::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->written(), output);
   }
 
-  // string text = 4;
-  if (this->text().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->text().data(), static_cast<int>(this->text().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.WordAccess.text");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->text(), output);
-  }
-
-  // .CartesiCore.ProofType proof = 5;
+  // .CartesiCore.Proof proof = 4;
   if (this->has_proof()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->_internal_proof(), output);
+      4, this->_internal_proof(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(serialize_end:CartesiCore.Access)
 }
 
-::google::protobuf::uint8* WordAccess::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Access::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.Access)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiCore.WordAccess.AccessType type = 1;
-  if (this->type() != 0) {
+  // .CartesiCore.AccessOperation operation = 1;
+  if (this->operation() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
+      1, this->operation(), target);
   }
 
   // uint64 read = 2;
@@ -10080,34 +10289,23 @@ void WordAccess::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->written(), target);
   }
 
-  // string text = 4;
-  if (this->text().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->text().data(), static_cast<int>(this->text().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.WordAccess.text");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->text(), target);
-  }
-
-  // .CartesiCore.ProofType proof = 5;
+  // .CartesiCore.Proof proof = 4;
   if (this->has_proof()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, this->_internal_proof(), deterministic, target);
+        4, this->_internal_proof(), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.Access)
   return target;
 }
 
-size_t WordAccess::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CartesiCore.WordAccess)
+size_t Access::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CartesiCore.Access)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -10115,14 +10313,7 @@ size_t WordAccess::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string text = 4;
-  if (this->text().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->text());
-  }
-
-  // .CartesiCore.ProofType proof = 5;
+  // .CartesiCore.Proof proof = 4;
   if (this->has_proof()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -10143,10 +10334,10 @@ size_t WordAccess::ByteSizeLong() const {
         this->written());
   }
 
-  // .CartesiCore.WordAccess.AccessType type = 1;
-  if (this->type() != 0) {
+  // .CartesiCore.AccessOperation operation = 1;
+  if (this->operation() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->operation());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -10154,34 +10345,30 @@ size_t WordAccess::ByteSizeLong() const {
   return total_size;
 }
 
-void WordAccess::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.WordAccess)
+void Access::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.Access)
   GOOGLE_DCHECK_NE(&from, this);
-  const WordAccess* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const WordAccess>(
+  const Access* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const Access>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.Access)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.Access)
     MergeFrom(*source);
   }
 }
 
-void WordAccess::MergeFrom(const WordAccess& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.WordAccess)
+void Access::MergeFrom(const Access& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.Access)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.text().size() > 0) {
-
-    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
-  }
   if (from.has_proof()) {
-    mutable_proof()->::CartesiCore::ProofType::MergeFrom(from.proof());
+    mutable_proof()->::CartesiCore::Proof::MergeFrom(from.proof());
   }
   if (from.read() != 0) {
     set_read(from.read());
@@ -10189,45 +10376,43 @@ void WordAccess::MergeFrom(const WordAccess& from) {
   if (from.written() != 0) {
     set_written(from.written());
   }
-  if (from.type() != 0) {
-    set_type(from.type());
+  if (from.operation() != 0) {
+    set_operation(from.operation());
   }
 }
 
-void WordAccess::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.WordAccess)
+void Access::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.Access)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void WordAccess::CopyFrom(const WordAccess& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.WordAccess)
+void Access::CopyFrom(const Access& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.Access)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool WordAccess::IsInitialized() const {
+bool Access::IsInitialized() const {
   return true;
 }
 
-void WordAccess::Swap(WordAccess* other) {
+void Access::Swap(Access* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void WordAccess::InternalSwap(WordAccess* other) {
+void Access::InternalSwap(Access* other) {
   using std::swap;
-  text_.Swap(&other->text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(proof_, other->proof_);
   swap(read_, other->read_);
   swap(written_, other->written_);
-  swap(type_, other->type_);
+  swap(operation_, other->operation_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata WordAccess::GetMetadata() const {
+::google::protobuf::Metadata Access::GetMetadata() const {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -10629,7 +10814,7 @@ bool AccessLog::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .CartesiCore.WordAccess accesses = 1;
+      // repeated .CartesiCore.Access accesses = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
@@ -10679,7 +10864,7 @@ void AccessLog::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .CartesiCore.WordAccess accesses = 1;
+  // repeated .CartesiCore.Access accesses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->accesses_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -10711,7 +10896,7 @@ void AccessLog::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .CartesiCore.WordAccess accesses = 1;
+  // repeated .CartesiCore.Access accesses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->accesses_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -10744,7 +10929,7 @@ size_t AccessLog::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .CartesiCore.WordAccess accesses = 1;
+  // repeated .CartesiCore.Access accesses = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->accesses_size());
     total_size += 1UL * count;
@@ -10839,6 +11024,9 @@ namespace protobuf {
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Void* Arena::CreateMaybeMessage< ::CartesiCore::Void >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::Void >(arena);
 }
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Hash* Arena::CreateMaybeMessage< ::CartesiCore::Hash >(Arena* arena) {
+  return Arena::CreateInternal< ::CartesiCore::Hash >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::ProcessorState* Arena::CreateMaybeMessage< ::CartesiCore::ProcessorState >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::ProcessorState >(arena);
 }
@@ -10875,11 +11063,11 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::RunRequest* Arena::
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::RunResponse* Arena::CreateMaybeMessage< ::CartesiCore::RunResponse >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::RunResponse >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::ProofType* Arena::CreateMaybeMessage< ::CartesiCore::ProofType >(Arena* arena) {
-  return Arena::CreateInternal< ::CartesiCore::ProofType >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Proof* Arena::CreateMaybeMessage< ::CartesiCore::Proof >(Arena* arena) {
+  return Arena::CreateInternal< ::CartesiCore::Proof >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::WordAccess* Arena::CreateMaybeMessage< ::CartesiCore::WordAccess >(Arena* arena) {
-  return Arena::CreateInternal< ::CartesiCore::WordAccess >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Access* Arena::CreateMaybeMessage< ::CartesiCore::Access >(Arena* arena) {
+  return Arena::CreateInternal< ::CartesiCore::Access >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::AccessNote* Arena::CreateMaybeMessage< ::CartesiCore::AccessNote >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::AccessNote >(arena);

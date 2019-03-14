@@ -2,13 +2,12 @@ syntax = "proto3";
 
 import "cartesi-base.proto";
 
-package CartesiManager;
+package CartesiManagerHigh;
 
-service MachineManager {
+service MachineManagerHigh {
     rpc NewSession (NewSessionRequest) returns (CartesiCore.Hash) {}
     rpc SessionRun (SessionRunRequest) returns (SessionRunResult) {}
     rpc SessionStep (SessionStepRequest) returns (SessionStepResult) {}
-    // rpc CommunicateReference (ReferenceRequest) returns (CartesiCore.Void) {}
 }
 
 message NewSessionRequest {
@@ -20,11 +19,6 @@ message SessionRunRequest {
     string session_id = 1;
     repeated uint64 times = 2;
 }
-
-//message ExecutionSummary {
-//    CartesiCore.RunResponse summary = 1;
-//    CartesiCore.Hash machine_hash = 2;
-//}
 
 message SessionRunResult {
     repeated CartesiCore.RunResponse summaries = 1;
@@ -38,9 +32,4 @@ message SessionStepRequest {
 
 message SessionStepResult {
     CartesiCore.AccessLog log = 1;
-}
-
-message ReferenceRequest {
-    string session_id = 1;
-    string address = 2;
 }

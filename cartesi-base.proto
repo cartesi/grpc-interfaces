@@ -252,11 +252,6 @@ message RunRequest {
 message RunResponse {
     uint64 mcycle = 1;
     uint64 tohost = 2;
-    enum Status {
-        LIMITED = 0;
-        HALTED = 1;
-        SUSPENDED = 2;
-    }
 }
 
 message Proof {
@@ -274,10 +269,9 @@ enum AccessOperation {
 
 message Access {
     AccessOperation operation = 1;
-    uint64 address = 2;
-    uint64 read = 3;
-    uint64 written = 4;
-    Proof proof = 5;
+    uint64 read = 2;
+    uint64 written = 3;
+    Proof proof = 4;
 }
 
 message AccessNote {

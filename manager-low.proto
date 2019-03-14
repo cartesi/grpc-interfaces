@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "cartesi-base.proto";
+
+package CartesiManagerLow;
+
+service MachineManagerLow {
+    rpc CommunicateAddress (AddressRequest) returns (CartesiCore.Void) {}
+}
+
+message AddressRequest {
+    string session_id = 1;
+    string address = 2;
+}

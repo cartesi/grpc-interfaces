@@ -39,7 +39,7 @@ namespace protobuf_cartesi_2dbase_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[17];
+  static const ::google::protobuf::internal::ParseTable schema[18];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -47,6 +47,9 @@ struct TableStruct {
 void AddDescriptors();
 }  // namespace protobuf_cartesi_2dbase_2eproto
 namespace CartesiCore {
+class Access;
+class AccessDefaultTypeInternal;
+extern AccessDefaultTypeInternal _Access_default_instance_;
 class AccessLog;
 class AccessLogDefaultTypeInternal;
 extern AccessLogDefaultTypeInternal _AccessLog_default_instance_;
@@ -68,6 +71,9 @@ extern HTIFDefaultTypeInternal _HTIF_default_instance_;
 class HTIFState;
 class HTIFStateDefaultTypeInternal;
 extern HTIFStateDefaultTypeInternal _HTIFState_default_instance_;
+class Hash;
+class HashDefaultTypeInternal;
+extern HashDefaultTypeInternal _Hash_default_instance_;
 class MachineRequest;
 class MachineRequestDefaultTypeInternal;
 extern MachineRequestDefaultTypeInternal _MachineRequest_default_instance_;
@@ -77,9 +83,9 @@ extern ProcessorDefaultTypeInternal _Processor_default_instance_;
 class ProcessorState;
 class ProcessorStateDefaultTypeInternal;
 extern ProcessorStateDefaultTypeInternal _ProcessorState_default_instance_;
-class ProofType;
-class ProofTypeDefaultTypeInternal;
-extern ProofTypeDefaultTypeInternal _ProofType_default_instance_;
+class Proof;
+class ProofDefaultTypeInternal;
+extern ProofDefaultTypeInternal _Proof_default_instance_;
 class RAM;
 class RAMDefaultTypeInternal;
 extern RAMDefaultTypeInternal _RAM_default_instance_;
@@ -95,12 +101,10 @@ extern RunResponseDefaultTypeInternal _RunResponse_default_instance_;
 class Void;
 class VoidDefaultTypeInternal;
 extern VoidDefaultTypeInternal _Void_default_instance_;
-class WordAccess;
-class WordAccessDefaultTypeInternal;
-extern WordAccessDefaultTypeInternal _WordAccess_default_instance_;
 }  // namespace CartesiCore
 namespace google {
 namespace protobuf {
+template<> ::CartesiCore::Access* Arena::CreateMaybeMessage<::CartesiCore::Access>(Arena*);
 template<> ::CartesiCore::AccessLog* Arena::CreateMaybeMessage<::CartesiCore::AccessLog>(Arena*);
 template<> ::CartesiCore::AccessNote* Arena::CreateMaybeMessage<::CartesiCore::AccessNote>(Arena*);
 template<> ::CartesiCore::CLINT* Arena::CreateMaybeMessage<::CartesiCore::CLINT>(Arena*);
@@ -108,63 +112,20 @@ template<> ::CartesiCore::CLINTState* Arena::CreateMaybeMessage<::CartesiCore::C
 template<> ::CartesiCore::Drive* Arena::CreateMaybeMessage<::CartesiCore::Drive>(Arena*);
 template<> ::CartesiCore::HTIF* Arena::CreateMaybeMessage<::CartesiCore::HTIF>(Arena*);
 template<> ::CartesiCore::HTIFState* Arena::CreateMaybeMessage<::CartesiCore::HTIFState>(Arena*);
+template<> ::CartesiCore::Hash* Arena::CreateMaybeMessage<::CartesiCore::Hash>(Arena*);
 template<> ::CartesiCore::MachineRequest* Arena::CreateMaybeMessage<::CartesiCore::MachineRequest>(Arena*);
 template<> ::CartesiCore::Processor* Arena::CreateMaybeMessage<::CartesiCore::Processor>(Arena*);
 template<> ::CartesiCore::ProcessorState* Arena::CreateMaybeMessage<::CartesiCore::ProcessorState>(Arena*);
-template<> ::CartesiCore::ProofType* Arena::CreateMaybeMessage<::CartesiCore::ProofType>(Arena*);
+template<> ::CartesiCore::Proof* Arena::CreateMaybeMessage<::CartesiCore::Proof>(Arena*);
 template<> ::CartesiCore::RAM* Arena::CreateMaybeMessage<::CartesiCore::RAM>(Arena*);
 template<> ::CartesiCore::ROM* Arena::CreateMaybeMessage<::CartesiCore::ROM>(Arena*);
 template<> ::CartesiCore::RunRequest* Arena::CreateMaybeMessage<::CartesiCore::RunRequest>(Arena*);
 template<> ::CartesiCore::RunResponse* Arena::CreateMaybeMessage<::CartesiCore::RunResponse>(Arena*);
 template<> ::CartesiCore::Void* Arena::CreateMaybeMessage<::CartesiCore::Void>(Arena*);
-template<> ::CartesiCore::WordAccess* Arena::CreateMaybeMessage<::CartesiCore::WordAccess>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace CartesiCore {
 
-enum RunResponse_Status {
-  RunResponse_Status_LIMITED = 0,
-  RunResponse_Status_HALTED = 1,
-  RunResponse_Status_SUSPENDED = 2,
-  RunResponse_Status_RunResponse_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  RunResponse_Status_RunResponse_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool RunResponse_Status_IsValid(int value);
-const RunResponse_Status RunResponse_Status_Status_MIN = RunResponse_Status_LIMITED;
-const RunResponse_Status RunResponse_Status_Status_MAX = RunResponse_Status_SUSPENDED;
-const int RunResponse_Status_Status_ARRAYSIZE = RunResponse_Status_Status_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* RunResponse_Status_descriptor();
-inline const ::std::string& RunResponse_Status_Name(RunResponse_Status value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    RunResponse_Status_descriptor(), value);
-}
-inline bool RunResponse_Status_Parse(
-    const ::std::string& name, RunResponse_Status* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RunResponse_Status>(
-    RunResponse_Status_descriptor(), name, value);
-}
-enum WordAccess_AccessType {
-  WordAccess_AccessType_READ = 0,
-  WordAccess_AccessType_WRITE = 1,
-  WordAccess_AccessType_WordAccess_AccessType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  WordAccess_AccessType_WordAccess_AccessType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool WordAccess_AccessType_IsValid(int value);
-const WordAccess_AccessType WordAccess_AccessType_AccessType_MIN = WordAccess_AccessType_READ;
-const WordAccess_AccessType WordAccess_AccessType_AccessType_MAX = WordAccess_AccessType_WRITE;
-const int WordAccess_AccessType_AccessType_ARRAYSIZE = WordAccess_AccessType_AccessType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* WordAccess_AccessType_descriptor();
-inline const ::std::string& WordAccess_AccessType_Name(WordAccess_AccessType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    WordAccess_AccessType_descriptor(), value);
-}
-inline bool WordAccess_AccessType_Parse(
-    const ::std::string& name, WordAccess_AccessType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<WordAccess_AccessType>(
-    WordAccess_AccessType_descriptor(), name, value);
-}
 enum AccessNote_NoteType {
   AccessNote_NoteType_DUMMY = 0,
   AccessNote_NoteType_BEGIN = 1,
@@ -187,6 +148,27 @@ inline bool AccessNote_NoteType_Parse(
     const ::std::string& name, AccessNote_NoteType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<AccessNote_NoteType>(
     AccessNote_NoteType_descriptor(), name, value);
+}
+enum AccessOperation {
+  READ = 0,
+  WRITE = 1,
+  AccessOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  AccessOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool AccessOperation_IsValid(int value);
+const AccessOperation AccessOperation_MIN = READ;
+const AccessOperation AccessOperation_MAX = WRITE;
+const int AccessOperation_ARRAYSIZE = AccessOperation_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AccessOperation_descriptor();
+inline const ::std::string& AccessOperation_Name(AccessOperation value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AccessOperation_descriptor(), value);
+}
+inline bool AccessOperation_Parse(
+    const ::std::string& name, AccessOperation* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AccessOperation>(
+    AccessOperation_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -281,6 +263,117 @@ class Void : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class Hash : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.Hash) */ {
+ public:
+  Hash();
+  virtual ~Hash();
+
+  Hash(const Hash& from);
+
+  inline Hash& operator=(const Hash& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Hash(Hash&& from) noexcept
+    : Hash() {
+    *this = ::std::move(from);
+  }
+
+  inline Hash& operator=(Hash&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Hash& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Hash* internal_default_instance() {
+    return reinterpret_cast<const Hash*>(
+               &_Hash_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(Hash* other);
+  friend void swap(Hash& a, Hash& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Hash* New() const final {
+    return CreateMaybeMessage<Hash>(NULL);
+  }
+
+  Hash* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Hash>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const Hash& from);
+  void MergeFrom(const Hash& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Hash* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes content = 1;
+  void clear_content();
+  static const int kContentFieldNumber = 1;
+  const ::std::string& content() const;
+  void set_content(const ::std::string& value);
+  #if LANG_CXX11
+  void set_content(::std::string&& value);
+  #endif
+  void set_content(const char* value);
+  void set_content(const void* value, size_t size);
+  ::std::string* mutable_content();
+  ::std::string* release_content();
+  void set_allocated_content(::std::string* content);
+
+  // @@protoc_insertion_point(class_scope:CartesiCore.Hash)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr content_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
 };
@@ -611,7 +704,7 @@ class ProcessorState : public ::google::protobuf::Message /* @@protoc_insertion_
                &_ProcessorState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   void Swap(ProcessorState* other);
   friend void swap(ProcessorState& a, ProcessorState& b) {
@@ -1817,7 +1910,7 @@ class Processor : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_Processor_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(Processor* other);
   friend void swap(Processor& a, Processor& b) {
@@ -1962,7 +2055,7 @@ class ROM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
                &_ROM_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(ROM* other);
   friend void swap(ROM& a, ROM& b) {
@@ -2106,7 +2199,7 @@ class RAM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
                &_RAM_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(RAM* other);
   friend void swap(RAM& a, RAM& b) {
@@ -2224,7 +2317,7 @@ class Drive : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
                &_Drive_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   void Swap(Drive* other);
   friend void swap(Drive& a, Drive& b) {
@@ -2371,7 +2464,7 @@ class CLINTState : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_CLINTState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(CLINTState* other);
   friend void swap(CLINTState& a, CLINTState& b) {
@@ -2487,7 +2580,7 @@ class CLINT : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
                &_CLINT_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(CLINT* other);
   friend void swap(CLINT& a, CLINT& b) {
@@ -2626,7 +2719,7 @@ class HTIFState : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_HTIFState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(HTIFState* other);
   friend void swap(HTIFState& a, HTIFState& b) {
@@ -2742,7 +2835,7 @@ class HTIF : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
                &_HTIF_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(HTIF* other);
   friend void swap(HTIF& a, HTIF& b) {
@@ -2881,7 +2974,7 @@ class MachineRequest : public ::google::protobuf::Message /* @@protoc_insertion_
                &_MachineRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   void Swap(MachineRequest* other);
   friend void swap(MachineRequest& a, MachineRequest& b) {
@@ -3055,7 +3148,7 @@ class RunRequest : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_RunRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   void Swap(RunRequest* other);
   friend void swap(RunRequest& a, RunRequest& b) {
@@ -3158,7 +3251,7 @@ class RunResponse : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_RunResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   void Swap(RunResponse* other);
   friend void swap(RunResponse& a, RunResponse& b) {
@@ -3208,34 +3301,6 @@ class RunResponse : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // nested types ----------------------------------------------------
 
-  typedef RunResponse_Status Status;
-  static const Status LIMITED =
-    RunResponse_Status_LIMITED;
-  static const Status HALTED =
-    RunResponse_Status_HALTED;
-  static const Status SUSPENDED =
-    RunResponse_Status_SUSPENDED;
-  static inline bool Status_IsValid(int value) {
-    return RunResponse_Status_IsValid(value);
-  }
-  static const Status Status_MIN =
-    RunResponse_Status_Status_MIN;
-  static const Status Status_MAX =
-    RunResponse_Status_Status_MAX;
-  static const int Status_ARRAYSIZE =
-    RunResponse_Status_Status_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Status_descriptor() {
-    return RunResponse_Status_descriptor();
-  }
-  static inline const ::std::string& Status_Name(Status value) {
-    return RunResponse_Status_Name(value);
-  }
-  static inline bool Status_Parse(const ::std::string& name,
-      Status* value) {
-    return RunResponse_Status_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   // uint64 mcycle = 1;
@@ -3261,24 +3326,24 @@ class RunResponse : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
-class ProofType : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.ProofType) */ {
+class Proof : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.Proof) */ {
  public:
-  ProofType();
-  virtual ~ProofType();
+  Proof();
+  virtual ~Proof();
 
-  ProofType(const ProofType& from);
+  Proof(const Proof& from);
 
-  inline ProofType& operator=(const ProofType& from) {
+  inline Proof& operator=(const Proof& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ProofType(ProofType&& from) noexcept
-    : ProofType() {
+  Proof(Proof&& from) noexcept
+    : Proof() {
     *this = ::std::move(from);
   }
 
-  inline ProofType& operator=(ProofType&& from) noexcept {
+  inline Proof& operator=(Proof&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3288,34 +3353,34 @@ class ProofType : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ProofType& default_instance();
+  static const Proof& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ProofType* internal_default_instance() {
-    return reinterpret_cast<const ProofType*>(
-               &_ProofType_default_instance_);
+  static inline const Proof* internal_default_instance() {
+    return reinterpret_cast<const Proof*>(
+               &_Proof_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
-  void Swap(ProofType* other);
-  friend void swap(ProofType& a, ProofType& b) {
+  void Swap(Proof* other);
+  friend void swap(Proof& a, Proof& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ProofType* New() const final {
-    return CreateMaybeMessage<ProofType>(NULL);
+  inline Proof* New() const final {
+    return CreateMaybeMessage<Proof>(NULL);
   }
 
-  ProofType* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<ProofType>(arena);
+  Proof* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Proof>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const ProofType& from);
-  void MergeFrom(const ProofType& from);
+  void CopyFrom(const Proof& from);
+  void MergeFrom(const Proof& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3332,7 +3397,7 @@ class ProofType : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ProofType* other);
+  void InternalSwap(Proof* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3348,55 +3413,41 @@ class ProofType : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated bytes sibling_hashes = 4;
+  // repeated .CartesiCore.Hash sibling_hashes = 4;
   int sibling_hashes_size() const;
   void clear_sibling_hashes();
   static const int kSiblingHashesFieldNumber = 4;
-  const ::std::string& sibling_hashes(int index) const;
-  ::std::string* mutable_sibling_hashes(int index);
-  void set_sibling_hashes(int index, const ::std::string& value);
-  #if LANG_CXX11
-  void set_sibling_hashes(int index, ::std::string&& value);
-  #endif
-  void set_sibling_hashes(int index, const char* value);
-  void set_sibling_hashes(int index, const void* value, size_t size);
-  ::std::string* add_sibling_hashes();
-  void add_sibling_hashes(const ::std::string& value);
-  #if LANG_CXX11
-  void add_sibling_hashes(::std::string&& value);
-  #endif
-  void add_sibling_hashes(const char* value);
-  void add_sibling_hashes(const void* value, size_t size);
-  const ::google::protobuf::RepeatedPtrField< ::std::string>& sibling_hashes() const;
-  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_sibling_hashes();
+  ::CartesiCore::Hash* mutable_sibling_hashes(int index);
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::Hash >*
+      mutable_sibling_hashes();
+  const ::CartesiCore::Hash& sibling_hashes(int index) const;
+  ::CartesiCore::Hash* add_sibling_hashes();
+  const ::google::protobuf::RepeatedPtrField< ::CartesiCore::Hash >&
+      sibling_hashes() const;
 
-  // bytes target_hash = 3;
+  // .CartesiCore.Hash target_hash = 3;
+  bool has_target_hash() const;
   void clear_target_hash();
   static const int kTargetHashFieldNumber = 3;
-  const ::std::string& target_hash() const;
-  void set_target_hash(const ::std::string& value);
-  #if LANG_CXX11
-  void set_target_hash(::std::string&& value);
-  #endif
-  void set_target_hash(const char* value);
-  void set_target_hash(const void* value, size_t size);
-  ::std::string* mutable_target_hash();
-  ::std::string* release_target_hash();
-  void set_allocated_target_hash(::std::string* target_hash);
+  private:
+  const ::CartesiCore::Hash& _internal_target_hash() const;
+  public:
+  const ::CartesiCore::Hash& target_hash() const;
+  ::CartesiCore::Hash* release_target_hash();
+  ::CartesiCore::Hash* mutable_target_hash();
+  void set_allocated_target_hash(::CartesiCore::Hash* target_hash);
 
-  // bytes root_hash = 5;
+  // .CartesiCore.Hash root_hash = 5;
+  bool has_root_hash() const;
   void clear_root_hash();
   static const int kRootHashFieldNumber = 5;
-  const ::std::string& root_hash() const;
-  void set_root_hash(const ::std::string& value);
-  #if LANG_CXX11
-  void set_root_hash(::std::string&& value);
-  #endif
-  void set_root_hash(const char* value);
-  void set_root_hash(const void* value, size_t size);
-  ::std::string* mutable_root_hash();
-  ::std::string* release_root_hash();
-  void set_allocated_root_hash(::std::string* root_hash);
+  private:
+  const ::CartesiCore::Hash& _internal_root_hash() const;
+  public:
+  const ::CartesiCore::Hash& root_hash() const;
+  ::CartesiCore::Hash* release_root_hash();
+  ::CartesiCore::Hash* mutable_root_hash();
+  void set_allocated_root_hash(::CartesiCore::Hash* root_hash);
 
   // uint64 address = 1;
   void clear_address();
@@ -3404,44 +3455,44 @@ class ProofType : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::uint64 address() const;
   void set_address(::google::protobuf::uint64 value);
 
-  // int32 log2_size = 2;
+  // uint32 log2_size = 2;
   void clear_log2_size();
   static const int kLog2SizeFieldNumber = 2;
-  ::google::protobuf::int32 log2_size() const;
-  void set_log2_size(::google::protobuf::int32 value);
+  ::google::protobuf::uint32 log2_size() const;
+  void set_log2_size(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:CartesiCore.ProofType)
+  // @@protoc_insertion_point(class_scope:CartesiCore.Proof)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> sibling_hashes_;
-  ::google::protobuf::internal::ArenaStringPtr target_hash_;
-  ::google::protobuf::internal::ArenaStringPtr root_hash_;
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::Hash > sibling_hashes_;
+  ::CartesiCore::Hash* target_hash_;
+  ::CartesiCore::Hash* root_hash_;
   ::google::protobuf::uint64 address_;
-  ::google::protobuf::int32 log2_size_;
+  ::google::protobuf::uint32 log2_size_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class WordAccess : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.WordAccess) */ {
+class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.Access) */ {
  public:
-  WordAccess();
-  virtual ~WordAccess();
+  Access();
+  virtual ~Access();
 
-  WordAccess(const WordAccess& from);
+  Access(const Access& from);
 
-  inline WordAccess& operator=(const WordAccess& from) {
+  inline Access& operator=(const Access& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  WordAccess(WordAccess&& from) noexcept
-    : WordAccess() {
+  Access(Access&& from) noexcept
+    : Access() {
     *this = ::std::move(from);
   }
 
-  inline WordAccess& operator=(WordAccess&& from) noexcept {
+  inline Access& operator=(Access&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3451,34 +3502,34 @@ class WordAccess : public ::google::protobuf::Message /* @@protoc_insertion_poin
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const WordAccess& default_instance();
+  static const Access& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const WordAccess* internal_default_instance() {
-    return reinterpret_cast<const WordAccess*>(
-               &_WordAccess_default_instance_);
+  static inline const Access* internal_default_instance() {
+    return reinterpret_cast<const Access*>(
+               &_Access_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
-  void Swap(WordAccess* other);
-  friend void swap(WordAccess& a, WordAccess& b) {
+  void Swap(Access* other);
+  friend void swap(Access& a, Access& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline WordAccess* New() const final {
-    return CreateMaybeMessage<WordAccess>(NULL);
+  inline Access* New() const final {
+    return CreateMaybeMessage<Access>(NULL);
   }
 
-  WordAccess* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<WordAccess>(arena);
+  Access* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Access>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const WordAccess& from);
-  void MergeFrom(const WordAccess& from);
+  void CopyFrom(const Access& from);
+  void MergeFrom(const Access& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3495,7 +3546,7 @@ class WordAccess : public ::google::protobuf::Message /* @@protoc_insertion_poin
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(WordAccess* other);
+  void InternalSwap(Access* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3509,59 +3560,19 @@ class WordAccess : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // nested types ----------------------------------------------------
 
-  typedef WordAccess_AccessType AccessType;
-  static const AccessType READ =
-    WordAccess_AccessType_READ;
-  static const AccessType WRITE =
-    WordAccess_AccessType_WRITE;
-  static inline bool AccessType_IsValid(int value) {
-    return WordAccess_AccessType_IsValid(value);
-  }
-  static const AccessType AccessType_MIN =
-    WordAccess_AccessType_AccessType_MIN;
-  static const AccessType AccessType_MAX =
-    WordAccess_AccessType_AccessType_MAX;
-  static const int AccessType_ARRAYSIZE =
-    WordAccess_AccessType_AccessType_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  AccessType_descriptor() {
-    return WordAccess_AccessType_descriptor();
-  }
-  static inline const ::std::string& AccessType_Name(AccessType value) {
-    return WordAccess_AccessType_Name(value);
-  }
-  static inline bool AccessType_Parse(const ::std::string& name,
-      AccessType* value) {
-    return WordAccess_AccessType_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
-  // string text = 4;
-  void clear_text();
-  static const int kTextFieldNumber = 4;
-  const ::std::string& text() const;
-  void set_text(const ::std::string& value);
-  #if LANG_CXX11
-  void set_text(::std::string&& value);
-  #endif
-  void set_text(const char* value);
-  void set_text(const char* value, size_t size);
-  ::std::string* mutable_text();
-  ::std::string* release_text();
-  void set_allocated_text(::std::string* text);
-
-  // .CartesiCore.ProofType proof = 5;
+  // .CartesiCore.Proof proof = 4;
   bool has_proof() const;
   void clear_proof();
-  static const int kProofFieldNumber = 5;
+  static const int kProofFieldNumber = 4;
   private:
-  const ::CartesiCore::ProofType& _internal_proof() const;
+  const ::CartesiCore::Proof& _internal_proof() const;
   public:
-  const ::CartesiCore::ProofType& proof() const;
-  ::CartesiCore::ProofType* release_proof();
-  ::CartesiCore::ProofType* mutable_proof();
-  void set_allocated_proof(::CartesiCore::ProofType* proof);
+  const ::CartesiCore::Proof& proof() const;
+  ::CartesiCore::Proof* release_proof();
+  ::CartesiCore::Proof* mutable_proof();
+  void set_allocated_proof(::CartesiCore::Proof* proof);
 
   // uint64 read = 2;
   void clear_read();
@@ -3575,21 +3586,20 @@ class WordAccess : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::uint64 written() const;
   void set_written(::google::protobuf::uint64 value);
 
-  // .CartesiCore.WordAccess.AccessType type = 1;
-  void clear_type();
-  static const int kTypeFieldNumber = 1;
-  ::CartesiCore::WordAccess_AccessType type() const;
-  void set_type(::CartesiCore::WordAccess_AccessType value);
+  // .CartesiCore.AccessOperation operation = 1;
+  void clear_operation();
+  static const int kOperationFieldNumber = 1;
+  ::CartesiCore::AccessOperation operation() const;
+  void set_operation(::CartesiCore::AccessOperation value);
 
-  // @@protoc_insertion_point(class_scope:CartesiCore.WordAccess)
+  // @@protoc_insertion_point(class_scope:CartesiCore.Access)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr text_;
-  ::CartesiCore::ProofType* proof_;
+  ::CartesiCore::Proof* proof_;
   ::google::protobuf::uint64 read_;
   ::google::protobuf::uint64 written_;
-  int type_;
+  int operation_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
 };
@@ -3630,7 +3640,7 @@ class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_AccessNote_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   void Swap(AccessNote* other);
   friend void swap(AccessNote& a, AccessNote& b) {
@@ -3785,7 +3795,7 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_AccessLog_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   void Swap(AccessLog* other);
   friend void swap(AccessLog& a, AccessLog& b) {
@@ -3837,16 +3847,16 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated .CartesiCore.WordAccess accesses = 1;
+  // repeated .CartesiCore.Access accesses = 1;
   int accesses_size() const;
   void clear_accesses();
   static const int kAccessesFieldNumber = 1;
-  ::CartesiCore::WordAccess* mutable_accesses(int index);
-  ::google::protobuf::RepeatedPtrField< ::CartesiCore::WordAccess >*
+  ::CartesiCore::Access* mutable_accesses(int index);
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access >*
       mutable_accesses();
-  const ::CartesiCore::WordAccess& accesses(int index) const;
-  ::CartesiCore::WordAccess* add_accesses();
-  const ::google::protobuf::RepeatedPtrField< ::CartesiCore::WordAccess >&
+  const ::CartesiCore::Access& accesses(int index) const;
+  ::CartesiCore::Access* add_accesses();
+  const ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access >&
       accesses() const;
 
   // repeated .CartesiCore.AccessNote notes = 2;
@@ -3865,7 +3875,7 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::CartesiCore::WordAccess > accesses_;
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access > accesses_;
   ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote > notes_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
@@ -3880,6 +3890,63 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // Void
+
+// -------------------------------------------------------------------
+
+// Hash
+
+// bytes content = 1;
+inline void Hash::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Hash::content() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Hash.content)
+  return content_.GetNoArena();
+}
+inline void Hash::set_content(const ::std::string& value) {
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CartesiCore.Hash.content)
+}
+#if LANG_CXX11
+inline void Hash::set_content(::std::string&& value) {
+  
+  content_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.Hash.content)
+}
+#endif
+inline void Hash::set_content(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CartesiCore.Hash.content)
+}
+inline void Hash::set_content(const void* value, size_t size) {
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CartesiCore.Hash.content)
+}
+inline ::std::string* Hash::mutable_content() {
+  
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Hash.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Hash::release_content() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Hash.content)
+  
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Hash::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    
+  } else {
+    
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Hash.content)
+}
 
 // -------------------------------------------------------------------
 
@@ -7381,346 +7448,256 @@ inline void RunResponse::set_tohost(::google::protobuf::uint64 value) {
 
 // -------------------------------------------------------------------
 
-// ProofType
+// Proof
 
 // uint64 address = 1;
-inline void ProofType::clear_address() {
+inline void Proof::clear_address() {
   address_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 ProofType::address() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ProofType.address)
+inline ::google::protobuf::uint64 Proof::address() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Proof.address)
   return address_;
 }
-inline void ProofType::set_address(::google::protobuf::uint64 value) {
+inline void Proof::set_address(::google::protobuf::uint64 value) {
   
   address_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.address)
+  // @@protoc_insertion_point(field_set:CartesiCore.Proof.address)
 }
 
-// int32 log2_size = 2;
-inline void ProofType::clear_log2_size() {
-  log2_size_ = 0;
+// uint32 log2_size = 2;
+inline void Proof::clear_log2_size() {
+  log2_size_ = 0u;
 }
-inline ::google::protobuf::int32 ProofType::log2_size() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ProofType.log2_size)
+inline ::google::protobuf::uint32 Proof::log2_size() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Proof.log2_size)
   return log2_size_;
 }
-inline void ProofType::set_log2_size(::google::protobuf::int32 value) {
+inline void Proof::set_log2_size(::google::protobuf::uint32 value) {
   
   log2_size_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.log2_size)
+  // @@protoc_insertion_point(field_set:CartesiCore.Proof.log2_size)
 }
 
-// bytes target_hash = 3;
-inline void ProofType::clear_target_hash() {
-  target_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// .CartesiCore.Hash target_hash = 3;
+inline bool Proof::has_target_hash() const {
+  return this != internal_default_instance() && target_hash_ != NULL;
 }
-inline const ::std::string& ProofType::target_hash() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ProofType.target_hash)
-  return target_hash_.GetNoArena();
+inline void Proof::clear_target_hash() {
+  if (GetArenaNoVirtual() == NULL && target_hash_ != NULL) {
+    delete target_hash_;
+  }
+  target_hash_ = NULL;
 }
-inline void ProofType::set_target_hash(const ::std::string& value) {
+inline const ::CartesiCore::Hash& Proof::_internal_target_hash() const {
+  return *target_hash_;
+}
+inline const ::CartesiCore::Hash& Proof::target_hash() const {
+  const ::CartesiCore::Hash* p = target_hash_;
+  // @@protoc_insertion_point(field_get:CartesiCore.Proof.target_hash)
+  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::Hash*>(
+      &::CartesiCore::_Hash_default_instance_);
+}
+inline ::CartesiCore::Hash* Proof::release_target_hash() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Proof.target_hash)
   
-  target_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.target_hash)
+  ::CartesiCore::Hash* temp = target_hash_;
+  target_hash_ = NULL;
+  return temp;
 }
-#if LANG_CXX11
-inline void ProofType::set_target_hash(::std::string&& value) {
+inline ::CartesiCore::Hash* Proof::mutable_target_hash() {
   
-  target_hash_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.ProofType.target_hash)
+  if (target_hash_ == NULL) {
+    auto* p = CreateMaybeMessage<::CartesiCore::Hash>(GetArenaNoVirtual());
+    target_hash_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Proof.target_hash)
+  return target_hash_;
 }
-#endif
-inline void ProofType::set_target_hash(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  target_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiCore.ProofType.target_hash)
-}
-inline void ProofType::set_target_hash(const void* value, size_t size) {
-  
-  target_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.ProofType.target_hash)
-}
-inline ::std::string* ProofType::mutable_target_hash() {
-  
-  // @@protoc_insertion_point(field_mutable:CartesiCore.ProofType.target_hash)
-  return target_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* ProofType::release_target_hash() {
-  // @@protoc_insertion_point(field_release:CartesiCore.ProofType.target_hash)
-  
-  return target_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void ProofType::set_allocated_target_hash(::std::string* target_hash) {
-  if (target_hash != NULL) {
+inline void Proof::set_allocated_target_hash(::CartesiCore::Hash* target_hash) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete target_hash_;
+  }
+  if (target_hash) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      target_hash = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, target_hash, submessage_arena);
+    }
     
   } else {
     
   }
-  target_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target_hash);
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.ProofType.target_hash)
+  target_hash_ = target_hash;
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Proof.target_hash)
 }
 
-// repeated bytes sibling_hashes = 4;
-inline int ProofType::sibling_hashes_size() const {
+// repeated .CartesiCore.Hash sibling_hashes = 4;
+inline int Proof::sibling_hashes_size() const {
   return sibling_hashes_.size();
 }
-inline void ProofType::clear_sibling_hashes() {
+inline void Proof::clear_sibling_hashes() {
   sibling_hashes_.Clear();
 }
-inline const ::std::string& ProofType::sibling_hashes(int index) const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ProofType.sibling_hashes)
-  return sibling_hashes_.Get(index);
-}
-inline ::std::string* ProofType::mutable_sibling_hashes(int index) {
-  // @@protoc_insertion_point(field_mutable:CartesiCore.ProofType.sibling_hashes)
+inline ::CartesiCore::Hash* Proof::mutable_sibling_hashes(int index) {
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Proof.sibling_hashes)
   return sibling_hashes_.Mutable(index);
 }
-inline void ProofType::set_sibling_hashes(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.sibling_hashes)
-  sibling_hashes_.Mutable(index)->assign(value);
-}
-#if LANG_CXX11
-inline void ProofType::set_sibling_hashes(int index, ::std::string&& value) {
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.sibling_hashes)
-  sibling_hashes_.Mutable(index)->assign(std::move(value));
-}
-#endif
-inline void ProofType::set_sibling_hashes(int index, const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  sibling_hashes_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:CartesiCore.ProofType.sibling_hashes)
-}
-inline void ProofType::set_sibling_hashes(int index, const void* value, size_t size) {
-  sibling_hashes_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.ProofType.sibling_hashes)
-}
-inline ::std::string* ProofType::add_sibling_hashes() {
-  // @@protoc_insertion_point(field_add_mutable:CartesiCore.ProofType.sibling_hashes)
-  return sibling_hashes_.Add();
-}
-inline void ProofType::add_sibling_hashes(const ::std::string& value) {
-  sibling_hashes_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:CartesiCore.ProofType.sibling_hashes)
-}
-#if LANG_CXX11
-inline void ProofType::add_sibling_hashes(::std::string&& value) {
-  sibling_hashes_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:CartesiCore.ProofType.sibling_hashes)
-}
-#endif
-inline void ProofType::add_sibling_hashes(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  sibling_hashes_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:CartesiCore.ProofType.sibling_hashes)
-}
-inline void ProofType::add_sibling_hashes(const void* value, size_t size) {
-  sibling_hashes_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:CartesiCore.ProofType.sibling_hashes)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-ProofType::sibling_hashes() const {
-  // @@protoc_insertion_point(field_list:CartesiCore.ProofType.sibling_hashes)
-  return sibling_hashes_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-ProofType::mutable_sibling_hashes() {
-  // @@protoc_insertion_point(field_mutable_list:CartesiCore.ProofType.sibling_hashes)
+inline ::google::protobuf::RepeatedPtrField< ::CartesiCore::Hash >*
+Proof::mutable_sibling_hashes() {
+  // @@protoc_insertion_point(field_mutable_list:CartesiCore.Proof.sibling_hashes)
   return &sibling_hashes_;
 }
+inline const ::CartesiCore::Hash& Proof::sibling_hashes(int index) const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Proof.sibling_hashes)
+  return sibling_hashes_.Get(index);
+}
+inline ::CartesiCore::Hash* Proof::add_sibling_hashes() {
+  // @@protoc_insertion_point(field_add:CartesiCore.Proof.sibling_hashes)
+  return sibling_hashes_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CartesiCore::Hash >&
+Proof::sibling_hashes() const {
+  // @@protoc_insertion_point(field_list:CartesiCore.Proof.sibling_hashes)
+  return sibling_hashes_;
+}
 
-// bytes root_hash = 5;
-inline void ProofType::clear_root_hash() {
-  root_hash_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// .CartesiCore.Hash root_hash = 5;
+inline bool Proof::has_root_hash() const {
+  return this != internal_default_instance() && root_hash_ != NULL;
 }
-inline const ::std::string& ProofType::root_hash() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ProofType.root_hash)
-  return root_hash_.GetNoArena();
+inline void Proof::clear_root_hash() {
+  if (GetArenaNoVirtual() == NULL && root_hash_ != NULL) {
+    delete root_hash_;
+  }
+  root_hash_ = NULL;
 }
-inline void ProofType::set_root_hash(const ::std::string& value) {
+inline const ::CartesiCore::Hash& Proof::_internal_root_hash() const {
+  return *root_hash_;
+}
+inline const ::CartesiCore::Hash& Proof::root_hash() const {
+  const ::CartesiCore::Hash* p = root_hash_;
+  // @@protoc_insertion_point(field_get:CartesiCore.Proof.root_hash)
+  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::Hash*>(
+      &::CartesiCore::_Hash_default_instance_);
+}
+inline ::CartesiCore::Hash* Proof::release_root_hash() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Proof.root_hash)
   
-  root_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiCore.ProofType.root_hash)
+  ::CartesiCore::Hash* temp = root_hash_;
+  root_hash_ = NULL;
+  return temp;
 }
-#if LANG_CXX11
-inline void ProofType::set_root_hash(::std::string&& value) {
+inline ::CartesiCore::Hash* Proof::mutable_root_hash() {
   
-  root_hash_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.ProofType.root_hash)
+  if (root_hash_ == NULL) {
+    auto* p = CreateMaybeMessage<::CartesiCore::Hash>(GetArenaNoVirtual());
+    root_hash_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Proof.root_hash)
+  return root_hash_;
 }
-#endif
-inline void ProofType::set_root_hash(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  root_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiCore.ProofType.root_hash)
-}
-inline void ProofType::set_root_hash(const void* value, size_t size) {
-  
-  root_hash_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.ProofType.root_hash)
-}
-inline ::std::string* ProofType::mutable_root_hash() {
-  
-  // @@protoc_insertion_point(field_mutable:CartesiCore.ProofType.root_hash)
-  return root_hash_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* ProofType::release_root_hash() {
-  // @@protoc_insertion_point(field_release:CartesiCore.ProofType.root_hash)
-  
-  return root_hash_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void ProofType::set_allocated_root_hash(::std::string* root_hash) {
-  if (root_hash != NULL) {
+inline void Proof::set_allocated_root_hash(::CartesiCore::Hash* root_hash) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete root_hash_;
+  }
+  if (root_hash) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      root_hash = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, root_hash, submessage_arena);
+    }
     
   } else {
     
   }
-  root_hash_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), root_hash);
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.ProofType.root_hash)
+  root_hash_ = root_hash;
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Proof.root_hash)
 }
 
 // -------------------------------------------------------------------
 
-// WordAccess
+// Access
 
-// .CartesiCore.WordAccess.AccessType type = 1;
-inline void WordAccess::clear_type() {
-  type_ = 0;
+// .CartesiCore.AccessOperation operation = 1;
+inline void Access::clear_operation() {
+  operation_ = 0;
 }
-inline ::CartesiCore::WordAccess_AccessType WordAccess::type() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.WordAccess.type)
-  return static_cast< ::CartesiCore::WordAccess_AccessType >(type_);
+inline ::CartesiCore::AccessOperation Access::operation() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Access.operation)
+  return static_cast< ::CartesiCore::AccessOperation >(operation_);
 }
-inline void WordAccess::set_type(::CartesiCore::WordAccess_AccessType value) {
+inline void Access::set_operation(::CartesiCore::AccessOperation value) {
   
-  type_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.WordAccess.type)
+  operation_ = value;
+  // @@protoc_insertion_point(field_set:CartesiCore.Access.operation)
 }
 
 // uint64 read = 2;
-inline void WordAccess::clear_read() {
+inline void Access::clear_read() {
   read_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 WordAccess::read() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.WordAccess.read)
+inline ::google::protobuf::uint64 Access::read() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Access.read)
   return read_;
 }
-inline void WordAccess::set_read(::google::protobuf::uint64 value) {
+inline void Access::set_read(::google::protobuf::uint64 value) {
   
   read_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.WordAccess.read)
+  // @@protoc_insertion_point(field_set:CartesiCore.Access.read)
 }
 
 // uint64 written = 3;
-inline void WordAccess::clear_written() {
+inline void Access::clear_written() {
   written_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 WordAccess::written() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.WordAccess.written)
+inline ::google::protobuf::uint64 Access::written() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Access.written)
   return written_;
 }
-inline void WordAccess::set_written(::google::protobuf::uint64 value) {
+inline void Access::set_written(::google::protobuf::uint64 value) {
   
   written_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.WordAccess.written)
+  // @@protoc_insertion_point(field_set:CartesiCore.Access.written)
 }
 
-// string text = 4;
-inline void WordAccess::clear_text() {
-  text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& WordAccess::text() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.WordAccess.text)
-  return text_.GetNoArena();
-}
-inline void WordAccess::set_text(const ::std::string& value) {
-  
-  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiCore.WordAccess.text)
-}
-#if LANG_CXX11
-inline void WordAccess::set_text(::std::string&& value) {
-  
-  text_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.WordAccess.text)
-}
-#endif
-inline void WordAccess::set_text(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiCore.WordAccess.text)
-}
-inline void WordAccess::set_text(const char* value, size_t size) {
-  
-  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.WordAccess.text)
-}
-inline ::std::string* WordAccess::mutable_text() {
-  
-  // @@protoc_insertion_point(field_mutable:CartesiCore.WordAccess.text)
-  return text_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* WordAccess::release_text() {
-  // @@protoc_insertion_point(field_release:CartesiCore.WordAccess.text)
-  
-  return text_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void WordAccess::set_allocated_text(::std::string* text) {
-  if (text != NULL) {
-    
-  } else {
-    
-  }
-  text_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), text);
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.WordAccess.text)
-}
-
-// .CartesiCore.ProofType proof = 5;
-inline bool WordAccess::has_proof() const {
+// .CartesiCore.Proof proof = 4;
+inline bool Access::has_proof() const {
   return this != internal_default_instance() && proof_ != NULL;
 }
-inline void WordAccess::clear_proof() {
+inline void Access::clear_proof() {
   if (GetArenaNoVirtual() == NULL && proof_ != NULL) {
     delete proof_;
   }
   proof_ = NULL;
 }
-inline const ::CartesiCore::ProofType& WordAccess::_internal_proof() const {
+inline const ::CartesiCore::Proof& Access::_internal_proof() const {
   return *proof_;
 }
-inline const ::CartesiCore::ProofType& WordAccess::proof() const {
-  const ::CartesiCore::ProofType* p = proof_;
-  // @@protoc_insertion_point(field_get:CartesiCore.WordAccess.proof)
-  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::ProofType*>(
-      &::CartesiCore::_ProofType_default_instance_);
+inline const ::CartesiCore::Proof& Access::proof() const {
+  const ::CartesiCore::Proof* p = proof_;
+  // @@protoc_insertion_point(field_get:CartesiCore.Access.proof)
+  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::Proof*>(
+      &::CartesiCore::_Proof_default_instance_);
 }
-inline ::CartesiCore::ProofType* WordAccess::release_proof() {
-  // @@protoc_insertion_point(field_release:CartesiCore.WordAccess.proof)
+inline ::CartesiCore::Proof* Access::release_proof() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Access.proof)
   
-  ::CartesiCore::ProofType* temp = proof_;
+  ::CartesiCore::Proof* temp = proof_;
   proof_ = NULL;
   return temp;
 }
-inline ::CartesiCore::ProofType* WordAccess::mutable_proof() {
+inline ::CartesiCore::Proof* Access::mutable_proof() {
   
   if (proof_ == NULL) {
-    auto* p = CreateMaybeMessage<::CartesiCore::ProofType>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::CartesiCore::Proof>(GetArenaNoVirtual());
     proof_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:CartesiCore.WordAccess.proof)
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Access.proof)
   return proof_;
 }
-inline void WordAccess::set_allocated_proof(::CartesiCore::ProofType* proof) {
+inline void Access::set_allocated_proof(::CartesiCore::Proof* proof) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete proof_;
@@ -7736,7 +7713,7 @@ inline void WordAccess::set_allocated_proof(::CartesiCore::ProofType* proof) {
     
   }
   proof_ = proof;
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.WordAccess.proof)
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Access.proof)
 }
 
 // -------------------------------------------------------------------
@@ -7828,31 +7805,31 @@ inline void AccessNote::set_allocated_text(::std::string* text) {
 
 // AccessLog
 
-// repeated .CartesiCore.WordAccess accesses = 1;
+// repeated .CartesiCore.Access accesses = 1;
 inline int AccessLog::accesses_size() const {
   return accesses_.size();
 }
 inline void AccessLog::clear_accesses() {
   accesses_.Clear();
 }
-inline ::CartesiCore::WordAccess* AccessLog::mutable_accesses(int index) {
+inline ::CartesiCore::Access* AccessLog::mutable_accesses(int index) {
   // @@protoc_insertion_point(field_mutable:CartesiCore.AccessLog.accesses)
   return accesses_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::CartesiCore::WordAccess >*
+inline ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access >*
 AccessLog::mutable_accesses() {
   // @@protoc_insertion_point(field_mutable_list:CartesiCore.AccessLog.accesses)
   return &accesses_;
 }
-inline const ::CartesiCore::WordAccess& AccessLog::accesses(int index) const {
+inline const ::CartesiCore::Access& AccessLog::accesses(int index) const {
   // @@protoc_insertion_point(field_get:CartesiCore.AccessLog.accesses)
   return accesses_.Get(index);
 }
-inline ::CartesiCore::WordAccess* AccessLog::add_accesses() {
+inline ::CartesiCore::Access* AccessLog::add_accesses() {
   // @@protoc_insertion_point(field_add:CartesiCore.AccessLog.accesses)
   return accesses_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::CartesiCore::WordAccess >&
+inline const ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access >&
 AccessLog::accesses() const {
   // @@protoc_insertion_point(field_list:CartesiCore.AccessLog.accesses)
   return accesses_;
@@ -7923,6 +7900,8 @@ AccessLog::notes() const {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -7931,20 +7910,15 @@ AccessLog::notes() const {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::CartesiCore::RunResponse_Status> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::RunResponse_Status>() {
-  return ::CartesiCore::RunResponse_Status_descriptor();
-}
-template <> struct is_proto_enum< ::CartesiCore::WordAccess_AccessType> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::WordAccess_AccessType>() {
-  return ::CartesiCore::WordAccess_AccessType_descriptor();
-}
 template <> struct is_proto_enum< ::CartesiCore::AccessNote_NoteType> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::AccessNote_NoteType>() {
   return ::CartesiCore::AccessNote_NoteType_descriptor();
+}
+template <> struct is_proto_enum< ::CartesiCore::AccessOperation> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::AccessOperation>() {
+  return ::CartesiCore::AccessOperation_descriptor();
 }
 
 }  // namespace protobuf
