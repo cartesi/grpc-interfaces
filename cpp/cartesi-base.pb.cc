@@ -20,7 +20,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace protobuf_cartesi_2dbase_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_AccessNote;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_BracketNote;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CLINTState;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Drive;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_cartesi_2dbase_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_HTIFState;
@@ -181,11 +181,11 @@ class AccessDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<Access>
       _instance;
 } _Access_default_instance_;
-class AccessNoteDefaultTypeInternal {
+class BracketNoteDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<AccessNote>
+  ::google::protobuf::internal::ExplicitlyConstructed<BracketNote>
       _instance;
-} _AccessNote_default_instance_;
+} _BracketNote_default_instance_;
 class AccessLogDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<AccessLog>
@@ -428,19 +428,19 @@ static void InitDefaultsAccess() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsAccess}, {
       &protobuf_cartesi_2dbase_2eproto::scc_info_Proof.base,}};
 
-static void InitDefaultsAccessNote() {
+static void InitDefaultsBracketNote() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::CartesiCore::_AccessNote_default_instance_;
-    new (ptr) ::CartesiCore::AccessNote();
+    void* ptr = &::CartesiCore::_BracketNote_default_instance_;
+    new (ptr) ::CartesiCore::BracketNote();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::CartesiCore::AccessNote::InitAsDefaultInstance();
+  ::CartesiCore::BracketNote::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_AccessNote =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAccessNote}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_BracketNote =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsBracketNote}, {}};
 
 static void InitDefaultsAccessLog() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -456,7 +456,7 @@ static void InitDefaultsAccessLog() {
 ::google::protobuf::internal::SCCInfo<2> scc_info_AccessLog =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsAccessLog}, {
       &protobuf_cartesi_2dbase_2eproto::scc_info_Access.base,
-      &protobuf_cartesi_2dbase_2eproto::scc_info_AccessNote.base,}};
+      &protobuf_cartesi_2dbase_2eproto::scc_info_BracketNote.base,}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_Void.base);
@@ -475,7 +475,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_RunResponse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Proof.base);
   ::google::protobuf::internal::InitSCC(&scc_info_Access.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_AccessNote.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_BracketNote.base);
   ::google::protobuf::internal::InitSCC(&scc_info_AccessLog.base);
 }
 
@@ -722,19 +722,20 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, written_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Access, proof_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessNote, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::BracketNote, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessNote, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessNote, where_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessNote, text_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::BracketNote, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::BracketNote, where_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::BracketNote, text_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessLog, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessLog, accesses_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessLog, brackets_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::AccessLog, notes_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -754,7 +755,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 212, -1, sizeof(::CartesiCore::RunResponse)},
   { 219, -1, sizeof(::CartesiCore::Proof)},
   { 229, -1, sizeof(::CartesiCore::Access)},
-  { 238, -1, sizeof(::CartesiCore::AccessNote)},
+  { 238, -1, sizeof(::CartesiCore::BracketNote)},
   { 246, -1, sizeof(::CartesiCore::AccessLog)},
 };
 
@@ -775,7 +776,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_RunResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Proof_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_Access_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_AccessNote_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_BracketNote_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CartesiCore::_AccessLog_default_instance_),
 };
 
@@ -874,17 +875,18 @@ void AddDescriptorsImpl() {
       "h\030\005 \001(\0132\021.CartesiCore.Hash\"{\n\006Access\022/\n\t"
       "operation\030\001 \001(\0162\034.CartesiCore.AccessOper"
       "ation\022\014\n\004read\030\002 \001(\004\022\017\n\007written\030\003 \001(\004\022!\n\005"
-      "proof\030\004 \001(\0132\022.CartesiCore.Proof\"\217\001\n\nAcce"
-      "ssNote\022.\n\004type\030\001 \001(\0162 .CartesiCore.Acces"
-      "sNote.NoteType\022\r\n\005where\030\002 \001(\004\022\014\n\004text\030\003 "
-      "\001(\t\"4\n\010NoteType\022\t\n\005DUMMY\020\000\022\t\n\005BEGIN\020\001\022\007\n"
-      "\003END\020\002\022\t\n\005POINT\020\003\"Z\n\tAccessLog\022%\n\010access"
-      "es\030\001 \003(\0132\023.CartesiCore.Access\022&\n\005notes\030\002"
-      " \003(\0132\027.CartesiCore.AccessNote*&\n\017AccessO"
-      "peration\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001b\006proto3"
+      "proof\030\004 \001(\0132\022.CartesiCore.Proof\"\241\001\n\013Brac"
+      "ketNote\0226\n\004type\030\001 \001(\0162(.CartesiCore.Brac"
+      "ketNote.BracketNoteType\022\r\n\005where\030\002 \001(\004\022\014"
+      "\n\004text\030\003 \001(\t\"=\n\017BracketNoteType\022\t\n\005DUMMY"
+      "\020\000\022\t\n\005BEGIN\020\001\022\007\n\003END\020\002\022\013\n\007INVALID\020\003\"m\n\tA"
+      "ccessLog\022%\n\010accesses\030\001 \003(\0132\023.CartesiCore"
+      ".Access\022*\n\010brackets\030\002 \003(\0132\030.CartesiCore."
+      "BracketNote\022\r\n\005notes\030\003 \003(\t*&\n\017AccessOper"
+      "ation\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3277);
+      descriptor, 3314);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "cartesi-base.proto", &protobuf_RegisterTypes);
 }
@@ -901,11 +903,11 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 }  // namespace protobuf_cartesi_2dbase_2eproto
 namespace CartesiCore {
-const ::google::protobuf::EnumDescriptor* AccessNote_NoteType_descriptor() {
+const ::google::protobuf::EnumDescriptor* BracketNote_BracketNoteType_descriptor() {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_cartesi_2dbase_2eproto::file_level_enum_descriptors[0];
 }
-bool AccessNote_NoteType_IsValid(int value) {
+bool BracketNote_BracketNoteType_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -918,13 +920,13 @@ bool AccessNote_NoteType_IsValid(int value) {
 }
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const AccessNote_NoteType AccessNote::DUMMY;
-const AccessNote_NoteType AccessNote::BEGIN;
-const AccessNote_NoteType AccessNote::END;
-const AccessNote_NoteType AccessNote::POINT;
-const AccessNote_NoteType AccessNote::NoteType_MIN;
-const AccessNote_NoteType AccessNote::NoteType_MAX;
-const int AccessNote::NoteType_ARRAYSIZE;
+const BracketNote_BracketNoteType BracketNote::DUMMY;
+const BracketNote_BracketNoteType BracketNote::BEGIN;
+const BracketNote_BracketNoteType BracketNote::END;
+const BracketNote_BracketNoteType BracketNote::INVALID;
+const BracketNote_BracketNoteType BracketNote::BracketNoteType_MIN;
+const BracketNote_BracketNoteType BracketNote::BracketNoteType_MAX;
+const int BracketNote::BracketNoteType_ARRAYSIZE;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 const ::google::protobuf::EnumDescriptor* AccessOperation_descriptor() {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
@@ -10420,22 +10422,22 @@ void Access::InternalSwap(Access* other) {
 
 // ===================================================================
 
-void AccessNote::InitAsDefaultInstance() {
+void BracketNote::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int AccessNote::kTypeFieldNumber;
-const int AccessNote::kWhereFieldNumber;
-const int AccessNote::kTextFieldNumber;
+const int BracketNote::kTypeFieldNumber;
+const int BracketNote::kWhereFieldNumber;
+const int BracketNote::kTextFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-AccessNote::AccessNote()
+BracketNote::BracketNote()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_cartesi_2dbase_2eproto::scc_info_AccessNote.base);
+      &protobuf_cartesi_2dbase_2eproto::scc_info_BracketNote.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(constructor:CartesiCore.BracketNote)
 }
-AccessNote::AccessNote(const AccessNote& from)
+BracketNote::BracketNote(const BracketNote& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -10446,41 +10448,41 @@ AccessNote::AccessNote(const AccessNote& from)
   ::memcpy(&where_, &from.where_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
     reinterpret_cast<char*>(&where_)) + sizeof(type_));
-  // @@protoc_insertion_point(copy_constructor:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(copy_constructor:CartesiCore.BracketNote)
 }
 
-void AccessNote::SharedCtor() {
+void BracketNote::SharedCtor() {
   text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&where_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&where_)) + sizeof(type_));
 }
 
-AccessNote::~AccessNote() {
-  // @@protoc_insertion_point(destructor:CartesiCore.AccessNote)
+BracketNote::~BracketNote() {
+  // @@protoc_insertion_point(destructor:CartesiCore.BracketNote)
   SharedDtor();
 }
 
-void AccessNote::SharedDtor() {
+void BracketNote::SharedDtor() {
   text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void AccessNote::SetCachedSize(int size) const {
+void BracketNote::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* AccessNote::descriptor() {
+const ::google::protobuf::Descriptor* BracketNote::descriptor() {
   ::protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const AccessNote& AccessNote::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_AccessNote.base);
+const BracketNote& BracketNote::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_cartesi_2dbase_2eproto::scc_info_BracketNote.base);
   return *internal_default_instance();
 }
 
 
-void AccessNote::Clear() {
-// @@protoc_insertion_point(message_clear_start:CartesiCore.AccessNote)
+void BracketNote::Clear() {
+// @@protoc_insertion_point(message_clear_start:CartesiCore.BracketNote)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10492,17 +10494,17 @@ void AccessNote::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool AccessNote::MergePartialFromCodedStream(
+bool BracketNote::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(parse_start:CartesiCore.BracketNote)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .CartesiCore.AccessNote.NoteType type = 1;
+      // .CartesiCore.BracketNote.BracketNoteType type = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -10510,7 +10512,7 @@ bool AccessNote::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_type(static_cast< ::CartesiCore::AccessNote_NoteType >(value));
+          set_type(static_cast< ::CartesiCore::BracketNote_BracketNoteType >(value));
         } else {
           goto handle_unusual;
         }
@@ -10540,7 +10542,7 @@ bool AccessNote::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->text().data(), static_cast<int>(this->text().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CartesiCore.AccessNote.text"));
+            "CartesiCore.BracketNote.text"));
         } else {
           goto handle_unusual;
         }
@@ -10559,21 +10561,21 @@ bool AccessNote::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(parse_success:CartesiCore.BracketNote)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(parse_failure:CartesiCore.BracketNote)
   return false;
 #undef DO_
 }
 
-void AccessNote::SerializeWithCachedSizes(
+void BracketNote::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(serialize_start:CartesiCore.BracketNote)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiCore.AccessNote.NoteType type = 1;
+  // .CartesiCore.BracketNote.BracketNoteType type = 1;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -10589,7 +10591,7 @@ void AccessNote::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->text().data(), static_cast<int>(this->text().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.AccessNote.text");
+      "CartesiCore.BracketNote.text");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->text(), output);
   }
@@ -10598,17 +10600,17 @@ void AccessNote::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(serialize_end:CartesiCore.BracketNote)
 }
 
-::google::protobuf::uint8* AccessNote::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* BracketNote::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(serialize_to_array_start:CartesiCore.BracketNote)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .CartesiCore.AccessNote.NoteType type = 1;
+  // .CartesiCore.BracketNote.BracketNoteType type = 1;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -10624,7 +10626,7 @@ void AccessNote::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->text().data(), static_cast<int>(this->text().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.AccessNote.text");
+      "CartesiCore.BracketNote.text");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->text(), target);
@@ -10634,12 +10636,12 @@ void AccessNote::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(serialize_to_array_end:CartesiCore.BracketNote)
   return target;
 }
 
-size_t AccessNote::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CartesiCore.AccessNote)
+size_t BracketNote::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CartesiCore.BracketNote)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -10661,7 +10663,7 @@ size_t AccessNote::ByteSizeLong() const {
         this->where());
   }
 
-  // .CartesiCore.AccessNote.NoteType type = 1;
+  // .CartesiCore.BracketNote.BracketNoteType type = 1;
   if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
@@ -10672,23 +10674,23 @@ size_t AccessNote::ByteSizeLong() const {
   return total_size;
 }
 
-void AccessNote::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.AccessNote)
+void BracketNote::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CartesiCore.BracketNote)
   GOOGLE_DCHECK_NE(&from, this);
-  const AccessNote* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const AccessNote>(
+  const BracketNote* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const BracketNote>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CartesiCore.BracketNote)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CartesiCore.BracketNote)
     MergeFrom(*source);
   }
 }
 
-void AccessNote::MergeFrom(const AccessNote& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.AccessNote)
+void BracketNote::MergeFrom(const BracketNote& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CartesiCore.BracketNote)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -10706,29 +10708,29 @@ void AccessNote::MergeFrom(const AccessNote& from) {
   }
 }
 
-void AccessNote::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.AccessNote)
+void BracketNote::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CartesiCore.BracketNote)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void AccessNote::CopyFrom(const AccessNote& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.AccessNote)
+void BracketNote::CopyFrom(const BracketNote& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CartesiCore.BracketNote)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool AccessNote::IsInitialized() const {
+bool BracketNote::IsInitialized() const {
   return true;
 }
 
-void AccessNote::Swap(AccessNote* other) {
+void BracketNote::Swap(BracketNote* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void AccessNote::InternalSwap(AccessNote* other) {
+void BracketNote::InternalSwap(BracketNote* other) {
   using std::swap;
   text_.Swap(&other->text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
@@ -10737,7 +10739,7 @@ void AccessNote::InternalSwap(AccessNote* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata AccessNote::GetMetadata() const {
+::google::protobuf::Metadata BracketNote::GetMetadata() const {
   protobuf_cartesi_2dbase_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_cartesi_2dbase_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -10749,6 +10751,7 @@ void AccessLog::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int AccessLog::kAccessesFieldNumber;
+const int AccessLog::kBracketsFieldNumber;
 const int AccessLog::kNotesFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -10763,6 +10766,7 @@ AccessLog::AccessLog(const AccessLog& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       accesses_(from.accesses_),
+      brackets_(from.brackets_),
       notes_(from.notes_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:CartesiCore.AccessLog)
@@ -10800,6 +10804,7 @@ void AccessLog::Clear() {
   (void) cached_has_bits;
 
   accesses_.Clear();
+  brackets_.Clear();
   notes_.Clear();
   _internal_metadata_.Clear();
 }
@@ -10826,12 +10831,29 @@ bool AccessLog::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .CartesiCore.AccessNote notes = 2;
+      // repeated .CartesiCore.BracketNote brackets = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_notes()));
+                input, add_brackets()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string notes = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_notes()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->notes(this->notes_size() - 1).data(),
+            static_cast<int>(this->notes(this->notes_size() - 1).length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CartesiCore.AccessLog.notes"));
         } else {
           goto handle_unusual;
         }
@@ -10873,13 +10895,23 @@ void AccessLog::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .CartesiCore.AccessNote notes = 2;
+  // repeated .CartesiCore.BracketNote brackets = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->notes_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->brackets_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2,
-      this->notes(static_cast<int>(i)),
+      this->brackets(static_cast<int>(i)),
       output);
+  }
+
+  // repeated string notes = 3;
+  for (int i = 0, n = this->notes_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->notes(i).data(), static_cast<int>(this->notes(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiCore.AccessLog.notes");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->notes(i), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -10904,12 +10936,22 @@ void AccessLog::SerializeWithCachedSizes(
         1, this->accesses(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated .CartesiCore.AccessNote notes = 2;
+  // repeated .CartesiCore.BracketNote brackets = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->notes_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->brackets_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, this->notes(static_cast<int>(i)), deterministic, target);
+        2, this->brackets(static_cast<int>(i)), deterministic, target);
+  }
+
+  // repeated string notes = 3;
+  for (int i = 0, n = this->notes_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->notes(i).data(), static_cast<int>(this->notes(i).length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CartesiCore.AccessLog.notes");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->notes(i), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -10940,15 +10982,23 @@ size_t AccessLog::ByteSizeLong() const {
     }
   }
 
-  // repeated .CartesiCore.AccessNote notes = 2;
+  // repeated .CartesiCore.BracketNote brackets = 2;
   {
-    unsigned int count = static_cast<unsigned int>(this->notes_size());
+    unsigned int count = static_cast<unsigned int>(this->brackets_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->notes(static_cast<int>(i)));
+          this->brackets(static_cast<int>(i)));
     }
+  }
+
+  // repeated string notes = 3;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->notes_size());
+  for (int i = 0, n = this->notes_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->notes(i));
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -10979,6 +11029,7 @@ void AccessLog::MergeFrom(const AccessLog& from) {
   (void) cached_has_bits;
 
   accesses_.MergeFrom(from.accesses_);
+  brackets_.MergeFrom(from.brackets_);
   notes_.MergeFrom(from.notes_);
 }
 
@@ -11007,7 +11058,8 @@ void AccessLog::Swap(AccessLog* other) {
 void AccessLog::InternalSwap(AccessLog* other) {
   using std::swap;
   CastToBase(&accesses_)->InternalSwap(CastToBase(&other->accesses_));
-  CastToBase(&notes_)->InternalSwap(CastToBase(&other->notes_));
+  CastToBase(&brackets_)->InternalSwap(CastToBase(&other->brackets_));
+  notes_.InternalSwap(CastToBase(&other->notes_));
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -11069,8 +11121,8 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Proof* Arena::Creat
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::Access* Arena::CreateMaybeMessage< ::CartesiCore::Access >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::Access >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::AccessNote* Arena::CreateMaybeMessage< ::CartesiCore::AccessNote >(Arena* arena) {
-  return Arena::CreateInternal< ::CartesiCore::AccessNote >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::BracketNote* Arena::CreateMaybeMessage< ::CartesiCore::BracketNote >(Arena* arena) {
+  return Arena::CreateInternal< ::CartesiCore::BracketNote >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::CartesiCore::AccessLog* Arena::CreateMaybeMessage< ::CartesiCore::AccessLog >(Arena* arena) {
   return Arena::CreateInternal< ::CartesiCore::AccessLog >(arena);

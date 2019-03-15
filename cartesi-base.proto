@@ -274,19 +274,20 @@ message Access {
     Proof proof = 4;
 }
 
-message AccessNote {
-    enum NoteType {
+message BracketNote {
+    enum BracketNoteType {
         DUMMY = 0;
         BEGIN = 1;
         END = 2;
-        POINT = 3;
+        INVALID = 3;
     }
-    NoteType type = 1;
+    BracketNoteType type = 1;
     uint64 where = 2;
     string text = 3;
 }
 
 message AccessLog {
     repeated Access accesses = 1;
-    repeated AccessNote notes = 2;
+    repeated BracketNote brackets = 2;
+    repeated string notes = 3;
 }

@@ -53,9 +53,9 @@ extern AccessDefaultTypeInternal _Access_default_instance_;
 class AccessLog;
 class AccessLogDefaultTypeInternal;
 extern AccessLogDefaultTypeInternal _AccessLog_default_instance_;
-class AccessNote;
-class AccessNoteDefaultTypeInternal;
-extern AccessNoteDefaultTypeInternal _AccessNote_default_instance_;
+class BracketNote;
+class BracketNoteDefaultTypeInternal;
+extern BracketNoteDefaultTypeInternal _BracketNote_default_instance_;
 class CLINT;
 class CLINTDefaultTypeInternal;
 extern CLINTDefaultTypeInternal _CLINT_default_instance_;
@@ -106,7 +106,7 @@ namespace google {
 namespace protobuf {
 template<> ::CartesiCore::Access* Arena::CreateMaybeMessage<::CartesiCore::Access>(Arena*);
 template<> ::CartesiCore::AccessLog* Arena::CreateMaybeMessage<::CartesiCore::AccessLog>(Arena*);
-template<> ::CartesiCore::AccessNote* Arena::CreateMaybeMessage<::CartesiCore::AccessNote>(Arena*);
+template<> ::CartesiCore::BracketNote* Arena::CreateMaybeMessage<::CartesiCore::BracketNote>(Arena*);
 template<> ::CartesiCore::CLINT* Arena::CreateMaybeMessage<::CartesiCore::CLINT>(Arena*);
 template<> ::CartesiCore::CLINTState* Arena::CreateMaybeMessage<::CartesiCore::CLINTState>(Arena*);
 template<> ::CartesiCore::Drive* Arena::CreateMaybeMessage<::CartesiCore::Drive>(Arena*);
@@ -126,28 +126,28 @@ template<> ::CartesiCore::Void* Arena::CreateMaybeMessage<::CartesiCore::Void>(A
 }  // namespace google
 namespace CartesiCore {
 
-enum AccessNote_NoteType {
-  AccessNote_NoteType_DUMMY = 0,
-  AccessNote_NoteType_BEGIN = 1,
-  AccessNote_NoteType_END = 2,
-  AccessNote_NoteType_POINT = 3,
-  AccessNote_NoteType_AccessNote_NoteType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  AccessNote_NoteType_AccessNote_NoteType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum BracketNote_BracketNoteType {
+  BracketNote_BracketNoteType_DUMMY = 0,
+  BracketNote_BracketNoteType_BEGIN = 1,
+  BracketNote_BracketNoteType_END = 2,
+  BracketNote_BracketNoteType_INVALID = 3,
+  BracketNote_BracketNoteType_BracketNote_BracketNoteType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  BracketNote_BracketNoteType_BracketNote_BracketNoteType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool AccessNote_NoteType_IsValid(int value);
-const AccessNote_NoteType AccessNote_NoteType_NoteType_MIN = AccessNote_NoteType_DUMMY;
-const AccessNote_NoteType AccessNote_NoteType_NoteType_MAX = AccessNote_NoteType_POINT;
-const int AccessNote_NoteType_NoteType_ARRAYSIZE = AccessNote_NoteType_NoteType_MAX + 1;
+bool BracketNote_BracketNoteType_IsValid(int value);
+const BracketNote_BracketNoteType BracketNote_BracketNoteType_BracketNoteType_MIN = BracketNote_BracketNoteType_DUMMY;
+const BracketNote_BracketNoteType BracketNote_BracketNoteType_BracketNoteType_MAX = BracketNote_BracketNoteType_INVALID;
+const int BracketNote_BracketNoteType_BracketNoteType_ARRAYSIZE = BracketNote_BracketNoteType_BracketNoteType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* AccessNote_NoteType_descriptor();
-inline const ::std::string& AccessNote_NoteType_Name(AccessNote_NoteType value) {
+const ::google::protobuf::EnumDescriptor* BracketNote_BracketNoteType_descriptor();
+inline const ::std::string& BracketNote_BracketNoteType_Name(BracketNote_BracketNoteType value) {
   return ::google::protobuf::internal::NameOfEnum(
-    AccessNote_NoteType_descriptor(), value);
+    BracketNote_BracketNoteType_descriptor(), value);
 }
-inline bool AccessNote_NoteType_Parse(
-    const ::std::string& name, AccessNote_NoteType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<AccessNote_NoteType>(
-    AccessNote_NoteType_descriptor(), name, value);
+inline bool BracketNote_BracketNoteType_Parse(
+    const ::std::string& name, BracketNote_BracketNoteType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<BracketNote_BracketNoteType>(
+    BracketNote_BracketNoteType_descriptor(), name, value);
 }
 enum AccessOperation {
   READ = 0,
@@ -3605,24 +3605,24 @@ class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 };
 // -------------------------------------------------------------------
 
-class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.AccessNote) */ {
+class BracketNote : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.BracketNote) */ {
  public:
-  AccessNote();
-  virtual ~AccessNote();
+  BracketNote();
+  virtual ~BracketNote();
 
-  AccessNote(const AccessNote& from);
+  BracketNote(const BracketNote& from);
 
-  inline AccessNote& operator=(const AccessNote& from) {
+  inline BracketNote& operator=(const BracketNote& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  AccessNote(AccessNote&& from) noexcept
-    : AccessNote() {
+  BracketNote(BracketNote&& from) noexcept
+    : BracketNote() {
     *this = ::std::move(from);
   }
 
-  inline AccessNote& operator=(AccessNote&& from) noexcept {
+  inline BracketNote& operator=(BracketNote&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -3632,34 +3632,34 @@ class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_poin
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const AccessNote& default_instance();
+  static const BracketNote& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const AccessNote* internal_default_instance() {
-    return reinterpret_cast<const AccessNote*>(
-               &_AccessNote_default_instance_);
+  static inline const BracketNote* internal_default_instance() {
+    return reinterpret_cast<const BracketNote*>(
+               &_BracketNote_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     16;
 
-  void Swap(AccessNote* other);
-  friend void swap(AccessNote& a, AccessNote& b) {
+  void Swap(BracketNote* other);
+  friend void swap(BracketNote& a, BracketNote& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline AccessNote* New() const final {
-    return CreateMaybeMessage<AccessNote>(NULL);
+  inline BracketNote* New() const final {
+    return CreateMaybeMessage<BracketNote>(NULL);
   }
 
-  AccessNote* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<AccessNote>(arena);
+  BracketNote* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<BracketNote>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const AccessNote& from);
-  void MergeFrom(const AccessNote& from);
+  void CopyFrom(const BracketNote& from);
+  void MergeFrom(const BracketNote& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -3676,7 +3676,7 @@ class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_poin
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(AccessNote* other);
+  void InternalSwap(BracketNote* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -3690,34 +3690,34 @@ class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // nested types ----------------------------------------------------
 
-  typedef AccessNote_NoteType NoteType;
-  static const NoteType DUMMY =
-    AccessNote_NoteType_DUMMY;
-  static const NoteType BEGIN =
-    AccessNote_NoteType_BEGIN;
-  static const NoteType END =
-    AccessNote_NoteType_END;
-  static const NoteType POINT =
-    AccessNote_NoteType_POINT;
-  static inline bool NoteType_IsValid(int value) {
-    return AccessNote_NoteType_IsValid(value);
+  typedef BracketNote_BracketNoteType BracketNoteType;
+  static const BracketNoteType DUMMY =
+    BracketNote_BracketNoteType_DUMMY;
+  static const BracketNoteType BEGIN =
+    BracketNote_BracketNoteType_BEGIN;
+  static const BracketNoteType END =
+    BracketNote_BracketNoteType_END;
+  static const BracketNoteType INVALID =
+    BracketNote_BracketNoteType_INVALID;
+  static inline bool BracketNoteType_IsValid(int value) {
+    return BracketNote_BracketNoteType_IsValid(value);
   }
-  static const NoteType NoteType_MIN =
-    AccessNote_NoteType_NoteType_MIN;
-  static const NoteType NoteType_MAX =
-    AccessNote_NoteType_NoteType_MAX;
-  static const int NoteType_ARRAYSIZE =
-    AccessNote_NoteType_NoteType_ARRAYSIZE;
+  static const BracketNoteType BracketNoteType_MIN =
+    BracketNote_BracketNoteType_BracketNoteType_MIN;
+  static const BracketNoteType BracketNoteType_MAX =
+    BracketNote_BracketNoteType_BracketNoteType_MAX;
+  static const int BracketNoteType_ARRAYSIZE =
+    BracketNote_BracketNoteType_BracketNoteType_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
-  NoteType_descriptor() {
-    return AccessNote_NoteType_descriptor();
+  BracketNoteType_descriptor() {
+    return BracketNote_BracketNoteType_descriptor();
   }
-  static inline const ::std::string& NoteType_Name(NoteType value) {
-    return AccessNote_NoteType_Name(value);
+  static inline const ::std::string& BracketNoteType_Name(BracketNoteType value) {
+    return BracketNote_BracketNoteType_Name(value);
   }
-  static inline bool NoteType_Parse(const ::std::string& name,
-      NoteType* value) {
-    return AccessNote_NoteType_Parse(name, value);
+  static inline bool BracketNoteType_Parse(const ::std::string& name,
+      BracketNoteType* value) {
+    return BracketNote_BracketNoteType_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
@@ -3742,13 +3742,13 @@ class AccessNote : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::uint64 where() const;
   void set_where(::google::protobuf::uint64 value);
 
-  // .CartesiCore.AccessNote.NoteType type = 1;
+  // .CartesiCore.BracketNote.BracketNoteType type = 1;
   void clear_type();
   static const int kTypeFieldNumber = 1;
-  ::CartesiCore::AccessNote_NoteType type() const;
-  void set_type(::CartesiCore::AccessNote_NoteType value);
+  ::CartesiCore::BracketNote_BracketNoteType type() const;
+  void set_type(::CartesiCore::BracketNote_BracketNoteType value);
 
-  // @@protoc_insertion_point(class_scope:CartesiCore.AccessNote)
+  // @@protoc_insertion_point(class_scope:CartesiCore.BracketNote)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -3859,24 +3859,47 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
   const ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access >&
       accesses() const;
 
-  // repeated .CartesiCore.AccessNote notes = 2;
+  // repeated .CartesiCore.BracketNote brackets = 2;
+  int brackets_size() const;
+  void clear_brackets();
+  static const int kBracketsFieldNumber = 2;
+  ::CartesiCore::BracketNote* mutable_brackets(int index);
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::BracketNote >*
+      mutable_brackets();
+  const ::CartesiCore::BracketNote& brackets(int index) const;
+  ::CartesiCore::BracketNote* add_brackets();
+  const ::google::protobuf::RepeatedPtrField< ::CartesiCore::BracketNote >&
+      brackets() const;
+
+  // repeated string notes = 3;
   int notes_size() const;
   void clear_notes();
-  static const int kNotesFieldNumber = 2;
-  ::CartesiCore::AccessNote* mutable_notes(int index);
-  ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote >*
-      mutable_notes();
-  const ::CartesiCore::AccessNote& notes(int index) const;
-  ::CartesiCore::AccessNote* add_notes();
-  const ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote >&
-      notes() const;
+  static const int kNotesFieldNumber = 3;
+  const ::std::string& notes(int index) const;
+  ::std::string* mutable_notes(int index);
+  void set_notes(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_notes(int index, ::std::string&& value);
+  #endif
+  void set_notes(int index, const char* value);
+  void set_notes(int index, const char* value, size_t size);
+  ::std::string* add_notes();
+  void add_notes(const ::std::string& value);
+  #if LANG_CXX11
+  void add_notes(::std::string&& value);
+  #endif
+  void add_notes(const char* value);
+  void add_notes(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& notes() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_notes();
 
   // @@protoc_insertion_point(class_scope:CartesiCore.AccessLog)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::CartesiCore::Access > accesses_;
-  ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote > notes_;
+  ::google::protobuf::RepeatedPtrField< ::CartesiCore::BracketNote > brackets_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> notes_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
 };
@@ -7718,87 +7741,87 @@ inline void Access::set_allocated_proof(::CartesiCore::Proof* proof) {
 
 // -------------------------------------------------------------------
 
-// AccessNote
+// BracketNote
 
-// .CartesiCore.AccessNote.NoteType type = 1;
-inline void AccessNote::clear_type() {
+// .CartesiCore.BracketNote.BracketNoteType type = 1;
+inline void BracketNote::clear_type() {
   type_ = 0;
 }
-inline ::CartesiCore::AccessNote_NoteType AccessNote::type() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.AccessNote.type)
-  return static_cast< ::CartesiCore::AccessNote_NoteType >(type_);
+inline ::CartesiCore::BracketNote_BracketNoteType BracketNote::type() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.BracketNote.type)
+  return static_cast< ::CartesiCore::BracketNote_BracketNoteType >(type_);
 }
-inline void AccessNote::set_type(::CartesiCore::AccessNote_NoteType value) {
+inline void BracketNote::set_type(::CartesiCore::BracketNote_BracketNoteType value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.AccessNote.type)
+  // @@protoc_insertion_point(field_set:CartesiCore.BracketNote.type)
 }
 
 // uint64 where = 2;
-inline void AccessNote::clear_where() {
+inline void BracketNote::clear_where() {
   where_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 AccessNote::where() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.AccessNote.where)
+inline ::google::protobuf::uint64 BracketNote::where() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.BracketNote.where)
   return where_;
 }
-inline void AccessNote::set_where(::google::protobuf::uint64 value) {
+inline void BracketNote::set_where(::google::protobuf::uint64 value) {
   
   where_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.AccessNote.where)
+  // @@protoc_insertion_point(field_set:CartesiCore.BracketNote.where)
 }
 
 // string text = 3;
-inline void AccessNote::clear_text() {
+inline void BracketNote::clear_text() {
   text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& AccessNote::text() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.AccessNote.text)
+inline const ::std::string& BracketNote::text() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.BracketNote.text)
   return text_.GetNoArena();
 }
-inline void AccessNote::set_text(const ::std::string& value) {
+inline void BracketNote::set_text(const ::std::string& value) {
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_set:CartesiCore.BracketNote.text)
 }
 #if LANG_CXX11
-inline void AccessNote::set_text(::std::string&& value) {
+inline void BracketNote::set_text(::std::string&& value) {
   
   text_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.BracketNote.text)
 }
 #endif
-inline void AccessNote::set_text(const char* value) {
+inline void BracketNote::set_text(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_set_char:CartesiCore.BracketNote.text)
 }
-inline void AccessNote::set_text(const char* value, size_t size) {
+inline void BracketNote::set_text(const char* value, size_t size) {
   
   text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_set_pointer:CartesiCore.BracketNote.text)
 }
-inline ::std::string* AccessNote::mutable_text() {
+inline ::std::string* BracketNote::mutable_text() {
   
-  // @@protoc_insertion_point(field_mutable:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_mutable:CartesiCore.BracketNote.text)
   return text_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* AccessNote::release_text() {
-  // @@protoc_insertion_point(field_release:CartesiCore.AccessNote.text)
+inline ::std::string* BracketNote::release_text() {
+  // @@protoc_insertion_point(field_release:CartesiCore.BracketNote.text)
   
   return text_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void AccessNote::set_allocated_text(::std::string* text) {
+inline void BracketNote::set_allocated_text(::std::string* text) {
   if (text != NULL) {
     
   } else {
     
   }
   text_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), text);
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.AccessNote.text)
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.BracketNote.text)
 }
 
 // -------------------------------------------------------------------
@@ -7835,34 +7858,103 @@ AccessLog::accesses() const {
   return accesses_;
 }
 
-// repeated .CartesiCore.AccessNote notes = 2;
+// repeated .CartesiCore.BracketNote brackets = 2;
+inline int AccessLog::brackets_size() const {
+  return brackets_.size();
+}
+inline void AccessLog::clear_brackets() {
+  brackets_.Clear();
+}
+inline ::CartesiCore::BracketNote* AccessLog::mutable_brackets(int index) {
+  // @@protoc_insertion_point(field_mutable:CartesiCore.AccessLog.brackets)
+  return brackets_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::CartesiCore::BracketNote >*
+AccessLog::mutable_brackets() {
+  // @@protoc_insertion_point(field_mutable_list:CartesiCore.AccessLog.brackets)
+  return &brackets_;
+}
+inline const ::CartesiCore::BracketNote& AccessLog::brackets(int index) const {
+  // @@protoc_insertion_point(field_get:CartesiCore.AccessLog.brackets)
+  return brackets_.Get(index);
+}
+inline ::CartesiCore::BracketNote* AccessLog::add_brackets() {
+  // @@protoc_insertion_point(field_add:CartesiCore.AccessLog.brackets)
+  return brackets_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CartesiCore::BracketNote >&
+AccessLog::brackets() const {
+  // @@protoc_insertion_point(field_list:CartesiCore.AccessLog.brackets)
+  return brackets_;
+}
+
+// repeated string notes = 3;
 inline int AccessLog::notes_size() const {
   return notes_.size();
 }
 inline void AccessLog::clear_notes() {
   notes_.Clear();
 }
-inline ::CartesiCore::AccessNote* AccessLog::mutable_notes(int index) {
-  // @@protoc_insertion_point(field_mutable:CartesiCore.AccessLog.notes)
-  return notes_.Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote >*
-AccessLog::mutable_notes() {
-  // @@protoc_insertion_point(field_mutable_list:CartesiCore.AccessLog.notes)
-  return &notes_;
-}
-inline const ::CartesiCore::AccessNote& AccessLog::notes(int index) const {
+inline const ::std::string& AccessLog::notes(int index) const {
   // @@protoc_insertion_point(field_get:CartesiCore.AccessLog.notes)
   return notes_.Get(index);
 }
-inline ::CartesiCore::AccessNote* AccessLog::add_notes() {
-  // @@protoc_insertion_point(field_add:CartesiCore.AccessLog.notes)
+inline ::std::string* AccessLog::mutable_notes(int index) {
+  // @@protoc_insertion_point(field_mutable:CartesiCore.AccessLog.notes)
+  return notes_.Mutable(index);
+}
+inline void AccessLog::set_notes(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:CartesiCore.AccessLog.notes)
+  notes_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void AccessLog::set_notes(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:CartesiCore.AccessLog.notes)
+  notes_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void AccessLog::set_notes(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  notes_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:CartesiCore.AccessLog.notes)
+}
+inline void AccessLog::set_notes(int index, const char* value, size_t size) {
+  notes_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:CartesiCore.AccessLog.notes)
+}
+inline ::std::string* AccessLog::add_notes() {
+  // @@protoc_insertion_point(field_add_mutable:CartesiCore.AccessLog.notes)
   return notes_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::CartesiCore::AccessNote >&
+inline void AccessLog::add_notes(const ::std::string& value) {
+  notes_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:CartesiCore.AccessLog.notes)
+}
+#if LANG_CXX11
+inline void AccessLog::add_notes(::std::string&& value) {
+  notes_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:CartesiCore.AccessLog.notes)
+}
+#endif
+inline void AccessLog::add_notes(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  notes_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:CartesiCore.AccessLog.notes)
+}
+inline void AccessLog::add_notes(const char* value, size_t size) {
+  notes_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:CartesiCore.AccessLog.notes)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
 AccessLog::notes() const {
   // @@protoc_insertion_point(field_list:CartesiCore.AccessLog.notes)
   return notes_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+AccessLog::mutable_notes() {
+  // @@protoc_insertion_point(field_mutable_list:CartesiCore.AccessLog.notes)
+  return &notes_;
 }
 
 #ifdef __GNUC__
@@ -7910,10 +8002,10 @@ AccessLog::notes() const {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::CartesiCore::AccessNote_NoteType> : ::std::true_type {};
+template <> struct is_proto_enum< ::CartesiCore::BracketNote_BracketNoteType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::AccessNote_NoteType>() {
-  return ::CartesiCore::AccessNote_NoteType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::CartesiCore::BracketNote_BracketNoteType>() {
+  return ::CartesiCore::BracketNote_BracketNoteType_descriptor();
 }
 template <> struct is_proto_enum< ::CartesiCore::AccessOperation> : ::std::true_type {};
 template <>
