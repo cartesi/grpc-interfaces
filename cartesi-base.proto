@@ -209,7 +209,7 @@ message Drive {
     uint64 ilength = 2;
     string backing = 3;
     bool shared = 4;
-    string label = 5;
+    string lable = 5;
 }
 
 message CLINTState {
