@@ -39,7 +39,7 @@ namespace protobuf_cartesi_2dbase_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[18];
+  static const ::google::protobuf::internal::ParseTable schema[19];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -101,6 +101,9 @@ extern RunResponseDefaultTypeInternal _RunResponse_default_instance_;
 class Void;
 class VoidDefaultTypeInternal;
 extern VoidDefaultTypeInternal _Void_default_instance_;
+class Word;
+class WordDefaultTypeInternal;
+extern WordDefaultTypeInternal _Word_default_instance_;
 }  // namespace CartesiCore
 namespace google {
 namespace protobuf {
@@ -122,6 +125,7 @@ template<> ::CartesiCore::ROM* Arena::CreateMaybeMessage<::CartesiCore::ROM>(Are
 template<> ::CartesiCore::RunRequest* Arena::CreateMaybeMessage<::CartesiCore::RunRequest>(Arena*);
 template<> ::CartesiCore::RunResponse* Arena::CreateMaybeMessage<::CartesiCore::RunResponse>(Arena*);
 template<> ::CartesiCore::Void* Arena::CreateMaybeMessage<::CartesiCore::Void>(Arena*);
+template<> ::CartesiCore::Word* Arena::CreateMaybeMessage<::CartesiCore::Word>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace CartesiCore {
@@ -3475,6 +3479,117 @@ class Proof : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 };
 // -------------------------------------------------------------------
 
+class Word : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.Word) */ {
+ public:
+  Word();
+  virtual ~Word();
+
+  Word(const Word& from);
+
+  inline Word& operator=(const Word& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Word(Word&& from) noexcept
+    : Word() {
+    *this = ::std::move(from);
+  }
+
+  inline Word& operator=(Word&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Word& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Word* internal_default_instance() {
+    return reinterpret_cast<const Word*>(
+               &_Word_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  void Swap(Word* other);
+  friend void swap(Word& a, Word& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Word* New() const final {
+    return CreateMaybeMessage<Word>(NULL);
+  }
+
+  Word* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<Word>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const Word& from);
+  void MergeFrom(const Word& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Word* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes content = 1;
+  void clear_content();
+  static const int kContentFieldNumber = 1;
+  const ::std::string& content() const;
+  void set_content(const ::std::string& value);
+  #if LANG_CXX11
+  void set_content(::std::string&& value);
+  #endif
+  void set_content(const char* value);
+  void set_content(const void* value, size_t size);
+  ::std::string* mutable_content();
+  ::std::string* release_content();
+  void set_allocated_content(::std::string* content);
+
+  // @@protoc_insertion_point(class_scope:CartesiCore.Word)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr content_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CartesiCore.Access) */ {
  public:
   Access();
@@ -3510,7 +3625,7 @@ class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
                &_Access_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   void Swap(Access* other);
   friend void swap(Access& a, Access& b) {
@@ -3562,6 +3677,30 @@ class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
+  // .CartesiCore.Word read = 2;
+  bool has_read() const;
+  void clear_read();
+  static const int kReadFieldNumber = 2;
+  private:
+  const ::CartesiCore::Word& _internal_read() const;
+  public:
+  const ::CartesiCore::Word& read() const;
+  ::CartesiCore::Word* release_read();
+  ::CartesiCore::Word* mutable_read();
+  void set_allocated_read(::CartesiCore::Word* read);
+
+  // .CartesiCore.Word written = 3;
+  bool has_written() const;
+  void clear_written();
+  static const int kWrittenFieldNumber = 3;
+  private:
+  const ::CartesiCore::Word& _internal_written() const;
+  public:
+  const ::CartesiCore::Word& written() const;
+  ::CartesiCore::Word* release_written();
+  ::CartesiCore::Word* mutable_written();
+  void set_allocated_written(::CartesiCore::Word* written);
+
   // .CartesiCore.Proof proof = 4;
   bool has_proof() const;
   void clear_proof();
@@ -3574,18 +3713,6 @@ class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::CartesiCore::Proof* mutable_proof();
   void set_allocated_proof(::CartesiCore::Proof* proof);
 
-  // uint64 read = 2;
-  void clear_read();
-  static const int kReadFieldNumber = 2;
-  ::google::protobuf::uint64 read() const;
-  void set_read(::google::protobuf::uint64 value);
-
-  // uint64 written = 3;
-  void clear_written();
-  static const int kWrittenFieldNumber = 3;
-  ::google::protobuf::uint64 written() const;
-  void set_written(::google::protobuf::uint64 value);
-
   // .CartesiCore.AccessOperation operation = 1;
   void clear_operation();
   static const int kOperationFieldNumber = 1;
@@ -3596,9 +3723,9 @@ class Access : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::CartesiCore::Word* read_;
+  ::CartesiCore::Word* written_;
   ::CartesiCore::Proof* proof_;
-  ::google::protobuf::uint64 read_;
-  ::google::protobuf::uint64 written_;
   int operation_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
@@ -3640,7 +3767,7 @@ class BracketNote : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_BracketNote_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   void Swap(BracketNote* other);
   friend void swap(BracketNote& a, BracketNote& b) {
@@ -3795,7 +3922,7 @@ class AccessLog : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_AccessLog_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   void Swap(AccessLog* other);
   friend void swap(AccessLog& a, AccessLog& b) {
@@ -7641,6 +7768,63 @@ inline void Proof::set_allocated_root_hash(::CartesiCore::Hash* root_hash) {
 
 // -------------------------------------------------------------------
 
+// Word
+
+// bytes content = 1;
+inline void Word::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& Word::content() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Word.content)
+  return content_.GetNoArena();
+}
+inline void Word::set_content(const ::std::string& value) {
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CartesiCore.Word.content)
+}
+#if LANG_CXX11
+inline void Word::set_content(::std::string&& value) {
+  
+  content_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.Word.content)
+}
+#endif
+inline void Word::set_content(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CartesiCore.Word.content)
+}
+inline void Word::set_content(const void* value, size_t size) {
+  
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CartesiCore.Word.content)
+}
+inline ::std::string* Word::mutable_content() {
+  
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Word.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* Word::release_content() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Word.content)
+  
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void Word::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    
+  } else {
+    
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Word.content)
+}
+
+// -------------------------------------------------------------------
+
 // Access
 
 // .CartesiCore.AccessOperation operation = 1;
@@ -7657,32 +7841,112 @@ inline void Access::set_operation(::CartesiCore::AccessOperation value) {
   // @@protoc_insertion_point(field_set:CartesiCore.Access.operation)
 }
 
-// uint64 read = 2;
-inline void Access::clear_read() {
-  read_ = GOOGLE_ULONGLONG(0);
+// .CartesiCore.Word read = 2;
+inline bool Access::has_read() const {
+  return this != internal_default_instance() && read_ != NULL;
 }
-inline ::google::protobuf::uint64 Access::read() const {
+inline void Access::clear_read() {
+  if (GetArenaNoVirtual() == NULL && read_ != NULL) {
+    delete read_;
+  }
+  read_ = NULL;
+}
+inline const ::CartesiCore::Word& Access::_internal_read() const {
+  return *read_;
+}
+inline const ::CartesiCore::Word& Access::read() const {
+  const ::CartesiCore::Word* p = read_;
   // @@protoc_insertion_point(field_get:CartesiCore.Access.read)
+  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::Word*>(
+      &::CartesiCore::_Word_default_instance_);
+}
+inline ::CartesiCore::Word* Access::release_read() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Access.read)
+  
+  ::CartesiCore::Word* temp = read_;
+  read_ = NULL;
+  return temp;
+}
+inline ::CartesiCore::Word* Access::mutable_read() {
+  
+  if (read_ == NULL) {
+    auto* p = CreateMaybeMessage<::CartesiCore::Word>(GetArenaNoVirtual());
+    read_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Access.read)
   return read_;
 }
-inline void Access::set_read(::google::protobuf::uint64 value) {
-  
-  read_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.Access.read)
+inline void Access::set_allocated_read(::CartesiCore::Word* read) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete read_;
+  }
+  if (read) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      read = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, read, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  read_ = read;
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Access.read)
 }
 
-// uint64 written = 3;
-inline void Access::clear_written() {
-  written_ = GOOGLE_ULONGLONG(0);
+// .CartesiCore.Word written = 3;
+inline bool Access::has_written() const {
+  return this != internal_default_instance() && written_ != NULL;
 }
-inline ::google::protobuf::uint64 Access::written() const {
+inline void Access::clear_written() {
+  if (GetArenaNoVirtual() == NULL && written_ != NULL) {
+    delete written_;
+  }
+  written_ = NULL;
+}
+inline const ::CartesiCore::Word& Access::_internal_written() const {
+  return *written_;
+}
+inline const ::CartesiCore::Word& Access::written() const {
+  const ::CartesiCore::Word* p = written_;
   // @@protoc_insertion_point(field_get:CartesiCore.Access.written)
+  return p != NULL ? *p : *reinterpret_cast<const ::CartesiCore::Word*>(
+      &::CartesiCore::_Word_default_instance_);
+}
+inline ::CartesiCore::Word* Access::release_written() {
+  // @@protoc_insertion_point(field_release:CartesiCore.Access.written)
+  
+  ::CartesiCore::Word* temp = written_;
+  written_ = NULL;
+  return temp;
+}
+inline ::CartesiCore::Word* Access::mutable_written() {
+  
+  if (written_ == NULL) {
+    auto* p = CreateMaybeMessage<::CartesiCore::Word>(GetArenaNoVirtual());
+    written_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:CartesiCore.Access.written)
   return written_;
 }
-inline void Access::set_written(::google::protobuf::uint64 value) {
-  
-  written_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.Access.written)
+inline void Access::set_allocated_written(::CartesiCore::Word* written) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete written_;
+  }
+  if (written) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      written = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, written, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  written_ = written;
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.Access.written)
 }
 
 // .CartesiCore.Proof proof = 4;
@@ -7960,6 +8224,8 @@ AccessLog::mutable_notes() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

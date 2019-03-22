@@ -267,10 +267,14 @@ enum AccessOperation {
     WRITE = 1;
 }
 
+message Word {
+    bytes content = 1;
+}
+
 message Access {
     AccessOperation operation = 1;
-    uint64 read = 2;
-    uint64 written = 3;
+    Word read = 2;
+    Word written = 3;
     Proof proof = 4;
 }
 
