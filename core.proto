@@ -13,6 +13,7 @@ service Machine {
     rpc Inc (Void) returns (Void) {}
     rpc Print (Void) returns (Void) {}
     rpc Step (Void) returns (AccessLog) {}
+    rpc GetRootHash (Void) returns (Hash) {}
 }
 
 

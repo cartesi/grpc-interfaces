@@ -50,7 +50,7 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\ncore.proto\022\013CartesiCore\032\022cartesi-base."
-      "proto2\263\003\n\007Machine\022:\n\003Run\022\027.CartesiCore.R"
+      "proto2\352\003\n\007Machine\022:\n\003Run\022\027.CartesiCore.R"
       "unRequest\032\030.CartesiCore.RunResponse\"\000\022;\n"
       "\007Machine\022\033.CartesiCore.MachineRequest\032\021."
       "CartesiCore.Void\"\000\0222\n\010Snapshot\022\021.Cartesi"
@@ -61,10 +61,11 @@ void AddDescriptorsImpl() {
       "\032\021.CartesiCore.Void\"\000\022/\n\005Print\022\021.Cartesi"
       "Core.Void\032\021.CartesiCore.Void\"\000\0223\n\004Step\022\021"
       ".CartesiCore.Void\032\026.CartesiCore.AccessLo"
-      "g\"\000b\006proto3"
+      "g\"\000\0225\n\013GetRootHash\022\021.CartesiCore.Void\032\021."
+      "CartesiCore.Hash\"\000b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 491);
+      descriptor, 546);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "core.proto", &protobuf_RegisterTypes);
   ::protobuf_cartesi_2dbase_2eproto::AddDescriptors();

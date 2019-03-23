@@ -26,6 +26,7 @@ static const char* Machine_method_names[] = {
   "/CartesiCore.Machine/Inc",
   "/CartesiCore.Machine/Print",
   "/CartesiCore.Machine/Step",
+  "/CartesiCore.Machine/GetRootHash",
 };
 
 std::unique_ptr< Machine::Stub> Machine::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -43,6 +44,7 @@ Machine::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_Inc_(Machine_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Print_(Machine_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Step_(Machine_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRootHash_(Machine_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Machine::Stub::Run(::grpc::ClientContext* context, const ::CartesiCore::RunRequest& request, ::CartesiCore::RunResponse* response) {
@@ -173,6 +175,22 @@ void Machine::Stub::experimental_async::Step(::grpc::ClientContext* context, con
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::CartesiCore::AccessLog>::Create(channel_.get(), cq, rpcmethod_Step_, context, request, false);
 }
 
+::grpc::Status Machine::Stub::GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::CartesiCore::Hash* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetRootHash_, context, request, response);
+}
+
+void Machine::Stub::experimental_async::GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetRootHash_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>* Machine::Stub::AsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::CartesiCore::Hash>::Create(channel_.get(), cq, rpcmethod_GetRootHash_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>* Machine::Stub::PrepareAsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::CartesiCore::Hash>::Create(channel_.get(), cq, rpcmethod_GetRootHash_, context, request, false);
+}
+
 Machine::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Machine_method_names[0],
@@ -214,6 +232,11 @@ Machine::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Machine::Service, ::CartesiCore::Void, ::CartesiCore::AccessLog>(
           std::mem_fn(&Machine::Service::Step), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Machine_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Machine::Service, ::CartesiCore::Void, ::CartesiCore::Hash>(
+          std::mem_fn(&Machine::Service::GetRootHash), this)));
 }
 
 Machine::Service::~Service() {
@@ -269,6 +292,13 @@ Machine::Service::~Service() {
 }
 
 ::grpc::Status Machine::Service::Step(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::AccessLog* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Machine::Service::GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response) {
   (void) context;
   (void) request;
   (void) response;

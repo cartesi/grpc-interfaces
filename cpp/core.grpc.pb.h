@@ -91,6 +91,13 @@ class Machine final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::AccessLog>> PrepareAsyncStep(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::AccessLog>>(PrepareAsyncStepRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::CartesiCore::Hash* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>> AsyncGetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>>(AsyncGetRootHashRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>> PrepareAsyncGetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>>(PrepareAsyncGetRootHashRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -102,6 +109,7 @@ class Machine final {
       virtual void Inc(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Print(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Step(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::AccessLog* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response, std::function<void(::grpc::Status)>) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
@@ -121,6 +129,8 @@ class Machine final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Void>* PrepareAsyncPrintRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::AccessLog>* AsyncStepRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::AccessLog>* PrepareAsyncStepRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>* AsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::CartesiCore::Hash>* PrepareAsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -181,6 +191,13 @@ class Machine final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::AccessLog>> PrepareAsyncStep(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::AccessLog>>(PrepareAsyncStepRaw(context, request, cq));
     }
+    ::grpc::Status GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::CartesiCore::Hash* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>> AsyncGetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>>(AsyncGetRootHashRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>> PrepareAsyncGetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>>(PrepareAsyncGetRootHashRaw(context, request, cq));
+    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
@@ -192,6 +209,7 @@ class Machine final {
       void Inc(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response, std::function<void(::grpc::Status)>) override;
       void Print(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response, std::function<void(::grpc::Status)>) override;
       void Step(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::AccessLog* response, std::function<void(::grpc::Status)>) override;
+      void GetRootHash(::grpc::ClientContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -219,6 +237,8 @@ class Machine final {
     ::grpc::ClientAsyncResponseReader< ::CartesiCore::Void>* PrepareAsyncPrintRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::CartesiCore::AccessLog>* AsyncStepRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::CartesiCore::AccessLog>* PrepareAsyncStepRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>* AsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::CartesiCore::Hash>* PrepareAsyncGetRootHashRaw(::grpc::ClientContext* context, const ::CartesiCore::Void& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Run_;
     const ::grpc::internal::RpcMethod rpcmethod_Machine_;
     const ::grpc::internal::RpcMethod rpcmethod_Snapshot_;
@@ -227,6 +247,7 @@ class Machine final {
     const ::grpc::internal::RpcMethod rpcmethod_Inc_;
     const ::grpc::internal::RpcMethod rpcmethod_Print_;
     const ::grpc::internal::RpcMethod rpcmethod_Step_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetRootHash_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -242,6 +263,7 @@ class Machine final {
     virtual ::grpc::Status Inc(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response);
     virtual ::grpc::Status Print(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Void* response);
     virtual ::grpc::Status Step(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::AccessLog* response);
+    virtual ::grpc::Status GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Run : public BaseClass {
@@ -403,7 +425,27 @@ class Machine final {
       ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Run<WithAsyncMethod_Machine<WithAsyncMethod_Snapshot<WithAsyncMethod_Rollback<WithAsyncMethod_Shutdown<WithAsyncMethod_Inc<WithAsyncMethod_Print<WithAsyncMethod_Step<Service > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_GetRootHash : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_GetRootHash() {
+      ::grpc::Service::MarkMethodAsync(8);
+    }
+    ~WithAsyncMethod_GetRootHash() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRootHash(::grpc::ServerContext* context, ::CartesiCore::Void* request, ::grpc::ServerAsyncResponseWriter< ::CartesiCore::Hash>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Run<WithAsyncMethod_Machine<WithAsyncMethod_Snapshot<WithAsyncMethod_Rollback<WithAsyncMethod_Shutdown<WithAsyncMethod_Inc<WithAsyncMethod_Print<WithAsyncMethod_Step<WithAsyncMethod_GetRootHash<Service > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_Run : public BaseClass {
    private:
@@ -536,6 +578,23 @@ class Machine final {
     }
     // disable synchronous version of this method
     ::grpc::Status Step(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::AccessLog* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetRootHash : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_GetRootHash() {
+      ::grpc::Service::MarkMethodGeneric(8);
+    }
+    ~WithGenericMethod_GetRootHash() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -701,6 +760,26 @@ class Machine final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetRootHash : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetRootHash() {
+      ::grpc::Service::MarkMethodRaw(8);
+    }
+    ~WithRawMethod_GetRootHash() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRootHash(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_Run : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
@@ -860,9 +939,29 @@ class Machine final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedStep(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::CartesiCore::Void,::CartesiCore::AccessLog>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Run<WithStreamedUnaryMethod_Machine<WithStreamedUnaryMethod_Snapshot<WithStreamedUnaryMethod_Rollback<WithStreamedUnaryMethod_Shutdown<WithStreamedUnaryMethod_Inc<WithStreamedUnaryMethod_Print<WithStreamedUnaryMethod_Step<Service > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetRootHash : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_GetRootHash() {
+      ::grpc::Service::MarkMethodStreamed(8,
+        new ::grpc::internal::StreamedUnaryHandler< ::CartesiCore::Void, ::CartesiCore::Hash>(std::bind(&WithStreamedUnaryMethod_GetRootHash<BaseClass>::StreamedGetRootHash, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetRootHash() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetRootHash(::grpc::ServerContext* context, const ::CartesiCore::Void* request, ::CartesiCore::Hash* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetRootHash(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::CartesiCore::Void,::CartesiCore::Hash>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Run<WithStreamedUnaryMethod_Machine<WithStreamedUnaryMethod_Snapshot<WithStreamedUnaryMethod_Rollback<WithStreamedUnaryMethod_Shutdown<WithStreamedUnaryMethod_Inc<WithStreamedUnaryMethod_Print<WithStreamedUnaryMethod_Step<WithStreamedUnaryMethod_GetRootHash<Service > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Run<WithStreamedUnaryMethod_Machine<WithStreamedUnaryMethod_Snapshot<WithStreamedUnaryMethod_Rollback<WithStreamedUnaryMethod_Shutdown<WithStreamedUnaryMethod_Inc<WithStreamedUnaryMethod_Print<WithStreamedUnaryMethod_Step<Service > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Run<WithStreamedUnaryMethod_Machine<WithStreamedUnaryMethod_Snapshot<WithStreamedUnaryMethod_Rollback<WithStreamedUnaryMethod_Shutdown<WithStreamedUnaryMethod_Inc<WithStreamedUnaryMethod_Print<WithStreamedUnaryMethod_Step<WithStreamedUnaryMethod_GetRootHash<Service > > > > > > > > > StreamedService;
 };
 
 }  // namespace CartesiCore

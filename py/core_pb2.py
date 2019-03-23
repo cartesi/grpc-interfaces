@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='CartesiCore',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\ncore.proto\x12\x0b\x43\x61rtesiCore\x1a\x12\x63\x61rtesi-base.proto2\xb3\x03\n\x07Machine\x12:\n\x03Run\x12\x17.CartesiCore.RunRequest\x1a\x18.CartesiCore.RunResponse\"\x00\x12;\n\x07Machine\x12\x1b.CartesiCore.MachineRequest\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Snapshot\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Rollback\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Shutdown\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12-\n\x03Inc\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12/\n\x05Print\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x33\n\x04Step\x12\x11.CartesiCore.Void\x1a\x16.CartesiCore.AccessLog\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\ncore.proto\x12\x0b\x43\x61rtesiCore\x1a\x12\x63\x61rtesi-base.proto2\xea\x03\n\x07Machine\x12:\n\x03Run\x12\x17.CartesiCore.RunRequest\x1a\x18.CartesiCore.RunResponse\"\x00\x12;\n\x07Machine\x12\x1b.CartesiCore.MachineRequest\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Snapshot\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Rollback\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x32\n\x08Shutdown\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12-\n\x03Inc\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12/\n\x05Print\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Void\"\x00\x12\x33\n\x04Step\x12\x11.CartesiCore.Void\x1a\x16.CartesiCore.AccessLog\"\x00\x12\x35\n\x0bGetRootHash\x12\x11.CartesiCore.Void\x1a\x11.CartesiCore.Hash\"\x00\x62\x06proto3')
   ,
   dependencies=[cartesi__base__pb2.DESCRIPTOR,])
 
@@ -37,7 +37,7 @@ _MACHINE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   serialized_start=48,
-  serialized_end=483,
+  serialized_end=538,
   methods=[
   _descriptor.MethodDescriptor(
     name='Run',
@@ -109,6 +109,15 @@ _MACHINE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=cartesi__base__pb2._VOID,
     output_type=cartesi__base__pb2._ACCESSLOG,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetRootHash',
+    full_name='CartesiCore.Machine.GetRootHash',
+    index=8,
+    containing_service=None,
+    input_type=cartesi__base__pb2._VOID,
+    output_type=cartesi__base__pb2._HASH,
     serialized_options=None,
   ),
 ])

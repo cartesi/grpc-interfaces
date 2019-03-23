@@ -54,6 +54,11 @@ class MachineStub(object):
         request_serializer=cartesi__base__pb2.Void.SerializeToString,
         response_deserializer=cartesi__base__pb2.AccessLog.FromString,
         )
+    self.GetRootHash = channel.unary_unary(
+        '/CartesiCore.Machine/GetRootHash',
+        request_serializer=cartesi__base__pb2.Void.SerializeToString,
+        response_deserializer=cartesi__base__pb2.Hash.FromString,
+        )
 
 
 class MachineServicer(object):
@@ -116,6 +121,13 @@ class MachineServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetRootHash(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MachineServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -158,6 +170,11 @@ def add_MachineServicer_to_server(servicer, server):
           servicer.Step,
           request_deserializer=cartesi__base__pb2.Void.FromString,
           response_serializer=cartesi__base__pb2.AccessLog.SerializeToString,
+      ),
+      'GetRootHash': grpc.unary_unary_rpc_method_handler(
+          servicer.GetRootHash,
+          request_deserializer=cartesi__base__pb2.Void.FromString,
+          response_serializer=cartesi__base__pb2.Hash.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
