@@ -120,7 +120,7 @@ class ROMDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<ROM>
       _instance;
-  ::google::protobuf::internal::ArenaStringPtr cmdline_;
+  ::google::protobuf::internal::ArenaStringPtr bootargs_;
   ::google::protobuf::internal::ArenaStringPtr backing_;
 } _ROM_default_instance_;
 class RAMDefaultTypeInternal {
@@ -650,7 +650,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ROM, _oneof_case_[0]),
   ~0u,  // no _weak_field_map_
-  offsetof(::CartesiCore::ROMDefaultTypeInternal, cmdline_),
+  offsetof(::CartesiCore::ROMDefaultTypeInternal, bootargs_),
   offsetof(::CartesiCore::ROMDefaultTypeInternal, backing_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::ROM, rom_oneof_),
   ~0u,  // no _has_bits_
@@ -658,15 +658,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::RAM, ilength_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::RAM, length_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::RAM, backing_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, istart_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, ilength_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, start_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, length_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, backing_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, shared_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::CartesiCore::Drive, label_),
@@ -879,46 +879,46 @@ void AddDescriptorsImpl() {
       "\n\020scounteren_oneofB\r\n\013ilrsc_oneofB\016\n\014ifl"
       "ags_oneof\"_\n\tProcessor\022,\n\005state\030\001 \001(\0132\033."
       "CartesiCore.ProcessorStateH\000\022\021\n\007backing\030"
-      "\002 \001(\tH\000B\021\n\017processor_oneof\"8\n\003ROM\022\021\n\007cmd"
-      "line\030\001 \001(\tH\000\022\021\n\007backing\030\002 \001(\tH\000B\013\n\trom_o"
-      "neof\"\'\n\003RAM\022\017\n\007ilength\030\001 \001(\004\022\017\n\007backing\030"
-      "\002 \001(\t\"X\n\005Drive\022\016\n\006istart\030\001 \001(\004\022\017\n\007ilengt"
-      "h\030\002 \001(\004\022\017\n\007backing\030\003 \001(\t\022\016\n\006shared\030\004 \001(\010"
-      "\022\r\n\005label\030\005 \001(\t\"-\n\nCLINTState\022\r\n\005mtime\030\001"
-      " \001(\004\022\020\n\010mtimecmp\030\002 \001(\004\"S\n\005CLINT\022(\n\005state"
-      "\030\001 \001(\0132\027.CartesiCore.CLINTStateH\000\022\021\n\007bac"
-      "king\030\002 \001(\tH\000B\r\n\013clint_oneof\"-\n\tHTIFState"
-      "\022\020\n\010fromhost\030\001 \001(\004\022\016\n\006tohost\030\002 \001(\004\"P\n\004HT"
-      "IF\022\'\n\005state\030\001 \001(\0132\026.CartesiCore.HTIFStat"
-      "eH\000\022\021\n\007backing\030\002 \001(\tH\000B\014\n\nhtif_oneof\"\340\001\n"
-      "\016MachineRequest\022)\n\tprocessor\030\001 \001(\0132\026.Car"
-      "tesiCore.Processor\022\035\n\003rom\030\002 \001(\0132\020.Cartes"
-      "iCore.ROM\022\035\n\003ram\030\003 \001(\0132\020.CartesiCore.RAM"
-      "\022!\n\005flash\030\004 \003(\0132\022.CartesiCore.Drive\022!\n\005c"
-      "lint\030\005 \001(\0132\022.CartesiCore.CLINT\022\037\n\004htif\030\006"
-      " \001(\0132\021.CartesiCore.HTIF\"\033\n\nRunRequest\022\r\n"
-      "\005limit\030\001 \001(\004\"-\n\013RunResponse\022\016\n\006mcycle\030\001 "
-      "\001(\004\022\016\n\006tohost\030\002 \001(\004\"\244\001\n\005Proof\022\017\n\007address"
-      "\030\001 \001(\004\022\021\n\tlog2_size\030\002 \001(\r\022&\n\013target_hash"
-      "\030\003 \001(\0132\021.CartesiCore.Hash\022)\n\016sibling_has"
-      "hes\030\004 \003(\0132\021.CartesiCore.Hash\022$\n\troot_has"
-      "h\030\005 \001(\0132\021.CartesiCore.Hash\"\027\n\004Word\022\017\n\007co"
-      "ntent\030\001 \001(\014\"\241\001\n\006Access\022/\n\toperation\030\001 \001("
-      "\0162\034.CartesiCore.AccessOperation\022\037\n\004read\030"
-      "\002 \001(\0132\021.CartesiCore.Word\022\"\n\007written\030\003 \001("
-      "\0132\021.CartesiCore.Word\022!\n\005proof\030\004 \001(\0132\022.Ca"
-      "rtesiCore.Proof\"\241\001\n\013BracketNote\0226\n\004type\030"
-      "\001 \001(\0162(.CartesiCore.BracketNote.BracketN"
-      "oteType\022\r\n\005where\030\002 \001(\004\022\014\n\004text\030\003 \001(\t\"=\n\017"
-      "BracketNoteType\022\t\n\005DUMMY\020\000\022\t\n\005BEGIN\020\001\022\007\n"
-      "\003END\020\002\022\013\n\007INVALID\020\003\"m\n\tAccessLog\022%\n\010acce"
-      "sses\030\001 \003(\0132\023.CartesiCore.Access\022*\n\010brack"
-      "ets\030\002 \003(\0132\030.CartesiCore.BracketNote\022\r\n\005n"
-      "otes\030\003 \003(\t*&\n\017AccessOperation\022\010\n\004READ\020\000\022"
-      "\t\n\005WRITE\020\001b\006proto3"
+      "\002 \001(\tH\000B\021\n\017processor_oneof\"9\n\003ROM\022\022\n\010boo"
+      "targs\030\001 \001(\tH\000\022\021\n\007backing\030\002 \001(\tH\000B\013\n\trom_"
+      "oneof\"&\n\003RAM\022\016\n\006length\030\001 \001(\004\022\017\n\007backing\030"
+      "\002 \001(\t\"V\n\005Drive\022\r\n\005start\030\001 \001(\004\022\016\n\006length\030"
+      "\002 \001(\004\022\017\n\007backing\030\003 \001(\t\022\016\n\006shared\030\004 \001(\010\022\r"
+      "\n\005label\030\005 \001(\t\"-\n\nCLINTState\022\r\n\005mtime\030\001 \001"
+      "(\004\022\020\n\010mtimecmp\030\002 \001(\004\"S\n\005CLINT\022(\n\005state\030\001"
+      " \001(\0132\027.CartesiCore.CLINTStateH\000\022\021\n\007backi"
+      "ng\030\002 \001(\tH\000B\r\n\013clint_oneof\"-\n\tHTIFState\022\020"
+      "\n\010fromhost\030\001 \001(\004\022\016\n\006tohost\030\002 \001(\004\"P\n\004HTIF"
+      "\022\'\n\005state\030\001 \001(\0132\026.CartesiCore.HTIFStateH"
+      "\000\022\021\n\007backing\030\002 \001(\tH\000B\014\n\nhtif_oneof\"\340\001\n\016M"
+      "achineRequest\022)\n\tprocessor\030\001 \001(\0132\026.Carte"
+      "siCore.Processor\022\035\n\003rom\030\002 \001(\0132\020.CartesiC"
+      "ore.ROM\022\035\n\003ram\030\003 \001(\0132\020.CartesiCore.RAM\022!"
+      "\n\005flash\030\004 \003(\0132\022.CartesiCore.Drive\022!\n\005cli"
+      "nt\030\005 \001(\0132\022.CartesiCore.CLINT\022\037\n\004htif\030\006 \001"
+      "(\0132\021.CartesiCore.HTIF\"\033\n\nRunRequest\022\r\n\005l"
+      "imit\030\001 \001(\004\"-\n\013RunResponse\022\016\n\006mcycle\030\001 \001("
+      "\004\022\016\n\006tohost\030\002 \001(\004\"\244\001\n\005Proof\022\017\n\007address\030\001"
+      " \001(\004\022\021\n\tlog2_size\030\002 \001(\r\022&\n\013target_hash\030\003"
+      " \001(\0132\021.CartesiCore.Hash\022)\n\016sibling_hashe"
+      "s\030\004 \003(\0132\021.CartesiCore.Hash\022$\n\troot_hash\030"
+      "\005 \001(\0132\021.CartesiCore.Hash\"\027\n\004Word\022\017\n\007cont"
+      "ent\030\001 \001(\014\"\241\001\n\006Access\022/\n\toperation\030\001 \001(\0162"
+      "\034.CartesiCore.AccessOperation\022\037\n\004read\030\002 "
+      "\001(\0132\021.CartesiCore.Word\022\"\n\007written\030\003 \001(\0132"
+      "\021.CartesiCore.Word\022!\n\005proof\030\004 \001(\0132\022.Cart"
+      "esiCore.Proof\"\241\001\n\013BracketNote\0226\n\004type\030\001 "
+      "\001(\0162(.CartesiCore.BracketNote.BracketNot"
+      "eType\022\r\n\005where\030\002 \001(\004\022\014\n\004text\030\003 \001(\t\"=\n\017Br"
+      "acketNoteType\022\t\n\005DUMMY\020\000\022\t\n\005BEGIN\020\001\022\007\n\003E"
+      "ND\020\002\022\013\n\007INVALID\020\003\"m\n\tAccessLog\022%\n\010access"
+      "es\030\001 \003(\0132\023.CartesiCore.Access\022*\n\010bracket"
+      "s\030\002 \003(\0132\030.CartesiCore.BracketNote\022\r\n\005not"
+      "es\030\003 \003(\t*&\n\017AccessOperation\022\010\n\004READ\020\000\022\t\n"
+      "\005WRITE\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3378);
+      descriptor, 3376);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "cartesi-base.proto", &protobuf_RegisterTypes);
 }
@@ -6492,13 +6492,13 @@ void Processor::InternalSwap(Processor* other) {
 // ===================================================================
 
 void ROM::InitAsDefaultInstance() {
-  ::CartesiCore::_ROM_default_instance_.cmdline_.UnsafeSetDefault(
+  ::CartesiCore::_ROM_default_instance_.bootargs_.UnsafeSetDefault(
       &::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::CartesiCore::_ROM_default_instance_.backing_.UnsafeSetDefault(
       &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ROM::kCmdlineFieldNumber;
+const int ROM::kBootargsFieldNumber;
 const int ROM::kBackingFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -6515,8 +6515,8 @@ ROM::ROM(const ROM& from)
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   clear_has_rom_oneof();
   switch (from.rom_oneof_case()) {
-    case kCmdline: {
-      set_cmdline(from.cmdline());
+    case kBootargs: {
+      set_bootargs(from.bootargs());
       break;
     }
     case kBacking: {
@@ -6562,8 +6562,8 @@ const ROM& ROM::default_instance() {
 void ROM::clear_rom_oneof() {
 // @@protoc_insertion_point(one_of_clear_start:CartesiCore.ROM)
   switch (rom_oneof_case()) {
-    case kCmdline: {
-      rom_oneof_.cmdline_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    case kBootargs: {
+      rom_oneof_.bootargs_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
       break;
     }
     case kBacking: {
@@ -6598,16 +6598,16 @@ bool ROM::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string cmdline = 1;
+      // string bootargs = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_cmdline()));
+                input, this->mutable_bootargs()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->cmdline().data(), static_cast<int>(this->cmdline().length()),
+            this->bootargs().data(), static_cast<int>(this->bootargs().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CartesiCore.ROM.cmdline"));
+            "CartesiCore.ROM.bootargs"));
         } else {
           goto handle_unusual;
         }
@@ -6656,14 +6656,14 @@ void ROM::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string cmdline = 1;
-  if (has_cmdline()) {
+  // string bootargs = 1;
+  if (has_bootargs()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cmdline().data(), static_cast<int>(this->cmdline().length()),
+      this->bootargs().data(), static_cast<int>(this->bootargs().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.ROM.cmdline");
+      "CartesiCore.ROM.bootargs");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->cmdline(), output);
+      1, this->bootargs(), output);
   }
 
   // string backing = 2;
@@ -6690,15 +6690,15 @@ void ROM::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string cmdline = 1;
-  if (has_cmdline()) {
+  // string bootargs = 1;
+  if (has_bootargs()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->cmdline().data(), static_cast<int>(this->cmdline().length()),
+      this->bootargs().data(), static_cast<int>(this->bootargs().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CartesiCore.ROM.cmdline");
+      "CartesiCore.ROM.bootargs");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->cmdline(), target);
+        1, this->bootargs(), target);
   }
 
   // string backing = 2;
@@ -6730,11 +6730,11 @@ size_t ROM::ByteSizeLong() const {
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
   switch (rom_oneof_case()) {
-    // string cmdline = 1;
-    case kCmdline: {
+    // string bootargs = 1;
+    case kBootargs: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->cmdline());
+          this->bootargs());
       break;
     }
     // string backing = 2;
@@ -6776,8 +6776,8 @@ void ROM::MergeFrom(const ROM& from) {
   (void) cached_has_bits;
 
   switch (from.rom_oneof_case()) {
-    case kCmdline: {
-      set_cmdline(from.cmdline());
+    case kBootargs: {
+      set_bootargs(from.bootargs());
       break;
     }
     case kBacking: {
@@ -6830,7 +6830,7 @@ void ROM::InternalSwap(ROM* other) {
 void RAM::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RAM::kIlengthFieldNumber;
+const int RAM::kLengthFieldNumber;
 const int RAM::kBackingFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -6849,13 +6849,13 @@ RAM::RAM(const RAM& from)
   if (from.backing().size() > 0) {
     backing_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.backing_);
   }
-  ilength_ = from.ilength_;
+  length_ = from.length_;
   // @@protoc_insertion_point(copy_constructor:CartesiCore.RAM)
 }
 
 void RAM::SharedCtor() {
   backing_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ilength_ = GOOGLE_ULONGLONG(0);
+  length_ = GOOGLE_ULONGLONG(0);
 }
 
 RAM::~RAM() {
@@ -6888,7 +6888,7 @@ void RAM::Clear() {
   (void) cached_has_bits;
 
   backing_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ilength_ = GOOGLE_ULONGLONG(0);
+  length_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -6902,14 +6902,14 @@ bool RAM::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 ilength = 1;
+      // uint64 length = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &ilength_)));
+                 input, &length_)));
         } else {
           goto handle_unusual;
         }
@@ -6958,9 +6958,9 @@ void RAM::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 ilength = 1;
-  if (this->ilength() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->ilength(), output);
+  // uint64 length = 1;
+  if (this->length() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->length(), output);
   }
 
   // string backing = 2;
@@ -6987,9 +6987,9 @@ void RAM::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 ilength = 1;
-  if (this->ilength() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->ilength(), target);
+  // uint64 length = 1;
+  if (this->length() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->length(), target);
   }
 
   // string backing = 2;
@@ -7027,11 +7027,11 @@ size_t RAM::ByteSizeLong() const {
         this->backing());
   }
 
-  // uint64 ilength = 1;
-  if (this->ilength() != 0) {
+  // uint64 length = 1;
+  if (this->length() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->ilength());
+        this->length());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -7065,8 +7065,8 @@ void RAM::MergeFrom(const RAM& from) {
 
     backing_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.backing_);
   }
-  if (from.ilength() != 0) {
-    set_ilength(from.ilength());
+  if (from.length() != 0) {
+    set_length(from.length());
   }
 }
 
@@ -7096,7 +7096,7 @@ void RAM::InternalSwap(RAM* other) {
   using std::swap;
   backing_.Swap(&other->backing_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(ilength_, other->ilength_);
+  swap(length_, other->length_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -7111,8 +7111,8 @@ void RAM::InternalSwap(RAM* other) {
 void Drive::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Drive::kIstartFieldNumber;
-const int Drive::kIlengthFieldNumber;
+const int Drive::kStartFieldNumber;
+const int Drive::kLengthFieldNumber;
 const int Drive::kBackingFieldNumber;
 const int Drive::kSharedFieldNumber;
 const int Drive::kLabelFieldNumber;
@@ -7137,18 +7137,18 @@ Drive::Drive(const Drive& from)
   if (from.label().size() > 0) {
     label_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.label_);
   }
-  ::memcpy(&istart_, &from.istart_,
+  ::memcpy(&start_, &from.start_,
     static_cast<size_t>(reinterpret_cast<char*>(&shared_) -
-    reinterpret_cast<char*>(&istart_)) + sizeof(shared_));
+    reinterpret_cast<char*>(&start_)) + sizeof(shared_));
   // @@protoc_insertion_point(copy_constructor:CartesiCore.Drive)
 }
 
 void Drive::SharedCtor() {
   backing_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   label_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&istart_, 0, static_cast<size_t>(
+  ::memset(&start_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&shared_) -
-      reinterpret_cast<char*>(&istart_)) + sizeof(shared_));
+      reinterpret_cast<char*>(&start_)) + sizeof(shared_));
 }
 
 Drive::~Drive() {
@@ -7183,9 +7183,9 @@ void Drive::Clear() {
 
   backing_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   label_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&istart_, 0, static_cast<size_t>(
+  ::memset(&start_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&shared_) -
-      reinterpret_cast<char*>(&istart_)) + sizeof(shared_));
+      reinterpret_cast<char*>(&start_)) + sizeof(shared_));
   _internal_metadata_.Clear();
 }
 
@@ -7199,28 +7199,28 @@ bool Drive::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint64 istart = 1;
+      // uint64 start = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &istart_)));
+                 input, &start_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint64 ilength = 2;
+      // uint64 length = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &ilength_)));
+                 input, &length_)));
         } else {
           goto handle_unusual;
         }
@@ -7299,14 +7299,14 @@ void Drive::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 istart = 1;
-  if (this->istart() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->istart(), output);
+  // uint64 start = 1;
+  if (this->start() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->start(), output);
   }
 
-  // uint64 ilength = 2;
-  if (this->ilength() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->ilength(), output);
+  // uint64 length = 2;
+  if (this->length() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->length(), output);
   }
 
   // string backing = 3;
@@ -7348,14 +7348,14 @@ void Drive::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint64 istart = 1;
-  if (this->istart() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->istart(), target);
+  // uint64 start = 1;
+  if (this->start() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->start(), target);
   }
 
-  // uint64 ilength = 2;
-  if (this->ilength() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->ilength(), target);
+  // uint64 length = 2;
+  if (this->length() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->length(), target);
   }
 
   // string backing = 3;
@@ -7416,18 +7416,18 @@ size_t Drive::ByteSizeLong() const {
         this->label());
   }
 
-  // uint64 istart = 1;
-  if (this->istart() != 0) {
+  // uint64 start = 1;
+  if (this->start() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->istart());
+        this->start());
   }
 
-  // uint64 ilength = 2;
-  if (this->ilength() != 0) {
+  // uint64 length = 2;
+  if (this->length() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->ilength());
+        this->length());
   }
 
   // bool shared = 4;
@@ -7470,11 +7470,11 @@ void Drive::MergeFrom(const Drive& from) {
 
     label_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.label_);
   }
-  if (from.istart() != 0) {
-    set_istart(from.istart());
+  if (from.start() != 0) {
+    set_start(from.start());
   }
-  if (from.ilength() != 0) {
-    set_ilength(from.ilength());
+  if (from.length() != 0) {
+    set_length(from.length());
   }
   if (from.shared() != 0) {
     set_shared(from.shared());
@@ -7509,8 +7509,8 @@ void Drive::InternalSwap(Drive* other) {
     GetArenaNoVirtual());
   label_.Swap(&other->label_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(istart_, other->istart_);
-  swap(ilength_, other->ilength_);
+  swap(start_, other->start_);
+  swap(length_, other->length_);
   swap(shared_, other->shared_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }

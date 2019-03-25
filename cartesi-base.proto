@@ -194,19 +194,19 @@ message Processor {
 
 message ROM {
     oneof rom_oneof {
-        string cmdline = 1;
+        string bootargs = 1;
         string backing = 2;
     }
 }
 
 message RAM {
-    uint64 ilength = 1;
+    uint64 length = 1;
     string backing = 2;
 }
 
 message Drive {
-    uint64 istart = 1;
-    uint64 ilength = 2;
+    uint64 start = 1;
+    uint64 length = 2;
     string backing = 3;
     bool shared = 4;
     string label = 5;

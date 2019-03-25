@@ -2048,7 +2048,7 @@ class ROM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   static const ROM& default_instance();
 
   enum RomOneofCase {
-    kCmdline = 1,
+    kBootargs = 1,
     kBacking = 2,
     ROM_ONEOF_NOT_SET = 0,
   };
@@ -2111,22 +2111,22 @@ class ROM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
 
   // accessors -------------------------------------------------------
 
-  // string cmdline = 1;
+  // string bootargs = 1;
   private:
-  bool has_cmdline() const;
+  bool has_bootargs() const;
   public:
-  void clear_cmdline();
-  static const int kCmdlineFieldNumber = 1;
-  const ::std::string& cmdline() const;
-  void set_cmdline(const ::std::string& value);
+  void clear_bootargs();
+  static const int kBootargsFieldNumber = 1;
+  const ::std::string& bootargs() const;
+  void set_bootargs(const ::std::string& value);
   #if LANG_CXX11
-  void set_cmdline(::std::string&& value);
+  void set_bootargs(::std::string&& value);
   #endif
-  void set_cmdline(const char* value);
-  void set_cmdline(const char* value, size_t size);
-  ::std::string* mutable_cmdline();
-  ::std::string* release_cmdline();
-  void set_allocated_cmdline(::std::string* cmdline);
+  void set_bootargs(const char* value);
+  void set_bootargs(const char* value, size_t size);
+  ::std::string* mutable_bootargs();
+  ::std::string* release_bootargs();
+  void set_allocated_bootargs(::std::string* bootargs);
 
   // string backing = 2;
   private:
@@ -2149,7 +2149,7 @@ class ROM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   RomOneofCase rom_oneof_case() const;
   // @@protoc_insertion_point(class_scope:CartesiCore.ROM)
  private:
-  void set_has_cmdline();
+  void set_has_bootargs();
   void set_has_backing();
 
   inline bool has_rom_oneof() const;
@@ -2158,7 +2158,7 @@ class ROM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   union RomOneofUnion {
     RomOneofUnion() {}
-    ::google::protobuf::internal::ArenaStringPtr cmdline_;
+    ::google::protobuf::internal::ArenaStringPtr bootargs_;
     ::google::protobuf::internal::ArenaStringPtr backing_;
   } rom_oneof_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -2269,18 +2269,18 @@ class RAM : public ::google::protobuf::Message /* @@protoc_insertion_point(class
   ::std::string* release_backing();
   void set_allocated_backing(::std::string* backing);
 
-  // uint64 ilength = 1;
-  void clear_ilength();
-  static const int kIlengthFieldNumber = 1;
-  ::google::protobuf::uint64 ilength() const;
-  void set_ilength(::google::protobuf::uint64 value);
+  // uint64 length = 1;
+  void clear_length();
+  static const int kLengthFieldNumber = 1;
+  ::google::protobuf::uint64 length() const;
+  void set_length(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:CartesiCore.RAM)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr backing_;
-  ::google::protobuf::uint64 ilength_;
+  ::google::protobuf::uint64 length_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
 };
@@ -2401,17 +2401,17 @@ class Drive : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   ::std::string* release_label();
   void set_allocated_label(::std::string* label);
 
-  // uint64 istart = 1;
-  void clear_istart();
-  static const int kIstartFieldNumber = 1;
-  ::google::protobuf::uint64 istart() const;
-  void set_istart(::google::protobuf::uint64 value);
+  // uint64 start = 1;
+  void clear_start();
+  static const int kStartFieldNumber = 1;
+  ::google::protobuf::uint64 start() const;
+  void set_start(::google::protobuf::uint64 value);
 
-  // uint64 ilength = 2;
-  void clear_ilength();
-  static const int kIlengthFieldNumber = 2;
-  ::google::protobuf::uint64 ilength() const;
-  void set_ilength(::google::protobuf::uint64 value);
+  // uint64 length = 2;
+  void clear_length();
+  static const int kLengthFieldNumber = 2;
+  ::google::protobuf::uint64 length() const;
+  void set_length(::google::protobuf::uint64 value);
 
   // bool shared = 4;
   void clear_shared();
@@ -2425,8 +2425,8 @@ class Drive : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr backing_;
   ::google::protobuf::internal::ArenaStringPtr label_;
-  ::google::protobuf::uint64 istart_;
-  ::google::protobuf::uint64 ilength_;
+  ::google::protobuf::uint64 start_;
+  ::google::protobuf::uint64 length_;
   bool shared_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_cartesi_2dbase_2eproto::TableStruct;
@@ -6460,97 +6460,97 @@ inline Processor::ProcessorOneofCase Processor::processor_oneof_case() const {
 
 // ROM
 
-// string cmdline = 1;
-inline bool ROM::has_cmdline() const {
-  return rom_oneof_case() == kCmdline;
+// string bootargs = 1;
+inline bool ROM::has_bootargs() const {
+  return rom_oneof_case() == kBootargs;
 }
-inline void ROM::set_has_cmdline() {
-  _oneof_case_[0] = kCmdline;
+inline void ROM::set_has_bootargs() {
+  _oneof_case_[0] = kBootargs;
 }
-inline void ROM::clear_cmdline() {
-  if (has_cmdline()) {
-    rom_oneof_.cmdline_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void ROM::clear_bootargs() {
+  if (has_bootargs()) {
+    rom_oneof_.bootargs_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     clear_has_rom_oneof();
   }
 }
-inline const ::std::string& ROM::cmdline() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.ROM.cmdline)
-  if (has_cmdline()) {
-    return rom_oneof_.cmdline_.GetNoArena();
+inline const ::std::string& ROM::bootargs() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.ROM.bootargs)
+  if (has_bootargs()) {
+    return rom_oneof_.bootargs_.GetNoArena();
   }
   return *&::google::protobuf::internal::GetEmptyStringAlreadyInited();
 }
-inline void ROM::set_cmdline(const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:CartesiCore.ROM.cmdline)
-  if (!has_cmdline()) {
+inline void ROM::set_bootargs(const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:CartesiCore.ROM.bootargs)
+  if (!has_bootargs()) {
     clear_rom_oneof();
-    set_has_cmdline();
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_bootargs();
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  rom_oneof_.cmdline_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CartesiCore.ROM.cmdline)
+  rom_oneof_.bootargs_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CartesiCore.ROM.bootargs)
 }
 #if LANG_CXX11
-inline void ROM::set_cmdline(::std::string&& value) {
-  // @@protoc_insertion_point(field_set:CartesiCore.ROM.cmdline)
-  if (!has_cmdline()) {
+inline void ROM::set_bootargs(::std::string&& value) {
+  // @@protoc_insertion_point(field_set:CartesiCore.ROM.bootargs)
+  if (!has_bootargs()) {
     clear_rom_oneof();
-    set_has_cmdline();
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_bootargs();
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  rom_oneof_.cmdline_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.ROM.cmdline)
+  rom_oneof_.bootargs_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CartesiCore.ROM.bootargs)
 }
 #endif
-inline void ROM::set_cmdline(const char* value) {
+inline void ROM::set_bootargs(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  if (!has_cmdline()) {
+  if (!has_bootargs()) {
     clear_rom_oneof();
-    set_has_cmdline();
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_bootargs();
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  rom_oneof_.cmdline_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  rom_oneof_.bootargs_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CartesiCore.ROM.cmdline)
+  // @@protoc_insertion_point(field_set_char:CartesiCore.ROM.bootargs)
 }
-inline void ROM::set_cmdline(const char* value, size_t size) {
-  if (!has_cmdline()) {
+inline void ROM::set_bootargs(const char* value, size_t size) {
+  if (!has_bootargs()) {
     clear_rom_oneof();
-    set_has_cmdline();
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_bootargs();
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  rom_oneof_.cmdline_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  rom_oneof_.bootargs_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CartesiCore.ROM.cmdline)
+  // @@protoc_insertion_point(field_set_pointer:CartesiCore.ROM.bootargs)
 }
-inline ::std::string* ROM::mutable_cmdline() {
-  if (!has_cmdline()) {
+inline ::std::string* ROM::mutable_bootargs() {
+  if (!has_bootargs()) {
     clear_rom_oneof();
-    set_has_cmdline();
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_bootargs();
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_mutable:CartesiCore.ROM.cmdline)
-  return rom_oneof_.cmdline_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:CartesiCore.ROM.bootargs)
+  return rom_oneof_.bootargs_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ROM::release_cmdline() {
-  // @@protoc_insertion_point(field_release:CartesiCore.ROM.cmdline)
-  if (has_cmdline()) {
+inline ::std::string* ROM::release_bootargs() {
+  // @@protoc_insertion_point(field_release:CartesiCore.ROM.bootargs)
+  if (has_bootargs()) {
     clear_has_rom_oneof();
-    return rom_oneof_.cmdline_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return rom_oneof_.bootargs_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   } else {
     return NULL;
   }
 }
-inline void ROM::set_allocated_cmdline(::std::string* cmdline) {
-  if (!has_cmdline()) {
-    rom_oneof_.cmdline_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void ROM::set_allocated_bootargs(::std::string* bootargs) {
+  if (!has_bootargs()) {
+    rom_oneof_.bootargs_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   clear_rom_oneof();
-  if (cmdline != NULL) {
-    set_has_cmdline();
-    rom_oneof_.cmdline_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cmdline);
+  if (bootargs != NULL) {
+    set_has_bootargs();
+    rom_oneof_.bootargs_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), bootargs);
   }
-  // @@protoc_insertion_point(field_set_allocated:CartesiCore.ROM.cmdline)
+  // @@protoc_insertion_point(field_set_allocated:CartesiCore.ROM.bootargs)
 }
 
 // string backing = 2;
@@ -6659,18 +6659,18 @@ inline ROM::RomOneofCase ROM::rom_oneof_case() const {
 
 // RAM
 
-// uint64 ilength = 1;
-inline void RAM::clear_ilength() {
-  ilength_ = GOOGLE_ULONGLONG(0);
+// uint64 length = 1;
+inline void RAM::clear_length() {
+  length_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 RAM::ilength() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.RAM.ilength)
-  return ilength_;
+inline ::google::protobuf::uint64 RAM::length() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.RAM.length)
+  return length_;
 }
-inline void RAM::set_ilength(::google::protobuf::uint64 value) {
+inline void RAM::set_length(::google::protobuf::uint64 value) {
   
-  ilength_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.RAM.ilength)
+  length_ = value;
+  // @@protoc_insertion_point(field_set:CartesiCore.RAM.length)
 }
 
 // string backing = 2;
@@ -6730,32 +6730,32 @@ inline void RAM::set_allocated_backing(::std::string* backing) {
 
 // Drive
 
-// uint64 istart = 1;
-inline void Drive::clear_istart() {
-  istart_ = GOOGLE_ULONGLONG(0);
+// uint64 start = 1;
+inline void Drive::clear_start() {
+  start_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 Drive::istart() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.Drive.istart)
-  return istart_;
+inline ::google::protobuf::uint64 Drive::start() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Drive.start)
+  return start_;
 }
-inline void Drive::set_istart(::google::protobuf::uint64 value) {
+inline void Drive::set_start(::google::protobuf::uint64 value) {
   
-  istart_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.Drive.istart)
+  start_ = value;
+  // @@protoc_insertion_point(field_set:CartesiCore.Drive.start)
 }
 
-// uint64 ilength = 2;
-inline void Drive::clear_ilength() {
-  ilength_ = GOOGLE_ULONGLONG(0);
+// uint64 length = 2;
+inline void Drive::clear_length() {
+  length_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint64 Drive::ilength() const {
-  // @@protoc_insertion_point(field_get:CartesiCore.Drive.ilength)
-  return ilength_;
+inline ::google::protobuf::uint64 Drive::length() const {
+  // @@protoc_insertion_point(field_get:CartesiCore.Drive.length)
+  return length_;
 }
-inline void Drive::set_ilength(::google::protobuf::uint64 value) {
+inline void Drive::set_length(::google::protobuf::uint64 value) {
   
-  ilength_ = value;
-  // @@protoc_insertion_point(field_set:CartesiCore.Drive.ilength)
+  length_ = value;
+  // @@protoc_insertion_point(field_set:CartesiCore.Drive.length)
 }
 
 // string backing = 3;
