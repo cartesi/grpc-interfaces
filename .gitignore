@@ -1,2 +1,3 @@
 cpp/*.o
+*.swp
 py/__pycache__
