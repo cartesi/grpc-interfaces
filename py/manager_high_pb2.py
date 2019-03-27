@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='CartesiManagerHigh',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12manager-high.proto\x12\x12\x43\x61rtesiManagerHigh\x1a\x12\x63\x61rtesi-base.proto\"U\n\x11NewSessionRequest\x12,\n\x07machine\x18\x01 \x01(\x0b\x32\x1b.CartesiCore.MachineRequest\x12\x12\n\nsession_id\x18\x02 \x01(\t\"6\n\x11SessionRunRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\r\n\x05times\x18\x02 \x03(\x04\"b\n\x10SessionRunResult\x12+\n\tsummaries\x18\x01 \x03(\x0b\x32\x18.CartesiCore.RunResponse\x12!\n\x06hashes\x18\x02 \x03(\x0b\x32\x11.CartesiCore.Hash\"6\n\x12SessionStepRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x04\"8\n\x11SessionStepResult\x12#\n\x03log\x18\x01 \x01(\x0b\x32\x16.CartesiCore.AccessLog2\x9b\x02\n\x12MachineManagerHigh\x12H\n\nNewSession\x12%.CartesiManagerHigh.NewSessionRequest\x1a\x11.CartesiCore.Hash\"\x00\x12[\n\nSessionRun\x12%.CartesiManagerHigh.SessionRunRequest\x1a$.CartesiManagerHigh.SessionRunResult\"\x00\x12^\n\x0bSessionStep\x12&.CartesiManagerHigh.SessionStepRequest\x1a%.CartesiManagerHigh.SessionStepResult\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x12manager-high.proto\x12\x12\x43\x61rtesiManagerHigh\x1a\x12\x63\x61rtesi-base.proto\"U\n\x11NewSessionRequest\x12,\n\x07machine\x18\x01 \x01(\x0b\x32\x1b.CartesiCore.MachineRequest\x12\x12\n\nsession_id\x18\x02 \x01(\t\"=\n\x11SessionRunRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66inal_cycles\x18\x02 \x03(\x04\"b\n\x10SessionRunResult\x12+\n\tsummaries\x18\x01 \x03(\x0b\x32\x18.CartesiCore.RunResponse\x12!\n\x06hashes\x18\x02 \x03(\x0b\x32\x11.CartesiCore.Hash\"?\n\x12SessionStepRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\x15\n\rinitial_cycle\x18\x02 \x01(\x04\"8\n\x11SessionStepResult\x12#\n\x03log\x18\x01 \x01(\x0b\x32\x16.CartesiCore.AccessLog2\x9b\x02\n\x12MachineManagerHigh\x12H\n\nNewSession\x12%.CartesiManagerHigh.NewSessionRequest\x1a\x11.CartesiCore.Hash\"\x00\x12[\n\nSessionRun\x12%.CartesiManagerHigh.SessionRunRequest\x1a$.CartesiManagerHigh.SessionRunResult\"\x00\x12^\n\x0bSessionStep\x12&.CartesiManagerHigh.SessionStepRequest\x1a%.CartesiManagerHigh.SessionStepResult\"\x00\x62\x06proto3')
   ,
   dependencies=[cartesi__base__pb2.DESCRIPTOR,])
 
@@ -80,7 +80,7 @@ _SESSIONRUNREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='times', full_name='CartesiManagerHigh.SessionRunRequest.times', index=1,
+      name='final_cycles', full_name='CartesiManagerHigh.SessionRunRequest.final_cycles', index=1,
       number=2, type=4, cpp_type=4, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -99,7 +99,7 @@ _SESSIONRUNREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=149,
-  serialized_end=203,
+  serialized_end=210,
 )
 
 
@@ -136,8 +136,8 @@ _SESSIONRUNRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=205,
-  serialized_end=303,
+  serialized_start=212,
+  serialized_end=310,
 )
 
 
@@ -156,7 +156,7 @@ _SESSIONSTEPREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='time', full_name='CartesiManagerHigh.SessionStepRequest.time', index=1,
+      name='initial_cycle', full_name='CartesiManagerHigh.SessionStepRequest.initial_cycle', index=1,
       number=2, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -174,8 +174,8 @@ _SESSIONSTEPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=305,
-  serialized_end=359,
+  serialized_start=312,
+  serialized_end=375,
 )
 
 
@@ -205,8 +205,8 @@ _SESSIONSTEPRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=361,
-  serialized_end=417,
+  serialized_start=377,
+  serialized_end=433,
 )
 
 _NEWSESSIONREQUEST.fields_by_name['machine'].message_type = cartesi__base__pb2._MACHINEREQUEST
@@ -263,8 +263,8 @@ _MACHINEMANAGERHIGH = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=420,
-  serialized_end=703,
+  serialized_start=436,
+  serialized_end=719,
   methods=[
   _descriptor.MethodDescriptor(
     name='NewSession',

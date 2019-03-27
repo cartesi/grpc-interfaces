@@ -17,7 +17,7 @@ message NewSessionRequest {
 
 message SessionRunRequest {
     string session_id = 1;
-    repeated uint64 times = 2;
+    repeated uint64 final_cycles = 2;
 }
 
 message SessionRunResult {
@@ -27,7 +27,7 @@ message SessionRunResult {
 
 message SessionStepRequest {
     string session_id = 1;
-    uint64 time = 2;
+    uint64 initial_cycle = 2;
 }
 
 message SessionStepResult {
