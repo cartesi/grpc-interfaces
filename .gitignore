@@ -1,1 +1,6 @@
 *.swp
+emulator_interface/proto/target/
+emulator_interface/target/
+emulator_interface/proto/src/cartesi_base.rs
+emulator_interface/proto/src/manager_high.rs
+emulator_interface/proto/src/manager_high_grpc.rs
