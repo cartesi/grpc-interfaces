@@ -10,8 +10,6 @@ service Machine {
     rpc Snapshot (Void) returns (Void) {}
     rpc Rollback (Void) returns (Void) {}
     rpc Shutdown (Void) returns (Void) {}
-    rpc Inc (Void) returns (Void) {}
-    rpc Print (Void) returns (Void) {}
     rpc Step (Void) returns (AccessLog) {}
     rpc GetRootHash (Void) returns (Hash) {}
 }
