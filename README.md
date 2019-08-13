@@ -13,7 +13,7 @@ This repository is not intended for standalone usage. Every repository that make
 
 ## Contributing
 
-Pull requests are welcome. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+Thank you for your interest in Cartesi! Head over to our [Contributing Guidelines](https://github.com/cartesi/grpc-interfaces/blob/master/CONTRIBUTING.md) for instructions on how to sign our Contributors Agreement and get started with Cartesi!
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
@@ -25,8 +25,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## License
 
-The grpc-interfaces repository and all contributions are licensed under
-[APACHE 2.0](https://www.apache.org/licenses/LICENSE-2.0). Please review our [LICENSE](https://github.com/cartesi/grpc-interfaces/blob/master/LICENSE) file.
+The grpc-interfaces repository and all contributions are licensed under [APACHE 2.0](https://www.apache.org/licenses/LICENSE-2.0). Please review our [LICENSE](https://github.com/cartesi/grpc-interfaces/blob/master/LICENSE) file.
 
 ## Acknowledgments
 
