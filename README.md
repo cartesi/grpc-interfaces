@@ -15,7 +15,7 @@ This repository is not intended for standalone usage. Every repository that make
 
 Thank you for your interest in Cartesi! Head over to our [Contributing Guidelines](https://github.com/cartesi/grpc-interfaces/blob/master/CONTRIBUTING.md) for instructions on how to sign our Contributors Agreement and get started with Cartesi!
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+Please note we have a [Code of Conduct](https://github.com/cartesi/grpc-interfaces/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 ## Authors
 
