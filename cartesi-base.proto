@@ -302,6 +302,20 @@ message BracketNote {
     string text = 3;
 }
 
+message ReadMemoryRequest {
+    uint64 address = 1;
+    uint64 length = 2;
+}
+
+message ReadMemoryResponse {
+    bytes data = 1;
+}
+
+message WriteMemoryRequest {
+    uint64 address = 1;
+    bytes data = 2;
+}
+
 message AccessLog {
     repeated Access accesses = 1;
     repeated BracketNote brackets = 2;
