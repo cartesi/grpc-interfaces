@@ -23,6 +23,8 @@ service Machine {
     rpc Rollback (Void) returns (Void) {}
     rpc Shutdown (Void) returns (Void) {}
     rpc Step (Void) returns (AccessLog) {}
+    rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
+    rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
     rpc GetRootHash (Void) returns (Hash) {}
 }
 
