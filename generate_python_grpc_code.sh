@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 GRPC_PY_DIR=py
 python3 -m grpc_tools.protoc  -I. --python_out=$GRPC_PY_DIR --grpc_python_out=$GRPC_PY_DIR core.proto
