@@ -311,6 +311,11 @@ message ReadMemoryResponse {
     bytes data = 1;
 }
 
+message GetProofRequest {
+    uint64 address = 1;
+    uint64 log2_size = 2;
+}
+
 message WriteMemoryRequest {
     uint64 address = 1;
     bytes data = 2;

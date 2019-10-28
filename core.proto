@@ -26,6 +26,7 @@ service Machine {
     rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
     rpc GetRootHash (Void) returns (Hash) {}
+    rpc GetProof (GetProofRequest) returns (Proof) {}
 }
 
 
