@@ -20,6 +20,9 @@ service MachineManagerHigh {
     rpc NewSession (NewSessionRequest) returns (CartesiCore.Hash) {}
     rpc SessionRun (SessionRunRequest) returns (SessionRunResult) {}
     rpc SessionStep (SessionStepRequest) returns (SessionStepResult) {}
+    rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResult) {}
+    rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiCore.Void) {}
+    rpc SessionGetProof (SessionGetProofRequest) returns (CartesiCore.Proof) {}
 }
 
 message NewSessionRequest {
@@ -44,4 +47,23 @@ message SessionStepRequest {
 
 message SessionStepResult {
     CartesiCore.AccessLog log = 1;
+}
+
+message SessionReadMemoryRequest {
+    string session_id = 1;
+    CartesiCore.ReadMemoryRequest position = 2;
+}
+
+message SessionReadMemoryResult {
+    CartesiCore.ReadMemoryResponse read_content = 1;
+}
+
+message SessionWriteMemoryRequest {
+    string session_id = 1;
+    CartesiCore.WriteMemoryRequest position = 2;
+}
+
+message SessionGetProofRequest {
+    string session_id = 1;
+    CartesiCore.GetProofRequest target = 2;
 }
