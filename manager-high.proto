@@ -51,7 +51,8 @@ message SessionStepResult {
 
 message SessionReadMemoryRequest {
     string session_id = 1;
-    CartesiCore.ReadMemoryRequest position = 2;
+    uint64 cycle = 2;
+    CartesiCore.ReadMemoryRequest position = 3;
 }
 
 message SessionReadMemoryResult {
@@ -60,10 +61,12 @@ message SessionReadMemoryResult {
 
 message SessionWriteMemoryRequest {
     string session_id = 1;
-    CartesiCore.WriteMemoryRequest position = 2;
+    uint64 cycle = 2;
+    CartesiCore.WriteMemoryRequest position = 3;
 }
 
 message SessionGetProofRequest {
     string session_id = 1;
-    CartesiCore.GetProofRequest target = 2;
+    uint64 cycle = 2;
+    CartesiCore.GetProofRequest target = 3;
 }
