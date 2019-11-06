@@ -1075,6 +1075,973 @@ impl ::protobuf::reflect::ProtobufValue for SessionStepResult {
     }
 }
 
+#[derive(PartialEq,Clone,Default)]
+pub struct SessionReadMemoryRequest {
+    // message fields
+    pub session_id: ::std::string::String,
+    pub cycle: u64,
+    pub position: ::protobuf::SingularPtrField<super::cartesi_base::ReadMemoryRequest>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a SessionReadMemoryRequest {
+    fn default() -> &'a SessionReadMemoryRequest {
+        <SessionReadMemoryRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl SessionReadMemoryRequest {
+    pub fn new() -> SessionReadMemoryRequest {
+        ::std::default::Default::default()
+    }
+
+    // string session_id = 1;
+
+
+    pub fn get_session_id(&self) -> &str {
+        &self.session_id
+    }
+    pub fn clear_session_id(&mut self) {
+        self.session_id.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_session_id(&mut self, v: ::std::string::String) {
+        self.session_id = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_session_id(&mut self) -> &mut ::std::string::String {
+        &mut self.session_id
+    }
+
+    // Take field
+    pub fn take_session_id(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.session_id, ::std::string::String::new())
+    }
+
+    // uint64 cycle = 2;
+
+
+    pub fn get_cycle(&self) -> u64 {
+        self.cycle
+    }
+    pub fn clear_cycle(&mut self) {
+        self.cycle = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cycle(&mut self, v: u64) {
+        self.cycle = v;
+    }
+
+    // .CartesiCore.ReadMemoryRequest position = 3;
+
+
+    pub fn get_position(&self) -> &super::cartesi_base::ReadMemoryRequest {
+        self.position.as_ref().unwrap_or_else(|| super::cartesi_base::ReadMemoryRequest::default_instance())
+    }
+    pub fn clear_position(&mut self) {
+        self.position.clear();
+    }
+
+    pub fn has_position(&self) -> bool {
+        self.position.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_position(&mut self, v: super::cartesi_base::ReadMemoryRequest) {
+        self.position = ::protobuf::SingularPtrField::some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_position(&mut self) -> &mut super::cartesi_base::ReadMemoryRequest {
+        if self.position.is_none() {
+            self.position.set_default();
+        }
+        self.position.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_position(&mut self) -> super::cartesi_base::ReadMemoryRequest {
+        self.position.take().unwrap_or_else(|| super::cartesi_base::ReadMemoryRequest::new())
+    }
+}
+
+impl ::protobuf::Message for SessionReadMemoryRequest {
+    fn is_initialized(&self) -> bool {
+        for v in &self.position {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.session_id)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.cycle = tmp;
+                },
+                3 => {
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.position)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.session_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.session_id);
+        }
+        if self.cycle != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.cycle, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if let Some(ref v) = self.position.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.session_id.is_empty() {
+            os.write_string(1, &self.session_id)?;
+        }
+        if self.cycle != 0 {
+            os.write_uint64(2, self.cycle)?;
+        }
+        if let Some(ref v) = self.position.as_ref() {
+            os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> SessionReadMemoryRequest {
+        SessionReadMemoryRequest::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "session_id",
+                    |m: &SessionReadMemoryRequest| { &m.session_id },
+                    |m: &mut SessionReadMemoryRequest| { &mut m.session_id },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "cycle",
+                    |m: &SessionReadMemoryRequest| { &m.cycle },
+                    |m: &mut SessionReadMemoryRequest| { &mut m.cycle },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::cartesi_base::ReadMemoryRequest>>(
+                    "position",
+                    |m: &SessionReadMemoryRequest| { &m.position },
+                    |m: &mut SessionReadMemoryRequest| { &mut m.position },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<SessionReadMemoryRequest>(
+                    "SessionReadMemoryRequest",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static SessionReadMemoryRequest {
+        static mut instance: ::protobuf::lazy::Lazy<SessionReadMemoryRequest> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const SessionReadMemoryRequest,
+        };
+        unsafe {
+            instance.get(SessionReadMemoryRequest::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for SessionReadMemoryRequest {
+    fn clear(&mut self) {
+        self.session_id.clear();
+        self.cycle = 0;
+        self.position.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for SessionReadMemoryRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for SessionReadMemoryRequest {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct SessionReadMemoryResult {
+    // message fields
+    pub read_content: ::protobuf::SingularPtrField<super::cartesi_base::ReadMemoryResponse>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a SessionReadMemoryResult {
+    fn default() -> &'a SessionReadMemoryResult {
+        <SessionReadMemoryResult as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl SessionReadMemoryResult {
+    pub fn new() -> SessionReadMemoryResult {
+        ::std::default::Default::default()
+    }
+
+    // .CartesiCore.ReadMemoryResponse read_content = 1;
+
+
+    pub fn get_read_content(&self) -> &super::cartesi_base::ReadMemoryResponse {
+        self.read_content.as_ref().unwrap_or_else(|| super::cartesi_base::ReadMemoryResponse::default_instance())
+    }
+    pub fn clear_read_content(&mut self) {
+        self.read_content.clear();
+    }
+
+    pub fn has_read_content(&self) -> bool {
+        self.read_content.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_read_content(&mut self, v: super::cartesi_base::ReadMemoryResponse) {
+        self.read_content = ::protobuf::SingularPtrField::some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_read_content(&mut self) -> &mut super::cartesi_base::ReadMemoryResponse {
+        if self.read_content.is_none() {
+            self.read_content.set_default();
+        }
+        self.read_content.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_read_content(&mut self) -> super::cartesi_base::ReadMemoryResponse {
+        self.read_content.take().unwrap_or_else(|| super::cartesi_base::ReadMemoryResponse::new())
+    }
+}
+
+impl ::protobuf::Message for SessionReadMemoryResult {
+    fn is_initialized(&self) -> bool {
+        for v in &self.read_content {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.read_content)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if let Some(ref v) = self.read_content.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if let Some(ref v) = self.read_content.as_ref() {
+            os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> SessionReadMemoryResult {
+        SessionReadMemoryResult::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::cartesi_base::ReadMemoryResponse>>(
+                    "read_content",
+                    |m: &SessionReadMemoryResult| { &m.read_content },
+                    |m: &mut SessionReadMemoryResult| { &mut m.read_content },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<SessionReadMemoryResult>(
+                    "SessionReadMemoryResult",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static SessionReadMemoryResult {
+        static mut instance: ::protobuf::lazy::Lazy<SessionReadMemoryResult> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const SessionReadMemoryResult,
+        };
+        unsafe {
+            instance.get(SessionReadMemoryResult::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for SessionReadMemoryResult {
+    fn clear(&mut self) {
+        self.read_content.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for SessionReadMemoryResult {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for SessionReadMemoryResult {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct SessionWriteMemoryRequest {
+    // message fields
+    pub session_id: ::std::string::String,
+    pub cycle: u64,
+    pub position: ::protobuf::SingularPtrField<super::cartesi_base::WriteMemoryRequest>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a SessionWriteMemoryRequest {
+    fn default() -> &'a SessionWriteMemoryRequest {
+        <SessionWriteMemoryRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl SessionWriteMemoryRequest {
+    pub fn new() -> SessionWriteMemoryRequest {
+        ::std::default::Default::default()
+    }
+
+    // string session_id = 1;
+
+
+    pub fn get_session_id(&self) -> &str {
+        &self.session_id
+    }
+    pub fn clear_session_id(&mut self) {
+        self.session_id.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_session_id(&mut self, v: ::std::string::String) {
+        self.session_id = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_session_id(&mut self) -> &mut ::std::string::String {
+        &mut self.session_id
+    }
+
+    // Take field
+    pub fn take_session_id(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.session_id, ::std::string::String::new())
+    }
+
+    // uint64 cycle = 2;
+
+
+    pub fn get_cycle(&self) -> u64 {
+        self.cycle
+    }
+    pub fn clear_cycle(&mut self) {
+        self.cycle = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cycle(&mut self, v: u64) {
+        self.cycle = v;
+    }
+
+    // .CartesiCore.WriteMemoryRequest position = 3;
+
+
+    pub fn get_position(&self) -> &super::cartesi_base::WriteMemoryRequest {
+        self.position.as_ref().unwrap_or_else(|| super::cartesi_base::WriteMemoryRequest::default_instance())
+    }
+    pub fn clear_position(&mut self) {
+        self.position.clear();
+    }
+
+    pub fn has_position(&self) -> bool {
+        self.position.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_position(&mut self, v: super::cartesi_base::WriteMemoryRequest) {
+        self.position = ::protobuf::SingularPtrField::some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_position(&mut self) -> &mut super::cartesi_base::WriteMemoryRequest {
+        if self.position.is_none() {
+            self.position.set_default();
+        }
+        self.position.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_position(&mut self) -> super::cartesi_base::WriteMemoryRequest {
+        self.position.take().unwrap_or_else(|| super::cartesi_base::WriteMemoryRequest::new())
+    }
+}
+
+impl ::protobuf::Message for SessionWriteMemoryRequest {
+    fn is_initialized(&self) -> bool {
+        for v in &self.position {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.session_id)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.cycle = tmp;
+                },
+                3 => {
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.position)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.session_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.session_id);
+        }
+        if self.cycle != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.cycle, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if let Some(ref v) = self.position.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.session_id.is_empty() {
+            os.write_string(1, &self.session_id)?;
+        }
+        if self.cycle != 0 {
+            os.write_uint64(2, self.cycle)?;
+        }
+        if let Some(ref v) = self.position.as_ref() {
+            os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> SessionWriteMemoryRequest {
+        SessionWriteMemoryRequest::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "session_id",
+                    |m: &SessionWriteMemoryRequest| { &m.session_id },
+                    |m: &mut SessionWriteMemoryRequest| { &mut m.session_id },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "cycle",
+                    |m: &SessionWriteMemoryRequest| { &m.cycle },
+                    |m: &mut SessionWriteMemoryRequest| { &mut m.cycle },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::cartesi_base::WriteMemoryRequest>>(
+                    "position",
+                    |m: &SessionWriteMemoryRequest| { &m.position },
+                    |m: &mut SessionWriteMemoryRequest| { &mut m.position },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<SessionWriteMemoryRequest>(
+                    "SessionWriteMemoryRequest",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static SessionWriteMemoryRequest {
+        static mut instance: ::protobuf::lazy::Lazy<SessionWriteMemoryRequest> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const SessionWriteMemoryRequest,
+        };
+        unsafe {
+            instance.get(SessionWriteMemoryRequest::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for SessionWriteMemoryRequest {
+    fn clear(&mut self) {
+        self.session_id.clear();
+        self.cycle = 0;
+        self.position.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for SessionWriteMemoryRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for SessionWriteMemoryRequest {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct SessionGetProofRequest {
+    // message fields
+    pub session_id: ::std::string::String,
+    pub cycle: u64,
+    pub target: ::protobuf::SingularPtrField<super::cartesi_base::GetProofRequest>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a SessionGetProofRequest {
+    fn default() -> &'a SessionGetProofRequest {
+        <SessionGetProofRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl SessionGetProofRequest {
+    pub fn new() -> SessionGetProofRequest {
+        ::std::default::Default::default()
+    }
+
+    // string session_id = 1;
+
+
+    pub fn get_session_id(&self) -> &str {
+        &self.session_id
+    }
+    pub fn clear_session_id(&mut self) {
+        self.session_id.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_session_id(&mut self, v: ::std::string::String) {
+        self.session_id = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_session_id(&mut self) -> &mut ::std::string::String {
+        &mut self.session_id
+    }
+
+    // Take field
+    pub fn take_session_id(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.session_id, ::std::string::String::new())
+    }
+
+    // uint64 cycle = 2;
+
+
+    pub fn get_cycle(&self) -> u64 {
+        self.cycle
+    }
+    pub fn clear_cycle(&mut self) {
+        self.cycle = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_cycle(&mut self, v: u64) {
+        self.cycle = v;
+    }
+
+    // .CartesiCore.GetProofRequest target = 3;
+
+
+    pub fn get_target(&self) -> &super::cartesi_base::GetProofRequest {
+        self.target.as_ref().unwrap_or_else(|| super::cartesi_base::GetProofRequest::default_instance())
+    }
+    pub fn clear_target(&mut self) {
+        self.target.clear();
+    }
+
+    pub fn has_target(&self) -> bool {
+        self.target.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_target(&mut self, v: super::cartesi_base::GetProofRequest) {
+        self.target = ::protobuf::SingularPtrField::some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_target(&mut self) -> &mut super::cartesi_base::GetProofRequest {
+        if self.target.is_none() {
+            self.target.set_default();
+        }
+        self.target.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_target(&mut self) -> super::cartesi_base::GetProofRequest {
+        self.target.take().unwrap_or_else(|| super::cartesi_base::GetProofRequest::new())
+    }
+}
+
+impl ::protobuf::Message for SessionGetProofRequest {
+    fn is_initialized(&self) -> bool {
+        for v in &self.target {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.session_id)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.cycle = tmp;
+                },
+                3 => {
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.target)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.session_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.session_id);
+        }
+        if self.cycle != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.cycle, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if let Some(ref v) = self.target.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.session_id.is_empty() {
+            os.write_string(1, &self.session_id)?;
+        }
+        if self.cycle != 0 {
+            os.write_uint64(2, self.cycle)?;
+        }
+        if let Some(ref v) = self.target.as_ref() {
+            os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> SessionGetProofRequest {
+        SessionGetProofRequest::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "session_id",
+                    |m: &SessionGetProofRequest| { &m.session_id },
+                    |m: &mut SessionGetProofRequest| { &mut m.session_id },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "cycle",
+                    |m: &SessionGetProofRequest| { &m.cycle },
+                    |m: &mut SessionGetProofRequest| { &mut m.cycle },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::cartesi_base::GetProofRequest>>(
+                    "target",
+                    |m: &SessionGetProofRequest| { &m.target },
+                    |m: &mut SessionGetProofRequest| { &mut m.target },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<SessionGetProofRequest>(
+                    "SessionGetProofRequest",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static SessionGetProofRequest {
+        static mut instance: ::protobuf::lazy::Lazy<SessionGetProofRequest> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const SessionGetProofRequest,
+        };
+        unsafe {
+            instance.get(SessionGetProofRequest::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for SessionGetProofRequest {
+    fn clear(&mut self) {
+        self.session_id.clear();
+        self.cycle = 0;
+        self.target.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for SessionGetProofRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for SessionGetProofRequest {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x12manager-high.proto\x12\x12CartesiManagerHigh\x1a\x12cartesi-base.p\
     roto\"i\n\x11NewSessionRequest\x125\n\x07machine\x18\x01\x20\x01(\x0b2\
@@ -1087,11 +2054,28 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     nStepRequest\x12\x1d\n\nsession_id\x18\x01\x20\x01(\tR\tsessionId\x12#\n\
     \rinitial_cycle\x18\x02\x20\x01(\x04R\x0cinitialCycle\"=\n\x11SessionSte\
     pResult\x12(\n\x03log\x18\x01\x20\x01(\x0b2\x16.CartesiCore.AccessLogR\
-    \x03log2\x9b\x02\n\x12MachineManagerHigh\x12H\n\nNewSession\x12%.Cartesi\
-    ManagerHigh.NewSessionRequest\x1a\x11.CartesiCore.Hash\"\0\x12[\n\nSessi\
-    onRun\x12%.CartesiManagerHigh.SessionRunRequest\x1a$.CartesiManagerHigh.\
-    SessionRunResult\"\0\x12^\n\x0bSessionStep\x12&.CartesiManagerHigh.Sessi\
-    onStepRequest\x1a%.CartesiManagerHigh.SessionStepResult\"\0b\x06proto3\
+    \x03log\"\x8b\x01\n\x18SessionReadMemoryRequest\x12\x1d\n\nsession_id\
+    \x18\x01\x20\x01(\tR\tsessionId\x12\x14\n\x05cycle\x18\x02\x20\x01(\x04R\
+    \x05cycle\x12:\n\x08position\x18\x03\x20\x01(\x0b2\x1e.CartesiCore.ReadM\
+    emoryRequestR\x08position\"]\n\x17SessionReadMemoryResult\x12B\n\x0cread\
+    _content\x18\x01\x20\x01(\x0b2\x1f.CartesiCore.ReadMemoryResponseR\x0bre\
+    adContent\"\x8d\x01\n\x19SessionWriteMemoryRequest\x12\x1d\n\nsession_id\
+    \x18\x01\x20\x01(\tR\tsessionId\x12\x14\n\x05cycle\x18\x02\x20\x01(\x04R\
+    \x05cycle\x12;\n\x08position\x18\x03\x20\x01(\x0b2\x1f.CartesiCore.Write\
+    MemoryRequestR\x08position\"\x83\x01\n\x16SessionGetProofRequest\x12\x1d\
+    \n\nsession_id\x18\x01\x20\x01(\tR\tsessionId\x12\x14\n\x05cycle\x18\x02\
+    \x20\x01(\x04R\x05cycle\x124\n\x06target\x18\x03\x20\x01(\x0b2\x1c.Carte\
+    siCore.GetProofRequestR\x06target2\xbc\x04\n\x12MachineManagerHigh\x12H\
+    \n\nNewSession\x12%.CartesiManagerHigh.NewSessionRequest\x1a\x11.Cartesi\
+    Core.Hash\"\0\x12[\n\nSessionRun\x12%.CartesiManagerHigh.SessionRunReque\
+    st\x1a$.CartesiManagerHigh.SessionRunResult\"\0\x12^\n\x0bSessionStep\
+    \x12&.CartesiManagerHigh.SessionStepRequest\x1a%.CartesiManagerHigh.Sess\
+    ionStepResult\"\0\x12p\n\x11SessionReadMemory\x12,.CartesiManagerHigh.Se\
+    ssionReadMemoryRequest\x1a+.CartesiManagerHigh.SessionReadMemoryResult\"\
+    \0\x12X\n\x12SessionWriteMemory\x12-.CartesiManagerHigh.SessionWriteMemo\
+    ryRequest\x1a\x11.CartesiCore.Void\"\0\x12S\n\x0fSessionGetProof\x12*.Ca\
+    rtesiManagerHigh.SessionGetProofRequest\x1a\x12.CartesiCore.Proof\"\0b\
+    \x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {
