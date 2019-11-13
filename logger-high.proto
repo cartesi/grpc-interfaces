@@ -17,8 +17,20 @@ import "cartesi-base.proto";
 package LoggerManagerHigh;
 
 service LoggerManagerHigh {
-    rpc SubmitFile (FilePath) returns (CartesiCore.Hash) {}
-    rpc DownloadFile (CartesiCore.Hash) returns (FilePath) {}
+    rpc SubmitFile (SubmitFileRequest) returns (CartesiCore.Hash) {}
+    rpc DownloadFile (DownloadFileRequest) returns (FilePath) {}
+}
+
+message DownloadFileRequest {
+    CartesiCore.Hash root = 1;
+    uint64 page_log2_size = 2;
+    uint64 tree_log2_size = 3;
+}
+
+message SubmitFileRequest {
+    string path = 1;
+    uint64 page_log2_size = 2;
+    uint64 tree_log2_size = 3;
 }
 
 message FilePath {
