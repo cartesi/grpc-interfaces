@@ -22,9 +22,10 @@ service LoggerManagerHigh {
 }
 
 message DownloadFileRequest {
-    CartesiCore.Hash root = 1;
-    uint64 page_log2_size = 2;
-    uint64 tree_log2_size = 3;
+    string path = 1;
+    CartesiCore.Hash root = 2;
+    uint64 page_log2_size = 3;
+    uint64 tree_log2_size = 4;
 }
 
 message SubmitFileRequest {

@@ -27,6 +27,541 @@ use protobuf::ProtobufEnum as ProtobufEnum_imported_for_functions;
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_7_0;
 
 #[derive(PartialEq,Clone,Default)]
+pub struct DownloadFileRequest {
+    // message fields
+    pub path: ::std::string::String,
+    pub root: ::protobuf::SingularPtrField<super::cartesi_base::Hash>,
+    pub page_log2_size: u64,
+    pub tree_log2_size: u64,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a DownloadFileRequest {
+    fn default() -> &'a DownloadFileRequest {
+        <DownloadFileRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl DownloadFileRequest {
+    pub fn new() -> DownloadFileRequest {
+        ::std::default::Default::default()
+    }
+
+    // string path = 1;
+
+
+    pub fn get_path(&self) -> &str {
+        &self.path
+    }
+    pub fn clear_path(&mut self) {
+        self.path.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_path(&mut self, v: ::std::string::String) {
+        self.path = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_path(&mut self) -> &mut ::std::string::String {
+        &mut self.path
+    }
+
+    // Take field
+    pub fn take_path(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.path, ::std::string::String::new())
+    }
+
+    // .CartesiCore.Hash root = 2;
+
+
+    pub fn get_root(&self) -> &super::cartesi_base::Hash {
+        self.root.as_ref().unwrap_or_else(|| super::cartesi_base::Hash::default_instance())
+    }
+    pub fn clear_root(&mut self) {
+        self.root.clear();
+    }
+
+    pub fn has_root(&self) -> bool {
+        self.root.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_root(&mut self, v: super::cartesi_base::Hash) {
+        self.root = ::protobuf::SingularPtrField::some(v);
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_root(&mut self) -> &mut super::cartesi_base::Hash {
+        if self.root.is_none() {
+            self.root.set_default();
+        }
+        self.root.as_mut().unwrap()
+    }
+
+    // Take field
+    pub fn take_root(&mut self) -> super::cartesi_base::Hash {
+        self.root.take().unwrap_or_else(|| super::cartesi_base::Hash::new())
+    }
+
+    // uint64 page_log2_size = 3;
+
+
+    pub fn get_page_log2_size(&self) -> u64 {
+        self.page_log2_size
+    }
+    pub fn clear_page_log2_size(&mut self) {
+        self.page_log2_size = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_page_log2_size(&mut self, v: u64) {
+        self.page_log2_size = v;
+    }
+
+    // uint64 tree_log2_size = 4;
+
+
+    pub fn get_tree_log2_size(&self) -> u64 {
+        self.tree_log2_size
+    }
+    pub fn clear_tree_log2_size(&mut self) {
+        self.tree_log2_size = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_tree_log2_size(&mut self, v: u64) {
+        self.tree_log2_size = v;
+    }
+}
+
+impl ::protobuf::Message for DownloadFileRequest {
+    fn is_initialized(&self) -> bool {
+        for v in &self.root {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.path)?;
+                },
+                2 => {
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.root)?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.page_log2_size = tmp;
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.tree_log2_size = tmp;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.path.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.path);
+        }
+        if let Some(ref v) = self.root.as_ref() {
+            let len = v.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        }
+        if self.page_log2_size != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.page_log2_size, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.tree_log2_size != 0 {
+            my_size += ::protobuf::rt::value_size(4, self.tree_log2_size, ::protobuf::wire_format::WireTypeVarint);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.path.is_empty() {
+            os.write_string(1, &self.path)?;
+        }
+        if let Some(ref v) = self.root.as_ref() {
+            os.write_tag(2, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        }
+        if self.page_log2_size != 0 {
+            os.write_uint64(3, self.page_log2_size)?;
+        }
+        if self.tree_log2_size != 0 {
+            os.write_uint64(4, self.tree_log2_size)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> DownloadFileRequest {
+        DownloadFileRequest::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "path",
+                    |m: &DownloadFileRequest| { &m.path },
+                    |m: &mut DownloadFileRequest| { &mut m.path },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::cartesi_base::Hash>>(
+                    "root",
+                    |m: &DownloadFileRequest| { &m.root },
+                    |m: &mut DownloadFileRequest| { &mut m.root },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "page_log2_size",
+                    |m: &DownloadFileRequest| { &m.page_log2_size },
+                    |m: &mut DownloadFileRequest| { &mut m.page_log2_size },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "tree_log2_size",
+                    |m: &DownloadFileRequest| { &m.tree_log2_size },
+                    |m: &mut DownloadFileRequest| { &mut m.tree_log2_size },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<DownloadFileRequest>(
+                    "DownloadFileRequest",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static DownloadFileRequest {
+        static mut instance: ::protobuf::lazy::Lazy<DownloadFileRequest> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const DownloadFileRequest,
+        };
+        unsafe {
+            instance.get(DownloadFileRequest::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for DownloadFileRequest {
+    fn clear(&mut self) {
+        self.path.clear();
+        self.root.clear();
+        self.page_log2_size = 0;
+        self.tree_log2_size = 0;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for DownloadFileRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for DownloadFileRequest {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct SubmitFileRequest {
+    // message fields
+    pub path: ::std::string::String,
+    pub page_log2_size: u64,
+    pub tree_log2_size: u64,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a SubmitFileRequest {
+    fn default() -> &'a SubmitFileRequest {
+        <SubmitFileRequest as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl SubmitFileRequest {
+    pub fn new() -> SubmitFileRequest {
+        ::std::default::Default::default()
+    }
+
+    // string path = 1;
+
+
+    pub fn get_path(&self) -> &str {
+        &self.path
+    }
+    pub fn clear_path(&mut self) {
+        self.path.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_path(&mut self, v: ::std::string::String) {
+        self.path = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_path(&mut self) -> &mut ::std::string::String {
+        &mut self.path
+    }
+
+    // Take field
+    pub fn take_path(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.path, ::std::string::String::new())
+    }
+
+    // uint64 page_log2_size = 2;
+
+
+    pub fn get_page_log2_size(&self) -> u64 {
+        self.page_log2_size
+    }
+    pub fn clear_page_log2_size(&mut self) {
+        self.page_log2_size = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_page_log2_size(&mut self, v: u64) {
+        self.page_log2_size = v;
+    }
+
+    // uint64 tree_log2_size = 3;
+
+
+    pub fn get_tree_log2_size(&self) -> u64 {
+        self.tree_log2_size
+    }
+    pub fn clear_tree_log2_size(&mut self) {
+        self.tree_log2_size = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_tree_log2_size(&mut self, v: u64) {
+        self.tree_log2_size = v;
+    }
+}
+
+impl ::protobuf::Message for SubmitFileRequest {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.path)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.page_log2_size = tmp;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint64()?;
+                    self.tree_log2_size = tmp;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.path.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.path);
+        }
+        if self.page_log2_size != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.page_log2_size, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.tree_log2_size != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.tree_log2_size, ::protobuf::wire_format::WireTypeVarint);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.path.is_empty() {
+            os.write_string(1, &self.path)?;
+        }
+        if self.page_log2_size != 0 {
+            os.write_uint64(2, self.page_log2_size)?;
+        }
+        if self.tree_log2_size != 0 {
+            os.write_uint64(3, self.tree_log2_size)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> SubmitFileRequest {
+        SubmitFileRequest::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "path",
+                    |m: &SubmitFileRequest| { &m.path },
+                    |m: &mut SubmitFileRequest| { &mut m.path },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "page_log2_size",
+                    |m: &SubmitFileRequest| { &m.page_log2_size },
+                    |m: &mut SubmitFileRequest| { &mut m.page_log2_size },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
+                    "tree_log2_size",
+                    |m: &SubmitFileRequest| { &m.tree_log2_size },
+                    |m: &mut SubmitFileRequest| { &mut m.tree_log2_size },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<SubmitFileRequest>(
+                    "SubmitFileRequest",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static SubmitFileRequest {
+        static mut instance: ::protobuf::lazy::Lazy<SubmitFileRequest> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const SubmitFileRequest,
+        };
+        unsafe {
+            instance.get(SubmitFileRequest::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for SubmitFileRequest {
+    fn clear(&mut self) {
+        self.path.clear();
+        self.page_log2_size = 0;
+        self.tree_log2_size = 0;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for SubmitFileRequest {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for SubmitFileRequest {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
 pub struct FilePath {
     // message fields
     pub path: ::std::string::String,
@@ -197,10 +732,17 @@ impl ::protobuf::reflect::ProtobufValue for FilePath {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x11logger-high.proto\x12\x11LoggerManagerHigh\x1a\x12cartesi-base.pro\
-    to\"\x1e\n\x08FilePath\x12\x12\n\x04path\x18\x01\x20\x01(\tR\x04path2\
-    \x95\x01\n\x11LoggerManagerHigh\x12>\n\nSubmitFile\x12\x1b.LoggerManager\
-    High.FilePath\x1a\x11.CartesiCore.Hash\"\0\x12@\n\x0cDownloadFile\x12\
-    \x11.CartesiCore.Hash\x1a\x1b.LoggerManagerHigh.FilePath\"\0b\x06proto3\
+    to\"\x9c\x01\n\x13DownloadFileRequest\x12\x12\n\x04path\x18\x01\x20\x01(\
+    \tR\x04path\x12%\n\x04root\x18\x02\x20\x01(\x0b2\x11.CartesiCore.HashR\
+    \x04root\x12$\n\x0epage_log2_size\x18\x03\x20\x01(\x04R\x0cpageLog2Size\
+    \x12$\n\x0etree_log2_size\x18\x04\x20\x01(\x04R\x0ctreeLog2Size\"s\n\x11\
+    SubmitFileRequest\x12\x12\n\x04path\x18\x01\x20\x01(\tR\x04path\x12$\n\
+    \x0epage_log2_size\x18\x02\x20\x01(\x04R\x0cpageLog2Size\x12$\n\x0etree_\
+    log2_size\x18\x03\x20\x01(\x04R\x0ctreeLog2Size\"\x1e\n\x08FilePath\x12\
+    \x12\n\x04path\x18\x01\x20\x01(\tR\x04path2\xb3\x01\n\x11LoggerManagerHi\
+    gh\x12G\n\nSubmitFile\x12$.LoggerManagerHigh.SubmitFileRequest\x1a\x11.C\
+    artesiCore.Hash\"\0\x12U\n\x0cDownloadFile\x12&.LoggerManagerHigh.Downlo\
+    adFileRequest\x1a\x1b.LoggerManagerHigh.FilePath\"\0b\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {

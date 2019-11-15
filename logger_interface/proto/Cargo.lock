@@ -103,15 +103,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "emulator_interface"
-version = "0.1.0"
-dependencies = [
- "grpc 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "protobuf 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "protoc-rust-grpc 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "fnv"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -261,6 +252,15 @@ version = "0.4.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "cfg-if 0.1.9 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "logger_interface"
+version = "0.1.0"
+dependencies = [
+ "grpc 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "protobuf 2.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "protoc-rust-grpc 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]

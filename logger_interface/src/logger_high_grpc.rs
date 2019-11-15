@@ -22,17 +22,17 @@
 // interface
 
 pub trait LoggerManagerHigh {
-    fn submit_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::FilePath) -> ::grpc::SingleResponse<super::cartesi_base::Hash>;
+    fn submit_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::SubmitFileRequest) -> ::grpc::SingleResponse<super::cartesi_base::Hash>;
 
-    fn download_file(&self, o: ::grpc::RequestOptions, p: super::cartesi_base::Hash) -> ::grpc::SingleResponse<super::logger_high::FilePath>;
+    fn download_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::DownloadFileRequest) -> ::grpc::SingleResponse<super::logger_high::FilePath>;
 }
 
 // client
 
 pub struct LoggerManagerHighClient {
     grpc_client: ::std::sync::Arc<::grpc::Client>,
-    method_SubmitFile: ::std::sync::Arc<::grpc::rt::MethodDescriptor<super::logger_high::FilePath, super::cartesi_base::Hash>>,
-    method_DownloadFile: ::std::sync::Arc<::grpc::rt::MethodDescriptor<super::cartesi_base::Hash, super::logger_high::FilePath>>,
+    method_SubmitFile: ::std::sync::Arc<::grpc::rt::MethodDescriptor<super::logger_high::SubmitFileRequest, super::cartesi_base::Hash>>,
+    method_DownloadFile: ::std::sync::Arc<::grpc::rt::MethodDescriptor<super::logger_high::DownloadFileRequest, super::logger_high::FilePath>>,
 }
 
 impl ::grpc::ClientStub for LoggerManagerHighClient {
@@ -56,11 +56,11 @@ impl ::grpc::ClientStub for LoggerManagerHighClient {
 }
 
 impl LoggerManagerHigh for LoggerManagerHighClient {
-    fn submit_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::FilePath) -> ::grpc::SingleResponse<super::cartesi_base::Hash> {
+    fn submit_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::SubmitFileRequest) -> ::grpc::SingleResponse<super::cartesi_base::Hash> {
         self.grpc_client.call_unary(o, p, self.method_SubmitFile.clone())
     }
 
-    fn download_file(&self, o: ::grpc::RequestOptions, p: super::cartesi_base::Hash) -> ::grpc::SingleResponse<super::logger_high::FilePath> {
+    fn download_file(&self, o: ::grpc::RequestOptions, p: super::logger_high::DownloadFileRequest) -> ::grpc::SingleResponse<super::logger_high::FilePath> {
         self.grpc_client.call_unary(o, p, self.method_DownloadFile.clone())
     }
 }
