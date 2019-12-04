@@ -1,4 +1,0 @@
-#!/bin/bash
-cp proto/src/manager_high.rs src/
-cp proto/src/manager_high_grpc.rs src/
-cp proto/src/cartesi_base.rs src/
