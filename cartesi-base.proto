@@ -205,10 +205,8 @@ message Processor {
 }
 
 message ROM {
-    oneof rom_oneof {
-        string bootargs = 1;
-        string backing = 2;
-    }
+    string bootargs = 1;
+    string backing = 2;
 }
 
 message RAM {
