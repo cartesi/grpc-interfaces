@@ -38,10 +38,12 @@ message DownloadFileResponse {
     string path = 1;
     uint32 status = 2;
     uint32 progress = 3;
+    string description = 4;
 }
 
 message SubmitFileResponse {
     CartesiCore.Hash root = 1;
     uint32 status = 2;
     uint32 progress = 3;
+    string description = 4;
 }
