@@ -216,13 +216,20 @@ message FlashConfig {
 }
 
 message CLINTConfig {
-    uint64 mtime = 1;
-    uint64 mtimecmp = 2;
+    oneof mtimecmp_oneof {
+        uint64 mtimecmp = 1;
+    }
 }
 
 message HTIFConfig {
-    uint64 fromhost = 1;
-    uint64 tohost = 2;
+    oneof fromhost_oneof {
+        uint64 fromhost = 1;
+    }
+    oneof tohost_oneof {
+        uint64 tohost = 2;
+    }
+    bool interact = 3;
+    bool yield = 4;
 }
 
 message MachineConfig {
@@ -252,6 +259,8 @@ message RunRequest {
 message RunResponse {
     uint64 mcycle = 1;
     uint64 tohost = 2;
+    bool iflags_h = 3;
+    bool iflags_y = 4;
 }
 
 message Proof {
