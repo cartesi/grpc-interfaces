@@ -18,9 +18,9 @@ package CartesiManagerHigh;
 
 service MachineManagerHigh {
     rpc NewSession (NewSessionRequest) returns (CartesiCore.Hash) {}
-    rpc SessionRun (SessionRunRequest) returns (SessionRunResult) {}
-    rpc SessionStep (SessionStepRequest) returns (SessionStepResult) {}
-    rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResult) {}
+    rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
+    rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
+    rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
     rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiCore.Void) {}
     rpc SessionGetProof (SessionGetProofRequest) returns (CartesiCore.Proof) {}
 }
@@ -35,9 +35,23 @@ message SessionRunRequest {
     repeated uint64 final_cycles = 2;
 }
 
+message SessionRunProgress {
+    uint64 progress = 1;
+    uint64 application_progress = 2;
+    uint64 updated_at = 3;
+    uint64 cycle = 4;
+}
+
 message SessionRunResult {
     repeated CartesiCore.RunResponse summaries = 1;
     repeated CartesiCore.Hash hashes = 2;
+}
+
+message SessionRunResponse {
+    oneof run_oneof {
+        SessionRunProgress progress = 1;
+        SessionRunResult result = 2;
+    }
 }
 
 message SessionStepRequest {
@@ -45,7 +59,7 @@ message SessionStepRequest {
     uint64 initial_cycle = 2;
 }
 
-message SessionStepResult {
+message SessionStepResponse {
     CartesiCore.AccessLog log = 1;
 }
 
@@ -55,7 +69,7 @@ message SessionReadMemoryRequest {
     CartesiCore.ReadMemoryRequest position = 3;
 }
 
-message SessionReadMemoryResult {
+message SessionReadMemoryResponse {
     CartesiCore.ReadMemoryResponse read_content = 1;
 }
 
