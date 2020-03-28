@@ -289,10 +289,8 @@ message Access {
 
 message BracketNote {
     enum BracketNoteType {
-        DUMMY = 0;
-        BEGIN = 1;
-        END = 2;
-        INVALID = 3;
+        BEGIN = 0;
+        END = 1;
     }
     BracketNoteType type = 1;
     uint64 where = 2;
