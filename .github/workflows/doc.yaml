@@ -1,0 +1,49 @@
+name: Documentation
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      
+      # run protoc-gen-doc
+      - name: Generate Documentation
+        run: make doc
+      
+      # save artifact for publishing
+      - name: Save Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: doc
+          path: doc/
+  publish:
+    runs-on: ubuntu-18.04
+    needs: build
+    env:
+      AWS_REGION: 'us-east-1'
+      AWS_ACCESS_KEY_ID: ${{ secrets.DOCS_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DOCS_AWS_SECRET_ACCESS_KEY }}
+      BUCKET_NAME: ${{ secrets.DOCS_BUCKET_NAME }}
+    steps:
+      # download artifact produced in previous job
+      - uses: actions/download-artifact@v1
+        with:
+          name: doc
+      
+      # TAG is latest if branch is master
+      - run: echo "::set-env name=TAG::latest"
+        if: github.ref == 'refs/heads/master'
+      
+      # TAG is version if it's a tag
+      - run: echo "::set-env name=TAG::${GITHUB_REF:11}"
+        if: startsWith(github.ref, 'refs/tags/v')
+
+      # Upload docs to [bucket]/grpc/[tag]
+      # [tag] will be version if tag, or latest if master, or else branch name
+      - name: Upload Docs
+        run: aws s3 sync ./doc s3://${BUCKET_NAME}/grpc/${TAG}
