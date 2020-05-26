@@ -228,8 +228,9 @@ message HTIFConfig {
     oneof tohost_oneof {
         uint64 tohost = 2;
     }
-    bool interact = 3;
-    bool yield = 4;
+    bool console_getchar = 3;
+    bool yield_progress = 4;
+    bool yield_rollup = 5;
 }
 
 message MachineConfig {
