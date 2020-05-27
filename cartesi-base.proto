@@ -199,18 +199,18 @@ message ProcessorConfig {
 
 message ROMConfig {
     string bootargs = 1;
-    string backing = 2;
+    string image_filename = 2;
 }
 
 message RAMConfig {
     uint64 length = 1;
-    string backing = 2;
+    string image_filename = 2;
 }
 
 message FlashConfig {
     uint64 start = 1;
     uint64 length = 2;
-    string backing = 3;
+    string image_filename = 3;
     bool shared = 4;
     string label = 5;
 }
