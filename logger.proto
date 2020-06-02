@@ -12,18 +12,16 @@
 
 syntax = "proto3";
 
-import "cartesi-machine.proto";
+package CartesiLogger;
 
-package LoggerManagerHigh;
-
-service LoggerManagerHigh {
+service Logger {
     rpc SubmitFile (SubmitFileRequest) returns (SubmitFileResponse) {}
     rpc DownloadFile (DownloadFileRequest) returns (DownloadFileResponse) {}
 }
 
 message DownloadFileRequest {
     string path = 1;
-    CartesiMachine.Hash root = 2;
+    Hash root = 2;
     uint64 page_log2_size = 3;
     uint64 tree_log2_size = 4;
 }
@@ -42,8 +40,12 @@ message DownloadFileResponse {
 }
 
 message SubmitFileResponse {
-    CartesiMachine.Hash root = 1;
+    Hash root = 1;
     uint32 status = 2;
     uint32 progress = 3;
     string description = 4;
+}
+
+message Hash {
+    bytes content = 1;
 }

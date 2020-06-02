@@ -16,7 +16,7 @@ import "cartesi-machine.proto";
 
 package CartesiMachineManager;
 
-service MachineManagerInternal {
+service MachineDiscovery {
     rpc CommunicateAddress (AddressRequest) returns (CartesiMachine.Void) {}
 }
 
