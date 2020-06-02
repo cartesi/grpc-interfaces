@@ -12,12 +12,12 @@
 
 syntax = "proto3";
 
-import "cartesi-base.proto";
+import "cartesi-machine.proto";
 
-package CartesiManagerLow;
+package CartesiMachineManager;
 
-service MachineManagerLow {
-    rpc CommunicateAddress (AddressRequest) returns (CartesiCore.Void) {}
+service MachineManagerInternal {
+    rpc CommunicateAddress (AddressRequest) returns (CartesiMachine.Void) {}
 }
 
 message AddressRequest {

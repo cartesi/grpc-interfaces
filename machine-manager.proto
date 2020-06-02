@@ -12,21 +12,21 @@
 
 syntax = "proto3";
 
-import "cartesi-base.proto";
+import "cartesi-machine.proto";
 
-package CartesiManagerHigh;
+package CartesiMachineManager;
 
-service MachineManagerHigh {
-    rpc NewSession (NewSessionRequest) returns (CartesiCore.Hash) {}
+service MachineManager {
+    rpc NewSession (NewSessionRequest) returns (CartesiMachine.Hash) {}
     rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
     rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
     rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
-    rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiCore.Void) {}
-    rpc SessionGetProof (SessionGetProofRequest) returns (CartesiCore.Proof) {}
+    rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiMachine.Void) {}
+    rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.Proof) {}
 }
 
 message NewSessionRequest {
-    CartesiCore.MachineRequest machine = 1;
+    CartesiMachine.MachineRequest machine = 1;
     string session_id = 2;
 }
 
@@ -43,8 +43,8 @@ message SessionRunProgress {
 }
 
 message SessionRunResult {
-    repeated CartesiCore.RunResponse summaries = 1;
-    repeated CartesiCore.Hash hashes = 2;
+    repeated CartesiMachine.RunResponse summaries = 1;
+    repeated CartesiMachine.Hash hashes = 2;
 }
 
 message SessionRunResponse {
@@ -60,27 +60,27 @@ message SessionStepRequest {
 }
 
 message SessionStepResponse {
-    CartesiCore.AccessLog log = 1;
+    CartesiMachine.AccessLog log = 1;
 }
 
 message SessionReadMemoryRequest {
     string session_id = 1;
     uint64 cycle = 2;
-    CartesiCore.ReadMemoryRequest position = 3;
+    CartesiMachine.ReadMemoryRequest position = 3;
 }
 
 message SessionReadMemoryResponse {
-    CartesiCore.ReadMemoryResponse read_content = 1;
+    CartesiMachine.ReadMemoryResponse read_content = 1;
 }
 
 message SessionWriteMemoryRequest {
     string session_id = 1;
     uint64 cycle = 2;
-    CartesiCore.WriteMemoryRequest position = 3;
+    CartesiMachine.WriteMemoryRequest position = 3;
 }
 
 message SessionGetProofRequest {
     string session_id = 1;
     uint64 cycle = 2;
-    CartesiCore.GetProofRequest target = 3;
+    CartesiMachine.GetProofRequest target = 3;
 }
