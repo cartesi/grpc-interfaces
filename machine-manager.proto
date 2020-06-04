@@ -20,6 +20,7 @@ service MachineManager {
     rpc NewSession (NewSessionRequest) returns (CartesiMachine.Hash) {}
     rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
     rpc SessionStep (SessionStepRequest) returns (SessionStepResponse) {}
+    rpc SessionStore (SessionStoreRequest) returns (CartesiMachine.Void) {}
     rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
     rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.Proof) {}
@@ -61,6 +62,11 @@ message SessionStepRequest {
 
 message SessionStepResponse {
     CartesiMachine.AccessLog log = 1;
+}
+
+message SessionStoreRequest {
+    string session_id = 1;
+    CartesiMachine.StoreRequest store = 2;
 }
 
 message SessionReadMemoryRequest {
