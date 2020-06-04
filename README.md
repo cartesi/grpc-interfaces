@@ -4,11 +4,10 @@
 
 The Cartesi gRPC Interfaces repository contains all gRPC and Protobuf definitions used in the gRPC interfaces of the Cartesi Project modules. Currently these comprehend:
 
-- [cartesi-base.proto](cartesi-base.proto): basic message types used in multiple interfaces
-- [core.proto](core.proto): services exported by the machine emulator and used by the machine manager
-- [manager-low.proto](manager-low.proto): services and higher level message types used by the machine emulator to interact with the machine manager
-- [manager-high.proto](manager-high.proto): services and higher level message types used to interact with the machine manager sessions
-- [logger-high.proto](logger-high.proto): services and higher level message types used to interact with the logger manager sessions
+- [cartesi-machine.proto](cartesi-machine.proto): contains the services exported by the cartesi machine that are consumed by the machine manager and also the definition of the lowest level messages used in multiple interfaces
+- [machine-discovery.proto](machine-discovery.proto): services and higher level message types used by the cartesi machine to interact with the machine manager
+- [machine-manager.proto](machine-manager.proto): services and higher level message types used to interact with the machine manager sessions
+- [logger.proto](logger.proto): services and higher level message types used to interact with the logger-managed files
 
 ## Getting Started
 
