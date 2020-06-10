@@ -23,7 +23,7 @@ service Machine {
     rpc Snapshot (Void) returns (Void) {}
     rpc Rollback (Void) returns (Void) {}
     rpc Shutdown (Void) returns (Void) {}
-    rpc Step (Void) returns (AccessLog) {}
+    rpc Step (StepRequest) returns (AccessLog) {}
     rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
     rpc GetRootHash (Void) returns (Hash) {}
@@ -316,6 +316,19 @@ message BracketNote {
     string text = 3;
 }
 
+message AccessLogType {
+    bool proofs = 1;
+    bool annotations = 2;
+}
+
+message AccessLog {
+    AccessLogType log_type = 1;
+    repeated Access accesses = 2;
+    repeated BracketNote brackets = 3;
+    repeated string notes = 4;
+}
+
+
 message ReadMemoryRequest {
     uint64 address = 1;
     uint64 length = 2;
@@ -335,8 +348,6 @@ message WriteMemoryRequest {
     bytes data = 2;
 }
 
-message AccessLog {
-    repeated Access accesses = 1;
-    repeated BracketNote brackets = 2;
-    repeated string notes = 3;
+message StepRequest {
+    AccessLogType log_type = 1;
 }
