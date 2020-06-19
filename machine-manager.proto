@@ -58,6 +58,9 @@ message SessionRunResponse {
 message SessionStepRequest {
     string session_id = 1;
     uint64 initial_cycle = 2;
+    oneof step_params_oneof {
+        CartesiMachine.StepRequest step_params = 3;
+    };
 }
 
 message SessionStepResponse {
