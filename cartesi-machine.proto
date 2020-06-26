@@ -17,17 +17,17 @@ package CartesiMachine;
 //Service definiton section
 
 service Machine {
-    rpc Run (RunRequest) returns (RunResponse) {}
     rpc Machine(MachineRequest) returns (Void) {}
+    rpc Run (RunRequest) returns (RunResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
     rpc Snapshot (Void) returns (Void) {}
     rpc Rollback (Void) returns (Void) {}
     rpc Shutdown (Void) returns (Void) {}
-    rpc Step (StepRequest) returns (AccessLog) {}
+    rpc Step (StepRequest) returns (StepResponse) {}
     rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
-    rpc GetRootHash (Void) returns (Hash) {}
-    rpc GetProof (GetProofRequest) returns (Proof) {}
+    rpc GetRootHash (Void) returns (GetRootHashResponse) {}
+    rpc GetProof (GetProofRequest) returns (GetProofResponse) {}
 }
 
 //Messages definition section
@@ -35,7 +35,7 @@ service Machine {
 message Void { }
 
 message Hash {
-    bytes content = 1;
+    bytes data = 1;
 }
 
 message ProcessorConfig {
@@ -230,7 +230,6 @@ message FlashConfig {
     uint64 length = 2;
     string image_filename = 3;
     bool shared = 4;
-    string label = 5;
 }
 
 message CLINTConfig {
@@ -260,28 +259,6 @@ message MachineConfig {
     HTIFConfig htif = 6;
 }
 
-message StoreRequest {
-    string directory = 1;
-}
-
-message MachineRequest {
-    oneof machine_oneof {
-        MachineConfig config = 1;
-        string directory = 2;
-    }
-}
-
-message RunRequest {
-    uint64 limit = 1;
-}
-
-message RunResponse {
-    uint64 mcycle = 1;
-    uint64 tohost = 2;
-    bool iflags_h = 3;
-    bool iflags_y = 4;
-}
-
 message Proof {
     uint64 address = 1;
     uint32 log2_size = 2;
@@ -296,7 +273,7 @@ enum AccessOperation {
 }
 
 message Word {
-    bytes content = 1;
+    bytes data = 1;
 }
 
 message Access {
@@ -328,6 +305,35 @@ message AccessLog {
     repeated string notes = 4;
 }
 
+message MachineRequest {
+    oneof machine_oneof {
+        MachineConfig config = 1;
+        string directory = 2;
+    }
+}
+
+message RunRequest {
+    uint64 limit = 1;
+}
+
+message RunResponse {
+    uint64 mcycle = 1;
+    uint64 tohost = 2;
+    bool iflags_h = 3;
+    bool iflags_y = 4;
+}
+
+message StoreRequest {
+    string directory = 1;
+}
+
+message StepRequest {
+    AccessLogType log_type = 1;
+}
+
+message StepResponse {
+    AccessLog log = 1;
+}
 
 message ReadMemoryRequest {
     uint64 address = 1;
@@ -338,16 +344,20 @@ message ReadMemoryResponse {
     bytes data = 1;
 }
 
-message GetProofRequest {
-    uint64 address = 1;
-    uint64 log2_size = 2;
-}
-
 message WriteMemoryRequest {
     uint64 address = 1;
     bytes data = 2;
 }
 
-message StepRequest {
-    AccessLogType log_type = 1;
+message GetRootHashResponse {
+    Hash hash = 1;
+}
+
+message GetProofRequest {
+    uint64 address = 1;
+    uint64 log2_size = 2;
+}
+
+message GetProofResponse {
+    Proof proof = 1;
 }
