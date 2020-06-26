@@ -28,6 +28,7 @@ service Machine {
     rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
     rpc GetRootHash (Void) returns (GetRootHashResponse) {}
     rpc GetProof (GetProofRequest) returns (GetProofResponse) {}
+    rpc ReplaceFlashDrive (ReplaceFlashDriveRequest) returns (Void) {}
 }
 
 //Messages definition section
@@ -225,7 +226,7 @@ message RAMConfig {
     string image_filename = 2;
 }
 
-message FlashConfig {
+message FlashDriveConfig {
     uint64 start = 1;
     uint64 length = 2;
     string image_filename = 3;
@@ -254,7 +255,7 @@ message MachineConfig {
     ProcessorConfig processor = 1;
     ROMConfig rom = 2;
     RAMConfig ram = 3;
-    repeated FlashConfig flash = 4;
+    repeated FlashDriveConfig flash_drive = 4;
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
 }
@@ -360,4 +361,8 @@ message GetProofRequest {
 
 message GetProofResponse {
     Proof proof = 1;
+}
+
+message ReplaceFlashDriveRequest {
+    FlashDriveConfig config = 1;
 }
