@@ -12,11 +12,14 @@
 
 syntax = "proto3";
 
+import "versioning.proto";
+
 package CartesiMachine;
 
 //Service definiton section
 
 service Machine {
+    rpc GetVersion(Void) returns (Versioning.GetVersionResponse) {}
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run (RunRequest) returns (RunResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
