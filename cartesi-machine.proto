@@ -29,9 +29,21 @@ service Machine {
     rpc Step (StepRequest) returns (StepResponse) {}
     rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
+    rpc ReadWord (ReadWordRequest) returns (ReadWordResponse) {}
     rpc GetRootHash (Void) returns (GetRootHashResponse) {}
     rpc GetProof (GetProofRequest) returns (GetProofResponse) {}
     rpc ReplaceFlashDrive (ReplaceFlashDriveRequest) returns (Void) {}
+    rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
+    rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
+    rpc WriteX(WriteXRequest) returns (Void) {}
+    rpc GetCsrAddress(GetCsrAddressRequest) returns (GetCsrAddressResponse) {}
+    rpc ReadCsr(ReadCsrRequest) returns (ReadCsrResponse) {}
+    rpc WriteCsr(WriteCsrRequest) returns (Void) {}
+    rpc GetInitialConfig(Void) returns (GetInitialConfigResponse) {}
+    rpc VerifyMerkleTree(Void) returns (VerifyMerkleTreeResponse) {}
+    rpc UpdateMerkleTree(Void) returns (UpdateMerkleTreeResponse) {}
+    rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}    
+    rpc DumpPmas(Void) returns (Void) {}
 }
 
 //Messages definition section
@@ -285,6 +297,7 @@ message Access {
     Word read = 2;
     Word written = 3;
     Proof proof = 4;
+    uint64 address = 5;
 }
 
 message BracketNote {
@@ -316,6 +329,22 @@ message MachineRequest {
     }
 }
 
+message GetInitialConfigResponse {
+    MachineConfig config = 1;
+}
+
+message VerifyMerkleTreeResponse {
+    bool success = 1;
+}
+
+message UpdateMerkleTreeResponse {
+    bool success = 1;
+}
+
+message VerifyDirtyPageMapsResponse {
+    bool success = 1;
+}
+
 message RunRequest {
     uint64 limit = 1;
 }
@@ -337,6 +366,15 @@ message StepRequest {
 
 message StepResponse {
     AccessLog log = 1;
+}
+
+message ReadWordRequest {
+    uint64 address = 1;
+}
+
+message ReadWordResponse {
+    bool success = 1;
+    uint64 value = 2;
 }
 
 message ReadMemoryRequest {
@@ -369,3 +407,82 @@ message GetProofResponse {
 message ReplaceFlashDriveRequest {
     FlashDriveConfig config = 1;
 }
+
+message GetXAddressRequest {
+    uint32 index = 1;
+}
+
+message GetXAddressResponse {
+    uint64 address = 1;
+}
+
+message ReadXRequest {
+    uint32 index = 1;
+}
+
+message ReadXResponse {
+    uint64 value = 1;
+}
+
+message WriteXRequest {
+    uint32   index = 1;
+    uint64  value = 2;
+}
+
+enum Csr {
+    PC = 0;
+    MVENDORID = 1;
+    MARCHID = 2;
+    MIMPID = 3;
+    MCYCLE = 4;
+    MINSTRET = 5;
+    MSTATUS = 6;
+    MTVEC = 7;
+    MSCRATCH = 8;
+    MEPC = 9;
+    MCAUSE = 10;
+    MTVAL = 11;
+    MISA = 12;
+    MIE = 13;
+    MIP = 14;
+    MEDELEG = 15;
+    MIDELEG = 16;
+    MCOUNTEREN = 17;
+    STVEC = 18;
+    SSCRATCH = 19;
+    SEPC = 20;
+    SCAUSE = 21;
+    STVAL = 22;
+    SATP = 23;
+    SCOUNTEREN = 24;
+    ILRSC = 25;
+    IFLAGS = 26;
+    CLINT_MTIMECMP = 27;
+    HTIF_TOHOST = 28;
+    HTIF_FROMHOST = 29;
+    HTIF_IHALT = 30;
+    HTIF_ICONSOLE = 31;
+    HTIF_IYIELD = 32;
+}
+
+message GetCsrAddressRequest {
+    Csr csr = 1;        
+}
+
+message GetCsrAddressResponse {
+    uint64 address = 1;
+}
+
+message ReadCsrRequest {
+    Csr csr = 1;
+}
+
+message ReadCsrResponse {
+    uint64 value = 1;
+}
+
+message WriteCsrRequest {
+    Csr csr = 1;
+    uint64 value = 2;
+}
+
