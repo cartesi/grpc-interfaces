@@ -29,6 +29,7 @@ service MachineManager {
 message NewSessionRequest {
     CartesiMachine.MachineRequest machine = 1;
     string session_id = 2;
+    bool force = 3;
 }
 
 message SessionRunRequest {
