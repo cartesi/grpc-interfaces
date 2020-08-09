@@ -16,6 +16,7 @@ package CartesiIpfs;
 
 service Ipfs {
     rpc GetFile (GetFileRequest) returns (GetFileResponse) {}
+    rpc AddFile (AddFileRequest) returns (AddFileResponse) {}
 }
 
 message GetFileRequest {
@@ -24,7 +25,7 @@ message GetFileRequest {
     string output_path = 3;
 }
 
-message GetFileProgress {
+message Progress {
     uint64 progress = 1;
     uint64 updated_at = 2;
 }
@@ -36,8 +37,23 @@ message GetFileResult {
 
 message GetFileResponse {
     oneof get_oneof {
-        GetFileProgress progress = 1;
+        Progress progress = 1;
         GetFileResult result = 2;
+    }
+}
+
+message AddFileRequest {
+    string file_path = 1;
+}
+
+message AddFileResult {
+    string ipfs_path = 1;
+}
+
+message AddFileResponse {
+    oneof add_oneof {
+        Progress progress = 1;
+        AddFileResult result = 2;
     }
 }
 
