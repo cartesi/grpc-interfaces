@@ -23,6 +23,7 @@ message GetFileRequest {
     string ipfs_path = 1;
     uint32 log2_size = 2;
     string output_path = 3;
+    uint64 timeout = 4;
 }
 
 message Progress {
