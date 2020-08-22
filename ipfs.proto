@@ -11,6 +11,7 @@
 
 
 syntax = "proto3";
+option go_package = ".;ipfs";
 
 package CartesiIpfs;
 
