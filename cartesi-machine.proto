@@ -42,8 +42,11 @@ service Machine {
     rpc GetInitialConfig(Void) returns (GetInitialConfigResponse) {}
     rpc VerifyMerkleTree(Void) returns (VerifyMerkleTreeResponse) {}
     rpc UpdateMerkleTree(Void) returns (UpdateMerkleTreeResponse) {}
-    rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}    
+    rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}
     rpc DumpPmas(Void) returns (Void) {}
+    rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
+    rpc VerifyAccessLog(VerifyAccessLogRequest) returns (Void) {}
+    rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (Void) {}
 }
 
 //Messages definition section
@@ -283,7 +286,7 @@ message Proof {
     Hash root_hash = 5;
 }
 
-enum AccessOperation {
+enum AccessType {
     READ = 0;
     WRITE = 1;
 }
@@ -292,8 +295,8 @@ message Word {
     bytes data = 1;
 }
 
-message Access {
-    AccessOperation operation = 1;
+message WordAccess {
+    AccessType type = 1;
     Word read = 2;
     Word written = 3;
     Proof proof = 4;
@@ -317,7 +320,7 @@ message AccessLogType {
 
 message AccessLog {
     AccessLogType log_type = 1;
-    repeated Access accesses = 2;
+    repeated WordAccess accesses = 2;
     repeated BracketNote brackets = 3;
     repeated string notes = 4;
 }
@@ -331,6 +334,22 @@ message MachineRequest {
 
 message GetInitialConfigResponse {
     MachineConfig config = 1;
+}
+
+message GetDefaultConfigResponse {
+    MachineConfig config = 1;
+}
+
+message VerifyAccessLogRequest {
+    AccessLog log = 1;
+    bool one_based = 2;
+}
+
+message VerifyStateTransitionRequest {
+    Hash root_hash_before = 1;
+    AccessLog log = 2;
+    Hash root_hash_after = 3;
+    bool one_based = 4;
 }
 
 message VerifyMerkleTreeResponse {
@@ -362,6 +381,7 @@ message StoreRequest {
 
 message StepRequest {
     AccessLogType log_type = 1;
+    bool one_based = 2;
 }
 
 message StepResponse {
@@ -466,7 +486,7 @@ enum Csr {
 }
 
 message GetCsrAddressRequest {
-    Csr csr = 1;        
+    Csr csr = 1;
 }
 
 message GetCsrAddressResponse {
