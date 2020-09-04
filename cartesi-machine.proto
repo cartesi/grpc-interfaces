@@ -292,16 +292,13 @@ enum AccessType {
     WRITE = 1;
 }
 
-message Word {
-    bytes data = 1;
-}
-
-message WordAccess {
+message Access {
     AccessType type = 1;
-    Word read = 2;
-    Word written = 3;
+    bytes read = 2;
+    bytes written = 3;
     Proof proof = 4;
     uint64 address = 5;
+    uint64 log2_size = 6;
 }
 
 message BracketNote {
@@ -321,7 +318,7 @@ message AccessLogType {
 
 message AccessLog {
     AccessLogType log_type = 1;
-    repeated WordAccess accesses = 2;
+    repeated Access accesses = 2;
     repeated BracketNote brackets = 3;
     repeated string notes = 4;
 }
