@@ -37,6 +37,9 @@ service Machine {
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
+    rpc GetDhdHAddress(GetDhdHAddressRequest) returns (GetDhdHAddressResponse) {}
+    rpc ReadDhdH(ReadDhdHRequest) returns (ReadDhdHResponse) {}
+    rpc WriteDhdH(WriteDhdHRequest) returns (Void) {}
     rpc GetCsrAddress(GetCsrAddressRequest) returns (GetCsrAddressResponse) {}
     rpc ReadCsr(ReadCsrRequest) returns (ReadCsrResponse) {}
     rpc WriteCsr(WriteCsrRequest) returns (Void) {}
@@ -48,6 +51,7 @@ service Machine {
     rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
     rpc VerifyAccessLog(VerifyAccessLogRequest) returns (Void) {}
     rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (Void) {}
+
 }
 
 //Messages definition section
@@ -270,6 +274,15 @@ message HTIFConfig {
     bool yield_rollup = 5;
 }
 
+message DHDConfig {
+    uint64 tstart = 1;
+    uint64 tlength = 2;
+    string image_filename = 3;
+    uint64 dlength = 4;
+    uint64 hlength = 5;
+    repeated uint64 h = 6;
+}
+
 message MachineConfig {
     ProcessorConfig processor = 1;
     ROMConfig rom = 2;
@@ -277,6 +290,15 @@ message MachineConfig {
     repeated FlashDriveConfig flash_drive = 4;
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
+    DHDConfig dhd = 7;
+}
+
+message DHDRuntimeConfig {
+    string source_address = 1;
+}
+
+message MachineRuntimeConfig {
+    DHDRuntimeConfig dhd = 1;
 }
 
 message Proof {
@@ -328,6 +350,7 @@ message MachineRequest {
         MachineConfig config = 1;
         string directory = 2;
     }
+    MachineRuntimeConfig runtime = 3;
 }
 
 message GetInitialConfigResponse {
@@ -341,6 +364,7 @@ message GetDefaultConfigResponse {
 message VerifyAccessLogRequest {
     AccessLog log = 1;
     bool one_based = 2;
+    MachineRuntimeConfig runtime = 3;
 }
 
 message VerifyStateTransitionRequest {
@@ -348,6 +372,7 @@ message VerifyStateTransitionRequest {
     AccessLog log = 2;
     Hash root_hash_after = 3;
     bool one_based = 4;
+    MachineRuntimeConfig runtime = 5;
 }
 
 message VerifyMerkleTreeResponse {
@@ -443,8 +468,29 @@ message ReadXResponse {
 }
 
 message WriteXRequest {
-    uint32   index = 1;
-    uint64  value = 2;
+    uint32 index = 1;
+    uint64 value = 2;
+}
+
+message GetDhdHAddressRequest {
+    uint32 index = 1;
+}
+
+message GetDhdHAddressResponse {
+    uint64 address = 1;
+}
+
+message ReadDhdHRequest {
+    uint32 index = 1;
+}
+
+message ReadDhdHResponse {
+    uint64 value = 1;
+}
+
+message WriteDhdHRequest {
+    uint32 index = 1;
+    uint64 value = 2;
 }
 
 enum Csr {
@@ -481,6 +527,11 @@ enum Csr {
     HTIF_IHALT = 30;
     HTIF_ICONSOLE = 31;
     HTIF_IYIELD = 32;
+    DHD_RESERVED = 33;
+    DHD_TSTART = 34;
+    DHD_TLENGTH = 35;
+    DHD_DLENGTH = 36;
+    DHD_HLENGTH = 37;
 }
 
 message GetCsrAddressRequest {
