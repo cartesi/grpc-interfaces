@@ -21,17 +21,18 @@ package CartesiMachine;
 service Machine {
     rpc GetVersion(Void) returns (Versioning.GetVersionResponse) {}
     rpc Machine(MachineRequest) returns (Void) {}
-    rpc Run (RunRequest) returns (RunResponse) {}
+    rpc Run(RunRequest) returns (RunResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
-    rpc Snapshot (Void) returns (Void) {}
-    rpc Rollback (Void) returns (Void) {}
-    rpc Shutdown (Void) returns (Void) {}
-    rpc Step (StepRequest) returns (StepResponse) {}
-    rpc ReadMemory (ReadMemoryRequest) returns (ReadMemoryResponse) {}
-    rpc WriteMemory (WriteMemoryRequest) returns (Void) {}
-    rpc ReadWord (ReadWordRequest) returns (ReadWordResponse) {}
-    rpc GetRootHash (Void) returns (GetRootHashResponse) {}
-    rpc GetProof (GetProofRequest) returns (GetProofResponse) {}
+    rpc Destroy(Void) returns (Void) {}
+    rpc Snapshot(Void) returns (Void) {}
+    rpc Rollback(Void) returns (Void) {}
+    rpc Shutdown(Void) returns (Void) {}
+    rpc Step(StepRequest) returns (StepResponse) {}
+    rpc ReadMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
+    rpc WriteMemory(WriteMemoryRequest) returns (Void) {}
+    rpc ReadWord(ReadWordRequest) returns (ReadWordResponse) {}
+    rpc GetRootHash(Void) returns (GetRootHashResponse) {}
+    rpc GetProof(GetProofRequest) returns (GetProofResponse) {}
     rpc ReplaceFlashDrive (ReplaceFlashDriveRequest) returns (Void) {}
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
