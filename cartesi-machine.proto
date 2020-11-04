@@ -37,6 +37,7 @@ service Machine {
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
+    rpc ResetIflagsY(Void) returns (Void) {}
     rpc GetDhdHAddress(GetDhdHAddressRequest) returns (GetDhdHAddressResponse) {}
     rpc ReadDhdH(ReadDhdHRequest) returns (ReadDhdHResponse) {}
     rpc WriteDhdH(WriteDhdHRequest) returns (Void) {}
