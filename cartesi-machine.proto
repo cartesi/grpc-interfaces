@@ -298,8 +298,13 @@ message DHDRuntimeConfig {
     string source_address = 1;
 }
 
+message ConcurrencyConfig {
+    uint64 update_merkle_tree = 1;
+}
+
 message MachineRuntimeConfig {
     DHDRuntimeConfig dhd = 1;
+    ConcurrencyConfig concurrency = 2;
 }
 
 message Proof {
