@@ -1,0 +1,64 @@
+// Copyright 2021 Cartesi Pte. Ltd.
+
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the
+// specific language governing permissions and limitations under the License.
+
+
+syntax = "proto3";
+
+import "cartesi-machine.proto";
+
+package CartesiRollupMachineManager;
+
+service MachineManager {
+    rpc NewSession (NewSessionRequest) returns (CartesiMachine.Void) {}
+    rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
+    rpc SessionStore (SessionStoreRequest) returns (CartesiMachine.Void) {}
+}
+
+message NewSessionRequest {
+    CartesiMachine.MachineRequest machine = 1;
+    string session_id = 2;
+    uint64 max_cycles_per_input = 3;
+    uint64 input_metadata_flash_drive_index = 4;
+    uint64 input_payload_flash_drive_index = 5;
+    uint64 output_metadata_flash_drive_index = 6;
+    uint64 output_payload_flash_drive_index = 7;
+    uint64 output_entry_count = 8;
+    uint64 output_entry_size = 9;
+}
+
+message SessionRunRequest {
+    string session_id = 1;
+    CartesiMachine.Hash current_machine_image_hash = 2;
+    uint64 current_input_index = 3;
+    CartesiMachine.Hash current_machine_hash = 4;
+    bytes input_metadata = 5;
+    bytes input_payload = 6;
+}
+
+message Output {
+    CartesiMachine.Hash keccak = 1;
+    CartesiMachine.Hash address = 2;
+    bytes payload = 3;
+    CartesiMachine.Proof keccak_in_output_metadata_flash_drive = 4;
+}
+
+message SessionRunResponse {
+    CartesiMachine.Proof output_flash_drive_in_machine = 1;
+    CartesiMachine.Proof output_flash_drive_in_epoch = 2;
+    repeated Output outputs = 3;
+}
+
+message SessionStoreRequest {
+    string session_id = 1;
+    CartesiMachine.Hash current_machine_image_hash = 2;
+    uint64 current_input_index = 3;
+    CartesiMachine.Hash current_machine_hash = 4;
+}
