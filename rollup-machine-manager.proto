@@ -9,7 +9,6 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-
 syntax = "proto3";
 
 import "cartesi-machine.proto";
@@ -17,30 +16,59 @@ import "cartesi-machine.proto";
 package CartesiRollupMachineManager;
 
 service MachineManager {
-    rpc NewSession (NewSessionRequest) returns (CartesiMachine.Void) {}
-    rpc SessionRun (SessionRunRequest) returns (SessionRunResponse) {}
-    rpc SessionStore (SessionStoreRequest) returns (CartesiMachine.Void) {}
+    rpc NewSession (NewSessionRequest) returns (Void) {}
+    rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (Void) {}
+    rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
+    rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (Void) {}
 }
 
 message NewSessionRequest {
-    CartesiMachine.MachineRequest machine = 1;
-    string session_id = 2;
-    uint64 max_cycles_per_input = 3;
-    uint64 input_metadata_flash_drive_index = 4;
-    uint64 input_payload_flash_drive_index = 5;
-    uint64 output_metadata_flash_drive_index = 6;
-    uint64 output_payload_flash_drive_index = 7;
-    uint64 output_entry_count = 8;
-    uint64 output_entry_size = 9;
+    string session_id = 1;
+    CartesiMachine.MachineRequest machine = 2;
+    uint64 epoch_number = 3; // initial epoch counter, increments with FinishEpoch
+    uint64 max_cycles_per_input = 4;
+    DrivePairWithMetadata input = 5;
+    PartitionedDrivesWithMetadata outputs = 6;
+    PartitionedDrivesWithMetadata logs = 7;
 }
 
-message SessionRunRequest {
+message DrivePairWithMetadata {
+    uint64 metadata_flash_drive_index = 1;
+    uint64 payload_flash_drive_index = 2;
+}
+
+message PartitionedDrivesWithMetadata {
+    DrivePairWithMetadata drive_pair = 1;
+    uint64 entry_count = 2;
+    uint64 entry_size = 3;
+}
+
+// This call is synchronous. You send a request and receive
+// immediately a void response indicating that it was processed.
+// The Machine Manager should enqueue this, but does not need to
+// answer anything. Results will be later gathered by GetStatus
+message SessionEnqueueInputRequest {
     string session_id = 1;
-    CartesiMachine.Hash current_machine_image_hash = 2;
-    uint64 current_input_index = 3;
-    CartesiMachine.Hash current_machine_hash = 4;
-    bytes input_metadata = 5;
-    bytes input_payload = 6;
+    uint64 epoch_index = 2;         // to double check that we are in the right epoch
+    uint64 current_input_index = 3; // to double check the number of inputs sent
+    bytes input_metadata = 4;
+    bytes input_payload = 5;
+}
+
+message SessionGetStatusRequest {
+    string session_id = 1;
+}
+
+message SessionGetStatusResponse {
+    uint64 epoch_number = 1;
+    repeated InputExecution processed_inputs = 2;
+    uint64 number_of_enqueued_inputs = 3;
+}
+
+message InputExecution {
+    CartesiMachine.Proof output_metadata_flash_drive_in_machine = 1;
+    CartesiMachine.Proof output_metadata_flash_drive_in_epoch = 2;
+    repeated Output outputs = 3;
 }
 
 message Output {
@@ -50,15 +78,19 @@ message Output {
     CartesiMachine.Proof keccak_in_output_metadata_flash_drive = 4;
 }
 
-message SessionRunResponse {
-    CartesiMachine.Proof output_flash_drive_in_machine = 1;
-    CartesiMachine.Proof output_flash_drive_in_epoch = 2;
-    repeated Output outputs = 3;
+// A request to finish the epoch should only be done if all inputs
+// of the current epoch have been fully processed. If this is not the case
+// the expected behavior is for the Machine Manager to return an error.
+// In other words, there is no way to enqueue this call and it is synchronous.
+//
+// Finishing an epoch increases the epoch number, empties the input list
+// and empties the output tree of the epochs.
+message SessionFinishEpochRequest {
+    string session_id = 1;
+    uint64 current_epoch = 2; // double check that the epoch number is correct
+    uint64 total_number_of_inputs = 3; // double check the number of inputs sent
 }
 
-message SessionStoreRequest {
-    string session_id = 1;
-    CartesiMachine.Hash current_machine_image_hash = 2;
-    uint64 current_input_index = 3;
-    CartesiMachine.Hash current_machine_hash = 4;
+message SessionFinishEpochResponse {
+    uint64 next_epoch_index = 1;
 }
