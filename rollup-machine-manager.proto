@@ -16,29 +16,29 @@ import "cartesi-machine.proto";
 package CartesiRollupMachineManager;
 
 service MachineManager {
-    rpc NewSession (NewSessionRequest) returns (Void) {}
-    rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (Void) {}
+    rpc NewSession (NewSessionRequest) returns (CartesiMachine.Void) {}
+    rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
-    rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (Void) {}
+    rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (CartesiMachine.Void) {}
 }
 
 message NewSessionRequest {
     string session_id = 1;
     CartesiMachine.MachineRequest machine = 2;
-    uint64 epoch_number = 3; // initial epoch counter, increments with FinishEpoch
+    uint64 epoch_index = 3; // initial epoch counter, increments with FinishEpoch
     uint64 max_cycles_per_input = 4;
-    DrivePairWithMetadata input = 5;
-    PartitionedDrivesWithMetadata outputs = 6;
-    PartitionedDrivesWithMetadata logs = 7;
+    PayloadAndMetadata input = 5;
+    PayloadAndMetadataArray outputs = 6;
+    PayloadAndMetadataArray logs = 7;
 }
 
-message DrivePairWithMetadata {
+message PayloadAndMetadata {
     uint64 metadata_flash_drive_index = 1;
     uint64 payload_flash_drive_index = 2;
 }
 
-message PartitionedDrivesWithMetadata {
-    DrivePairWithMetadata drive_pair = 1;
+message PayloadAndMetadataArray {
+    PayloadAndMetadata drive_pair = 1;
     uint64 entry_count = 2;
     uint64 entry_size = 3;
 }
@@ -55,12 +55,14 @@ message SessionEnqueueInputRequest {
     bytes input_payload = 5;
 }
 
+// Returns an error if the queried_epoch_index is not valid.
 message SessionGetStatusRequest {
     string session_id = 1;
+    uint64 queried_epoch_index = 2; // can refer to an previous epoch
 }
 
 message SessionGetStatusResponse {
-    uint64 epoch_number = 1;
+    uint64 epoch_index = 1;
     repeated InputExecution processed_inputs = 2;
     uint64 number_of_enqueued_inputs = 3;
 }
@@ -87,7 +89,7 @@ message Output {
 // and empties the output tree of the epochs.
 message SessionFinishEpochRequest {
     string session_id = 1;
-    uint64 current_epoch = 2; // double check that the epoch number is correct
+    uint64 sealed_epoch_index = 2; // double check that the epoch number is correct
     uint64 total_number_of_inputs = 3; // double check the number of inputs sent
 }
 
