@@ -20,54 +20,77 @@ service MachineManager {
     rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
     rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (CartesiMachine.Void) {}
+    rpc DestroySession (DestroySessionRequest) returns (CartesiMachine.Void) {}
 }
 
+// This call initiates a new session.
+// It specifies a machine, either by config or by directory.
+// That machine has a given active epoch and is about to process the current input.
+// The processing of each input is limited by a maximum number of cycles.
+// The machine has 3 special flash drive pairs: input, outputs, and events.
+// The outputs and events flash drive pairs contain arrays of entries.
 message NewSessionRequest {
     string session_id = 1;
     CartesiMachine.MachineRequest machine = 2;
-    uint64 epoch_index = 3; // initial epoch counter, increments with FinishEpoch
-    uint64 max_cycles_per_input = 4;
-    PayloadAndMetadata input = 5;
-    PayloadAndMetadataArray outputs = 6;
-    PayloadAndMetadataArray logs = 7;
+    uint64 active_epoch_index = 3;
+    uint64 current_input_index = 4;
+    uint64 max_cycles_per_input = 5;
+    PayloadAndMetadata input = 6;
+    PayloadAndMetadataArray outputs = 7;
+    PayloadAndMetadataArray events = 8;
 }
 
+// This call deletes the session, removing all cached data
+// It does *not* remove any machines that might have been stored by FinishEpoch
+message DestroySessionRequest {
+    string session_id = 1;
+}
+
+// Pair of flash drive indices
 message PayloadAndMetadata {
     uint64 metadata_flash_drive_index = 1;
     uint64 payload_flash_drive_index = 2;
 }
 
+// Pair of flash drive indices containing arrays of entries.
+// Each entry in the payload flash drive has a given size and there are count of them.
 message PayloadAndMetadataArray {
     PayloadAndMetadata drive_pair = 1;
-    uint64 entry_count = 2;
-    uint64 entry_size = 3;
+    uint64 payload_entry_count = 2;
+    uint64 payload_entry_size = 3;
 }
 
-// This call is synchronous. You send a request and receive
-// immediately a void response indicating that it was processed.
-// The Machine Manager should enqueue this, but does not need to
-// answer anything. Results will be later gathered by GetStatus
+// There is only one active epoch per session.
+// That epoch has a certain number of already processed inputs and a number of
+// inputs enqueue for processing
+// The call enqueues the next input for processing and immediately returns.
+// If the active epoch index or current input index do not match what is
+// expected by the session, the call returns an error.
+// Results themselves will be gathered later by a call to GetStatus.
 message SessionEnqueueInputRequest {
     string session_id = 1;
-    uint64 epoch_index = 2;         // to double check that we are in the right epoch
-    uint64 current_input_index = 3; // to double check the number of inputs sent
+    uint64 active_epoch_index = 2;   // To double-check the desired epoch is the active one
+    uint64 current_input_index = 3;  // To double-check the current input in the active epoch is the expected one
     bytes input_metadata = 4;
     bytes input_payload = 5;
 }
 
-// Returns an error if the queried_epoch_index is not valid.
+// Returns all data available for the requested epoch in a session
+// If the manager does not have information available, it returns an error
+// The manager will indefinitely keep all data for all epochs it processed in a given session
+// until it is closed by DestroySession
 message SessionGetStatusRequest {
     string session_id = 1;
-    uint64 queried_epoch_index = 2; // can refer to an previous epoch
+    uint64 epoch_index = 2; // May refer to an old epoch that is still cached by the session
 }
 
 message SessionGetStatusResponse {
     uint64 epoch_index = 1;
-    repeated InputExecution processed_inputs = 2;
-    uint64 number_of_enqueued_inputs = 3;
+    repeated InputResult processed_inputs = 2;
+    uint64 pending_input_count = 3;
 }
 
-message InputExecution {
+message InputResult {
     CartesiMachine.Proof output_metadata_flash_drive_in_machine = 1;
     CartesiMachine.Proof output_metadata_flash_drive_in_epoch = 2;
     repeated Output outputs = 3;
@@ -80,19 +103,20 @@ message Output {
     CartesiMachine.Proof keccak_in_output_metadata_flash_drive = 4;
 }
 
-// A request to finish the epoch should only be done if all inputs
-// of the current epoch have been fully processed. If this is not the case
-// the expected behavior is for the Machine Manager to return an error.
-// In other words, there is no way to enqueue this call and it is synchronous.
+// This is synchronous call that should only happen after all
+// inputs in the active epoch have been processed.
+// Otherwise, the manager should return an error.
 //
-// Finishing an epoch increases the epoch number, empties the input list
-// and empties the output tree of the epochs.
+// Finishing an epoch increases the active epoch index,
+// empties the processed input list, and empties the output tree of the epochs,
+// and stores the machine state
 message SessionFinishEpochRequest {
     string session_id = 1;
-    uint64 sealed_epoch_index = 2; // double check that the epoch number is correct
-    uint64 total_number_of_inputs = 3; // double check the number of inputs sent
+    uint64 active_epoch_index = 2; // To double-check epoch index is correct
+    uint64 processed_input_count = 3; // To double-check all inputs sent have been processed
+    string storage_directory = 4; // Directory to store machine state (do not store if empty string)
 }
 
 message SessionFinishEpochResponse {
-    uint64 next_epoch_index = 1;
+    uint64 next_active_epoch_index = 1;
 }
