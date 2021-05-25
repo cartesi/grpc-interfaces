@@ -11,16 +11,19 @@
 
 syntax = "proto3";
 
+import "versioning.proto";
+
 import "cartesi-machine.proto";
 
 package CartesiRollupMachineManager;
 
-service MachineManager {
-    rpc NewSession (NewSessionRequest) returns (CartesiMachine.Void) {}
+service RollupMachineManager {
+    rpc GetVersion(CartesiMachine.Void) returns (Versioning.GetVersionResponse) {}
+    rpc StartSession (StartSessionRequest) returns (CartesiMachine.Void) {}
     rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
     rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (CartesiMachine.Void) {}
-    rpc DestroySession (DestroySessionRequest) returns (CartesiMachine.Void) {}
+    rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
 }
 
 // This call initiates a new session.
@@ -29,7 +32,7 @@ service MachineManager {
 // The processing of each input is limited by a maximum number of cycles.
 // The machine has 3 special flash drive pairs: input, outputs, and events.
 // The outputs and events flash drive pairs contain arrays of entries.
-message NewSessionRequest {
+message StartSessionRequest {
     string session_id = 1;
     CartesiMachine.MachineRequest machine = 2;
     uint64 active_epoch_index = 3;
@@ -42,7 +45,7 @@ message NewSessionRequest {
 
 // This call deletes the session, removing all cached data
 // It does *not* remove any machines that might have been stored by FinishEpoch
-message DestroySessionRequest {
+message EndSessionRequest {
     string session_id = 1;
 }
 
@@ -78,7 +81,7 @@ message SessionEnqueueInputRequest {
 // Returns all data available for the requested epoch in a session
 // If the manager does not have information available, it returns an error
 // The manager will indefinitely keep all data for all epochs it processed in a given session
-// until it is closed by DestroySession
+// until it is closed by EndSession
 message SessionGetStatusRequest {
     string session_id = 1;
     uint64 epoch_index = 2; // May refer to an old epoch that is still cached by the session
