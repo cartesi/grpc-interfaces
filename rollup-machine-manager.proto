@@ -38,9 +38,9 @@ message StartSessionRequest {
     uint64 active_epoch_index = 3;
     uint64 current_input_index = 4;
     uint64 max_cycles_per_input = 5;
-    PayloadAndMetadata input = 6;
-    PayloadAndMetadataArray outputs = 7;
-    PayloadAndMetadataArray events = 8;
+    PayloadAndMetadata input_description = 6;
+    PayloadAndMetadataArray outputs_description = 7;
+    PayloadAndMetadataArray events_description = 8;
 }
 
 // This call deletes the session, removing all cached data
@@ -56,11 +56,11 @@ message PayloadAndMetadata {
 }
 
 // Pair of flash drive indices containing arrays of entries.
-// Each entry in the payload flash drive has a given size and there are count of them.
+// Each entry in the payload flash drive has a given length and there are count of them.
 message PayloadAndMetadataArray {
     PayloadAndMetadata drive_pair = 1;
-    uint64 payload_entry_count = 2;
-    uint64 payload_entry_size = 3;
+    uint64 entry_count = 2;
+    uint64 payload_entry_length = 3;
 }
 
 // There is only one active epoch per session.
@@ -97,6 +97,13 @@ message InputResult {
     CartesiMachine.Proof output_metadata_flash_drive_in_machine = 1;
     CartesiMachine.Proof output_metadata_flash_drive_in_epoch = 2;
     repeated Output outputs = 3;
+    repeated Event events = 4;
+}
+
+message Event {
+    CartesiMachine.Hash keccak = 1;
+    bytes payload = 2;
+    CartesiMachine.Proof keccak_in_event_metadata_flash_drive = 3;
 }
 
 message Output {
