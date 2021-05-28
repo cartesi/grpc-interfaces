@@ -94,8 +94,8 @@ message SessionGetStatusResponse {
 }
 
 message InputResult {
-    CartesiMachine.Proof output_metadata_flash_drive_in_machine = 1;
-    CartesiMachine.Proof output_metadata_flash_drive_in_epoch = 2;
+    CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_machine = 1;
+    CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_epoch = 2;
     repeated Output outputs = 3;
     repeated Event events = 4;
 }
@@ -103,14 +103,14 @@ message InputResult {
 message Event {
     CartesiMachine.Hash keccak = 1;
     bytes payload = 2;
-    CartesiMachine.Proof keccak_in_event_metadata_flash_drive = 3;
+    CartesiMachine.MerkleTreeProof keccak_in_event_metadata_flash_drive = 3;
 }
 
 message Output {
     CartesiMachine.Hash keccak = 1;
     CartesiMachine.Hash address = 2;
     bytes payload = 3;
-    CartesiMachine.Proof keccak_in_output_metadata_flash_drive = 4;
+    CartesiMachine.MerkleTreeProof keccak_in_output_metadata_flash_drive = 4;
 }
 
 // This is synchronous call that should only happen after all

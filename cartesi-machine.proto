@@ -307,12 +307,13 @@ message MachineRuntimeConfig {
     ConcurrencyConfig concurrency = 2;
 }
 
-message Proof {
-    uint64 address = 1;
-    uint32 log2_size = 2;
+message MerkleTreeProof {
+    uint64 target_address = 1;
+    uint64 log2_target_size = 2;
     Hash target_hash = 3;
-    repeated Hash sibling_hashes = 4;
+    uint64 log2_root_size = 4;
     Hash root_hash = 5;
+    repeated Hash sibling_hashes = 6;
 }
 
 enum AccessType {
@@ -324,7 +325,7 @@ message Access {
     AccessType type = 1;
     bytes read = 2;
     bytes written = 3;
-    Proof proof = 4;
+    MerkleTreeProof proof = 4;
     uint64 address = 5;
     uint64 log2_size = 6;
 }
@@ -450,7 +451,7 @@ message GetProofRequest {
 }
 
 message GetProofResponse {
-    Proof proof = 1;
+    MerkleTreeProof proof = 1;
 }
 
 message ReplaceFlashDriveRequest {
