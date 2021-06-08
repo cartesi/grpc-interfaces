@@ -30,8 +30,8 @@ service RollupMachineManager {
 // It specifies a machine, either by config or by directory.
 // That machine has a given active epoch and is about to process the current input.
 // The processing of each input is limited by a maximum number of cycles.
-// The machine has 3 special flash drive pairs: input, outputs, and events.
-// The outputs and events flash drive pairs contain arrays of entries.
+// The machine has 3 special flash drive pairs: input, outputs, and messages.
+// The outputs and messages flash drive pairs contain arrays of entries.
 message StartSessionRequest {
     string session_id = 1;
     CartesiMachine.MachineRequest machine = 2;
@@ -40,7 +40,7 @@ message StartSessionRequest {
     uint64 max_cycles_per_input = 5;
     PayloadAndMetadata input_description = 6;
     PayloadAndMetadataArray outputs_description = 7;
-    PayloadAndMetadataArray events_description = 8;
+    PayloadAndMetadataArray messages_description = 8;
 }
 
 // This call deletes the session, removing all cached data
@@ -87,23 +87,37 @@ message SessionGetStatusRequest {
     uint64 epoch_index = 2; // May refer to an old epoch that is still cached by the session
 }
 
-message SessionGetStatusResponse {
-    uint64 epoch_index = 1;
-    repeated InputResult processed_inputs = 2;
-    uint64 pending_input_count = 3;
+enum EpochStatus {
+    ACTIVE = 0;
+    FINISHED = 1;
 }
 
+message SessionGetStatusResponse {
+    uint64 epoch_index = 1;
+    EpochStatus status = 2;
+    repeated InputResult processed_inputs = 3;
+    uint64 pending_input_count = 4;
+}
+
+// For ACTIVE epochs, the output_metadata_flash_drive_in_epoch and
+// message_metadata_flash_drive_in_epoch proofs are incremental. I.e.,
+// the output and message Merkle trees assume that future output and
+// message keccak hashes are zero in producing the proofs.
+// For FINISHED epochs, each proof takes into account the output and
+// message keccaks that came after in the epoch.
 message InputResult {
     CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_machine = 1;
     CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_epoch = 2;
     repeated Output outputs = 3;
-    repeated Event events = 4;
+    CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_machine = 4;
+    CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_epoch = 5;
+    repeated Message messages = 6;
 }
 
-message Event {
+message Message {
     CartesiMachine.Hash keccak = 1;
     bytes payload = 2;
-    CartesiMachine.MerkleTreeProof keccak_in_event_metadata_flash_drive = 3;
+    CartesiMachine.MerkleTreeProof keccak_in_message_metadata_flash_drive = 3;
 }
 
 message Output {
