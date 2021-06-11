@@ -24,6 +24,7 @@ service MachineManager {
     rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
     rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.Proof) {}
+    rpc TerminateSession (TerminateSessionRequest) returns (CartesiMachine.Void) {}
 }
 
 message NewSessionRequest {
@@ -93,4 +94,9 @@ message SessionGetProofRequest {
     string session_id = 1;
     uint64 cycle = 2;
     CartesiMachine.GetProofRequest target = 3;
+}
+
+message TerminateSessionRequest {
+    string session_id = 1;
+    bool ignore = 2;
 }
