@@ -36,7 +36,6 @@ message StartSessionRequest {
     string session_id = 1;
     CartesiMachine.MachineRequest machine = 2;
     uint64 active_epoch_index = 3;
-    uint64 current_input_index = 4;
     uint64 max_cycles_per_input = 5;
     PayloadAndMetadata input_description = 6;
     PayloadAndMetadataArray outputs_description = 7;
