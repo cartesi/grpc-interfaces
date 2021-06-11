@@ -23,7 +23,7 @@ service MachineManager {
     rpc SessionStore (SessionStoreRequest) returns (CartesiMachine.Void) {}
     rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
     rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiMachine.Void) {}
-    rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.Proof) {}
+    rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.MerkleTreeProof) {}
     rpc TerminateSession (TerminateSessionRequest) returns (CartesiMachine.Void) {}
 }
 
