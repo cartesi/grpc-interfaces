@@ -20,11 +20,16 @@ package CartesiRollupMachineManager;
 service RollupMachineManager {
     rpc GetVersion(CartesiMachine.Void) returns (Versioning.GetVersionResponse) {}
     rpc StartSession (StartSessionRequest) returns (CartesiMachine.Void) {}
-    rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (CartesiMachine.Void) {}
-    rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
-    rpc SessionGetEpochStatus (SessionGetEpochStatusRequest) returns (SessionGetEpochStatusResponse) {}
-    rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (CartesiMachine.Void) {}
+    rpc EnqueueInput (EnqueueInputRequest) returns (CartesiMachine.Void) {}
+    rpc GetStatus (CartesiMachine.Void) returns (GetStatusResponse) {}
+    rpc GetSessionStatus (GetSessionStatusRequest) returns (GetSessionStatusResponse) {}
+    rpc GetEpochStatus (GetEpochStatusRequest) returns (GetEpochStatusResponse) {}
+    rpc FinishEpoch (FinishEpochRequest) returns (CartesiMachine.Void) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
+}
+
+message GetStatusResponse {
+    repeated string session_id = 1;
 }
 
 // This call initiates a new session.
@@ -43,14 +48,14 @@ message StartSessionRequest {
     PayloadAndMetadataArray messages_description = 8;
 }
 
-message SessionGetStatusRequest {
+message GetSessionStatusRequest {
     string session_id = 1;
 }
 
-message SessionGetStatusResponse {
+message GetSessionStatusResponse {
     string session_id = 1;
     uint64 active_epoch_index = 2;
-    repeated uint64 epoch_indices = 3;
+    repeated uint64 epoch_index = 3;
 }
 
 // This call deletes the session, removing all cached data
@@ -80,7 +85,7 @@ message PayloadAndMetadataArray {
 // If the active epoch index or current input index do not match what is
 // expected by the session, the call returns an error.
 // Results themselves will be gathered later by a call to GetStatus.
-message SessionEnqueueInputRequest {
+message EnqueueInputRequest {
     string session_id = 1;
     uint64 active_epoch_index = 2;   // To double-check the desired epoch is the active one
     uint64 current_input_index = 3;  // To double-check the current input in the active epoch is the expected one
@@ -92,7 +97,7 @@ message SessionEnqueueInputRequest {
 // If the manager does not have information available, it returns an error
 // The manager will indefinitely keep all data for all epochs it processed in a given session
 // until it is closed by EndSession
-message SessionGetEpochStatusRequest {
+message GetEpochStatusRequest {
     string session_id = 1;
     uint64 epoch_index = 2; // May refer to an old epoch that is still cached by the session
 }
@@ -111,11 +116,11 @@ enum InputSkipReason {
 // For FINISHED epochs without pending inputs, each proof takes into account
 // the output and message keccaks that came after in the epoch.
 message InputResult {
-    CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_machine = 1;
-    CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_epoch = 2;
+    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_machine = 1;
+    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_epoch = 2;
     repeated Output outputs = 3;
-    CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_machine = 4;
-    CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_epoch = 5;
+    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_machine = 4;
+    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_epoch = 5;
     repeated Message messages = 6;
 }
 
@@ -131,7 +136,7 @@ enum EpochState {
     FINISHED = 1;
 }
 
-message SessionGetEpochStatusResponse {
+message GetEpochStatusResponse {
     uint64 epoch_index = 1;
     EpochState state = 2;
     repeated ProcessedInput processed_inputs = 3;
@@ -158,7 +163,7 @@ message Output {
 // Finishing an epoch increases the active epoch index,
 // empties the processed input list, and empties the output tree of the epochs,
 // and stores the machine state
-message SessionFinishEpochRequest {
+message FinishEpochRequest {
     string session_id = 1;
     uint64 active_epoch_index = 2; // To double-check epoch index is correct
     uint64 processed_input_count = 3; // To double-check all inputs sent have been processed
