@@ -22,6 +22,7 @@ service RollupMachineManager {
     rpc StartSession (StartSessionRequest) returns (CartesiMachine.Void) {}
     rpc SessionEnqueueInput (SessionEnqueueInputRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetStatus (SessionGetStatusRequest) returns (SessionGetStatusResponse) {}
+    rpc SessionGetEpochStatus (SessionGetEpochStatusRequest) returns (SessionGetEpochStatusResponse) {}
     rpc SessionFinishEpoch (SessionFinishEpochRequest) returns (CartesiMachine.Void) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
 }
@@ -40,6 +41,16 @@ message StartSessionRequest {
     PayloadAndMetadata input_description = 6;
     PayloadAndMetadataArray outputs_description = 7;
     PayloadAndMetadataArray messages_description = 8;
+}
+
+message SessionGetStatusRequest {
+    string session_id = 1;
+}
+
+message SessionGetStatusResponse {
+    string session_id = 1;
+    uint64 active_epoch_index = 2;
+    repeated uint64 epoch_indices = 3;
 }
 
 // This call deletes the session, removing all cached data
@@ -81,29 +92,24 @@ message SessionEnqueueInputRequest {
 // If the manager does not have information available, it returns an error
 // The manager will indefinitely keep all data for all epochs it processed in a given session
 // until it is closed by EndSession
-message SessionGetStatusRequest {
+message SessionGetEpochStatusRequest {
     string session_id = 1;
     uint64 epoch_index = 2; // May refer to an old epoch that is still cached by the session
 }
 
-enum EpochStatus {
-    ACTIVE = 0;
-    FINISHED = 1;
+enum InputSkipReason {
+    CYCLE_LIMIT_EXCEEDED = 0;
+    REQUESTED_BY_MACHINE = 1;
+    MACHINE_HALTED = 2;
+    TIME_LIMIT_EXCEEDED = 3;
 }
 
-message SessionGetStatusResponse {
-    uint64 epoch_index = 1;
-    EpochStatus status = 2;
-    repeated InputResult processed_inputs = 3;
-    uint64 pending_input_count = 4;
-}
-
-// For ACTIVE epochs, the output_metadata_flash_drive_in_epoch and
-// message_metadata_flash_drive_in_epoch proofs are incremental. I.e.,
-// the output and message Merkle trees assume that future output and
-// message keccak hashes are zero in producing the proofs.
-// For FINISHED epochs, each proof takes into account the output and
-// message keccaks that came after in the epoch.
+// For an ACTIVE epoch or a FINISHED epoch with pending inputs, the
+// output_metadata_flash_drive_in_epoch and message_metadata_flash_drive_in_epoch
+// proofs are incremental. I.e., the output and message Merkle trees assume that
+// future output and message keccak hashes are zero in producing the proofs.
+// For FINISHED epochs without pending inputs, each proof takes into account
+// the output and message keccaks that came after in the epoch.
 message InputResult {
     CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_machine = 1;
     CartesiMachine.MerkleTreeProof output_metadata_flash_drive_in_epoch = 2;
@@ -111,6 +117,25 @@ message InputResult {
     CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_machine = 4;
     CartesiMachine.MerkleTreeProof message_metadata_flash_drive_in_epoch = 5;
     repeated Message messages = 6;
+}
+
+message ProcessedInput {
+    oneof input_oneof {
+        InputResult result = 1;
+        InputSkipReason skip_reason = 2;
+    };
+}
+
+enum EpochState {
+    ACTIVE = 0;
+    FINISHED = 1;
+}
+
+message SessionGetEpochStatusResponse {
+    uint64 epoch_index = 1;
+    EpochState state = 2;
+    repeated ProcessedInput processed_inputs = 3;
+    uint64 pending_input_count = 4;
 }
 
 message Message {
@@ -138,8 +163,4 @@ message SessionFinishEpochRequest {
     uint64 active_epoch_index = 2; // To double-check epoch index is correct
     uint64 processed_input_count = 3; // To double-check all inputs sent have been processed
     string storage_directory = 4; // Directory to store machine state (do not store if empty string)
-}
-
-message SessionFinishEpochResponse {
-    uint64 next_active_epoch_index = 1;
 }
