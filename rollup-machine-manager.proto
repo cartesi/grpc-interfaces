@@ -137,10 +137,11 @@ enum EpochState {
 }
 
 message GetEpochStatusResponse {
-    uint64 epoch_index = 1;
-    EpochState state = 2;
-    repeated ProcessedInput processed_inputs = 3;
-    uint64 pending_input_count = 4;
+    string session_id = 1;
+    uint64 epoch_index = 2;
+    EpochState state = 3;
+    repeated ProcessedInput processed_inputs = 4;
+    uint64 pending_input_count = 5;
 }
 
 message Message {
