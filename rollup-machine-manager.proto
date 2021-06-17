@@ -125,9 +125,11 @@ message InputResult {
 }
 
 message ProcessedInput {
-    oneof input_oneof {
-        InputResult result = 1;
-        InputSkipReason skip_reason = 2;
+    uint64 input_index = 1;
+    CartesiMachine.Hash machine_hash_after = 2;
+    oneof processed_oneof {
+        InputResult result = 3;
+        InputSkipReason skip_reason = 4;
     };
 }
 
