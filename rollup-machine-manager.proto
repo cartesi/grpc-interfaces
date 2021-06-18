@@ -48,6 +48,11 @@ message StartSessionRequest {
     PayloadAndMetadataArray messages_description = 8;
 }
 
+message TaintStatus {
+    int32 error_code = 1;
+    string error_message = 2;
+}
+
 message GetSessionStatusRequest {
     string session_id = 1;
 }
@@ -56,6 +61,7 @@ message GetSessionStatusResponse {
     string session_id = 1;
     uint64 active_epoch_index = 2;
     repeated uint64 epoch_index = 3;
+    TaintStatus taint_status = 4;
 }
 
 // This call deletes the session, removing all cached data
@@ -144,6 +150,7 @@ message GetEpochStatusResponse {
     EpochState state = 3;
     repeated ProcessedInput processed_inputs = 4;
     uint64 pending_input_count = 5;
+    TaintStatus taint_status = 6;
 }
 
 message Message {
