@@ -32,6 +32,16 @@ message GetStatusResponse {
     repeated string session_id = 1;
 }
 
+// Specifies deadlines for interactions with the machine server
+// All deadlines are in milliseconds
+message DeadlineConfig {
+    uint64 check_in = 1; // Deadline for receiving check-in from spawned machine server
+    uint64 update_merkle_tree = 2; // Deadline for updating a Merkle tree
+    uint64 run_input = 3; // Deadline for running an input
+    uint64 store = 4; // Deadling for storing a machine
+    uint64 fast = 5; // Deadling for fast machine server operations
+}
+
 // This call initiates a new session.
 // It specifies a machine, either by config or by directory.
 // That machine has a given active epoch and is about to process the current input.
@@ -46,6 +56,7 @@ message StartSessionRequest {
     PayloadAndMetadata input_description = 6;
     PayloadAndMetadataArray outputs_description = 7;
     PayloadAndMetadataArray messages_description = 8;
+    DeadlineConfig server_deadline = 9;
 }
 
 message TaintStatus {
