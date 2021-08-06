@@ -144,10 +144,12 @@ message InputResult {
 
 message ProcessedInput {
     uint64 input_index = 1;
-    CartesiMachine.Hash machine_hash_after = 2;
+    CartesiMachine.Hash most_recent_machine_hash = 2;
+    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_epoch = 3;
+    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_epoch = 4;
     oneof processed_oneof {
-        InputResult result = 3;
-        InputSkipReason skip_reason = 4;
+        InputResult result = 5;
+        InputSkipReason skip_reason = 6;
     };
 }
 
@@ -161,11 +163,9 @@ message GetEpochStatusResponse {
     uint64 epoch_index = 2;
     EpochState state = 3;
     CartesiMachine.Hash machine_hash_after_epoch = 4;
-    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_epoch = 5;
-    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_epoch = 6;
-    repeated ProcessedInput processed_inputs = 6;
-    uint64 pending_input_count = 7;
-    TaintStatus taint_status = 8;
+    repeated ProcessedInput processed_inputs = 7;
+    uint64 pending_input_count = 8;
+    TaintStatus taint_status = 9;
 }
 
 message Message {
