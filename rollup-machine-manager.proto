@@ -137,11 +137,9 @@ enum InputSkipReason {
 // the output and message keccaks that came after in the epoch.
 message InputResult {
     CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_machine = 1;
-    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_epoch = 2;
-    repeated Output outputs = 3;
-    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_machine = 4;
-    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_epoch = 5;
-    repeated Message messages = 6;
+    repeated Output outputs = 2;
+    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_machine = 3;
+    repeated Message messages = 4;
 }
 
 message ProcessedInput {
@@ -162,9 +160,12 @@ message GetEpochStatusResponse {
     string session_id = 1;
     uint64 epoch_index = 2;
     EpochState state = 3;
-    repeated ProcessedInput processed_inputs = 4;
-    uint64 pending_input_count = 5;
-    TaintStatus taint_status = 6;
+    CartesiMachine.Hash machine_hash_after_epoch = 4;
+    CartesiMachine.MerkleTreeProof outputs_metadata_flash_drive_in_epoch = 5;
+    CartesiMachine.MerkleTreeProof messages_metadata_flash_drive_in_epoch = 6;
+    repeated ProcessedInput processed_inputs = 6;
+    uint64 pending_input_count = 7;
+    TaintStatus taint_status = 8;
 }
 
 message Message {
