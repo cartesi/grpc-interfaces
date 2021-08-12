@@ -162,10 +162,10 @@ message GetEpochStatusResponse {
     string session_id = 1;
     uint64 epoch_index = 2;
     EpochState state = 3;
-    CartesiMachine.Hash machine_hash_after_epoch = 4;
-    repeated ProcessedInput processed_inputs = 7;
-    uint64 pending_input_count = 8;
-    TaintStatus taint_status = 9;
+    CartesiMachine.Hash most_recent_machine_hash = 4;
+    repeated ProcessedInput processed_inputs = 5;
+    uint64 pending_input_count = 6;
+    TaintStatus taint_status = 7;
 }
 
 message Message {
