@@ -166,7 +166,7 @@ message GetEpochStatusResponse {
     CartesiMachine.Hash most_recent_outputs_epoch_root_hash = 5;
     CartesiMachine.Hash most_recent_messages_epoch_root_hash = 6;
     repeated ProcessedInput processed_inputs = 7;
-    uint65 pending_input_count = 8;
+    uint64 pending_input_count = 8;
     TaintStatus taint_status = 9;
 }
 
