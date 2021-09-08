@@ -271,8 +271,8 @@ message HTIFConfig {
         uint64 tohost = 2;
     }
     bool console_getchar = 3;
-    bool yield_progress = 4;
-    bool yield_rollup = 5;
+    bool yield_manual = 4;
+    bool yield_automatic = 5;
 }
 
 message DHDConfig {
@@ -403,6 +403,7 @@ message RunResponse {
     uint64 tohost = 2;
     bool iflags_h = 3;
     bool iflags_y = 4;
+    bool iflags_x = 5;
 }
 
 message StoreRequest {
