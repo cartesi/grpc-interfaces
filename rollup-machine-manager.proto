@@ -56,10 +56,12 @@ message StartSessionRequest {
     uint64 active_epoch_index = 3;
     uint64 max_cycles_per_input = 4;
     uint64 cycles_per_input_chunk = 5;
-    PayloadAndMetadata input_description = 6;
-    PayloadAndMetadataArray outputs_description = 7;
-    PayloadAndMetadataArray messages_description = 8;
-    DeadlineConfig server_deadline = 9;
+    uint64 rx_flash_drive_index = 6;
+    uint64 tx_flash_drive_index = 7;
+    uint64 input_metadata_flash_drive_index = 8;
+    uint64 output_metadata_flash_drive_index = 9;
+    uint64 message_metadata_flash_drive_index = 10;
+    DeadlineConfig server_deadline = 11;
 }
 
 message TaintStatus {
@@ -82,20 +84,6 @@ message GetSessionStatusResponse {
 // It does *not* remove any machines that might have been stored by FinishEpoch
 message EndSessionRequest {
     string session_id = 1;
-}
-
-// Pair of flash drive indices
-message PayloadAndMetadata {
-    uint64 metadata_flash_drive_index = 1;
-    uint64 payload_flash_drive_index = 2;
-}
-
-// Pair of flash drive indices containing arrays of entries.
-// Each entry in the payload flash drive has a given length and there are count of them.
-message PayloadAndMetadataArray {
-    PayloadAndMetadata drive_pair = 1;
-    uint64 entry_count = 2;
-    uint64 payload_entry_length = 3;
 }
 
 // There is only one active epoch per session.
