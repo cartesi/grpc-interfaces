@@ -35,7 +35,7 @@ message GetStatusResponse {
 // Specifies deadlines for interactions with the machine server
 // All deadlines are in milliseconds
 message DeadlineConfig {
-    uint64 check_in = 1; // Deadline for receiving check-in from spawned machine server
+    uint64 checkin = 1; // Deadline for receiving checkin from spawned machine server
     uint64 update_merkle_tree = 2; // Deadline for updating a Merkle tree
     uint64 run_input = 3; // Deadline for running an entire input
     uint64 run_input_chunk = 4; // Deadline for running an input chunk
@@ -59,8 +59,8 @@ message StartSessionRequest {
     uint64 rx_flash_drive_index = 6;
     uint64 tx_flash_drive_index = 7;
     uint64 input_metadata_flash_drive_index = 8;
-    uint64 output_metadata_flash_drive_index = 9;
-    uint64 message_metadata_flash_drive_index = 10;
+    uint64 outputs_metadata_flash_drive_index = 9;
+    uint64 messages_metadata_flash_drive_index = 10;
     DeadlineConfig server_deadline = 11;
 }
 
