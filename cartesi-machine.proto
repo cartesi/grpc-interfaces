@@ -33,7 +33,7 @@ service Machine {
     rpc ReadWord(ReadWordRequest) returns (ReadWordResponse) {}
     rpc GetRootHash(Void) returns (GetRootHashResponse) {}
     rpc GetProof(GetProofRequest) returns (GetProofResponse) {}
-    rpc ReplaceFlashDrive (ReplaceFlashDriveRequest) returns (Void) {}
+    rpc ReplaceMemoryRange (ReplaceMemoryRangeRequest) returns (Void) {}
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
@@ -250,7 +250,7 @@ message RAMConfig {
     string image_filename = 2;
 }
 
-message FlashDriveConfig {
+message MemoryRangeConfig {
     uint64 start = 1;
     uint64 length = 2;
     string image_filename = 3;
@@ -284,14 +284,23 @@ message DHDConfig {
     repeated uint64 h = 6;
 }
 
+message RollupConfig {
+    MemoryRangeConfig input_metadata = 1;
+    MemoryRangeConfig voucher_hashes = 2;
+    MemoryRangeConfig notice_hashes = 3;
+}
+
 message MachineConfig {
     ProcessorConfig processor = 1;
     ROMConfig rom = 2;
     RAMConfig ram = 3;
-    repeated FlashDriveConfig flash_drive = 4;
+    repeated MemoryRangeConfig flash_drive = 4;
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
     DHDConfig dhd = 7;
+    MemoryRangeConfig rx_buffer = 8;
+    MemoryRangeConfig tx_buffer = 9;
+    RollupConfig rollup = 10;
 }
 
 message DHDRuntimeConfig {
@@ -455,8 +464,8 @@ message GetProofResponse {
     MerkleTreeProof proof = 1;
 }
 
-message ReplaceFlashDriveRequest {
-    FlashDriveConfig config = 1;
+message ReplaceMemoryRangeRequest {
+    MemoryRangeConfig config = 1;
 }
 
 message GetXAddressRequest {
