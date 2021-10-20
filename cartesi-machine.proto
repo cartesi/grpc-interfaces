@@ -285,9 +285,11 @@ message DHDConfig {
 }
 
 message RollupConfig {
-    MemoryRangeConfig input_metadata = 1;
-    MemoryRangeConfig voucher_hashes = 2;
-    MemoryRangeConfig notice_hashes = 3;
+    MemoryRangeConfig rx_buffer = 1;
+    MemoryRangeConfig tx_buffer = 2;
+    MemoryRangeConfig input_metadata = 3;
+    MemoryRangeConfig voucher_hashes = 4;
+    MemoryRangeConfig notice_hashes = 5;
 }
 
 message MachineConfig {
@@ -298,9 +300,7 @@ message MachineConfig {
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
     DHDConfig dhd = 7;
-    MemoryRangeConfig rx_buffer = 8;
-    MemoryRangeConfig tx_buffer = 9;
-    RollupConfig rollup = 10;
+    RollupConfig rollup = 8;
 }
 
 message DHDRuntimeConfig {
