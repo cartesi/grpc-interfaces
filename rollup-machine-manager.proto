@@ -137,11 +137,23 @@ message EndSessionRequest {
     string session_id = 1; // Session to end.
 }
 
+message Address {
+    bytes data = 1; // 20-byte address
+}
+
+message InputMetadata {
+    Address msg_sender = 1; // 20-byte address of sender
+    uint64 block_number = 2; // Block number when input was posted
+    uint64 time_stamp = 3; // Time stamp of block (Unix?)
+    uint64 epoch_index = 4; // Epoch index in session
+    uint64 input_index = 5; // Input index in epoch
+}
+
 message AdvanceStateRequest {
     string session_id = 1;
     uint64 active_epoch_index = 2; // To double-check the desired epoch is the active one
     uint64 current_input_index = 3; // To double-check the current input in the active epoch is the expected one
-    bytes input_metadata = 4; // Information sent via the input metadata memory range
+    InputMetadata input_metadata = 4; // Information sent via the input metadata memory range
     bytes input_payload = 5; // Payload sent via the rx buffer memory range
 }
 
@@ -165,7 +177,6 @@ message InputResult {
     CartesiMachine.MerkleTreeProof notice_hashes_in_machine = 3; // Merkle proof that the notice hashes memory range is part of the Cartesi Machine State
     repeated Notice notices = 4; // List of notices produced when processing the input
 }
-
 
 // For an ACTIVE epoch or a FINISHED epoch with pending inputs, the voucher_hashes_in_epoch and notice_hashes_in_epoch
 // proofs are incremental. I.e., the voucher and notice Merkle trees assume that future voucher and notice
@@ -208,7 +219,7 @@ message Notice {
 
 message Voucher {
     CartesiMachine.Hash keccak = 1; // Keccak hash of voucher
-    CartesiMachine.Hash address = 2; // Address
+    Address address = 2; // 20-byte address
     bytes payload = 3; // Voucher payload
     CartesiMachine.MerkleTreeProof keccak_in_voucher_hashes = 4; // Proof that keccak is in voucher hashes memory range
 }
