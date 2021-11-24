@@ -72,7 +72,7 @@ package CartesiRollupMachineManager;
 
 service RollupMachineManager {
     rpc GetVersion(CartesiMachine.Void) returns (Versioning.GetVersionResponse) {}
-    rpc StartSession (StartSessionRequest) returns (CartesiMachine.Void) {}
+    rpc StartSession (StartSessionRequest) returns (StartSessionResponse) {}
     rpc AdvanceState (AdvanceStateRequest) returns (CartesiMachine.Void) {}
     rpc GetStatus (CartesiMachine.Void) returns (GetStatusResponse) {}
     rpc GetSessionStatus (GetSessionStatusRequest) returns (GetSessionStatusResponse) {}
@@ -80,6 +80,10 @@ service RollupMachineManager {
     rpc InspectState (InspectStateRequest) returns (InspectStateResponse) {}
     rpc FinishEpoch (FinishEpochRequest) returns (CartesiMachine.Void) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
+}
+
+message StartSessionResponse {
+    CartesiMachine.MachineConfig config = 1; // Configuration of instantiated machine
 }
 
 message GetStatusResponse {
