@@ -20,6 +20,7 @@ package CartesiMachine;
 
 service Machine {
     rpc GetVersion(Void) returns (Versioning.GetVersionResponse) {}
+    rpc SetCheckInTarget(SetCheckInTargetRequest) returns (Void) {}
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run(RunRequest) returns (RunResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
@@ -58,6 +59,11 @@ service Machine {
 //Messages definition section
 
 message Void { }
+
+message SetCheckInTargetRequest {
+    string session_id = 1;
+    string address = 2;
+}
 
 message Hash {
     bytes data = 1;
