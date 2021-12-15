@@ -15,13 +15,13 @@ import "versioning.proto";
 
 import "cartesi-machine.proto";
 
-package CartesiRollupMachineManager;
+package CartesiServerManager;
 
-// The version implemented by an instance of the Cartesi Rollup Machine Server can be obtained with a call to GetVersion.
-// Each Cartesi Rollup Machine Manager controls a variety of independent Sessions (see StartSession).
+// The version implemented by an instance of the Cartesi Server Manager can be obtained with a call to GetVersion.
+// Each Cartesi Server Manager controls a variety of independent Sessions (see StartSession).
 // The current list of Sessions can be obtained with a call to GetStatus.
 // Each Session controls a single Cartesi Machine through a connection to a Cartesi Machine Server that the
-// Rollup Machine Manager itself spanws for the session.
+// Server Manager itself spanws for the session.
 // The Cartesi Machine is specified in the StartSession request, either by config or by directory.
 // Each Session is divided into Epochs.
 // The list of past Epochs (and the current Epoch) for a Session can be obtained with a call to GetSessionStatus.
@@ -51,26 +51,26 @@ package CartesiRollupMachineManager;
 // to the machine: i.e., from the perspective of the machine, it never happened.
 // State inspection is synchronous: the query is processed as soon as the current input is done (if any) and all
 // produced Reports are immediately returned.
-// A Cartesi Machine used with the Cartesi Rollup Machine Manager must define 5 memory ranges, in addition to however
+// A Cartesi Machine used with the Cartesi Server Manager must define 5 memory ranges, in addition to however
 // many flash drives the application it runs might require.
 // Each memory range must have a power-of-two length, and must start at a multiple of its size.
 // The first two are the rx buffer and tx buffer memory ranges.
-// The rx buffer is used by the Cartesi Rollup Machine Manager to send the input and query payloads into the Cartesi
+// The rx buffer is used by the Cartesi Server Manager to send the input and query payloads into the Cartesi
 // Machine.
-// The tx buffer is used by the Cartesi Machine to send Vouchers, Notices, and Reports to the Cartesi Rollup Machine
+// The tx buffer is used by the Cartesi Machine to send Vouchers, Notices, and Reports to the Cartesi Server
 // Manager.
 // Each input to AdvanceState, in addition to the payload, require some metadata.
 // This is sent into the Cartesi Machine by means of the input metadata memory range.
 // The last two remaining memory ranges are the voucher hashes and notice hashes memory ranges.
 // These contain array of hashes, respectively of each voucher and notice produced while processing an input.
-// Whenever an input is processed, the Cartesi Rollup Machine Manager collects from the Cartesi Machine a Merkle proof
+// Whenever an input is processed, the Cartesi Server Manager collects from the Cartesi Machine a Merkle proof
 // that the voucher hashes and notice hashes memory ranges are part of the Cartesi Machine State.
 // Likewise, each voucher and notice accompanies a proof that its hash is part of, respectively, the voucher hashe
 // memory range and notice hashes memory range.
-// Finally, the Cartesi Rollup Machine Manager also maintains two additional Merkle trees, respectively containing as
+// Finally, the Cartesi Server Manager also maintains two additional Merkle trees, respectively containing as
 // leaves the Merkle tree root hash of the voucher hashes memory range and the notice hashes memory range.
 
-service RollupMachineManager {
+service ServerManager {
     rpc GetVersion(CartesiMachine.Void) returns (Versioning.GetVersionResponse) {}
     rpc StartSession (StartSessionRequest) returns (StartSessionResponse) {}
     rpc AdvanceState (AdvanceStateRequest) returns (CartesiMachine.Void) {}
