@@ -15,12 +15,12 @@ syntax = "proto3";
 package StateFoldServer;
 
 service StateFold {
-  rpc GetBlock (GetBlockRequest) returns (Block) {}
-  rpc GetBlockDiff (GetBlockDiffRequest) returns (BlockDiffResponse) {}
+  rpc QueryBlock (QueryBlockRequest) returns (Block) {}
+  rpc QueryBlocksSince (QueryBlocksSinceRequest) returns (BlocksSinceResponse) {}
   rpc SubscribeNewBlocks (SubscribeNewBlocksRequest) returns (stream BlockStreamResponse) {}
 
-  rpc GetState (GetStateRequest) returns (StateResponse) {}
-  rpc GetStateDiff (GetStateDiffRequest) returns (StateDiffResponse) {}
+  rpc QueryState (QueryStateRequest) returns (BlockState) {}
+  rpc QueryStatesSince (QueryStatesSinceRequest) returns (StatesSinceResponse) {}
   rpc SubscribeNewStates (SubscribeNewStatesRequest) returns (stream StateStreamResponse) {}
 }
 
@@ -60,25 +60,25 @@ message QueryBlock {
   }
 }
 
-message StateResponse {
+message BlockState {
   Block block = 1;
   State state = 2;
 }
 
 message States {
-  repeated StateResponse states = 1;
+  repeated BlockState states = 1;
 }
 
-message GetBlockRequest {
+message QueryBlockRequest {
   QueryBlock query_block = 1; // None means latest
 }
 
-message GetBlockDiffRequest {
+message QueryBlocksSinceRequest {
   Hash previous_block = 1;
   uint64 depth = 2;
 }
 
-message BlockDiffResponse {
+message BlocksSinceResponse {
   oneof response {
     Blocks new_blocks = 1;
     Blocks reorganized_blocks = 2;
@@ -96,18 +96,18 @@ message BlockStreamResponse {
   }
 }
 
-message GetStateRequest {
+message QueryStateRequest {
   InitialState initial_state = 1;
   QueryBlock query_block = 2; // None means latest
 }
 
-message GetStateDiffRequest {
+message QueryStatesSinceRequest {
   InitialState initial_state = 1;
   Hash previous_block = 2;
   uint64 depth = 3;
 }
 
-message StateDiffResponse {
+message StatesSinceResponse {
   oneof response {
     States new_states = 1;
     States reorganized_states = 2;
@@ -121,7 +121,7 @@ message SubscribeNewStatesRequest {
 
 message StateStreamResponse {
   oneof response {
-    StateResponse new_state = 1;
+    BlockState new_state = 1;
     States reorganized_states = 2;
   }
 }
