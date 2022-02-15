@@ -70,180 +70,64 @@ message Hash {
 }
 
 message ProcessorConfig {
-    oneof x1_oneof {
-        uint64 x1 = 1;
-    }
-    oneof x2_oneof {
-        uint64 x2 = 2;
-    }
-    oneof x3_oneof {
-        uint64 x3 = 3;
-    }
-    oneof x4_oneof {
-        uint64 x4 = 4;
-    }
-    oneof x5_oneof {
-        uint64 x5 = 5;
-    }
-    oneof x6_oneof {
-        uint64 x6 = 6;
-    }
-    oneof x7_oneof {
-        uint64 x7 = 7;
-    }
-    oneof x8_oneof {
-        uint64 x8 = 8;
-    }
-    oneof x9_oneof {
-        uint64 x9 = 9;
-    }
-    oneof x10_oneof {
-        uint64 x10 = 10;
-    }
-    oneof x11_oneof {
-        uint64 x11 = 11;
-    }
-    oneof x12_oneof {
-        uint64 x12 = 12;
-    }
-    oneof x13_oneof {
-        uint64 x13 = 13;
-    }
-    oneof x14_oneof {
-        uint64 x14 = 14;
-    }
-    oneof x15_oneof {
-        uint64 x15 = 15;
-    }
-    oneof x16_oneof {
-        uint64 x16 = 16;
-    }
-    oneof x17_oneof {
-        uint64 x17 = 17;
-    }
-    oneof x18_oneof {
-        uint64 x18 = 18;
-    }
-    oneof x19_oneof {
-        uint64 x19 = 19;
-    }
-    oneof x20_oneof {
-        uint64 x20 = 20;
-    }
-    oneof x21_oneof {
-        uint64 x21 = 21;
-    }
-    oneof x22_oneof {
-        uint64 x22 = 22;
-    }
-    oneof x23_oneof {
-        uint64 x23 = 23;
-    }
-    oneof x24_oneof {
-        uint64 x24 = 24;
-    }
-    oneof x25_oneof {
-        uint64 x25 = 25;
-    }
-    oneof x26_oneof {
-        uint64 x26 = 26;
-    }
-    oneof x27_oneof {
-        uint64 x27 = 27;
-    }
-    oneof x28_oneof {
-        uint64 x28 = 28;
-    }
-    oneof x29_oneof {
-        uint64 x29 = 29;
-    }
-    oneof x30_oneof {
-        uint64 x30 = 30;
-    }
-    oneof x31_oneof {
-        uint64 x31 = 31;
-    }
-    oneof pc_oneof {
-        uint64 pc = 32;
-    }
-    oneof mvendorid_oneof {
-        uint64 mvendorid = 33;
-    }
-    oneof marchid_oneof {
-        uint64 marchid = 34;
-    }
-    oneof mimpid_oneof {
-        uint64 mimpid = 35;
-    }
-    oneof mcycle_oneof {
-        uint64 mcycle = 36;
-    }
-    oneof minstret_oneof {
-        uint64 minstret = 37;
-    }
-    oneof mstatus_oneof {
-        uint64 mstatus = 38;
-    }
-    oneof mtvec_oneof {
-        uint64 mtvec = 39;
-    }
-    oneof mscratch_oneof {
-        uint64 mscratch = 40;
-    }
-    oneof mepc_oneof {
-        uint64 mepc = 41;
-    }
-    oneof mcause_oneof {
-        uint64 mcause = 42;
-    }
-    oneof mtval_oneof {
-        uint64 mtval = 43;
-    }
-    oneof misa_oneof {
-        uint64 misa = 44;
-    }
-    oneof mie_oneof {
-        uint64 mie = 45;
-    }
-    oneof mip_oneof {
-        uint64 mip = 46;
-    }
-    oneof medeleg_oneof {
-        uint64 medeleg = 47;
-    }
-    oneof mideleg_oneof {
-        uint64 mideleg = 48;
-    }
-    oneof mcounteren_oneof {
-        uint64 mcounteren = 49;
-    }
-    oneof stvec_oneof {
-        uint64 stvec = 50;
-    }
-    oneof sscratch_oneof {
-        uint64 sscratch = 51;
-    }
-    oneof sepc_oneof {
-        uint64 sepc = 52;
-    }
-    oneof scause_oneof {
-        uint64 scause = 53;
-    }
-    oneof stval_oneof {
-        uint64 stval = 54;
-    }
-    oneof satp_oneof {
-        uint64 satp = 55;
-    }
-    oneof scounteren_oneof {
-        uint64 scounteren = 56;
-    }
-    oneof ilrsc_oneof {
-        uint64 ilrsc = 57;
-    }
-    oneof iflags_oneof {
-        uint64 iflags = 58;
-    }
+    optional uint64 x1 = 1;
+    optional uint64 x2 = 2;
+    optional uint64 x3 = 3;
+    optional uint64 x4 = 4;
+    optional uint64 x5 = 5;
+    optional uint64 x6 = 6;
+    optional uint64 x7 = 7;
+    optional uint64 x8 = 8;
+    optional uint64 x9 = 9;
+    optional uint64 x10 = 10;
+    optional uint64 x11 = 11;
+    optional uint64 x12 = 12;
+    optional uint64 x13 = 13;
+    optional uint64 x14 = 14;
+    optional uint64 x15 = 15;
+    optional uint64 x16 = 16;
+    optional uint64 x17 = 17;
+    optional uint64 x18 = 18;
+    optional uint64 x19 = 19;
+    optional uint64 x20 = 20;
+    optional uint64 x21 = 21;
+    optional uint64 x22 = 22;
+    optional uint64 x23 = 23;
+    optional uint64 x24 = 24;
+    optional uint64 x25 = 25;
+    optional uint64 x26 = 26;
+    optional uint64 x27 = 27;
+    optional uint64 x28 = 28;
+    optional uint64 x29 = 29;
+    optional uint64 x30 = 30;
+    optional uint64 x31 = 31;
+    optional uint64 pc = 32;
+    optional uint64 mvendorid = 33;
+    optional uint64 marchid = 34;
+    optional uint64 mimpid = 35;
+    optional uint64 mcycle = 36;
+    optional uint64 minstret = 37;
+    optional uint64 mstatus = 38;
+    optional uint64 mtvec = 39;
+    optional uint64 mscratch = 40;
+    optional uint64 mepc = 41;
+    optional uint64 mcause = 42;
+    optional uint64 mtval = 43;
+    optional uint64 misa = 44;
+    optional uint64 mie = 45;
+    optional uint64 mip = 46;
+    optional uint64 medeleg = 47;
+    optional uint64 mideleg = 48;
+    optional uint64 mcounteren = 49;
+    optional uint64 stvec = 50;
+    optional uint64 sscratch = 51;
+    optional uint64 sepc = 52;
+    optional uint64 scause = 53;
+    optional uint64 stval = 54;
+    optional uint64 satp = 55;
+    optional uint64 scounteren = 56;
+    optional uint64 ilrsc = 57;
+    optional uint64 iflags = 58;
 }
 
 message ROMConfig {
@@ -264,18 +148,12 @@ message MemoryRangeConfig {
 }
 
 message CLINTConfig {
-    oneof mtimecmp_oneof {
-        uint64 mtimecmp = 1;
-    }
+    optional uint64 mtimecmp = 1;
 }
 
 message HTIFConfig {
-    oneof fromhost_oneof {
-        uint64 fromhost = 1;
-    }
-    oneof tohost_oneof {
-        uint64 tohost = 2;
-    }
+    optional uint64 fromhost = 1;
+    optional uint64 tohost = 2;
     bool console_getchar = 3;
     bool yield_manual = 4;
     bool yield_automatic = 5;
