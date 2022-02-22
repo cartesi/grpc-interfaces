@@ -148,7 +148,7 @@ message Address {
 message InputMetadata {
     Address msg_sender = 1; // 20-byte address of sender
     uint64 block_number = 2; // Block number when input was posted
-    uint64 time_stamp = 3; // Time stamp of block (Unix?)
+    uint64 timestamp = 3; // Time stamp of block (Unix?)
     uint64 epoch_index = 4; // Epoch index in session
     uint64 input_index = 5; // Input index in epoch
 }
