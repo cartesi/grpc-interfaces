@@ -114,10 +114,11 @@ message CyclesConfig {
 
 message StartSessionRequest {
     string session_id = 1; // Id of session to start
-    CartesiMachine.MachineRequest machine = 2; // Machine to instantiate for session
+    string machine_directory = 2; // Machine to instantiate for session
     uint64 active_epoch_index = 3; // Active epoch for the newly instantiated machine
     CyclesConfig server_cycles = 5; // Cycle limit for server tasks
     DeadlineConfig server_deadline = 6; // Time limit for server tasks
+    CartesiMachine.MachineRuntimeConfig runtime = 7; // Machine runtime parameters
 }
 
 // Information about why the session became invalid
