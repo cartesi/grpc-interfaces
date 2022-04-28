@@ -169,13 +169,14 @@ message GetEpochStatusRequest {
 // Reason why input was skipped
 enum CompletionStatus {
     ACCEPTED = 0;
-    CYCLE_LIMIT_EXCEEDED = 1;
-    REJECTED_BY_MACHINE = 2;
+    REJECTED = 1;
+    EXCEPTION = 2;
     MACHINE_HALTED = 3;
-    TIME_LIMIT_EXCEEDED = 4;
+    CYCLE_LIMIT_EXCEEDED = 4;
+    TIME_LIMIT_EXCEEDED = 5;
 }
 
-message InputResult {
+message AcceptedData {
     CartesiMachine.MerkleTreeProof voucher_hashes_in_machine = 1; // Merkle proof that the voucher hashes memory range is part of the Cartesi Machine State
     repeated Voucher vouchers = 2; // List of vouchers produced when processing the input
     CartesiMachine.MerkleTreeProof notice_hashes_in_machine = 3; // Merkle proof that the notice hashes memory range is part of the Cartesi Machine State
@@ -191,11 +192,12 @@ message ProcessedInput {
     CartesiMachine.Hash most_recent_machine_hash = 2; // State hash of Cartesi Machine after processing input (might be the same as previous if the input was rejected and the machine reverted
     CartesiMachine.MerkleTreeProof voucher_hashes_in_epoch = 3; // Merkle proof that the voucher hashes memory range is in the epoch
     CartesiMachine.MerkleTreeProof notice_hashes_in_epoch = 4; // Merkle proof that the notice hashes memory range is in the epoch
-    repeated Report reports = 5; // Reports produced during input or query processing
-    oneof processed_oneof {
-        InputResult result = 6; // Result of processing input...
-        CompletionStatus skip_reason = 7; // ...or reason input was skipped
-    };
+    CompletionStatus status = 5; // Status of the processed input
+    oneof ProcessedInputOneOf {
+        AcceptedData accepted_data = 6; // Result of processed input when completed with success (ACCEPTED)
+        bytes exception_data = 7; // Exception payload when there was an EXCEPTION
+    }
+    repeated Report reports = 8; // Reports produced during input or query processing
 }
 
 enum EpochState {
@@ -243,7 +245,8 @@ message InspectStateResponse {
     uint64 active_epoch_index = 2;  // Epoch that was inspected
     uint64 current_input_index = 3; // Current input index before/after state was inspected
     CompletionStatus status = 4; // Whether inspection completed or not (and why not)
-    repeated Report reports = 5; // Reports produced while processing the query
+    optional bytes exception_data = 5; // Exception payload when finished with EXCEPTION
+    repeated Report reports = 6; // Reports produced while processing the query
 }
 
 message FinishEpochRequest {
