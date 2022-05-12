@@ -21,25 +21,25 @@ package CartesiServerManager;
 // Each Cartesi Server Manager controls a variety of independent Sessions (see StartSession).
 // The current list of Sessions can be obtained with a call to GetStatus.
 // Each Session controls a single Cartesi Machine through a connection to a Cartesi Machine Server that the
-// Server Manager itself spanws for the session.
+// Server Manager itself spawns for the session.
 // The Cartesi Machine is specified in the StartSession request, either by config or by directory.
 // Each Session is divided into Epochs.
 // The list of past Epochs (and the current Epoch) for a Session can be obtained with a call to GetSessionStatus.
 // Within each Epoch, the state of the associated machine is advanced by individual inputs (see AdvanceState).
-// The processing of each input, when successful, may produce a number of Vouchers (i.e., collateral effects
+// The processing of each input, when successful, may produce several Vouchers (i.e., collateral effects
 // actionable in the blockchain) and a variety of Notices (which describe any relevant changes to the internal
 // state of applications running inside the Cartesi Machine).
 // The current Epoch can be closed (and the next Epoch started) with a call to FinishEpoch.
 // This is a synchronous call that can only be issued after all inputs in the active epoch have been processed.
-// The entire state of the machine can be stored to disk (and later recovered) when the Epoch is finished.
+// The entire state of the machine can be stored on disk (and later recovered) when the Epoch is finished.
 // An input can be skipped for a variety of reasons (see CompletionStatus).
-// Whether successfully processed or skipped, the machine can produce a variety of Reports (i.e., diagnostics, logs etc)
-// Input processing is assynchronous: the reslut of all processed inputs for processing can be
+// Whether successfully processed or skipped, the machine can produce a variety of Reports (i.e., diagnostics, logs, etc)
+// Input processing is asynchronous: the results of all processed inputs for processing can be
 // obtained with a call to GetEpochStatus.
 // Information about an Epoch is retained until its Session is terminated (see EndSession).
-// (Note that machines stored to disk are always retained.)
+// (Note that machines stored on disk are always retained.)
 // When an input is skipped, for whatever reason, the state of the Cartesi Machine is reverted to what it was
-// before the input was given to the machine: i.e., from the prespective of the machine, it never happened.
+// before the input was given to the machine: i.e., from the perspective of the machine, it never happened.
 // Certain error conditions may cause a Session to become unusable.
 // An unusable Session is said to be "tainted".
 // All further operations in a tainted Session (other than EndSession) will fail.
@@ -53,19 +53,19 @@ package CartesiServerManager;
 // produced Reports are immediately returned.
 // A Cartesi Machine used with the Cartesi Server Manager must define 5 memory ranges, in addition to however
 // many flash drives the application it runs might require.
-// Each memory range must have a power-of-two length, and must start at a multiple of its size.
+// Each memory range must have a power-of-two length and must start at a multiple of its size.
 // The first two are the rx buffer and tx buffer memory ranges.
 // The rx buffer is used by the Cartesi Server Manager to send the input and query payloads into the Cartesi
 // Machine.
 // The tx buffer is used by the Cartesi Machine to send Vouchers, Notices, and Reports to the Cartesi Server
 // Manager.
-// Each input to AdvanceState, in addition to the payload, require some metadata.
-// This is sent into the Cartesi Machine by means of the input metadata memory range.
+// Each input to AdvanceState, in addition to the payload, requires some metadata.
+// This is sent into the Cartesi Machine through the input metadata memory range.
 // The last two remaining memory ranges are the voucher hashes and notice hashes memory ranges.
-// These contain array of hashes, respectively of each voucher and notice produced while processing an input.
+// These contain an array of hashes, respectively of each voucher and notice produced while processing input.
 // Whenever an input is processed, the Cartesi Server Manager collects from the Cartesi Machine a Merkle proof
 // that the voucher hashes and notice hashes memory ranges are part of the Cartesi Machine State.
-// Likewise, each voucher and notice accompanies a proof that its hash is part of, respectively, the voucher hashe
+// Likewise, each voucher and notice accompanies a proof that its hash is part of, respectively, the voucher hashes
 // memory range and notice hashes memory range.
 // Finally, the Cartesi Server Manager also maintains two additional Merkle trees, respectively containing as
 // leaves the Merkle tree root hash of the voucher hashes memory range and the notice hashes memory range.
