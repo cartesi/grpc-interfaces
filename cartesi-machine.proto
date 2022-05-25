@@ -47,7 +47,6 @@ service Machine {
     rpc WriteCsr(WriteCsrRequest) returns (Void) {}
     rpc GetInitialConfig(Void) returns (GetInitialConfigResponse) {}
     rpc VerifyMerkleTree(Void) returns (VerifyMerkleTreeResponse) {}
-    rpc UpdateMerkleTree(Void) returns (UpdateMerkleTreeResponse) {}
     rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}
     rpc DumpPmas(Void) returns (Void) {}
     rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
@@ -276,10 +275,6 @@ message VerifyStateTransitionRequest {
 }
 
 message VerifyMerkleTreeResponse {
-    bool success = 1;
-}
-
-message UpdateMerkleTreeResponse {
     bool success = 1;
 }
 

@@ -94,14 +94,13 @@ message GetStatusResponse {
 // (All deadlines are in milliseconds)
 message DeadlineConfig {
     uint64 checkin = 1; // Deadline for receiving checkin from spawned machine server
-    uint64 update_merkle_tree = 2; // Deadline for updating a Merkle tree
-    uint64 advance_state = 3; // Deadline for advancing the state
-    uint64 advance_state_increment = 4; // Deadline for each increment when advancing state
-    uint64 inspect_state = 5; // Deadline for inspecting state
-    uint64 inspect_state_increment = 6; // Deadline for each increment when inspecting state
-    uint64 machine = 7; // Deadling for instantiating a machine
-    uint64 store = 8; // Deadling for storing a machine
-    uint64 fast = 9; // Deadling for quick machine server tasks
+    uint64 advance_state = 2; // Deadline for advancing the state
+    uint64 advance_state_increment = 3; // Deadline for each increment when advancing state
+    uint64 inspect_state = 4; // Deadline for inspecting state
+    uint64 inspect_state_increment = 5; // Deadline for each increment when inspecting state
+    uint64 machine = 6; // Deadling for instantiating a machine
+    uint64 store = 7; // Deadling for storing a machine
+    uint64 fast = 8; // Deadling for quick machine server tasks
 }
 
 // Cycle limits for a variety of machine server tasks
