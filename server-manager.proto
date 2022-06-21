@@ -236,8 +236,7 @@ message Report {
 
 message InspectStateRequest {
     string session_id = 1; // Session to inspect
-    uint64 active_epoch_index = 2;   // To double-check the desired epoch is the active one
-    bytes query_payload = 3; // Query payload
+    bytes query_payload = 2; // Query payload
 }
 
 message InspectStateResponse {
