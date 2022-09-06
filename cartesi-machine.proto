@@ -118,15 +118,17 @@ message ProcessorConfig {
     optional uint64 medeleg = 47;
     optional uint64 mideleg = 48;
     optional uint64 mcounteren = 49;
-    optional uint64 stvec = 50;
-    optional uint64 sscratch = 51;
-    optional uint64 sepc = 52;
-    optional uint64 scause = 53;
-    optional uint64 stval = 54;
-    optional uint64 satp = 55;
-    optional uint64 scounteren = 56;
-    optional uint64 ilrsc = 57;
-    optional uint64 iflags = 58;
+    optional uint64 menvcfg = 50;
+    optional uint64 stvec = 51;
+    optional uint64 sscratch = 52;
+    optional uint64 sepc = 53;
+    optional uint64 scause = 54;
+    optional uint64 stval = 55;
+    optional uint64 satp = 56;
+    optional uint64 scounteren = 57;
+    optional uint64 senvcfg = 58;
+    optional uint64 ilrsc = 59;
+    optional uint64 iflags = 60;
 }
 
 message ROMConfig {
@@ -408,26 +410,28 @@ enum Csr {
     MEDELEG = 15;
     MIDELEG = 16;
     MCOUNTEREN = 17;
-    STVEC = 18;
-    SSCRATCH = 19;
-    SEPC = 20;
-    SCAUSE = 21;
-    STVAL = 22;
-    SATP = 23;
-    SCOUNTEREN = 24;
-    ILRSC = 25;
-    IFLAGS = 26;
-    CLINT_MTIMECMP = 27;
-    HTIF_TOHOST = 28;
-    HTIF_FROMHOST = 29;
-    HTIF_IHALT = 30;
-    HTIF_ICONSOLE = 31;
-    HTIF_IYIELD = 32;
-    DHD_RESERVED = 33;
-    DHD_TSTART = 34;
-    DHD_TLENGTH = 35;
-    DHD_DLENGTH = 36;
-    DHD_HLENGTH = 37;
+    MENVCFG = 18;
+    STVEC = 19;
+    SSCRATCH = 20;
+    SEPC = 21;
+    SCAUSE = 22;
+    STVAL = 23;
+    SATP = 24;
+    SCOUNTEREN = 25;
+    SENVCFG = 26;
+    ILRSC = 27;
+    IFLAGS = 28;
+    CLINT_MTIMECMP = 29;
+    HTIF_TOHOST = 30;
+    HTIF_FROMHOST = 31;
+    HTIF_IHALT = 32;
+    HTIF_ICONSOLE = 33;
+    HTIF_IYIELD = 34;
+    DHD_RESERVED = 35;
+    DHD_TSTART = 36;
+    DHD_TLENGTH = 37;
+    DHD_DLENGTH = 38;
+    DHD_HLENGTH = 39;
 }
 
 message GetCsrAddressRequest {
