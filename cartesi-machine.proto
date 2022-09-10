@@ -39,9 +39,6 @@ service Machine {
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
     rpc ResetIflagsY(Void) returns (Void) {}
-    rpc GetDhdHAddress(GetDhdHAddressRequest) returns (GetDhdHAddressResponse) {}
-    rpc ReadDhdH(ReadDhdHRequest) returns (ReadDhdHResponse) {}
-    rpc WriteDhdH(WriteDhdHRequest) returns (Void) {}
     rpc GetCsrAddress(GetCsrAddressRequest) returns (GetCsrAddressResponse) {}
     rpc ReadCsr(ReadCsrRequest) returns (ReadCsrResponse) {}
     rpc WriteCsr(WriteCsrRequest) returns (Void) {}
@@ -160,15 +157,6 @@ message HTIFConfig {
     bool yield_automatic = 5;
 }
 
-message DHDConfig {
-    uint64 tstart = 1;
-    uint64 tlength = 2;
-    string image_filename = 3;
-    uint64 dlength = 4;
-    uint64 hlength = 5;
-    repeated uint64 h = 6;
-}
-
 message RollupConfig {
     MemoryRangeConfig rx_buffer = 1;
     MemoryRangeConfig tx_buffer = 2;
@@ -184,12 +172,7 @@ message MachineConfig {
     repeated MemoryRangeConfig flash_drive = 4;
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
-    DHDConfig dhd = 7;
-    RollupConfig rollup = 8;
-}
-
-message DHDRuntimeConfig {
-    string source_address = 1;
+    RollupConfig rollup = 7;
 }
 
 message ConcurrencyConfig {
@@ -197,8 +180,7 @@ message ConcurrencyConfig {
 }
 
 message MachineRuntimeConfig {
-    DHDRuntimeConfig dhd = 1;
-    ConcurrencyConfig concurrency = 2;
+    ConcurrencyConfig concurrency = 1;
 }
 
 message MerkleTreeProof {
@@ -370,27 +352,6 @@ message WriteXRequest {
     uint64 value = 2;
 }
 
-message GetDhdHAddressRequest {
-    uint32 index = 1;
-}
-
-message GetDhdHAddressResponse {
-    uint64 address = 1;
-}
-
-message ReadDhdHRequest {
-    uint32 index = 1;
-}
-
-message ReadDhdHResponse {
-    uint64 value = 1;
-}
-
-message WriteDhdHRequest {
-    uint32 index = 1;
-    uint64 value = 2;
-}
-
 enum Csr {
     PC = 0;
     MVENDORID = 1;
@@ -427,11 +388,6 @@ enum Csr {
     HTIF_IHALT = 32;
     HTIF_ICONSOLE = 33;
     HTIF_IYIELD = 34;
-    DHD_RESERVED = 35;
-    DHD_TSTART = 36;
-    DHD_TLENGTH = 37;
-    DHD_DLENGTH = 38;
-    DHD_HLENGTH = 39;
 }
 
 message GetCsrAddressRequest {
