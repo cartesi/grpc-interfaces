@@ -173,8 +173,27 @@ message ProcessorConfig {
     optional uint64 satp = 89;
     optional uint64 scounteren = 90;
     optional uint64 senvcfg = 91;
-    optional uint64 ilrsc = 92;
-    optional uint64 iflags = 93;
+    optional uint64 hstatus = 92;
+    optional uint64 hie = 93;
+    optional uint64 hip = 94;
+    optional uint64 hvip = 95;
+    optional uint64 hideleg = 96;
+    optional uint64 hedeleg = 97;
+    optional uint64 hgatp = 98;
+    optional uint64 henvcfg = 99;
+    optional uint64 htimedelta = 100;
+    optional uint64 htval = 101;
+    optional uint64 vsstatus = 102;
+    optional uint64 vscause = 103;
+    optional uint64 vstval = 104;
+    optional uint64 vstvec = 105;
+    optional uint64 vsscratch = 106;
+    optional uint64 vsatp = 107;
+    optional uint64 vsepc = 108;
+    optional uint64 vsie = 109;
+    optional uint64 vsip = 110;
+    optional uint64 ilrsc = 111;
+    optional uint64 iflags = 112;
 }
 
 message DTBConfig {
@@ -562,17 +581,36 @@ enum Csr {
     SATP = 25;
     SCOUNTEREN = 26;
     SENVCFG = 27;
-    ILRSC = 28;
-    IFLAGS = 29;
-    CLINT_MTIMECMP = 30;
-    HTIF_TOHOST = 31;
-    HTIF_FROMHOST = 32;
-    HTIF_IHALT = 33;
-    HTIF_ICONSOLE = 34;
-    HTIF_IYIELD = 35;
-    UARCH_PC = 36;
-    UARCH_CYCLE = 37;
-    UARCH_HALT_FLAG = 38;
+    HSTATUS = 28;
+    HIE = 29;
+    HIP = 30;
+    HVIP = 31;
+    HIDELEG = 32;
+    HEDELEG = 33;
+    HGATP = 34;
+    HENVCFG = 35;
+    HTIMEDELTA = 36;
+    HTVAL = 37;
+    VSSTATUS = 38;
+    VSCAUSE = 39;
+    VSTVAL = 40;
+    VSTVEC = 41;
+    VSSCRATCH = 42;
+    VSATP = 43;
+    VSEPC = 44;
+    VSIE = 45;
+    VSIP = 46;
+    ILRSC = 47;
+    IFLAGS = 48;
+    CLINT_MTIMECMP = 49;
+    HTIF_TOHOST = 50;
+    HTIF_FROMHOST = 51;
+    HTIF_IHALT = 52;
+    HTIF_ICONSOLE = 53;
+    HTIF_IYIELD = 54;
+    UARCH_PC = 55;
+    UARCH_CYCLE = 56;
+    UARCH_HALT_FLAG = 57;
 }
 
 message GetCsrAddressRequest {
