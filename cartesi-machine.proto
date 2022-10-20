@@ -23,6 +23,7 @@ service Machine {
     rpc SetCheckInTarget(SetCheckInTargetRequest) returns (Void) {}
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run(RunRequest) returns (RunResponse) {}
+    rpc UarchRun(UarchRunRequest) returns (UarchRunResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
     rpc Destroy(Void) returns (Void) {}
     rpc Snapshot(Void) returns (Void) {}
@@ -38,6 +39,8 @@ service Machine {
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
+    rpc ReadUarchX(ReadUarchXRequest) returns (ReadUarchXResponse) {}
+    rpc WriteUarchX(WriteUarchXRequest) returns (Void) {}
     rpc ResetIflagsY(Void) returns (Void) {}
     rpc GetCsrAddress(GetCsrAddressRequest) returns (GetCsrAddressResponse) {}
     rpc ReadCsr(ReadCsrRequest) returns (ReadCsrResponse) {}
@@ -165,6 +168,58 @@ message RollupConfig {
     MemoryRangeConfig notice_hashes = 5;
 }
 
+message UarchROMConfig {
+    uint64 length = 1;
+    string image_filename = 2;
+}
+
+message UarchRAMConfig {
+    uint64 length = 1;
+    string image_filename = 2;
+}
+
+message UarchProcessorConfig {
+    optional uint64 x1 = 1;
+    optional uint64 x2 = 2;
+    optional uint64 x3 = 3;
+    optional uint64 x4 = 4;
+    optional uint64 x5 = 5;
+    optional uint64 x6 = 6;
+    optional uint64 x7 = 7;
+    optional uint64 x8 = 8;
+    optional uint64 x9 = 9;
+    optional uint64 x10 = 10;
+    optional uint64 x11 = 11;
+    optional uint64 x12 = 12;
+    optional uint64 x13 = 13;
+    optional uint64 x14 = 14;
+    optional uint64 x15 = 15;
+    optional uint64 x16 = 16;
+    optional uint64 x17 = 17;
+    optional uint64 x18 = 18;
+    optional uint64 x19 = 19;
+    optional uint64 x20 = 20;
+    optional uint64 x21 = 21;
+    optional uint64 x22 = 22;
+    optional uint64 x23 = 23;
+    optional uint64 x24 = 24;
+    optional uint64 x25 = 25;
+    optional uint64 x26 = 26;
+    optional uint64 x27 = 27;
+    optional uint64 x28 = 28;
+    optional uint64 x29 = 29;
+    optional uint64 x30 = 30;
+    optional uint64 x31 = 31;
+    optional uint64 pc = 32;
+    optional uint64 cycle = 33;
+}
+
+message UarchConfig {
+    UarchProcessorConfig processor = 1;
+    UarchROMConfig rom = 2;
+    UarchRAMConfig ram = 3;
+}
+
 message MachineConfig {
     ProcessorConfig processor = 1;
     ROMConfig rom = 2;
@@ -173,6 +228,7 @@ message MachineConfig {
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
     RollupConfig rollup = 7;
+    UarchConfig uarch = 8;
 }
 
 message ConcurrencyConfig {
@@ -278,6 +334,20 @@ message RunResponse {
     bool iflags_x = 5;
 }
 
+message UarchRunRequest {
+    uint64 limit = 1;
+}
+
+message UarchRunResponse {
+    uint64 mcycle = 1;
+    uint64 tohost = 2;
+    bool iflags_h = 3;
+    bool iflags_y = 4;
+    bool iflags_x = 5;
+    uint64 uarch_cycle = 6;
+    uint64 uarch_pc = 7;
+}
+
 message StoreRequest {
     string directory = 1;
 }
@@ -352,6 +422,19 @@ message WriteXRequest {
     uint64 value = 2;
 }
 
+message ReadUarchXRequest {
+    uint32 index = 1;
+}
+
+message ReadUarchXResponse {
+    uint64 value = 1;
+}
+
+message WriteUarchXRequest {
+    uint32 index = 1;
+    uint64 value = 2;
+}
+
 enum Csr {
     PC = 0;
     MVENDORID = 1;
@@ -388,6 +471,8 @@ enum Csr {
     HTIF_IHALT = 32;
     HTIF_ICONSOLE = 33;
     HTIF_IYIELD = 34;
+    UARCH_PC = 35;
+    UARCH_CYCLE = 36;
 }
 
 message GetCsrAddressRequest {
