@@ -465,14 +465,17 @@ enum Csr {
     SENVCFG = 26;
     ILRSC = 27;
     IFLAGS = 28;
-    CLINT_MTIMECMP = 29;
-    HTIF_TOHOST = 30;
-    HTIF_FROMHOST = 31;
-    HTIF_IHALT = 32;
-    HTIF_ICONSOLE = 33;
-    HTIF_IYIELD = 34;
-    UARCH_PC = 35;
-    UARCH_CYCLE = 36;
+    BRKFLAG = 29;
+    CLINT_MTIMECMP = 30;
+    HTIF_TOHOST = 31;
+    HTIF_FROMHOST = 32;
+    HTIF_IHALT = 33;
+    HTIF_ICONSOLE = 34;
+    HTIF_IYIELD = 35;
+    UARCH_PC = 36;
+    UARCH_CYCLE = 37;
+    UARCH_ROM_LENGTH = 38;
+    UARCH_RAM_LENGTH = 39;
 }
 
 message GetCsrAddressRequest {
