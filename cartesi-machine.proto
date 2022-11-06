@@ -129,6 +129,7 @@ message ProcessorConfig {
     optional uint64 senvcfg = 58;
     optional uint64 ilrsc = 59;
     optional uint64 iflags = 60;
+    optional bool brkflag = 61;
 }
 
 message ROMConfig {
