@@ -32,6 +32,8 @@ service Machine {
     rpc Step(StepRequest) returns (StepResponse) {}
     rpc ReadMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory(WriteMemoryRequest) returns (Void) {}
+    rpc ReadVirtualMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
+    rpc WriteVirtualMemory(WriteMemoryRequest) returns (Void) {}
     rpc ReadWord(ReadWordRequest) returns (ReadWordResponse) {}
     rpc GetRootHash(Void) returns (GetRootHashResponse) {}
     rpc GetProof(GetProofRequest) returns (GetProofResponse) {}
