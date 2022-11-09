@@ -151,6 +151,10 @@ message MemoryRangeConfig {
     bool shared = 4;
 }
 
+message TLBConfig {
+    string image_filename = 1;
+}
+
 message CLINTConfig {
     optional uint64 mtimecmp = 1;
 }
@@ -232,6 +236,7 @@ message MachineConfig {
     HTIFConfig htif = 6;
     RollupConfig rollup = 7;
     UarchConfig uarch = 8;
+    TLBConfig tlb = 9;
 }
 
 message ConcurrencyConfig {
