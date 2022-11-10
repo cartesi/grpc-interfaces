@@ -41,6 +41,9 @@ service Machine {
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
+    rpc GetFAddress(GetFAddressRequest) returns (GetFAddressResponse) {}
+    rpc ReadF(ReadFRequest) returns (ReadFResponse) {}
+    rpc WriteF(WriteFRequest) returns (Void) {}
     rpc ReadUarchX(ReadUarchXRequest) returns (ReadUarchXResponse) {}
     rpc WriteUarchX(WriteUarchXRequest) returns (Void) {}
     rpc ResetIflagsY(Void) returns (Void) {}
@@ -102,36 +105,69 @@ message ProcessorConfig {
     optional uint64 x29 = 29;
     optional uint64 x30 = 30;
     optional uint64 x31 = 31;
-    optional uint64 pc = 32;
-    optional uint64 mvendorid = 33;
-    optional uint64 marchid = 34;
-    optional uint64 mimpid = 35;
-    optional uint64 mcycle = 36;
-    optional uint64 minstret = 37;
-    optional uint64 mstatus = 38;
-    optional uint64 mtvec = 39;
-    optional uint64 mscratch = 40;
-    optional uint64 mepc = 41;
-    optional uint64 mcause = 42;
-    optional uint64 mtval = 43;
-    optional uint64 misa = 44;
-    optional uint64 mie = 45;
-    optional uint64 mip = 46;
-    optional uint64 medeleg = 47;
-    optional uint64 mideleg = 48;
-    optional uint64 mcounteren = 49;
-    optional uint64 menvcfg = 50;
-    optional uint64 stvec = 51;
-    optional uint64 sscratch = 52;
-    optional uint64 sepc = 53;
-    optional uint64 scause = 54;
-    optional uint64 stval = 55;
-    optional uint64 satp = 56;
-    optional uint64 scounteren = 57;
-    optional uint64 senvcfg = 58;
-    optional uint64 ilrsc = 59;
-    optional uint64 iflags = 60;
-    optional bool brkflag = 61;
+    optional uint64 f0 = 32;
+    optional uint64 f1 = 33;
+    optional uint64 f2 = 34;
+    optional uint64 f3 = 35;
+    optional uint64 f4 = 36;
+    optional uint64 f5 = 37;
+    optional uint64 f6 = 38;
+    optional uint64 f7 = 39;
+    optional uint64 f8 = 40;
+    optional uint64 f9 = 41;
+    optional uint64 f10 = 42;
+    optional uint64 f11 = 43;
+    optional uint64 f12 = 44;
+    optional uint64 f13 = 45;
+    optional uint64 f14 = 46;
+    optional uint64 f15 = 47;
+    optional uint64 f16 = 48;
+    optional uint64 f17 = 49;
+    optional uint64 f18 = 50;
+    optional uint64 f19 = 51;
+    optional uint64 f20 = 52;
+    optional uint64 f21 = 53;
+    optional uint64 f22 = 54;
+    optional uint64 f23 = 55;
+    optional uint64 f24 = 56;
+    optional uint64 f25 = 57;
+    optional uint64 f26 = 58;
+    optional uint64 f27 = 59;
+    optional uint64 f28 = 60;
+    optional uint64 f29 = 61;
+    optional uint64 f30 = 62;
+    optional uint64 f31 = 63;
+    optional uint64 pc = 64;
+    optional uint64 fcsr = 65;
+    optional uint64 mvendorid = 66;
+    optional uint64 marchid = 67;
+    optional uint64 mimpid = 68;
+    optional uint64 mcycle = 69;
+    optional uint64 minstret = 70;
+    optional uint64 mstatus = 71;
+    optional uint64 mtvec = 72;
+    optional uint64 mscratch = 73;
+    optional uint64 mepc = 74;
+    optional uint64 mcause = 75;
+    optional uint64 mtval = 76;
+    optional uint64 misa = 77;
+    optional uint64 mie = 78;
+    optional uint64 mip = 79;
+    optional uint64 medeleg = 80;
+    optional uint64 mideleg = 81;
+    optional uint64 mcounteren = 82;
+    optional uint64 menvcfg = 83;
+    optional uint64 stvec = 84;
+    optional uint64 sscratch = 85;
+    optional uint64 sepc = 86;
+    optional uint64 scause = 87;
+    optional uint64 stval = 88;
+    optional uint64 satp = 89;
+    optional uint64 scounteren = 90;
+    optional uint64 senvcfg = 91;
+    optional uint64 ilrsc = 92;
+    optional uint64 iflags = 93;
+    optional bool brkflag = 94;
 }
 
 message ROMConfig {
@@ -430,6 +466,27 @@ message WriteXRequest {
     uint64 value = 2;
 }
 
+message GetFAddressRequest {
+    uint32 index = 1;
+}
+
+message GetFAddressResponse {
+    uint64 address = 1;
+}
+
+message ReadFRequest {
+    uint32 index = 1;
+}
+
+message ReadFResponse {
+    uint64 value = 1;
+}
+
+message WriteFRequest {
+    uint32 index = 1;
+    uint64 value = 2;
+}
+
 message ReadUarchXRequest {
     uint32 index = 1;
 }
@@ -445,45 +502,46 @@ message WriteUarchXRequest {
 
 enum Csr {
     PC = 0;
-    MVENDORID = 1;
-    MARCHID = 2;
-    MIMPID = 3;
-    MCYCLE = 4;
-    MINSTRET = 5;
-    MSTATUS = 6;
-    MTVEC = 7;
-    MSCRATCH = 8;
-    MEPC = 9;
-    MCAUSE = 10;
-    MTVAL = 11;
-    MISA = 12;
-    MIE = 13;
-    MIP = 14;
-    MEDELEG = 15;
-    MIDELEG = 16;
-    MCOUNTEREN = 17;
-    MENVCFG = 18;
-    STVEC = 19;
-    SSCRATCH = 20;
-    SEPC = 21;
-    SCAUSE = 22;
-    STVAL = 23;
-    SATP = 24;
-    SCOUNTEREN = 25;
-    SENVCFG = 26;
-    ILRSC = 27;
-    IFLAGS = 28;
-    BRKFLAG = 29;
-    CLINT_MTIMECMP = 30;
-    HTIF_TOHOST = 31;
-    HTIF_FROMHOST = 32;
-    HTIF_IHALT = 33;
-    HTIF_ICONSOLE = 34;
-    HTIF_IYIELD = 35;
-    UARCH_PC = 36;
-    UARCH_CYCLE = 37;
-    UARCH_ROM_LENGTH = 38;
-    UARCH_RAM_LENGTH = 39;
+    FCSR = 1;
+    MVENDORID = 2;
+    MARCHID = 3;
+    MIMPID = 4;
+    MCYCLE = 5;
+    MINSTRET = 6;
+    MSTATUS = 7;
+    MTVEC = 8;
+    MSCRATCH = 9;
+    MEPC = 10;
+    MCAUSE = 11;
+    MTVAL = 12;
+    MISA = 13;
+    MIE = 14;
+    MIP = 15;
+    MEDELEG = 16;
+    MIDELEG = 17;
+    MCOUNTEREN = 18;
+    MENVCFG = 19;
+    STVEC = 20;
+    SSCRATCH = 21;
+    SEPC = 22;
+    SCAUSE = 23;
+    STVAL = 24;
+    SATP = 25;
+    SCOUNTEREN = 26;
+    SENVCFG = 27;
+    ILRSC = 28;
+    IFLAGS = 29;
+    BRKFLAG = 30;
+    CLINT_MTIMECMP = 31;
+    HTIF_TOHOST = 32;
+    HTIF_FROMHOST = 33;
+    HTIF_IHALT = 34;
+    HTIF_ICONSOLE = 35;
+    HTIF_IYIELD = 36;
+    UARCH_PC = 37;
+    UARCH_CYCLE = 38;
+    UARCH_ROM_LENGTH = 39;
+    UARCH_RAM_LENGTH = 40;
 }
 
 message GetCsrAddressRequest {
