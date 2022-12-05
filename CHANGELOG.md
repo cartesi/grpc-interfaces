@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Removed brkflag CSR
+- Replaced minstret by icycleinstret CSR
 
 ## [0.9.0] - 2022-11-17
 ### Added

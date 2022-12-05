@@ -143,7 +143,7 @@ message ProcessorConfig {
     optional uint64 marchid = 67;
     optional uint64 mimpid = 68;
     optional uint64 mcycle = 69;
-    optional uint64 minstret = 70;
+    optional uint64 icycleinstret = 70;
     optional uint64 mstatus = 71;
     optional uint64 mtvec = 72;
     optional uint64 mscratch = 73;
@@ -506,7 +506,7 @@ enum Csr {
     MARCHID = 3;
     MIMPID = 4;
     MCYCLE = 5;
-    MINSTRET = 6;
+    ICYCLEINSTRET = 6;
     MSTATUS = 7;
     MTVEC = 8;
     MSCRATCH = 9;
