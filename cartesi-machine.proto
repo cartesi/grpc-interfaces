@@ -167,7 +167,6 @@ message ProcessorConfig {
     optional uint64 senvcfg = 91;
     optional uint64 ilrsc = 92;
     optional uint64 iflags = 93;
-    optional bool brkflag = 94;
 }
 
 message ROMConfig {
@@ -531,17 +530,16 @@ enum Csr {
     SENVCFG = 27;
     ILRSC = 28;
     IFLAGS = 29;
-    BRKFLAG = 30;
-    CLINT_MTIMECMP = 31;
-    HTIF_TOHOST = 32;
-    HTIF_FROMHOST = 33;
-    HTIF_IHALT = 34;
-    HTIF_ICONSOLE = 35;
-    HTIF_IYIELD = 36;
-    UARCH_PC = 37;
-    UARCH_CYCLE = 38;
-    UARCH_ROM_LENGTH = 39;
-    UARCH_RAM_LENGTH = 40;
+    CLINT_MTIMECMP = 30;
+    HTIF_TOHOST = 31;
+    HTIF_FROMHOST = 32;
+    HTIF_IHALT = 33;
+    HTIF_ICONSOLE = 34;
+    HTIF_IYIELD = 35;
+    UARCH_PC = 36;
+    UARCH_CYCLE = 37;
+    UARCH_ROM_LENGTH = 38;
+    UARCH_RAM_LENGTH = 39;
 }
 
 message GetCsrAddressRequest {

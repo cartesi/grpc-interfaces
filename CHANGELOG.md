@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Removed brkflag CSR
+
 ## [0.9.0] - 2022-11-17
 ### Added
 - Added microarchitecture configs
