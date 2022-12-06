@@ -32,6 +32,7 @@ package CartesiServerManager;
 // The current Epoch can be closed (and the next Epoch started) with a call to FinishEpoch.
 // This is a synchronous call that can only be issued after all inputs in the active epoch have been processed.
 // The entire state of the machine can be stored on disk (and later recovered) when the Epoch is finished.
+// A closed epoch can be deleted to free the Server Manager's memory with a call to DeleteEpoch.
 // An input can be skipped for a variety of reasons (see CompletionStatus).
 // Whether successfully processed or skipped, the machine can produce a variety of Reports (i.e., diagnostics, logs, etc)
 // Input processing is asynchronous: the results of all processed inputs for processing can be
@@ -79,6 +80,7 @@ service ServerManager {
     rpc GetEpochStatus (GetEpochStatusRequest) returns (GetEpochStatusResponse) {}
     rpc InspectState (InspectStateRequest) returns (InspectStateResponse) {}
     rpc FinishEpoch (FinishEpochRequest) returns (FinishEpochResponse) {}
+    rpc DeleteEpoch (DeleteEpochRequest) returns (CartesiMachine.Void) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
 }
 
@@ -271,4 +273,9 @@ message FinishEpochResponse {
     CartesiMachine.Hash vouchers_epoch_root_hash = 2; // Root hash for Merkle tree of voucher hashes memory ranges
     CartesiMachine.Hash notices_epoch_root_hash = 3; // Root hash for Merkle tree of notice hashes memory ranges
     repeated Proof proofs = 4; // Proofs for the outputs
+}
+
+message DeleteEpochRequest {
+    string session_id = 1; // Id of session containing epoch to delete
+    uint64 epoch_index = 2; // Index of the epoch to delete
 }

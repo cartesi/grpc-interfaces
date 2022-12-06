@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added new proof structure to finish epoch
+- Added DeleteEpoch method to server manager
 
 ### Changed
 - Removed brkflag CSR
