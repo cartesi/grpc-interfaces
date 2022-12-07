@@ -23,6 +23,7 @@ service MachineManager {
     rpc SessionStore (SessionStoreRequest) returns (CartesiMachine.Void) {}
     rpc SessionReadMemory (SessionReadMemoryRequest) returns (SessionReadMemoryResponse) {}
     rpc SessionWriteMemory (SessionWriteMemoryRequest) returns (CartesiMachine.Void) {}
+    rpc SessionReplaceMemoryRange (SessionReplaceMemoryRangeRequest) returns (CartesiMachine.Void) {}
     rpc SessionGetProof (SessionGetProofRequest) returns (CartesiMachine.MerkleTreeProof) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
 }
@@ -82,6 +83,12 @@ message SessionReadMemoryRequest {
 
 message SessionReadMemoryResponse {
     CartesiMachine.ReadMemoryResponse read_content = 1;
+}
+
+message SessionReplaceMemoryRangeRequest {
+    string session_id = 1;
+    uint64 cycle = 2;
+    CartesiMachine.MemoryRangeConfig range = 3;
 }
 
 message SessionWriteMemoryRequest {
