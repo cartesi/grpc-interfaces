@@ -22,7 +22,7 @@ package CartesiServerManager;
 // The current list of Sessions can be obtained with a call to GetStatus.
 // Each Session controls a single Cartesi Machine through a connection to a Cartesi Machine Server that the
 // Server Manager itself spawns for the session.
-// The Cartesi Machine is specified in the StartSession request, either by config or by directory.
+// The Cartesi Machine is specified in the StartSession request, by directory.
 // Each Session is divided into Epochs.
 // The list of past Epochs (and the current Epoch) for a Session can be obtained with a call to GetSessionStatus.
 // Within each Epoch, the state of the associated machine is advanced by individual inputs (see AdvanceState).
@@ -78,7 +78,7 @@ service ServerManager {
     rpc GetSessionStatus (GetSessionStatusRequest) returns (GetSessionStatusResponse) {}
     rpc GetEpochStatus (GetEpochStatusRequest) returns (GetEpochStatusResponse) {}
     rpc InspectState (InspectStateRequest) returns (InspectStateResponse) {}
-    rpc FinishEpoch (FinishEpochRequest) returns (CartesiMachine.Void) {}
+    rpc FinishEpoch (FinishEpochRequest) returns (FinishEpochResponse) {}
     rpc EndSession (EndSessionRequest) returns (CartesiMachine.Void) {}
 }
 
@@ -115,6 +115,7 @@ message StartSessionRequest {
     string session_id = 1; // Id of session to start
     string machine_directory = 2; // Machine to instantiate for session
     uint64 active_epoch_index = 3; // Active epoch for the newly instantiated machine
+    uint64 processed_input_count = 4; // Number of processed inputs since genesis
     CyclesConfig server_cycles = 5; // Cycle limit for server tasks
     DeadlineConfig server_deadline = 6; // Time limit for server tasks
     CartesiMachine.MachineRuntimeConfig runtime = 7; // Machine runtime parameters
@@ -149,14 +150,14 @@ message InputMetadata {
     Address msg_sender = 1; // 20-byte address of sender
     uint64 block_number = 2; // Block number when input was posted
     uint64 timestamp = 3; // Time stamp of block (Unix?)
-    uint64 epoch_index = 4; // Epoch index in session
-    uint64 input_index = 5; // Input index in epoch
+    uint64 epoch_index = 4; // Deprecated. Always receives 0
+    uint64 input_index = 5; // Input index starting from genesis
 }
 
 message AdvanceStateRequest {
     string session_id = 1;
     uint64 active_epoch_index = 2; // To double-check the desired epoch is the active one
-    uint64 current_input_index = 3; // To double-check the current input in the active epoch is the expected one
+    uint64 current_input_index = 3; // To double-check the current input is the expected one
     InputMetadata input_metadata = 4; // Information sent via the input metadata memory range
     bytes input_payload = 5; // Payload sent via the rx buffer memory range
 }
@@ -177,27 +178,18 @@ enum CompletionStatus {
 }
 
 message AcceptedData {
-    CartesiMachine.MerkleTreeProof voucher_hashes_in_machine = 1; // Merkle proof that the voucher hashes memory range is part of the Cartesi Machine State
-    repeated Voucher vouchers = 2; // List of vouchers produced when processing the input
-    CartesiMachine.MerkleTreeProof notice_hashes_in_machine = 3; // Merkle proof that the notice hashes memory range is part of the Cartesi Machine State
-    repeated Notice notices = 4; // List of notices produced when processing the input
+    repeated Voucher vouchers = 1; // List of vouchers produced when processing the input
+    repeated Notice notices = 2; // List of notices produced when processing the input
 }
 
-// For an ACTIVE epoch or a FINISHED epoch with pending inputs, the voucher_hashes_in_epoch and notice_hashes_in_epoch
-// proofs are incremental. I.e., the voucher and notice Merkle trees assume that future voucher and notice
-// keccak hashes are zero in producing the proofs.
-// For FINISHED epochs without pending inputs, each proof is recomputed to take into account the voucher and notice keccaks that came afterwards in the epoch.
 message ProcessedInput {
-    uint64 input_index = 1; // Index of input in epoch
-    CartesiMachine.Hash most_recent_machine_hash = 2; // State hash of Cartesi Machine after processing input (might be the same as previous if the input was rejected and the machine reverted
-    CartesiMachine.MerkleTreeProof voucher_hashes_in_epoch = 3; // Merkle proof that the voucher hashes memory range is in the epoch
-    CartesiMachine.MerkleTreeProof notice_hashes_in_epoch = 4; // Merkle proof that the notice hashes memory range is in the epoch
-    CompletionStatus status = 5; // Status of the processed input
+    uint64 input_index = 1; // Index of input starting from genesis
+    CompletionStatus status = 2; // Status of the processed input
     oneof ProcessedInputOneOf {
-        AcceptedData accepted_data = 6; // Result of processed input when completed with success (ACCEPTED)
-        bytes exception_data = 7; // Exception payload when there was an EXCEPTION
+        AcceptedData accepted_data = 3; // Result of processed input when completed with success (ACCEPTED)
+        bytes exception_data = 4; // Exception payload when there was an EXCEPTION
     }
-    repeated Report reports = 8; // Reports produced during input or query processing
+    repeated Report reports = 5; // Reports produced during input or query processing
 }
 
 enum EpochState {
@@ -209,25 +201,18 @@ message GetEpochStatusResponse {
     string session_id = 1; // Session to which epoch belong
     uint64 epoch_index = 2; // Index of epoch being described
     EpochState state = 3; // State epoch is currently in
-    CartesiMachine.Hash most_recent_machine_hash = 4; // Most recent machine hash in epoch
-    CartesiMachine.Hash most_recent_vouchers_epoch_root_hash = 5; // Most recent root hash for Merkle tree of voucher hashes memory ranges
-    CartesiMachine.Hash most_recent_notices_epoch_root_hash = 6; // Most recent root hash for Merkle tree of notice hashes memory ranges
-    repeated ProcessedInput processed_inputs = 7; // List of inputs already processed
-    uint64 pending_input_count = 8; // Number of inputs pending processing
-    TaintStatus taint_status = 9; // If session is tainted, an error code and message giving the cause
+    repeated ProcessedInput processed_inputs = 4; // List of inputs already processed since genesis
+    uint64 pending_input_count = 5; // Number of inputs pending processing
+    TaintStatus taint_status = 6; // If session is tainted, an error code and message giving the cause
 }
 
 message Notice {
-    CartesiMachine.Hash keccak = 1; // Keccak hash of notice payload
-    bytes payload = 2; // Notice payload
-    CartesiMachine.MerkleTreeProof keccak_in_notice_hashes = 3; // Proof that keccak is in notice hashes memory range
+    bytes payload = 1; // Notice payload
 }
 
 message Voucher {
-    CartesiMachine.Hash keccak = 1; // Keccak hash of voucher
-    Address address = 2; // 20-byte address
-    bytes payload = 3; // Voucher payload
-    CartesiMachine.MerkleTreeProof keccak_in_voucher_hashes = 4; // Proof that keccak is in voucher hashes memory range
+    Address destination = 1; // 20-byte address
+    bytes payload = 2; // Voucher payload
 }
 
 message Report {
@@ -242,15 +227,48 @@ message InspectStateRequest {
 message InspectStateResponse {
     string session_id = 1; // Id of session being described
     uint64 active_epoch_index = 2;  // Epoch that was inspected
-    uint64 current_input_index = 3; // Current input index before/after state was inspected
+    uint64 processed_input_count = 3; // Number of processed inputs since genesis
     CompletionStatus status = 4; // Whether inspection completed or not (and why not)
     optional bytes exception_data = 5; // Exception payload when finished with EXCEPTION
     repeated Report reports = 6; // Reports produced while processing the query
 }
 
+// Validity proof for an output
+message OutputValidityProof {
+    uint64 input_index = 1; // Local input index within the context of the related epoch
+    uint64 output_index = 2; // Output index within the context of the input that produced it
+    CartesiMachine.Hash output_hashes_root_hash = 3; // Merkle root of all output metadata hashes of the related input
+    CartesiMachine.Hash vouchers_epoch_root_hash = 4; // Merkle root of all voucher metadata hashes of the related epoch
+    CartesiMachine.Hash notices_epoch_root_hash = 5; // Merkle root of all notice metadata hashes of the related epoch
+    CartesiMachine.Hash machine_state_hash = 6; // Hash of the machine state claimed for the related epoch
+    repeated CartesiMachine.Hash keccak_in_hashes_siblings = 7; // Proof that this output metadata is in metadata memory range
+    repeated CartesiMachine.Hash output_hashes_in_epoch_siblings = 8; // Proof that this output metadata is in epoch's output memory range
+}
+
+enum OutputEnum {
+    VOUCHER = 0;
+    NOTICE = 1;
+}
+
+// Data that can be used as proof to validate notices and execute vouchers on the base layer blockchain
+message Proof {
+    uint64 input_index = 1; // Index of input starting from genesis
+    uint64 output_index = 2; // Index of output (voucher or notice) in the context of the input
+    OutputEnum output_enum = 3; // Type of the output
+    OutputValidityProof validity = 4; // Validity proof for an output
+    bytes context = 5; // Data that allows the validity proof to be contextualized within submitted claims, given as ABI-encoded
+}
+
 message FinishEpochRequest {
     string session_id = 1; // Id of session containing epoch to finish
     uint64 active_epoch_index = 2; // To double-check epoch index is correct
-    uint64 processed_input_count = 3; // To double-check all inputs sent have been processed
+    uint64 processed_input_count = 3; // To double-check all inputs sent have been processed since genesis
     string storage_directory = 4; // Directory to store machine state (do not store if empty string)
+}
+
+message FinishEpochResponse {
+    CartesiMachine.Hash machine_hash = 1; // Machine hash in epoch
+    CartesiMachine.Hash vouchers_epoch_root_hash = 2; // Root hash for Merkle tree of voucher hashes memory ranges
+    CartesiMachine.Hash notices_epoch_root_hash = 3; // Root hash for Merkle tree of notice hashes memory ranges
+    repeated Proof proofs = 4; // Proofs for the outputs
 }

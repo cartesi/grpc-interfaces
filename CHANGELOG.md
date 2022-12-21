@@ -6,9 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added new proof structure to finish epoch
+
 ### Changed
 - Removed brkflag CSR
 - Replaced minstret by icycleinstret CSR
+- Replaced epoch input index with global input index
+- Moved hashes from get epoch status to finish epoch
+- Renamed voucher.address to voucher.destination
+
+### Removed
+- Removed keccak fields from vouchers and notices
 
 ## [0.9.0] - 2022-11-17
 ### Added
