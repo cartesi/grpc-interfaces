@@ -210,11 +210,6 @@ message RollupConfig {
     MemoryRangeConfig notice_hashes = 5;
 }
 
-message UarchROMConfig {
-    uint64 length = 1;
-    string image_filename = 2;
-}
-
 message UarchRAMConfig {
     uint64 length = 1;
     string image_filename = 2;
@@ -258,8 +253,7 @@ message UarchProcessorConfig {
 
 message UarchConfig {
     UarchProcessorConfig processor = 1;
-    UarchROMConfig rom = 2;
-    UarchRAMConfig ram = 3;
+    UarchRAMConfig ram = 2;
 }
 
 message MachineConfig {
@@ -538,8 +532,7 @@ enum Csr {
     HTIF_IYIELD = 35;
     UARCH_PC = 36;
     UARCH_CYCLE = 37;
-    UARCH_ROM_LENGTH = 38;
-    UARCH_RAM_LENGTH = 39;
+    UARCH_RAM_LENGTH = 38;
 }
 
 message GetCsrAddressRequest {
