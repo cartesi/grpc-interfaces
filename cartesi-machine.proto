@@ -376,13 +376,9 @@ message UarchRunRequest {
 }
 
 message UarchRunResponse {
-    uint64 mcycle = 1;
-    uint64 tohost = 2;
-    bool iflags_h = 3;
-    bool iflags_y = 4;
-    bool iflags_x = 5;
-    uint64 uarch_cycle = 6;
-    uint64 uarch_pc = 7;
+    uint64 cycle = 1;
+    uint64 pc = 2;
+    uint64 halt_flag = 3;
 }
 
 message StoreRequest {
@@ -532,7 +528,8 @@ enum Csr {
     HTIF_IYIELD = 35;
     UARCH_PC = 36;
     UARCH_CYCLE = 37;
-    UARCH_RAM_LENGTH = 38;
+    UARCH_HALT_FLAG = 38;
+    UARCH_RAM_LENGTH = 39;
 }
 
 message GetCsrAddressRequest {
