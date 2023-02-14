@@ -24,6 +24,7 @@ service Machine {
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run(RunRequest) returns (RunResponse) {}
     rpc UarchRun(UarchRunRequest) returns (UarchRunResponse) {}
+    rpc UarchResetState(Void) returns (Void) {}
     rpc Store(StoreRequest) returns (Void) {}
     rpc Destroy(Void) returns (Void) {}
     rpc Snapshot(Void) returns (Void) {}
