@@ -203,7 +203,7 @@ message GetEpochStatusResponse {
     string session_id = 1; // Session to which epoch belong
     uint64 epoch_index = 2; // Index of epoch being described
     EpochState state = 3; // State epoch is currently in
-    repeated ProcessedInput processed_inputs = 4; // List of inputs already processed since genesis
+    repeated ProcessedInput processed_inputs = 4; // List of inputs already processed in this epoch
     uint64 pending_input_count = 5; // Number of inputs pending processing
     TaintStatus taint_status = 6; // If session is tainted, an error code and message giving the cause
 }
@@ -239,12 +239,12 @@ message InspectStateResponse {
 message OutputValidityProof {
     uint64 input_index = 1; // Local input index within the context of the related epoch
     uint64 output_index = 2; // Output index within the context of the input that produced it
-    CartesiMachine.Hash output_hashes_root_hash = 3; // Merkle root of all output metadata hashes of the related input
-    CartesiMachine.Hash vouchers_epoch_root_hash = 4; // Merkle root of all voucher metadata hashes of the related epoch
-    CartesiMachine.Hash notices_epoch_root_hash = 5; // Merkle root of all notice metadata hashes of the related epoch
+    CartesiMachine.Hash output_hashes_root_hash = 3; // Merkle root of all output hashes of the related input
+    CartesiMachine.Hash vouchers_epoch_root_hash = 4; // Merkle root of all voucher hashes of the related epoch
+    CartesiMachine.Hash notices_epoch_root_hash = 5; // Merkle root of all notice hashes of the related epoch
     CartesiMachine.Hash machine_state_hash = 6; // Hash of the machine state claimed for the related epoch
-    repeated CartesiMachine.Hash keccak_in_hashes_siblings = 7; // Proof that this output metadata is in metadata memory range
-    repeated CartesiMachine.Hash output_hashes_in_epoch_siblings = 8; // Proof that this output metadata is in epoch's output memory range
+    repeated CartesiMachine.Hash keccak_in_hashes_siblings = 7; // Proof that this output hash is in the output-hashes merkle tree. This array of siblings is bottom-up ordered (from the leaf to the root).
+    repeated CartesiMachine.Hash output_hashes_in_epoch_siblings = 8; // Proof that this output-hashes root hash is in epoch's output merkle tree. This array of siblings is bottom-up ordered (from the leaf to the root).
 }
 
 enum OutputEnum {
@@ -258,7 +258,7 @@ message Proof {
     uint64 output_index = 2; // Index of output (voucher or notice) in the context of the input
     OutputEnum output_enum = 3; // Type of the output
     OutputValidityProof validity = 4; // Validity proof for an output
-    bytes context = 5; // Data that allows the validity proof to be contextualized within submitted claims, given as ABI-encoded
+    bytes context = 5; // Data that allows the validity proof to be contextualized within submitted claims. Currently, the context is the epoch number as a ABI-encoded uint256.
 }
 
 message FinishEpochRequest {
