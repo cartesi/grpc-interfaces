@@ -30,7 +30,7 @@ service Machine {
     rpc Snapshot(Void) returns (Void) {}
     rpc Rollback(Void) returns (Void) {}
     rpc Shutdown(Void) returns (Void) {}
-    rpc Step(StepRequest) returns (StepResponse) {}
+    rpc UarchStep(UarchStepRequest) returns (UarchStepResponse) {}
     rpc ReadMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory(WriteMemoryRequest) returns (Void) {}
     rpc ReadVirtualMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
@@ -386,12 +386,12 @@ message StoreRequest {
     string directory = 1;
 }
 
-message StepRequest {
+message UarchStepRequest {
     AccessLogType log_type = 1;
     bool one_based = 2;
 }
 
-message StepResponse {
+message UarchStepResponse {
     AccessLog log = 1;
 }
 
