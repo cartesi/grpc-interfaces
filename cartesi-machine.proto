@@ -40,6 +40,7 @@ service Machine {
     rpc GetProof(GetProofRequest) returns (GetProofResponse) {}
     rpc ReplaceMemoryRange (ReplaceMemoryRangeRequest) returns (Void) {}
     rpc GetXAddress(GetXAddressRequest) returns (GetXAddressResponse) {}
+    rpc GetUarchXAddress(GetUarchXAddressRequest) returns (GetUarchXAddressResponse) {}
     rpc ReadX(ReadXRequest) returns (ReadXResponse) {}
     rpc WriteX(WriteXRequest) returns (Void) {}
     rpc GetFAddress(GetFAddressRequest) returns (GetFAddressResponse) {}
@@ -440,6 +441,14 @@ message GetXAddressRequest {
 }
 
 message GetXAddressResponse {
+    uint64 address = 1;
+}
+
+message GetUarchXAddressRequest {
+    uint32 index = 1;
+}
+
+message GetUarchXAddressResponse {
     uint64 address = 1;
 }
 
