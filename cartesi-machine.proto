@@ -23,14 +23,14 @@ service Machine {
     rpc SetCheckInTarget(SetCheckInTargetRequest) returns (Void) {}
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run(RunRequest) returns (RunResponse) {}
-    rpc UarchRun(UarchRunRequest) returns (UarchRunResponse) {}
-    rpc UarchResetState(Void) returns (Void) {}
+    rpc RunUarch(RunUarchRequest) returns (RunUarchResponse) {}
+    rpc ResetUarchState(Void) returns (Void) {}
     rpc Store(StoreRequest) returns (Void) {}
     rpc Destroy(Void) returns (Void) {}
     rpc Snapshot(Void) returns (Void) {}
     rpc Rollback(Void) returns (Void) {}
     rpc Shutdown(Void) returns (Void) {}
-    rpc UarchStep(UarchStepRequest) returns (UarchStepResponse) {}
+    rpc StepUarch(StepUarchRequest) returns (StepUarchResponse) {}
     rpc ReadMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory(WriteMemoryRequest) returns (Void) {}
     rpc ReadVirtualMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
@@ -373,11 +373,11 @@ message RunResponse {
     bool iflags_x = 5;
 }
 
-message UarchRunRequest {
+message RunUarchRequest {
     uint64 limit = 1;
 }
 
-message UarchRunResponse {
+message RunUarchResponse {
     uint64 cycle = 1;
     uint64 pc = 2;
     uint64 halt_flag = 3;
@@ -387,12 +387,12 @@ message StoreRequest {
     string directory = 1;
 }
 
-message UarchStepRequest {
+message StepUarchRequest {
     AccessLogType log_type = 1;
     bool one_based = 2;
 }
 
-message UarchStepResponse {
+message StepUarchResponse {
     AccessLog log = 1;
 }
 
