@@ -6,19 +6,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0] - 2023-04-18
 ### Added
 - Added new proof structure to finish epoch
 - Added DeleteEpoch method to server manager
+- Added SessionReplaceMemoryRange method on machine-manager
+- Added ResetUarchState on Cartesi Machine
+- Added GetUarchXAddress on Cartesi Machine
+- Added Uarch halt flag on Cartesi Machine
 
 ### Changed
-- Removed brkflag CSR
-- Replaced minstret by icycleinstret CSR
 - Replaced epoch input index with global input index
 - Moved hashes from get epoch status to finish epoch
 - Renamed voucher.address to voucher.destination
+- Renamed machine Step to StepUarch on Cartesi Machine
+- Renamed machine UarchRun to RunUarch on Cartesi Machine
+- Removed Uarch ROM on Cartesi Machine
 
 ### Removed
 - Removed keccak fields from vouchers and notices
+
+## [0.10.0] - 2023-02-16
+### Changed
+- Removed brkflag CSR
+- Replaced minstret by icycleinstret CSR
 
 ## [0.9.0] - 2022-11-17
 ### Added
@@ -42,7 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.1.2]
 - [0.1.1]
 
-[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.11.0
+[0.10.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.10.0
 [0.9.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.9.0
 [0.8.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.8.0
 [0.7.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.7.0
