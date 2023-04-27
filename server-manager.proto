@@ -264,7 +264,7 @@ message Proof {
 message FinishEpochRequest {
     string session_id = 1; // Id of session containing epoch to finish
     uint64 active_epoch_index = 2; // To double-check epoch index is correct
-    uint64 processed_input_count = 3; // To double-check all inputs sent have been processed since genesis
+    uint64 processed_input_count_within_epoch = 3; // To double-check all inputs sent have been processed in this epoch
     string storage_directory = 4; // Directory to store machine state (do not store if empty string)
 }
 
