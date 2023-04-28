@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0] - 2023-04-28
+### Changed
+- Changed processed input count in finish epoch request
+
 ## [0.11.0] - 2023-04-18
 ### Added
 - Added new proof structure to finish epoch
@@ -53,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.1.2]
 - [0.1.1]
 
-[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.12.0
 [0.11.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.11.0
 [0.10.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.10.0
 [0.9.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.9.0
