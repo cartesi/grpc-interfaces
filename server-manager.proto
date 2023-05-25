@@ -32,12 +32,11 @@ package CartesiServerManager;
 // The current Epoch can be closed (and the next Epoch started) with a call to FinishEpoch.
 // This is a synchronous call that can only be issued after all inputs in the active epoch have been processed.
 // The entire state of the machine can be stored on disk (and later recovered) when the Epoch is finished.
-// A closed epoch can be deleted to free the Server Manager's memory with a call to DeleteEpoch.
 // An input can be skipped for a variety of reasons (see CompletionStatus).
 // Whether successfully processed or skipped, the machine can produce a variety of Reports (i.e., diagnostics, logs, etc)
-// Input processing is asynchronous: the results of all processed inputs for processing can be
-// obtained with a call to GetEpochStatus.
-// Information about an Epoch is retained until its Session is terminated (see EndSession).
+// Input processing is asynchronous: the results of all processed inputs can be obtained with a call to GetEpochStatus.
+// A closed epoch can be deleted to free the Server Manager's memory with a call to DeleteEpoch.
+// Otherwise, information about an Epoch is retained until its Session is terminated (see EndSession).
 // (Note that machines stored on disk are always retained.)
 // When an input is skipped, for whatever reason, the state of the Cartesi Machine is reverted to what it was
 // before the input was given to the machine: i.e., from the perspective of the machine, it never happened.
@@ -63,7 +62,7 @@ package CartesiServerManager;
 // Each input to AdvanceState, in addition to the payload, requires some metadata.
 // This is sent into the Cartesi Machine through the input metadata memory range.
 // The last two remaining memory ranges are the voucher hashes and notice hashes memory ranges.
-// These contain an array of hashes, respectively of each voucher and notice produced while processing input.
+// These contain an array of hashes, respectively of each voucher and notice produced while processing a given input.
 // Whenever an input is processed, the Cartesi Server Manager collects from the Cartesi Machine a Merkle proof
 // that the voucher hashes and notice hashes memory ranges are part of the Cartesi Machine State.
 // Likewise, each voucher and notice accompanies a proof that its hash is part of, respectively, the voucher hashes
