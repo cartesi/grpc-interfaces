@@ -237,13 +237,13 @@ message InspectStateResponse {
 
 // Validity proof for an output
 message OutputValidityProof {
-    uint64 input_index = 1; // Local input index within the context of the related epoch
-    uint64 output_index = 2; // Output index within the context of the input that produced it
+    uint64 input_index_within_epoch = 1; // Local input index within the context of the related epoch
+    uint64 output_index_within_input = 2; // Output index within the context of the input that produced it
     CartesiMachine.Hash output_hashes_root_hash = 3; // Merkle root of all output hashes of the related input
     CartesiMachine.Hash vouchers_epoch_root_hash = 4; // Merkle root of all voucher hashes of the related epoch
     CartesiMachine.Hash notices_epoch_root_hash = 5; // Merkle root of all notice hashes of the related epoch
     CartesiMachine.Hash machine_state_hash = 6; // Hash of the machine state claimed for the related epoch
-    repeated CartesiMachine.Hash keccak_in_hashes_siblings = 7; // Proof that this output hash is in the output-hashes merkle tree. This array of siblings is bottom-up ordered (from the leaf to the root).
+    repeated CartesiMachine.Hash output_hash_in_output_hashes_siblings = 7; // Proof that this output hash is in the output-hashes merkle tree. This array of siblings is bottom-up ordered (from the leaf to the root).
     repeated CartesiMachine.Hash output_hashes_in_epoch_siblings = 8; // Proof that this output-hashes root hash is in epoch's output merkle tree. This array of siblings is bottom-up ordered (from the leaf to the root).
 }
 
