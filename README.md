@@ -1,5 +1,3 @@
-> :warning: The Cartesi team keeps working internally on the next version of this repository, following its regular development roadmap. Whenever there's a new version ready or important fix, these are published to the public source tree as new releases.
-
 # Cartesi gRPC Interfaces
 
 The Cartesi gRPC Interfaces repository contains all gRPC and Protobuf definitions used in the gRPC interfaces of the Cartesi Project modules. Currently these comprehend:
@@ -31,4 +29,4 @@ The grpc-interfaces repository and all contributions are licensed under [APACHE 
 
 ## Acknowledgments
 
-- Original work 
+- Original work
