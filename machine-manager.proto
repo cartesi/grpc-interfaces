@@ -37,6 +37,7 @@ message NewSessionRequest {
 message SessionRunRequest {
     string session_id = 1;
     repeated uint64 final_cycles = 2;
+    repeated uint64 final_ucycles = 3;
 }
 
 message SessionRunProgress {
@@ -44,11 +45,14 @@ message SessionRunProgress {
     uint64 application_progress = 2;
     uint64 updated_at = 3;
     uint64 cycle = 4;
+    uint64 ucycle = 5;
 }
 
 message SessionRunResult {
     repeated CartesiMachine.RunResponse summaries = 1;
     repeated CartesiMachine.Hash hashes = 2;
+    uint64 cycle = 3;
+    uint64 ucycle = 4;
 }
 
 message SessionRunResponse {
@@ -61,6 +65,7 @@ message SessionRunResponse {
 message SessionStepRequest {
     string session_id = 1;
     uint64 initial_cycle = 2;
+    uint64 initial_ucycle = 4;
     oneof step_params_oneof {
         CartesiMachine.StepUarchRequest step_params = 3;
     };
@@ -68,6 +73,8 @@ message SessionStepRequest {
 
 message SessionStepResponse {
     CartesiMachine.AccessLog log = 1;
+    uint64 cycle = 2;
+    uint64 ucycle = 3;
 }
 
 message SessionStoreRequest {
@@ -78,6 +85,7 @@ message SessionStoreRequest {
 message SessionReadMemoryRequest {
     string session_id = 1;
     uint64 cycle = 2;
+    uint64 ucycle = 4;
     CartesiMachine.ReadMemoryRequest position = 3;
 }
 
@@ -88,18 +96,21 @@ message SessionReadMemoryResponse {
 message SessionReplaceMemoryRangeRequest {
     string session_id = 1;
     uint64 cycle = 2;
+    uint64 ucycle = 4;
     CartesiMachine.MemoryRangeConfig range = 3;
 }
 
 message SessionWriteMemoryRequest {
     string session_id = 1;
     uint64 cycle = 2;
+    uint64 ucycle = 4;
     CartesiMachine.WriteMemoryRequest position = 3;
 }
 
 message SessionGetProofRequest {
     string session_id = 1;
     uint64 cycle = 2;
+    uint64 ucycle = 4;
     CartesiMachine.GetProofRequest target = 3;
 }
 
