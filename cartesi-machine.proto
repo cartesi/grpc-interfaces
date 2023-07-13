@@ -178,6 +178,8 @@ message ProcessorConfig {
 message DTBConfig {
     string bootargs = 1;
     string image_filename = 2;
+    string init = 3;
+    string entrypoint = 4;
 }
 
 message RAMConfig {
