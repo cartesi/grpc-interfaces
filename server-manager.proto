@@ -176,6 +176,7 @@ enum CompletionStatus {
     MACHINE_HALTED = 3;
     CYCLE_LIMIT_EXCEEDED = 4;
     TIME_LIMIT_EXCEEDED = 5;
+    PAYLOAD_LENGTH_LIMIT_EXCEEDED = 6;
 }
 
 message AcceptedData {
