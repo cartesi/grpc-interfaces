@@ -99,14 +99,14 @@ message GetStatusResponse {
 // Deadlines for a variety of machine server tasks
 // (All deadlines are in milliseconds)
 message DeadlineConfig {
-    uint64 checkin = 1; // Deadline for receiving checkin from spawned machine server
+    uint64 checkin = 1; // Deadline for receiving check-in from spawned machine server
     uint64 advance_state = 2; // Deadline for advancing the state
     uint64 advance_state_increment = 3; // Deadline for each increment when advancing state
     uint64 inspect_state = 4; // Deadline for inspecting state
     uint64 inspect_state_increment = 5; // Deadline for each increment when inspecting state
-    uint64 machine = 6; // Deadling for instantiating a machine
-    uint64 store = 7; // Deadling for storing a machine
-    uint64 fast = 8; // Deadling for quick machine server tasks
+    uint64 machine = 6; // Deadline for instantiating a machine
+    uint64 store = 7; // Deadline for storing a machine
+    uint64 fast = 8; // Deadline for quick machine server tasks
 }
 
 // Cycle limits for a variety of machine server tasks
@@ -114,7 +114,7 @@ message CyclesConfig {
     uint64 max_advance_state = 1; // Maximum number of cycles that processing the input in an AdvanceState can take
     uint64 advance_state_increment = 2; // Number of cycles in each increment to processing an input
     uint64 max_inspect_state = 3; // Maximum number of cycles that processing the query in an InspectState can take
-    uint64 inspect_state_increment = 4; // Number of cycles in each increment to processing a query
+    uint64 inspect_state_increment = 4; // Number of cycles in each increment to process a query
 }
 
 message StartSessionRequest {
@@ -129,7 +129,7 @@ message StartSessionRequest {
 
 // Information about why the session became invalid
 message TaintStatus {
-    int32 error_code = 1; // Error code associated to tainting of session
+    int32 error_code = 1; // Error code associated with tainting of session
     string error_message = 2; // Descriptive error message
 }
 
@@ -141,7 +141,7 @@ message GetSessionStatusResponse {
     string session_id = 1; // Id of session being described
     uint64 active_epoch_index = 2; // Currently active epoch in session
     repeated uint64 epoch_index = 3; // List of epochs the session holds
-    TaintStatus taint_status = 4; // If session is tainted, an error code and message giving the cause
+    TaintStatus taint_status = 4; // If the session is tainted, an error code and message giving the cause
 }
 
 message EndSessionRequest {
@@ -155,25 +155,25 @@ message Address {
 message InputMetadata {
     Address msg_sender = 1; // 20-byte address of sender
     uint64 block_number = 2; // Block number when input was posted
-    uint64 timestamp = 3; // Time stamp of block (Unix?)
+    uint64 timestamp = 3; // Time stamp of the block (Unix?)
     uint64 epoch_index = 4; // Deprecated. Always receives 0
     uint64 input_index = 5; // Input index starting from genesis
 }
 
 message AdvanceStateRequest {
     string session_id = 1;
-    uint64 active_epoch_index = 2; // To double-check the desired epoch is the active one
-    uint64 current_input_index = 3; // To double-check the current input is the expected one
+    uint64 active_epoch_index = 2; // To double-check whether the desired epoch is the active one
+    uint64 current_input_index = 3; // To double-check whether the current input is the expected one
     InputMetadata input_metadata = 4; // Information sent via the input metadata memory range
     bytes input_payload = 5; // Payload sent via the rx buffer memory range
 }
 
 message GetEpochStatusRequest {
     string session_id = 1; // Session to which epoch belongs
-    uint64 epoch_index = 2; // Index of epoch to describe. May refer to an old epoch that is still cached by the session
+    uint64 epoch_index = 2; // Index of epoch to describe. It may refer to an old epoch that is still cached by the session
 }
 
-// Reason why input was skipped
+// Reason why the input was skipped
 enum CompletionStatus {
     ACCEPTED = 0;
     REJECTED = 1;
@@ -210,7 +210,7 @@ message GetEpochStatusResponse {
     EpochState state = 3; // State epoch is currently in
     repeated ProcessedInput processed_inputs = 4; // List of inputs already processed in this epoch
     uint64 pending_input_count = 5; // Number of inputs pending processing
-    TaintStatus taint_status = 6; // If session is tainted, an error code and message giving the cause
+    TaintStatus taint_status = 6; // If the session is tainted, an error code and message giving the cause
 }
 
 message Notice {
@@ -270,7 +270,7 @@ message FinishEpochRequest {
     string session_id = 1; // Id of session containing epoch to finish
     uint64 active_epoch_index = 2; // To double-check epoch index is correct
     uint64 processed_input_count_within_epoch = 3; // To double-check all inputs sent have been processed in this epoch
-    string storage_directory = 4; // Directory to store machine state (do not store if empty string)
+    string storage_directory = 4; // Directory to store machine state (do not store if an empty string)
 }
 
 message FinishEpochResponse {
