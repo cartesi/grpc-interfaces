@@ -175,7 +175,7 @@ message ProcessorConfig {
     optional uint64 iflags = 93;
 }
 
-message ROMConfig {
+message DTBConfig {
     string bootargs = 1;
     string image_filename = 2;
 }
@@ -264,7 +264,7 @@ message UarchConfig {
 
 message MachineConfig {
     ProcessorConfig processor = 1;
-    ROMConfig rom = 2;
+    DTBConfig dtb = 2;
     RAMConfig ram = 3;
     repeated MemoryRangeConfig flash_drive = 4;
     CLINTConfig clint = 5;
