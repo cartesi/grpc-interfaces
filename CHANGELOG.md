@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Renamed fields in output validity proof in server-manager interface
+- Updated license/copyright notice in all source code
 
 ## [0.12.0] - 2023-04-28
 ### Changed
