@@ -28,13 +28,14 @@ service Machine {
     rpc Machine(MachineRequest) returns (Void) {}
     rpc Run(RunRequest) returns (RunResponse) {}
     rpc RunUarch(RunUarchRequest) returns (RunUarchResponse) {}
-    rpc ResetUarchState(Void) returns (Void) {}
+    rpc ResetUarch(Void) returns (Void) {}
+    rpc LogUarchReset(LogUarchResetRequest) returns (LogUarchResetResponse) {}
     rpc Store(StoreRequest) returns (Void) {}
     rpc Destroy(Void) returns (Void) {}
     rpc Snapshot(Void) returns (Void) {}
     rpc Rollback(Void) returns (Void) {}
     rpc Shutdown(Void) returns (Void) {}
-    rpc StepUarch(StepUarchRequest) returns (StepUarchResponse) {}
+    rpc LogUarchStep(LogUarchStepRequest) returns (LogUarchStepResponse) {}
     rpc ReadMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
     rpc WriteMemory(WriteMemoryRequest) returns (Void) {}
     rpc ReadVirtualMemory(ReadMemoryRequest) returns (ReadMemoryResponse) {}
@@ -60,9 +61,11 @@ service Machine {
     rpc VerifyMerkleTree(Void) returns (VerifyMerkleTreeResponse) {}
     rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}
     rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
-    rpc VerifyAccessLog(VerifyAccessLogRequest) returns (Void) {}
-    rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (Void) {}
     rpc GetMemoryRanges(Void) returns (GetMemoryRangesResponse) {}
+    rpc VerifyUarchStepLog(VerifyUarchStepLogRequest) returns (Void) {}
+    rpc VerifyUarchStepStateTransition(VerifyUarchStepStateTransitionRequest) returns (Void) {}
+    rpc VerifyUarchResetLog(VerifyUarchResetLogRequest) returns (Void) {}
+    rpc VerifyUarchResetStateTransition(VerifyUarchResetStateTransitionRequest) returns (Void) {}
 }
 
 //Messages definition section
@@ -218,8 +221,7 @@ message RollupConfig {
 }
 
 message UarchRAMConfig {
-    uint64 length = 1;
-    string image_filename = 2;
+    string image_filename = 1;
 }
 
 message UarchProcessorConfig {
@@ -254,8 +256,9 @@ message UarchProcessorConfig {
     optional uint64 x29 = 29;
     optional uint64 x30 = 30;
     optional uint64 x31 = 31;
-    optional uint64 pc = 32;
-    optional uint64 cycle = 33;
+    optional uint64 halt_flag = 32;
+    optional uint64 pc = 33;
+    optional uint64 cycle = 34;
 }
 
 message UarchConfig {
@@ -299,11 +302,13 @@ enum AccessType {
 
 message Access {
     AccessType type = 1;
-    bytes read = 2;
-    bytes written = 3;
-    MerkleTreeProof proof = 4;
-    uint64 address = 5;
-    uint64 log2_size = 6;
+    Hash read_hash = 2;
+    optional bytes read = 3;
+    optional Hash written_hash = 4;
+    optional bytes written = 5;
+    MerkleTreeProof proof = 6;
+    uint64 address = 7;
+    uint64 log2_size = 8;
 }
 
 message BracketNote {
@@ -319,6 +324,7 @@ message BracketNote {
 message AccessLogType {
     bool proofs = 1;
     bool annotations = 2;
+    bool large_data = 3;
 }
 
 message AccessLog {
@@ -344,13 +350,27 @@ message GetDefaultConfigResponse {
     MachineConfig config = 1;
 }
 
-message VerifyAccessLogRequest {
+message VerifyUarchStepLogRequest {
     AccessLog log = 1;
     bool one_based = 2;
     MachineRuntimeConfig runtime = 3;
 }
 
-message VerifyStateTransitionRequest {
+message VerifyUarchResetLogRequest {
+    AccessLog log = 1;
+    bool one_based = 2;
+    MachineRuntimeConfig runtime = 3;
+}
+
+message VerifyUarchStepStateTransitionRequest {
+    Hash root_hash_before = 1;
+    AccessLog log = 2;
+    Hash root_hash_after = 3;
+    bool one_based = 4;
+    MachineRuntimeConfig runtime = 5;
+}
+
+message VerifyUarchResetStateTransitionRequest {
     Hash root_hash_before = 1;
     AccessLog log = 2;
     Hash root_hash_after = 3;
@@ -392,14 +412,23 @@ message StoreRequest {
     string directory = 1;
 }
 
-message StepUarchRequest {
+message LogUarchStepRequest {
     AccessLogType log_type = 1;
     bool one_based = 2;
 }
 
-message StepUarchResponse {
+message LogUarchStepResponse {
     AccessLog log = 1;
 }
+        
+message LogUarchResetRequest {
+    AccessLogType log_type = 1;
+    bool one_based = 2;
+}
+message LogUarchResetResponse {
+    AccessLog log = 1;
+}
+
 
 message ReadWordRequest {
     uint64 address = 1;
@@ -544,7 +573,6 @@ enum Csr {
     UARCH_PC = 36;
     UARCH_CYCLE = 37;
     UARCH_HALT_FLAG = 38;
-    UARCH_RAM_LENGTH = 39;
 }
 
 message GetCsrAddressRequest {
