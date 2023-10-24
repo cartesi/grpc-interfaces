@@ -63,7 +63,7 @@ service Machine {
     rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
     rpc VerifyAccessLog(VerifyAccessLogRequest) returns (Void) {}
     rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (Void) {}
-
+    rpc GetMemoryRanges(Void) returns (GetMemoryRangesResponse) {}
 }
 
 //Messages definition section
@@ -569,3 +569,12 @@ message WriteCsrRequest {
     uint64 value = 2;
 }
 
+message MemoryRangeDescription {
+    uint64 start = 1;
+    uint64 length = 2;
+    string description = 3;
+}
+
+message GetMemoryRangesResponse {
+    repeated MemoryRangeDescription memory_range = 1;
+}
