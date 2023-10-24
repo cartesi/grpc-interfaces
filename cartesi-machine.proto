@@ -59,7 +59,6 @@ service Machine {
     rpc GetInitialConfig(Void) returns (GetInitialConfigResponse) {}
     rpc VerifyMerkleTree(Void) returns (VerifyMerkleTreeResponse) {}
     rpc VerifyDirtyPageMaps(Void) returns (VerifyDirtyPageMapsResponse) {}
-    rpc DumpPmas(Void) returns (Void) {}
     rpc GetDefaultConfig(Void) returns (GetDefaultConfigResponse) {}
     rpc VerifyAccessLog(VerifyAccessLogRequest) returns (Void) {}
     rpc VerifyStateTransition(VerifyStateTransitionRequest) returns (Void) {}
