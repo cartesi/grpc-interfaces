@@ -306,7 +306,7 @@ message Access {
     optional bytes read = 3;
     optional Hash written_hash = 4;
     optional bytes written = 5;
-    MerkleTreeProof proof = 6;
+    repeated Hash sibling_hashes = 6;
     uint64 address = 7;
     uint64 log2_size = 8;
 }
