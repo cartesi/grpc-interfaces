@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.0] - 2023-12-06
+### Added
+- Added memory range introspection on cartesi-machine
+- Added init and entrypoint fields to machine DTB on cartesi-machine
+
+### Changed
+- Replaced proof with sibling_hashes on cartesi-machine
+- Refactored uarch reset on cartesi-machine
+- Removed DumpPmas on cartesi-machine
+- Renamed ROM to DTB on cartesi-machine
+
 ## [0.14.0] - 2023-08-02
 ### Added
 - Added new reject reason for larger payloads on the server-manager
@@ -75,7 +86,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.1.2]
 - [0.1.1]
 
-[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.14.0...HEAD
+[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.15.0...HEAD
+[0.15.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.15.0
 [0.14.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.14.0
 [0.13.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.13.0
 [0.12.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.12.0
