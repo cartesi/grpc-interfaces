@@ -212,6 +212,11 @@ message HTIFConfig {
     bool yield_automatic = 5;
 }
 
+message PLICConfig {
+    optional uint64 girqpend = 1;
+    optional uint64 girqsrvd = 2;
+}
+
 message RollupConfig {
     MemoryRangeConfig rx_buffer = 1;
     MemoryRangeConfig tx_buffer = 2;
@@ -272,10 +277,11 @@ message MachineConfig {
     RAMConfig ram = 3;
     repeated MemoryRangeConfig flash_drive = 4;
     CLINTConfig clint = 5;
-    HTIFConfig htif = 6;
-    RollupConfig rollup = 7;
-    UarchConfig uarch = 8;
-    TLBConfig tlb = 9;
+    PLICConfig plic = 6;
+    HTIFConfig htif = 7;
+    RollupConfig rollup = 8;
+    UarchConfig uarch = 9;
+    TLBConfig tlb = 10;
 }
 
 message ConcurrencyConfig {
@@ -574,14 +580,16 @@ enum Csr {
     ILRSC = 28;
     IFLAGS = 29;
     CLINT_MTIMECMP = 30;
-    HTIF_TOHOST = 31;
-    HTIF_FROMHOST = 32;
-    HTIF_IHALT = 33;
-    HTIF_ICONSOLE = 34;
-    HTIF_IYIELD = 35;
-    UARCH_PC = 36;
-    UARCH_CYCLE = 37;
-    UARCH_HALT_FLAG = 38;
+    PLIC_GIRQPEND = 31;
+    PLIC_GIRQSRVD = 32;
+    HTIF_TOHOST = 33;
+    HTIF_FROMHOST = 34;
+    HTIF_IHALT = 35;
+    HTIF_ICONSOLE = 36;
+    HTIF_IYIELD = 37;
+    UARCH_PC = 38;
+    UARCH_CYCLE = 39;
+    UARCH_HALT_FLAG = 40;
 }
 
 message GetCsrAddressRequest {
