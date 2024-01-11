@@ -175,6 +175,7 @@ message ProcessorConfig {
     optional uint64 senvcfg = 91;
     optional uint64 ilrsc = 92;
     optional uint64 iflags = 93;
+    optional uint64 iunrep = 94;
 }
 
 message DTBConfig {
@@ -579,17 +580,18 @@ enum Csr {
     SENVCFG = 27;
     ILRSC = 28;
     IFLAGS = 29;
-    CLINT_MTIMECMP = 30;
-    PLIC_GIRQPEND = 31;
-    PLIC_GIRQSRVD = 32;
-    HTIF_TOHOST = 33;
-    HTIF_FROMHOST = 34;
-    HTIF_IHALT = 35;
-    HTIF_ICONSOLE = 36;
-    HTIF_IYIELD = 37;
-    UARCH_PC = 38;
-    UARCH_CYCLE = 39;
-    UARCH_HALT_FLAG = 40;
+    IUNREP = 30;
+    CLINT_MTIMECMP = 31;
+    PLIC_GIRQPEND = 32;
+    PLIC_GIRQSRVD = 33;
+    HTIF_TOHOST = 34;
+    HTIF_FROMHOST = 35;
+    HTIF_IHALT = 36;
+    HTIF_ICONSOLE = 37;
+    HTIF_IYIELD = 38;
+    UARCH_PC = 39;
+    UARCH_CYCLE = 40;
+    UARCH_HALT_FLAG = 41;
 }
 
 message GetCsrAddressRequest {
