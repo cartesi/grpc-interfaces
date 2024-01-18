@@ -396,6 +396,15 @@ message RunResponse {
     bool iflags_h = 3;
     bool iflags_y = 4;
     bool iflags_x = 5;
+    enum InterpreterBreakReason {
+        FAILED = 0;
+        HALTED = 1;
+        YIELDED_MANUALLY = 2;
+        YIELDED_AUTOMATICALLY = 3;
+        YIELDED_SOFTLY = 4;
+        REACHED_TARGET_MCYCLE = 5;
+    };
+    InterpreterBreakReason break_reason = 6;
 }
 
 message RunUarchRequest {
