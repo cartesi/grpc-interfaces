@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.16.0] - 2024-02-07
+### Added
+- Added interpreter break reason in run response
+
 ## [0.15.0] - 2023-12-06
 ### Added
 - Added memory range introspection on cartesi-machine
@@ -86,7 +90,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [0.1.2]
 - [0.1.1]
 
-[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.15.0...HEAD
+[Unreleased]: https://github.com/cartesi/grpc-interfaces/compare/v0.16.0...HEAD
+[0.16.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.16.0
 [0.15.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.15.0
 [0.14.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.14.0
 [0.13.0]: https://github.com/cartesi/grpc-interfaces/releases/tag/v0.13.0
