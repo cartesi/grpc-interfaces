@@ -66,6 +66,10 @@ service Machine {
     rpc VerifyUarchStepStateTransition(VerifyUarchStepStateTransitionRequest) returns (Void) {}
     rpc VerifyUarchResetLog(VerifyUarchResetLogRequest) returns (Void) {}
     rpc VerifyUarchResetStateTransition(VerifyUarchResetStateTransitionRequest) returns (Void) {}
+    rpc LoadCMIOInput(LoadCMIOInputRequest) returns (Void) {}
+    rpc LogLoadCMIOInput(LogLoadCMIOInputRequest) returns (LogLoadCMIOInputResponse) {}
+    rpc VerifyLoadCMIOInputLog(VerifyLoadCMIOInputLogRequest) returns (Void) {}
+    rpc VerifyLoadCMIOInputStateTransition(VerifyLoadCMIOInputStateTransitionRequest) returns (Void) {}
 }
 
 //Messages definition section
@@ -613,4 +617,38 @@ message MemoryRangeDescription {
 
 message GetMemoryRangesResponse {
     repeated MemoryRangeDescription memory_range = 1;
+}
+
+message LoadCMIOInputRequest {
+    uint64 reason = 1;
+    bytes data = 2;
+}
+
+message LogLoadCMIOInputRequest {
+    uint64 reason = 1;
+    bytes data = 2;
+    AccessLogType log_type = 3;
+    bool one_based = 4;
+}
+
+message LogLoadCMIOInputResponse {
+    AccessLog log = 1;
+}
+
+message VerifyLoadCMIOInputLogRequest {
+    uint64 reason = 1;
+    bytes data = 2;
+    AccessLog log = 3;
+    bool one_based = 4;
+    MachineRuntimeConfig runtime = 5;
+}
+
+message VerifyLoadCMIOInputStateTransitionRequest {
+    uint64 reason = 1;
+    bytes data = 2;
+    Hash root_hash_before = 3;
+    AccessLog log = 4;
+    Hash root_hash_after = 5;
+    bool one_based = 6;
+    MachineRuntimeConfig runtime = 7;
 }
