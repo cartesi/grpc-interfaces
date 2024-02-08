@@ -212,12 +212,9 @@ message HTIFConfig {
     bool yield_automatic = 5;
 }
 
-message RollupConfig {
+message CMIOConfig {
     MemoryRangeConfig rx_buffer = 1;
     MemoryRangeConfig tx_buffer = 2;
-    MemoryRangeConfig input_metadata = 3;
-    MemoryRangeConfig voucher_hashes = 4;
-    MemoryRangeConfig notice_hashes = 5;
 }
 
 message UarchRAMConfig {
@@ -273,7 +270,7 @@ message MachineConfig {
     repeated MemoryRangeConfig flash_drive = 4;
     CLINTConfig clint = 5;
     HTIFConfig htif = 6;
-    RollupConfig rollup = 7;
+    CMIOConfig cmio = 7;
     UarchConfig uarch = 8;
     TLBConfig tlb = 9;
 }
