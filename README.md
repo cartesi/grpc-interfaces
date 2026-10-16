@@ -1,5 +1,11 @@
 # Cartesi gRPC Interfaces
 
+> [!WARNING]
+> **This repository is no longer maintained.**
+> Starting with machine-emulator v0.17.0, the emulator no longer has a gRPC interface. Its remote interface is JSON-RPC, served by `cartesi-jsonrpc-machine` from [cartesi/machine-emulator](https://github.com/cartesi/machine-emulator).
+> Existing releases here remain available for older projects.
+> Do not use this repository for new development.
+
 The Cartesi gRPC Interfaces repository contains all gRPC and Protobuf definitions used in the gRPC interfaces of the Cartesi Project modules. Currently these comprehend:
 
 - [cartesi-machine.proto](cartesi-machine.proto): contains the services exported by the cartesi machine that are consumed by the machine manager and also the definition of the lowest level messages used in multiple interfaces
